@@ -21,7 +21,16 @@ driver.get('https://kenkoooo.com/atcoder/#/table')
 latest_problem = None
 statics = {}
 colors = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
-
+color_codes = {
+    'grey': '#8e44ad',
+    'brown': 'rgb(128, 64, 0)',
+    'green': 'rgb(0, 128, 0)',
+    'cyan': 'rgb(0, 192, 192)',
+    'blue': 'rgb(0, 0, 255)',
+    'yellow': 'rgb(192, 192, 0)',
+    'orange': 'rgb(255, 128, 0)',
+    'red': 'rgb(255, 0, 0)'
+}
 try:
     time.sleep(5)
     table = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody')
@@ -52,9 +61,9 @@ try:
             except Exception as e:
                 pass
             idx += 1
-    
+
     print(statics)
-            
+
 except Exception as e:
     print(e)
 
@@ -69,6 +78,29 @@ html_content = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AtCoder Table</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .progress-circle {{
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 1px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }}
+        .progress-circle-inner {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }}
+    </style>
 </head>
 <body>
     <h1>AtCoder Beginner Contest</h1>
@@ -97,13 +129,39 @@ for diff, color_counts in sorted(statics.items()):
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = (count / total_count * 100) if total_count > 0 else 0
-        color_style = "rgb(192, 192, 192)" if count == 0 else ""
-        html_content += f"                <td style='color:{color_style}'>{count} ({percentage:.2f}%)</td>\n"
+        # Get the color code from the dictionary
+        circle_color = color_codes.get(color, 'grey')  # Default to grey if not found
+        text_color = '#c8c8c8' if percentage == 0 else ''  # Default to light grey if 0%, otherwise use CSS color
+        border_color = '#c8c8c8' if percentage == 0 else circle_color
+        # Use grey color if the percentage is 0, otherwise use the difficulty color
+        html_content += f"                <td>\n"
+        html_content += f"                    <div class='progress-circle' style='border-color: {border_color};' data-color='{circle_color}' data-percent='{percentage:.2f}'>\n"  # Use final_circle_color
+        html_content += f"                        <span class='progress-circle-inner'></span>\n"
+        html_content += f"                    </div>\n"
+        html_content += f"                    <span style='color:{text_color}'>{count}</span>\n<br>\n"
+        html_content += f"                    <span style='color:{text_color}'>({percentage:.2f}%)</span>\n"
+        html_content += "                </td>\n"
     html_content += "            </tr>\n"
 
 html_content += """
         </tbody>
     </table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressCircles = document.querySelectorAll('.progress-circle');
+            progressCircles.forEach(circle => {
+                const percentage = circle.dataset.percent;
+                const color = circle.dataset.color;
+                const innerCircle = circle.querySelector('.progress-circle-inner');
+                const circleElement = circle;
+                if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+                    console.error("Invalid percentage value:", percentage);
+                    return;
+                }
+                innerCircle.style.backgroundImage = `linear-gradient(to top, ${color} ${percentage}%, transparent ${percentage}%)`;
+            });
+        });
+    </script>
 </body>
 </html>
 """

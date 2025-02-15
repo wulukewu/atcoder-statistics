@@ -107,3 +107,26 @@ td:nth-child(9) {
     overflow-x: auto; /* Enable horizontal scrolling */
   }
 }
+
+/* Progress Circle Styles */
+.progress-circle {
+    width: 12px; /* Adjust size as needed */
+    height: 12px;
+    border-radius: 50%;
+    border-style: solid;
+    background-color: #eee; /* Light gray background */
+    position: relative;
+    overflow: hidden;
+    display: inline-block; /* Align with text */
+    margin-right: 5px; /* Space between circle and text */
+    vertical-align: middle;
+}
+
+.progress-circle-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
