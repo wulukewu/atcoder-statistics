@@ -31,7 +31,7 @@ try:
             try:
                 if idx == 0:
                     # print(cell.text)
-                    latest_problem_tmp = cell.text
+                    latest_problem_tmp = cell.text.split(' ')[1]
                 else:
                     if latest_problem is None:
                         latest_problem = latest_problem_tmp
