@@ -97,7 +97,8 @@ for diff, color_counts in sorted(statics.items()):
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = (count / total_count * 100) if total_count > 0 else 0
-        html_content += f"                <td>{count} ({percentage:.2f}%)</td>\n"
+        color_style = "rgb(192, 192, 192)" if count == 0 else ""
+        html_content += f"                <td style='color:{color_style}'>{count} ({percentage:.2f}%)</td>\n"
     html_content += "            </tr>\n"
 
 html_content += """
