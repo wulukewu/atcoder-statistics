@@ -34,21 +34,12 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git fetch origin
-          if git show-ref --quiet refs/heads/gh-pages; then
-            git checkout gh-pages
-          else
-            git checkout --orphan gh-pages
-          fi
+          git fetch origin gh-pages
+          git checkout gh-pages
           git rm -r .
-          if [ -f web-page/index.html ]; then
-            git checkout main -- web-page/index.html
-            mv web-page/index.html index.html
-          fi
-          if [ -f web-page/style.css ]; then
-            git checkout main -- web-page/style.css
-            mv web-page/style.css style.css
-          fi
+          git checkout main -- web-page/index.html web-page/style.css
+          mv web-page/index.html index.html
+          mv web-page/style.css style.css
           git add index.html style.css
           git commit -m 'Update GitHub Pages'
           git push origin gh-pages --force
