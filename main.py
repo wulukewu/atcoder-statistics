@@ -65,20 +65,7 @@ html_content = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AtCoder Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>AtCoder Table</h1>
@@ -100,11 +87,13 @@ html_content = """
 """
 
 for diff, color_counts in sorted(statics.items()):
+    total_count = sum(color_counts.values())
     html_content += f"            <tr>\n"
     html_content += f"                <td>{diff}</td>\n"
     for color in colors:
         count = color_counts.get(color, 0)
-        html_content += f"                <td>{count}</td>\n"
+        percentage = (count / total_count * 100) if total_count > 0 else 0
+        html_content += f"                <td>{count} ({percentage:.2f}%)</td>\n"
     html_content += "            </tr>\n"
 
 html_content += """
