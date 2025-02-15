@@ -104,5 +104,5 @@ html_content += """
 """
 
 # Write to HTML file
-with open("index.html", "w") as file:
+with open("web-page/index.html", "w") as file:
     file.write(html_content)
