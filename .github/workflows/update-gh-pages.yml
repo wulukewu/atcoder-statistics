@@ -33,15 +33,8 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git fetch origin gh-pages
-          git checkout gh-pages
-          git rm -r .
-          git checkout main -- web-page/index.html web-page/style.css
-          mv web-page/index.html index.html
-          mv web-page/style.css style.css
-          git add index.html style.css
+          git add web-page/index.html web-page/style.css
           git commit -m 'Update GitHub Pages'
-          git push origin gh-pages --force
+          git push origin HEAD:gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
