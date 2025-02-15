@@ -18,6 +18,7 @@ driver = webdriver.Chrome(options=options)
 
 driver.get('https://kenkoooo.com/atcoder/#/table')
 
+latest_problem = None
 statics = {}
 colors = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
 
@@ -30,8 +31,10 @@ try:
             try:
                 if idx == 0:
                     # print(cell.text)
-                    pass
+                    latest_problem_tmp = cell.text
                 else:
+                    if latest_problem is None:
+                        latest_problem = latest_problem_tmp
                     diff = cell.find_element(By.CLASS_NAME, 'table-problem-point').text
                     diff = int(diff)
                     color = cell.find_element(By.TAG_NAME, 'a').get_attribute('class')
@@ -58,7 +61,7 @@ except Exception as e:
 driver.quit()
 
 # Generate HTML
-html_content = """
+html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +71,8 @@ html_content = """
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>AtCoder Table</h1>
+    <h1>AtCoder Beginner Contest</h1>
+    <h2>Latest Problem: {latest_problem}</h2>
     <table>
         <thead>
             <tr>
