@@ -139,7 +139,8 @@ for diff, color_counts in sorted(statics.items()):
         html_content += f"                    <div class='progress-circle' style='border-color: {border_color};' data-color='{circle_color}' data-percent='{percentage:.2f}'>\n"  # Use final_circle_color
         html_content += f"                        <span class='progress-circle-inner'></span>\n"
         html_content += f"                    </div>\n"
-        html_content += f"                    <span style='color:{text_color}'>{count}</span>\n<br>\n"
+        html_content += f"                    <span style='color:{text_color}'>{count}</span>\n"
+        html_content += f"                    <br>\n"
         html_content += f"                    <span style='color:{text_color}'>({percentage:.2f}%)</span>\n"
         html_content += "                </td>\n"
     html_content += "            </tr>\n"
