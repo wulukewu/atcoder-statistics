@@ -99,7 +99,7 @@ html_content = """
         <tbody>
 """
 
-for diff, color_counts in statics.items():
+for diff, color_counts in sorted(statics.items()):
     html_content += f"            <tr>\n"
     html_content += f"                <td>{diff}</td>\n"
     for color in colors:
