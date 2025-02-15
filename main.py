@@ -33,8 +33,6 @@ try:
                     # print(cell.text)
                     latest_problem_tmp = cell.text.split(' ')[1]
                 else:
-                    if latest_problem is None:
-                        latest_problem = latest_problem_tmp
                     diff = cell.find_element(By.CLASS_NAME, 'table-problem-point').text
                     diff = int(diff)
                     color = cell.find_element(By.TAG_NAME, 'a').get_attribute('class')
@@ -48,6 +46,8 @@ try:
                     else:
                         statics[diff] = {}
                         statics[diff][color] = 1
+                if idx >= 4 and latest_problem is None:
+                    latest_problem = latest_problem_tmp
 
             except Exception as e:
                 pass
