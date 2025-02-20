@@ -31,6 +31,8 @@ color_codes = {
     'orange': 'rgb(255, 128, 0)',
     'red': 'rgb(255, 0, 0)'
 }
+problem_links = []
+
 try:
     time.sleep(5)
     table = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody')
@@ -39,28 +41,74 @@ try:
         for cell in row.find_elements(By.TAG_NAME, 'td'):
             try:
                 if idx == 0:
-                    # print(cell.text)
-                    latest_problem_tmp = cell.text.split(' ')[1]
+                    problem = cell.text.split(' ')[1]
+                    latest_problem_tmp = problem
+                    # print(problem)
                 else:
-                    diff = cell.find_element(By.CLASS_NAME, 'table-problem-point').text
-                    diff = int(diff)
-                    color = cell.find_element(By.TAG_NAME, 'a').get_attribute('class')
-                    color = color.split('difficulty-')[1]
+                    try:
+                        diff = cell.find_element(By.CLASS_NAME, 'table-problem-point').text
+                        diff = int(diff)
+                    except:
+                        diff = -1
+                    
+                    try:
+                        problem_tmp = cell.find_element(By.TAG_NAME, 'a')
+                        problem_link = problem_tmp.get_attribute('href')
+                        color = problem_tmp.get_attribute('class')
+                        color = color.split('difficulty-')[1]
+                    except:
+                        color = None
                     # print(diff, color)
-                    if diff in statics:
-                        if color in statics[diff]:
-                            statics[diff][color] += 1
-                        else:
-                            statics[diff][color] = 1
+
+                    if color is None:
+                        continue
+                    elif diff == -1:
+                        try:
+                            if int(problem.replace('ABC', '')) > 41:
+                                # print(problem_link)
+                                problem_links.append([problem, problem_link, color])
+                        except Exception as e:
+                            continue
                     else:
-                        statics[diff] = {}
-                        statics[diff][color] = 1
-                if idx >= 4 and latest_problem is None:
+                        if diff in statics:
+                            if color in statics[diff]:
+                                statics[diff][color] += 1
+                            else:
+                                statics[diff][color] = 1
+                        else:
+                            statics[diff] = {}
+                            statics[diff][color] = 1
+
+                if latest_problem is None:
                     latest_problem = latest_problem_tmp
+                    print(f'Latest Problem: {latest_problem}')
 
             except Exception as e:
                 pass
+
             idx += 1
+
+    # print(problem_links)
+    for problem, link, color in problem_links:
+        driver.get(link)
+        try:
+            WebDriverWait(driver, 5).until(lambda d: d.find_element(By.XPATH, '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]'))
+            score = driver.find_element(By.XPATH, '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]')
+            diff = int(score.text)
+            # print(problem, diff, color)
+
+            if diff in statics:
+                if color in statics[diff]:
+                    statics[diff][color] += 1
+                else:
+                    statics[diff][color] = 1
+            else:
+                statics[diff] = {}
+                statics[diff][color] = 1
+
+        except Exception as e:
+            print(f'Error to get score from {link}')
+            continue
 
     print(statics)
 
