@@ -5,6 +5,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
+def update_statics(diff, color, statics):
+    if diff in statics:
+        if color in statics[diff]:
+            statics[diff][color] += 1
+        else:
+            statics[diff][color] = 1
+    else:
+        statics[diff] = {}
+        statics[diff][color] = 1
+
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 options.add_argument('--no-sandbox')
@@ -70,14 +80,7 @@ try:
                         except Exception as e:
                             continue
                     else:
-                        if diff in statics:
-                            if color in statics[diff]:
-                                statics[diff][color] += 1
-                            else:
-                                statics[diff][color] = 1
-                        else:
-                            statics[diff] = {}
-                            statics[diff][color] = 1
+                        update_statics(diff, color, statics)
 
                 if latest_problem is None:
                     latest_problem = latest_problem_tmp
@@ -97,14 +100,7 @@ try:
             diff = int(score.text)
             # print(problem, diff, color)
 
-            if diff in statics:
-                if color in statics[diff]:
-                    statics[diff][color] += 1
-                else:
-                    statics[diff][color] = 1
-            else:
-                statics[diff] = {}
-                statics[diff][color] = 1
+            update_statics(diff, color, statics)
 
         except Exception as e:
             print(f'Error to get score from {link}')
