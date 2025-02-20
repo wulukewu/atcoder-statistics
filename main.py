@@ -15,6 +15,18 @@ def update_statics(diff, color, statics):
         statics[diff] = {}
         statics[diff][color] = 1
 
+def process_problem_link(driver, link, color, statics):
+    driver.get(link)
+    try:
+        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.XPATH, '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]'))
+        score = driver.find_element(By.XPATH, '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]')
+        diff = int(score.text)
+        # print(problem, diff, color)
+        update_statics(diff, color, statics)
+    except Exception as e:
+        print(f'Error to get score from {link}')
+        return
+
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 options.add_argument('--no-sandbox')
@@ -93,18 +105,7 @@ try:
 
     # print(problem_links)
     for problem, link, color in problem_links:
-        driver.get(link)
-        try:
-            WebDriverWait(driver, 5).until(lambda d: d.find_element(By.XPATH, '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]'))
-            score = driver.find_element(By.XPATH, '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]')
-            diff = int(score.text)
-            # print(problem, diff, color)
-
-            update_statics(diff, color, statics)
-
-        except Exception as e:
-            print(f'Error to get score from {link}')
-            continue
+        process_problem_link(driver, link, color, statics)
 
     print(statics)
 
