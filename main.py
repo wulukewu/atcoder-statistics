@@ -60,11 +60,11 @@ try:
     table = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody')
     for row in table.find_elements(By.TAG_NAME, 'tr'):
         idx = 0
+        contest_problem_count = 0
         for cell in row.find_elements(By.TAG_NAME, 'td'):
             try:
                 if idx == 0:
                     problem = cell.text.split(' ')[1]
-                    latest_problem_tmp = problem
                     # print(problem)
                 else:
                     try:
@@ -85,6 +85,7 @@ try:
                     if color is None:
                         continue
                     elif diff == -1:
+                        contest_problem_count += 1
                         try:
                             if int(problem.replace('ABC', '')) > 41:
                                 # print(problem_link)
@@ -92,11 +93,15 @@ try:
                         except Exception as e:
                             continue
                     else:
+                        contest_problem_count += 1
                         update_statics(diff, color, statics)
 
-                if latest_problem is None:
-                    latest_problem = latest_problem_tmp
-                    print(f'Latest Problem: {latest_problem}')
+                if contest_problem_count >= 4:
+                    if latest_problem is None:
+                        latest_problem = problem
+                    elif int(problem.replace('ABC', '')) > int(latest_problem.replace('ABC', '')):
+                        latest_problem = problem
+                    # print(f'Latest Problem: {latest_problem}')
 
             except Exception as e:
                 pass
