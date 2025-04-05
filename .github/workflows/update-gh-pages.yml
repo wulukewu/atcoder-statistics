@@ -48,7 +48,20 @@ jobs:
           name: web-page
           path: web-page/
 
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Compare directories
+        id: compare_directories
+        run: |
+          rsync -rc --existing --delete web-page/ gh-pages/
+          echo "::set-output name=changed::$?"
+
       - name: Deploy to GitHub Pages
+        if: steps.compare_directories.outputs.changed != '0'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
