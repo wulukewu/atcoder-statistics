@@ -64,7 +64,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update website content"
-            git push origin gh-pages
+            git push --force origin gh-pages
           fi
           git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-          git push
+          git push --force
