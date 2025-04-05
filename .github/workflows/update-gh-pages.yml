@@ -48,23 +48,35 @@ jobs:
           name: web-page
           path: web-page/
 
-      - name: Checkout gh-pages
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
-          path: gh-pages
+          ref: main
 
-      - name: Compare directories
-        id: compare_directories
-        run: |
-          rsync -rc --existing --delete web-page/ gh-pages/
-          echo "::set-output name=changed::$?"
+      - name: Checkout gh-pages
+      run: |
+        git checkout gh-pages
 
-      - name: Deploy to GitHub Pages
-        if: steps.compare_directories.outputs.changed != '0'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: web-page
-          publish_branch: gh-pages
-          force_orphan: true
+      - name: Copy files
+      run: |
+        rsync -rc --existing --delete web-page/ ./
+
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git status --porcelain
+        if [[ $(git status --porcelain) ]]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+      shell: bash
+
+    - name: Commit and push changes
+      if: steps.check_changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add .
+        git commit -m "Update gh-pages"
+        git push
