@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run main.py
+        run: python main.py
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 0
+
+      - name: Create gh-pages branch if it doesn't exist
+        run: |
+          if [ -z "$(git branch --list gh-pages)" ]; then
+            git config --global user.email "actions@github.com"
+            git config --global user.name "GitHub Actions"
+            git checkout --orphan gh-pages
+            git commit --allow-empty -m "Create gh-pages branch"
+            git push --force origin gh-pages
+          fi
+
+      - name: Copy files to gh-pages branch
+        run: |
+          rm -rf gh-pages/*
+          cp -r web-page/* gh-pages/
+
+      - name: Commit and push changes
+        run: |
+          cd gh-pages
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update website content"
+            git push --force origin gh-pages
+          fi
+          git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+          git push --force
