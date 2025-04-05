@@ -39,16 +39,6 @@ jobs:
           path: gh-pages
           fetch-depth: 0
 
-      - name: Create gh-pages branch if it doesn't exist
-        run: |
-          if [ -z "$(git branch --list gh-pages)" ]; then
-            git config --global user.email "actions@github.com"
-            git config --global user.name "GitHub Actions"
-            git checkout --orphan gh-pages
-            git commit --allow-empty -m "Create gh-pages branch"
-            git push --force origin gh-pages
-          fi
-
       - name: Copy files to gh-pages branch
         run: |
           rm -rf gh-pages/*
@@ -64,7 +54,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update website content"
-            git push --force origin gh-pages
+            git push origin gh-pages
           fi
           git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-          git push --force
+          git push
