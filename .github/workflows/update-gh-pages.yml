@@ -46,13 +46,12 @@ jobs:
           cd gh-pages
           echo "deploy=$(date +'%Y-%m-%d %H:%M:%S')" >> .nojekyll
 
+      - name: Setup credentials to access private repositories
+        run: git config --global url.https://${{ secrets.PAT }}@github.com/.insteadOf https://github.com/
+
       - name: Commit and Push changes
         run: |
-          git config --local user.name "GitHubActions"
-          git config --local user.email "actions@github.com"
           git add .
           git diff --quiet --exit-code || git commit -m "Update gh-pages"
           git push origin gh-pages -u origin gh-pages --force
         working-directory: ./gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
