@@ -52,5 +52,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git diff --quiet --exit-code || git commit -m "Update gh-pages"
-          git push origin gh-pages
+          git push origin gh-pages -u origin gh-pages --force
         working-directory: ./gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
