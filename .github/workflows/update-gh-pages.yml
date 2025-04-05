@@ -37,6 +37,7 @@ jobs:
         with:
           ref: gp-pages
           path: gp-pages
+          fetch-depth: 0
 
       - name: Copy files to gp-pages branch
         run: |
