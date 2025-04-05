@@ -31,33 +31,26 @@ jobs:
       - name: Run main.py
         run: python main.py
 
-      - name: Checkout gh-pages
-        run: |
-          git checkout gh-pages || git checkout --orphan gh-pages
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          persist-credentials: false
+          fetch-depth: 0
 
-      - name: Copy files
+      - name: Prepare gh-pages
         run: |
-          rsync -rc --existing --delete web-page/ ./
+          rm -rf gh-pages/*
+          cp -r web-page/* gh-pages/
+          cd gh-pages
+          echo "deploy=$(date +'%Y-%m-%d %H:%M:%S')" >> .nojekyll
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          cd $GITHUB_WORKSPACE
-          git status --porcelain
-          if [[ $(git status --porcelain) ]]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
-        shell: bash
-
-      - name: Commit and push changes
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: Commit and Push changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "Update gh-pages"
-          git push
+          git diff --quiet --exit-code || git commit -m "Update gh-pages"
+          git push origin gh-pages
+        working-directory: ./gh-pages
