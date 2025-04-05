@@ -33,6 +33,7 @@ jobs:
 
       - name: Checkout gh-pages
         run: |
+          git init
           git checkout gh-pages || git checkout --orphan gh-pages
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
