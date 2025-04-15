@@ -155,18 +155,18 @@ html_content = f"""
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 50px; /* Adjust as needed */
-            height: 50px; /* Adjust as needed */
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            overflow: hidden; /* Ensure image stays within the circle */
+            overflow: hidden;
             cursor: pointer;
-            z-index: 1000; /* Ensure it's on top of other elements */
+            z-index: 1000;
         }}
 
         .floating-button img {{
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Maintain aspect ratio and cover the area */
+            object-fit: cover;
         }}
     </style>
 </head>
