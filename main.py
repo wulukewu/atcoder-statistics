@@ -151,6 +151,23 @@ html_content = f"""
             height: 100%;
             border-radius: 50%;
         }}
+        .floating-button {{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px; /* Adjust as needed */
+            height: 50px; /* Adjust as needed */
+            border-radius: 50%;
+            overflow: hidden; /* Ensure image stays within the circle */
+            cursor: pointer;
+            z-index: 1000; /* Ensure it's on top of other elements */
+        }}
+
+        .floating-button img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover the area */
+        }}
     </style>
 </head>
 <body>
@@ -181,9 +198,9 @@ for diff, color_counts in sorted(statics.items()):
         count = color_counts.get(color, 0)
         percentage = (count / total_count * 100) if total_count > 0 else 0
         # Get the color code from the dictionary
-        circle_color = color_codes.get(color, 'grey')  # Default to grey if not found
-        text_color = '#c8c8c8' if percentage == 0 else ''  # Default to light grey if 0%, otherwise use CSS color
-        border_color = '#c8c8c8' if percentage == 0 else circle_color
+        circle_color = color_codes.get(color, "grey")  # Default to grey if not found
+        text_color = "#c8c8c8" if percentage == 0 else ""  # Default to light grey if 0%, otherwise use CSS color
+        border_color = "#c8c8c8" if percentage == 0 else circle_color
         # Use grey color if the percentage is 0, otherwise use the difficulty color
         html_content += f"                <td>\n"
         html_content += f"                    <div class='progress-circle' style='border-color: {border_color};' data-color='{circle_color}' data-percent='{percentage:.2f}'>\n"  # Use final_circle_color
@@ -194,10 +211,14 @@ for diff, color_counts in sorted(statics.items()):
         html_content += f"                    <span style='color:{text_color}'>({percentage:.2f}%)</span>\n"
         html_content += "                </td>\n"
     html_content += "            </tr>\n"
-
 html_content += """
         </tbody>
     </table>
+
+    <div class="floating-button" onclick="window.open('https://kenkoooo.com/atcoder/#/table', '_blank');">
+        <img src="atcoder-problems-logo.png" alt="AtCoder Problems">
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const progressCircles = document.querySelectorAll('.progress-circle');
