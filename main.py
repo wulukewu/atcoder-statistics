@@ -130,43 +130,87 @@ html_content = f"""
     <title>AtCoder Beginner Contest</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .progress-circle {{
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border-style: solid;
-            border-width: 1px;
-            background-color: #eee;
-            position: relative;
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }}
+        h1, h2 {{
+            color: #333;
+            text-align: center;
+        }}
+        h1 {{
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }}
+        h2 {{
+            margin-bottom: 30px;
+            color: #3498db;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
-            display: inline-block;
-            margin-right: 5px;
-            vertical-align: middle;
+        }}
+        th, td {{
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }}
+        th {{
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }}
+        tr:hover {{
+            background-color: #f1f1f1;
+        }}
+        .progress-circle {{
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 5px solid;
+            margin: 0 auto 10px;
         }}
         .progress-circle-inner {{
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }}
-        .floating-button {{
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+            top: 5px;
+            left: 5px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            overflow: hidden;
-            cursor: pointer;
-            z-index: 1000;
+            background-color: white;
         }}
-
+        .floating-button {{
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }}
+        .floating-button:hover {{
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }}
         .floating-button img {{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }}
     </style>
 </head>
@@ -199,40 +243,31 @@ for diff, color_counts in sorted(statics.items()):
         percentage = (count / total_count * 100) if total_count > 0 else 0
         # Get the color code from the dictionary
         circle_color = color_codes.get(color, "grey")  # Default to grey if not found
-        text_color = "#c8c8c8" if percentage == 0 else ""  # Default to light grey if 0%, otherwise use CSS color
-        border_color = "#c8c8c8" if percentage == 0 else circle_color
+        text_color = color_codes.get(color, '#c8c8c8')  # if percentage == 0 else ''  # Default to light grey if 0%, otherwise use CSS color
+        # text_color = '#c8c8c8' if percentage == 0 else ''
+        border_color = color_codes.get(color, '#c8c8c8') #if percentage == 0 else circle_color
+        # border_color = '#c8c8c8' if percentage == 0 else circle_color
         # Use grey color if the percentage is 0, otherwise use the difficulty color
         html_content += f"                <td>\n"
         html_content += f"                    <div class='progress-circle' style='border-color: {border_color};' data-color='{circle_color}' data-percent='{percentage:.2f}'>\n"  # Use final_circle_color
         html_content += f"                        <span class='progress-circle-inner'></span>\n"
         html_content += f"                    </div>\n"
-        html_content += f"                    <span style='color:{text_color}'>{count}</span>\n"
+        html_content += f"                    <span style='color: {text_color};'>{count}</span>\n"
         html_content += f"                    <br>\n"
-        html_content += f"                    <span style='color:{text_color}'>({percentage:.2f}%)</span>\n"
+        html_content += f"                    <span style='color: {text_color};'>({percentage:.2f}%)</span>\n"
         html_content += "                </td>\n"
     html_content += "            </tr>\n"
 html_content += """
         </tbody>
     </table>
-
     <div class="floating-button" onclick="window.open('https://kenkoooo.com/atcoder/#/table', '_blank');">
         <img src="atcoder-problems-logo.png" alt="AtCoder Problems">
     </div>
-
     <script>
+        // You could add JavaScript here to make the progress circles dynamic
+        // For example, to fill the circles based on the data-percent attribute
         document.addEventListener('DOMContentLoaded', function() {
-            const progressCircles = document.querySelectorAll('.progress-circle');
-            progressCircles.forEach(circle => {
-                const percentage = circle.dataset.percent;
-                const color = circle.dataset.color;
-                const innerCircle = circle.querySelector('.progress-circle-inner');
-                const circleElement = circle;
-                if (isNaN(percentage) || percentage < 0 || percentage > 100) {
-                    console.error("Invalid percentage value:", percentage);
-                    return;
-                }
-                innerCircle.style.backgroundImage = `linear-gradient(to top, ${color} ${percentage}%, transparent ${percentage}%)`;
-            });
+            // This would be where you'd add code to animate the progress circles
         });
     </script>
 </body>
