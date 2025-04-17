@@ -4,1364 +4,2067 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.svg" type="image/x-icon">
-    <title>AtCoder Beginner Contest</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AtCoder Statistics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .progress-circle {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border-style: solid;
-            border-width: 1px;
-            background-color: #eee;
+        :root {
+            --primary: #10b981; /* Changed from indigo to emerald green */
+            --primary-dark: #059669; /* Darker green */
+            --primary-light: #a7f3d0; /* Lighter green */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --red: #ef4444;
+            --orange: #f97316;
+            --yellow: #eab308;
+            --green: #22c55e;
+            --cyan: #06b6d4;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --brown: #a16207;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: var(--gray-800);
+            line-height: 1.5;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             position: relative;
             overflow: hidden;
-            display: inline-block;
-            margin-right: 5px;
-            vertical-align: middle;
         }
-        .progress-circle-inner {
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .header-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        .header-bg-circle {
+            position: absolute;
             border-radius: 50%;
+            background: white;
+        }
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -100px;
+        }
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -50px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .stats-table th,
+        .stats-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .stats-table th {
+            background-color: var(--gray-100);
+            font-weight: 600;
+            color: var(--gray-700);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .stats-table tr:last-child td {
+            border-bottom: none;
+        }
+        .stats-table tr:hover {
+            background-color: var(--gray-50);
+        }
+        .difficulty-label {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .circle-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .progress-circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-circle-inner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            border-radius: 0;
+        }
+        .count {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .percentage {
+            font-size: 0.875rem;
+            opacity: 0.8;
         }
         .floating-button {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
             border-radius: 50%;
-            overflow: hidden;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             cursor: pointer;
-            z-index: 1000;
+            transition: all 0.2s ease;
+            z-index: 50;
         }
-
+        .floating-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background-color: var(--primary-dark);
+        }
         .floating-button img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+        }
+        .color-grey { color: var(--gray-500); border-color: var(--gray-500); }
+        .color-brown { color: var(--brown); border-color: var(--brown); }
+        .color-green { color: var(--green); border-color: var(--green); }
+        .color-cyan { color: var(--cyan); border-color: var(--cyan); }
+        .color-blue { color: var(--blue); border-color: var(--blue); }
+        .color-yellow { color: var(--yellow); border-color: var(--yellow); }
+        .color-orange { color: var(--orange); border-color: var(--orange); }
+        .color-red { color: var(--red); border-color: var(--red); }
+        .color-purple { color: var(--purple); border-color: var(--purple); }
+        .bg-grey { background-color: var(--gray-500); }
+        .bg-brown { background-color: var(--brown); }
+        .bg-green { background-color: var(--green); }
+        .bg-cyan { background-color: var(--cyan); }
+        .bg-blue { background-color: var(--blue); }
+        .bg-yellow { background-color: var(--yellow); }
+        .bg-orange { background-color: var(--orange); }
+        .bg-red { background-color: var(--red); }
+        .bg-purple { background-color: var(--purple); }
+        .empty-color { color: var(--gray-400); border-color: var(--gray-300); }
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 1rem;
+        }
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-600);
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .tab:hover {
+            color: var(--primary);
+        }
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <h1>AtCoder Beginner Contest</h1>
-    <h2>Latest Problem: ABC396</h2>
-    <table>
-        <thead>
+    <header>
+        <div class="header-bg">
+            <div class="header-bg-circle circle-1"></div>
+            <div class="header-bg-circle circle-2"></div>
+        </div>
+        <div class="container header-content">
+            <h1>AtCoder Statistics</h1>
+            <h2>Latest Contest: ABC396</h2>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Main Content with Tabs -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">AtCoder Problems</div>
+            </div>
+            <div class="tabs">
+                <div class="tab active" data-tab="table">AtCoder Beginner Contest</div>
+            </div>
+            <div class="tab-content active" id="table-content">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Difficulty</th>
+                            <th>Grey</th>
+                            <th>Brown</th>
+                            <th>Green</th>
+                            <th>Cyan</th>
+                            <th>Blue</th>
+                            <th>Yellow</th>
+                            <th>Orange</th>
+                            <th>Red</th>
+                        </tr>
+                    </thead>
+                    <tbody>
             <tr>
-                <th>Difficulty</th>
-                <th>Grey</th>
-                <th>Brown</th>
-                <th>Green</th>
-                <th>Cyan</th>
-                <th>Blue</th>
-                <th>Yellow</th>
-                <th>Orange</th>
-                <th>Red</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>100</td>
+                <td class='difficulty-label'>100</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='100.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='100.0'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>335</span>
+                        </div>
+                        <span class='percentage color-grey'>(100.0%)</span>
                     </div>
-                    <span style='color:'>335</span>
-                    <br>
-                    <span style='color:'>(100.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>150</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='100.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>20</span>
-                    <br>
-                    <span style='color:'>(100.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>200</td>
+                <td class='difficulty-label'>150</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='94.79'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='100.0'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>20</span>
+                        </div>
+                        <span class='percentage color-grey'>(100.0%)</span>
                     </div>
-                    <span style='color:'>309</span>
-                    <br>
-                    <span style='color:'>(94.79%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='4.60'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>15</span>
-                    <br>
-                    <span style='color:'>(4.60%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='0.61'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(0.61%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>250</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='87.50'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>21</span>
-                    <br>
-                    <span style='color:'>(87.50%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='12.50'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>3</span>
-                    <br>
-                    <span style='color:'>(12.50%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>300</td>
+                <td class='difficulty-label'>200</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='49.68'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='94.79'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>309</span>
+                        </div>
+                        <span class='percentage color-grey'>(94.79%)</span>
                     </div>
-                    <span style='color:'>157</span>
-                    <br>
-                    <span style='color:'>(49.68%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='35.13'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='4.6'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>15</span>
+                        </div>
+                        <span class='percentage color-brown'>(4.6%)</span>
                     </div>
-                    <span style='color:'>111</span>
-                    <br>
-                    <span style='color:'>(35.13%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='12.03'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='0.61'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>2</span>
+                        </div>
+                        <span class='percentage color-green'>(0.61%)</span>
                     </div>
-                    <span style='color:'>38</span>
-                    <br>
-                    <span style='color:'>(12.03%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='3.16'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>10</span>
-                    <br>
-                    <span style='color:'>(3.16%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>350</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='25.93'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>7</span>
-                    <br>
-                    <span style='color:'>(25.93%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='44.44'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>12</span>
-                    <br>
-                    <span style='color:'>(44.44%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='25.93'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>7</span>
-                    <br>
-                    <span style='color:'>(25.93%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='3.70'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(3.70%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>400</td>
+                <td class='difficulty-label'>250</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #8e44ad;' data-color='#8e44ad' data-percent='2.77'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='87.5'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>21</span>
+                        </div>
+                        <span class='percentage color-grey'>(87.5%)</span>
                     </div>
-                    <span style='color:'>8</span>
-                    <br>
-                    <span style='color:'>(2.77%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='33.56'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='12.5'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>3</span>
+                        </div>
+                        <span class='percentage color-brown'>(12.5%)</span>
                     </div>
-                    <span style='color:'>97</span>
-                    <br>
-                    <span style='color:'>(33.56%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='37.37'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>108</span>
-                    <br>
-                    <span style='color:'>(37.37%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='19.72'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>57</span>
-                    <br>
-                    <span style='color:'>(19.72%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='6.23'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>18</span>
-                    <br>
-                    <span style='color:'>(6.23%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='0.35'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(0.35%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>425</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='26.92'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>7</span>
-                    <br>
-                    <span style='color:'>(26.92%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='65.38'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>17</span>
-                    <br>
-                    <span style='color:'>(65.38%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='7.69'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(7.69%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>450</td>
+                <td class='difficulty-label'>300</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='49.68'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>157</span>
+                        </div>
+                        <span class='percentage color-grey'>(49.68%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='2.50'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='35.13'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>111</span>
+                        </div>
+                        <span class='percentage color-brown'>(35.13%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(2.50%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='30.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='12.03'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>38</span>
+                        </div>
+                        <span class='percentage color-green'>(12.03%)</span>
                     </div>
-                    <span style='color:'>12</span>
-                    <br>
-                    <span style='color:'>(30.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='65.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='3.16'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>10</span>
+                        </div>
+                        <span class='percentage color-cyan'>(3.16%)</span>
                     </div>
-                    <span style='color:'>26</span>
-                    <br>
-                    <span style='color:'>(65.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='2.50'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(2.50%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>475</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='35.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>14</span>
-                    <br>
-                    <span style='color:'>(35.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='42.50'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>17</span>
-                    <br>
-                    <span style='color:'>(42.50%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='20.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>8</span>
-                    <br>
-                    <span style='color:'>(20.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='2.50'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(2.50%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>500</td>
+                <td class='difficulty-label'>350</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='25.93'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>7</span>
+                        </div>
+                        <span class='percentage color-grey'>(25.93%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(128, 64, 0);' data-color='rgb(128, 64, 0)' data-percent='0.62'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='44.44'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>12</span>
+                        </div>
+                        <span class='percentage color-brown'>(44.44%)</span>
                     </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(0.62%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='11.15'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='25.93'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>7</span>
+                        </div>
+                        <span class='percentage color-green'>(25.93%)</span>
                     </div>
-                    <span style='color:'>36</span>
-                    <br>
-                    <span style='color:'>(11.15%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='38.39'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='3.7'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>1</span>
+                        </div>
+                        <span class='percentage color-cyan'>(3.7%)</span>
                     </div>
-                    <span style='color:'>124</span>
-                    <br>
-                    <span style='color:'>(38.39%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='35.29'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>114</span>
-                    <br>
-                    <span style='color:'>(35.29%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='13.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>42</span>
-                    <br>
-                    <span style='color:'>(13.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='1.55'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>5</span>
-                    <br>
-                    <span style='color:'>(1.55%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>525</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='2.86'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(2.86%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='25.71'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>9</span>
-                    <br>
-                    <span style='color:'>(25.71%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='51.43'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>18</span>
-                    <br>
-                    <span style='color:'>(51.43%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='20.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>7</span>
-                    <br>
-                    <span style='color:'>(20.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>550</td>
+                <td class='difficulty-label'>400</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-grey' data-color='var(--grey)' data-percent='2.77'>
+                                <span class='progress-circle-inner bg-grey'></span>
+                            </div>
+                            <span class='count color-grey'>8</span>
+                        </div>
+                        <span class='percentage color-grey'>(2.77%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='33.56'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>97</span>
+                        </div>
+                        <span class='percentage color-brown'>(33.56%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='37.37'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>108</span>
+                        </div>
+                        <span class='percentage color-green'>(37.37%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='2.50'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='19.72'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>57</span>
+                        </div>
+                        <span class='percentage color-cyan'>(19.72%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(2.50%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='47.50'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='6.23'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>18</span>
+                        </div>
+                        <span class='percentage color-blue'>(6.23%)</span>
                     </div>
-                    <span style='color:'>19</span>
-                    <br>
-                    <span style='color:'>(47.50%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='40.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='0.35'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>1</span>
+                        </div>
+                        <span class='percentage color-yellow'>(0.35%)</span>
                     </div>
-                    <span style='color:'>16</span>
-                    <br>
-                    <span style='color:'>(40.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='10.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>4</span>
-                    <br>
-                    <span style='color:'>(10.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>575</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='16.67'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>4</span>
-                    <br>
-                    <span style='color:'>(16.67%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='70.83'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>17</span>
-                    <br>
-                    <span style='color:'>(70.83%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='4.17'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(4.17%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 0, 0);' data-color='rgb(255, 0, 0)' data-percent='8.33'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(8.33%)</span>
                 </td>
             </tr>
             <tr>
-                <td>600</td>
+                <td class='difficulty-label'>425</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='26.92'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>7</span>
+                        </div>
+                        <span class='percentage color-brown'>(26.92%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 128, 0);' data-color='rgb(0, 128, 0)' data-percent='0.33'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='65.38'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>17</span>
+                        </div>
+                        <span class='percentage color-green'>(65.38%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(0.33%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 192, 192);' data-color='rgb(0, 192, 192)' data-percent='3.26'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='7.69'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>2</span>
+                        </div>
+                        <span class='percentage color-cyan'>(7.69%)</span>
                     </div>
-                    <span style='color:'>10</span>
-                    <br>
-                    <span style='color:'>(3.26%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='10.75'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>33</span>
-                    <br>
-                    <span style='color:'>(10.75%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='30.94'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>95</span>
-                    <br>
-                    <span style='color:'>(30.94%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='31.60'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>97</span>
-                    <br>
-                    <span style='color:'>(31.60%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 0, 0);' data-color='rgb(255, 0, 0)' data-percent='23.13'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>71</span>
-                    <br>
-                    <span style='color:'>(23.13%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>625</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='8.33'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(8.33%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='4.17'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(4.17%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='41.67'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>10</span>
-                    <br>
-                    <span style='color:'>(41.67%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 0, 0);' data-color='rgb(255, 0, 0)' data-percent='45.83'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>11</span>
-                    <br>
-                    <span style='color:'>(45.83%)</span>
                 </td>
             </tr>
             <tr>
-                <td>650</td>
+                <td class='difficulty-label'>450</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='2.5'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>1</span>
+                        </div>
+                        <span class='percentage color-brown'>(2.5%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='30.0'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>12</span>
+                        </div>
+                        <span class='percentage color-green'>(30.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='65.0'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>26</span>
+                        </div>
+                        <span class='percentage color-cyan'>(65.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='2.5'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>1</span>
+                        </div>
+                        <span class='percentage color-blue'>(2.5%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='5.56'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(5.56%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='11.11'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(11.11%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 0, 0);' data-color='rgb(255, 0, 0)' data-percent='83.33'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>15</span>
-                    <br>
-                    <span style='color:'>(83.33%)</span>
-                </td>
-            </tr>
-            <tr>
-                <td>675</td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 0, 255)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(192, 192, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
-                </td>
-                <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 0, 0);' data-color='rgb(255, 0, 0)' data-percent='100.00'>
-                        <span class='progress-circle-inner'></span>
-                    </div>
-                    <span style='color:'>7</span>
-                    <br>
-                    <span style='color:'>(100.00%)</span>
                 </td>
             </tr>
             <tr>
-                <td>700</td>
+                <td class='difficulty-label'>475</td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='#8e44ad' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(128, 64, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 128, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='35.0'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>14</span>
+                        </div>
+                        <span class='percentage color-green'>(35.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(0, 192, 192)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='42.5'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>17</span>
+                        </div>
+                        <span class='percentage color-cyan'>(42.5%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(0, 0, 255);' data-color='rgb(0, 0, 255)' data-percent='50.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='20.0'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>8</span>
+                        </div>
+                        <span class='percentage color-blue'>(20.0%)</span>
                     </div>
-                    <span style='color:'>2</span>
-                    <br>
-                    <span style='color:'>(50.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(192, 192, 0);' data-color='rgb(192, 192, 0)' data-percent='25.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='2.5'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>1</span>
+                        </div>
+                        <span class='percentage color-yellow'>(2.5%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(25.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: rgb(255, 128, 0);' data-color='rgb(255, 128, 0)' data-percent='25.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:'>1</span>
-                    <br>
-                    <span style='color:'>(25.00%)</span>
                 </td>
                 <td>
-                    <div class='progress-circle' style='border-color: #c8c8c8;' data-color='rgb(255, 0, 0)' data-percent='0.00'>
-                        <span class='progress-circle-inner'></span>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
                     </div>
-                    <span style='color:#c8c8c8'>0</span>
-                    <br>
-                    <span style='color:#c8c8c8'>(0.00%)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>500</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-brown' data-color='var(--brown)' data-percent='0.62'>
+                                <span class='progress-circle-inner bg-brown'></span>
+                            </div>
+                            <span class='count color-brown'>2</span>
+                        </div>
+                        <span class='percentage color-brown'>(0.62%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='11.15'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>36</span>
+                        </div>
+                        <span class='percentage color-green'>(11.15%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='38.39'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>124</span>
+                        </div>
+                        <span class='percentage color-cyan'>(38.39%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='35.29'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>114</span>
+                        </div>
+                        <span class='percentage color-blue'>(35.29%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='13.0'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>42</span>
+                        </div>
+                        <span class='percentage color-yellow'>(13.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='1.55'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>5</span>
+                        </div>
+                        <span class='percentage color-orange'>(1.55%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>525</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='2.86'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>1</span>
+                        </div>
+                        <span class='percentage color-green'>(2.86%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='25.71'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>9</span>
+                        </div>
+                        <span class='percentage color-cyan'>(25.71%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='51.43'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>18</span>
+                        </div>
+                        <span class='percentage color-blue'>(51.43%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='20.0'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>7</span>
+                        </div>
+                        <span class='percentage color-yellow'>(20.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>550</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='2.5'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>1</span>
+                        </div>
+                        <span class='percentage color-cyan'>(2.5%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='47.5'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>19</span>
+                        </div>
+                        <span class='percentage color-blue'>(47.5%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='40.0'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>16</span>
+                        </div>
+                        <span class='percentage color-yellow'>(40.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='10.0'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>4</span>
+                        </div>
+                        <span class='percentage color-orange'>(10.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>575</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='16.67'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>4</span>
+                        </div>
+                        <span class='percentage color-blue'>(16.67%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='70.83'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>17</span>
+                        </div>
+                        <span class='percentage color-yellow'>(70.83%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='4.17'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>1</span>
+                        </div>
+                        <span class='percentage color-orange'>(4.17%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-red' data-color='var(--red)' data-percent='8.33'>
+                                <span class='progress-circle-inner bg-red'></span>
+                            </div>
+                            <span class='count color-red'>2</span>
+                        </div>
+                        <span class='percentage color-red'>(8.33%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>600</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-green' data-color='var(--green)' data-percent='0.33'>
+                                <span class='progress-circle-inner bg-green'></span>
+                            </div>
+                            <span class='count color-green'>1</span>
+                        </div>
+                        <span class='percentage color-green'>(0.33%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-cyan' data-color='var(--cyan)' data-percent='3.26'>
+                                <span class='progress-circle-inner bg-cyan'></span>
+                            </div>
+                            <span class='count color-cyan'>10</span>
+                        </div>
+                        <span class='percentage color-cyan'>(3.26%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='10.75'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>33</span>
+                        </div>
+                        <span class='percentage color-blue'>(10.75%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='30.94'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>95</span>
+                        </div>
+                        <span class='percentage color-yellow'>(30.94%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='31.6'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>97</span>
+                        </div>
+                        <span class='percentage color-orange'>(31.6%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-red' data-color='var(--red)' data-percent='23.13'>
+                                <span class='progress-circle-inner bg-red'></span>
+                            </div>
+                            <span class='count color-red'>71</span>
+                        </div>
+                        <span class='percentage color-red'>(23.13%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>625</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='8.33'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>2</span>
+                        </div>
+                        <span class='percentage color-blue'>(8.33%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='4.17'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>1</span>
+                        </div>
+                        <span class='percentage color-yellow'>(4.17%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='41.67'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>10</span>
+                        </div>
+                        <span class='percentage color-orange'>(41.67%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-red' data-color='var(--red)' data-percent='45.83'>
+                                <span class='progress-circle-inner bg-red'></span>
+                            </div>
+                            <span class='count color-red'>11</span>
+                        </div>
+                        <span class='percentage color-red'>(45.83%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>650</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='5.56'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>1</span>
+                        </div>
+                        <span class='percentage color-yellow'>(5.56%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='11.11'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>2</span>
+                        </div>
+                        <span class='percentage color-orange'>(11.11%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-red' data-color='var(--red)' data-percent='83.33'>
+                                <span class='progress-circle-inner bg-red'></span>
+                            </div>
+                            <span class='count color-red'>15</span>
+                        </div>
+                        <span class='percentage color-red'>(83.33%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>675</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--blue)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--yellow)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--orange)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-red' data-color='var(--red)' data-percent='100.0'>
+                                <span class='progress-circle-inner bg-red'></span>
+                            </div>
+                            <span class='count color-red'>7</span>
+                        </div>
+                        <span class='percentage color-red'>(100.0%)</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class='difficulty-label'>700</td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--grey)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--brown)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--green)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--cyan)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-blue' data-color='var(--blue)' data-percent='50.0'>
+                                <span class='progress-circle-inner bg-blue'></span>
+                            </div>
+                            <span class='count color-blue'>2</span>
+                        </div>
+                        <span class='percentage color-blue'>(50.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-yellow' data-color='var(--yellow)' data-percent='25.0'>
+                                <span class='progress-circle-inner bg-yellow'></span>
+                            </div>
+                            <span class='count color-yellow'>1</span>
+                        </div>
+                        <span class='percentage color-yellow'>(25.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle color-orange' data-color='var(--orange)' data-percent='25.0'>
+                                <span class='progress-circle-inner bg-orange'></span>
+                            </div>
+                            <span class='count color-orange'>1</span>
+                        </div>
+                        <span class='percentage color-orange'>(25.0%)</span>
+                    </div>
+                </td>
+                <td>
+                    <div class='stats-container'>
+                        <div class='circle-container'>
+                            <div class='progress-circle empty-color' data-color='var(--red)' data-percent='0.0'>
+                                <span class='progress-circle-inner '></span>
+                            </div>
+                            <span class='count empty-color'>0</span>
+                        </div>
+                        <span class='percentage empty-color'>(0.0%)</span>
+                    </div>
                 </td>
             </tr>
 
-        </tbody>
-    </table>
-
-    <div class="floating-button" onclick="window.open('https://kenkoooo.com/atcoder/#/table', '_blank');">
-        <img src="atcoder-problems-logo.png" alt="AtCoder Problems">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
+    <div class="floating-button" onclick="window.open('https://kenkoooo.com/atcoder/#/table', '_blank');">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const progressCircles = document.querySelectorAll('.progress-circle');
-            progressCircles.forEach(circle => {
-                const percentage = circle.dataset.percent;
-                const color = circle.dataset.color;
+        document.addEventListener('DOMContentLoaded', function() {{
+            // Initialize progress circles
+            const circles = document.querySelectorAll('.progress-circle');
+            circles.forEach(circle => {{
+                const percent = parseFloat(circle.getAttribute('data-percent'));
                 const innerCircle = circle.querySelector('.progress-circle-inner');
-                const circleElement = circle;
-                if (isNaN(percentage) || percentage < 0 || percentage > 100) {
-                    console.error("Invalid percentage value:", percentage);
-                    return;
-                }
-                innerCircle.style.backgroundImage = `linear-gradient(to top, ${color} ${percentage}%, transparent ${percentage}%)`;
-            });
-        });
+                // Set the height based on the percentage (fill from bottom)
+                innerCircle.style.height = percent + '%';
+            }});
+        }});
     </script>
 </body>
 </html>
