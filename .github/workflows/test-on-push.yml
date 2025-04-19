@@ -35,7 +35,7 @@ jobs:
           ls -lh web-page.zip # List the zip file to verify
 
       - name: Upload web-page artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: web-page
           path: web-page.zip
