@@ -223,16 +223,22 @@ html_content += """
         </svg>
     </div>
     <script>
+        // Prevent flash of unstyled content
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize progress circles
             const circles = document.querySelectorAll('.progress-circle');
             circles.forEach(circle => {
                 const percent = parseFloat(circle.getAttribute('data-percent'));
                 const innerCircle = circle.querySelector('.progress-circle-inner');
-                // Set the height based on the percentage (fill from bottom)
                 setTimeout(() => {
                     innerCircle.style.height = percent + '%';
-                }, 500); // Add a slight delay for better visual effect
+                }, 500);
             });
 
             // Set dynamic animation delays for table rows
@@ -241,18 +247,27 @@ html_content += """
                 row.style.animationDelay = `${(index + 1) * 0.1}s`;
             });
 
-            // Initialize theme
-            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
+            // Initialize theme icon
+            const theme = document.documentElement.getAttribute('data-theme');
             updateThemeIcon(theme);
         });
 
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Add transition class to body
+            document.body.classList.add('theme-transition');
+            
+            // Update theme
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
+            
+            // Remove transition class after transition completes
+            setTimeout(() => {
+                document.body.classList.remove('theme-transition');
+            }, 300);
         }
 
         function updateThemeIcon(theme) {

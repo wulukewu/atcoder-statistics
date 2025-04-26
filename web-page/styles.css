@@ -20,6 +20,7 @@
   --blue: rgb(54, 54, 255);
   --purple: #6a1b9a;
   --brown: rgb(170, 100, 0);
+  color-scheme: light dark;
 }
 
 /* Light mode (default) */
@@ -67,6 +68,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -254,7 +256,7 @@ header {
   box-shadow: var(--card-shadow);
   overflow: hidden;
   margin-bottom: 2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
 }
 
 .card:hover {
@@ -269,6 +271,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: var(--header-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .card-title {
@@ -276,6 +279,7 @@ header {
   font-weight: 600;
   color: var(--title-color);
   animation: fadeInRight 0.8s ease-out;
+  transition: color 0.3s ease;
 }
 
 .card-body {
@@ -291,6 +295,7 @@ header {
   border-radius: 0.5rem;
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stats-table {
@@ -308,6 +313,7 @@ header {
   border-bottom: 1px solid var(--border-color);
   white-space: nowrap;
   background-color: var(--card-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .stats-table th {
@@ -358,7 +364,7 @@ header {
   box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
   padding-right: 1rem;
   border-right: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .difficulty-label:hover {
