@@ -222,6 +222,7 @@ h2 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--gray-900);
+  animation: fadeInRight 0.8s ease-out;
 }
 .card-body {
   padding: 1.25rem;
@@ -260,6 +261,7 @@ h2 {
   position: sticky;
   top: 0;
   z-index: 10;
+  animation: fadeIn 0.8s ease-out;
 }
 .stats-table tr:last-child td {
   border-bottom: none;
@@ -277,6 +279,7 @@ h2 {
   box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
   padding-right: 1rem;
   border-right: 1px solid var(--gray-200);
+  animation: fadeInLeft 0.8s ease-out;
 }
 .stats-table tr:hover .difficulty-label {
   background-color: var(--gray-50);
@@ -319,6 +322,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  animation: fadeIn 1s ease-out;
 }
 .circle-container {
   display: flex;
@@ -464,6 +468,7 @@ h2 {
   white-space: nowrap;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
+  animation: fadeInDown 0.8s ease-out;
 }
 .tab:hover {
   color: var(--primary);
@@ -496,5 +501,33 @@ h2 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
