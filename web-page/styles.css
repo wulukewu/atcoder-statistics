@@ -87,17 +87,20 @@ header {
   bottom: -100px;
   right: -50px;
 }
-h1 {
+.header-content h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  animation: fadeInDown 1s ease-out;
+  animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
-h2 {
+.header-content h2 {
   font-size: 1.25rem;
   font-weight: 500;
-  opacity: 0.9;
-  animation: fadeInUp 1s ease-out 0.3s both;
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  animation-fill-mode: forwards;
 }
 .dashboard-grid {
   display: grid;
@@ -484,21 +487,21 @@ h2 {
   display: block;
 }
 @keyframes fadeInDown {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 @keyframes fadeInUp {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
