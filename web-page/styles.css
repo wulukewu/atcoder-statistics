@@ -287,9 +287,17 @@ header {
   box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
   padding-right: 1rem;
   border-right: 1px solid var(--gray-200);
+  transition: all 0.2s ease;
+}
+.difficulty-label:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+  background-color: var(--gray-100);
 }
 .stats-table tr:hover .difficulty-label {
-  background-color: var(--gray-50);
+  color: var(--primary);
+  transform: translateX(5px);
+  background-color: var(--gray-100);
 }
 .stats-table th:first-child {
   position: sticky;
@@ -359,10 +367,26 @@ header {
 .count {
   font-weight: 600;
   font-size: 0.875rem;
+  transition: transform 0.2s ease;
+}
+.count:hover {
+  transform: scale(1.1);
 }
 .percentage {
   font-size: 0.75rem;
   opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.percentage:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+.stats-container:hover .count,
+.stats-container:hover .percentage {
+  transform: scale(1.1);
+}
+.stats-container:hover .percentage {
+  opacity: 1;
 }
 .floating-button {
   position: fixed;
