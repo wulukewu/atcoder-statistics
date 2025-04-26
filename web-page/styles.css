@@ -24,7 +24,7 @@
 }
 
 /* Light mode (default) */
-:root[data-theme="light"] {
+:root[data-mode="light"] {
   --bg-color: #f9fafb;
   --text-color: var(--gray-800);
   --card-bg: white;
@@ -36,10 +36,12 @@
   --header-bg: var(--gray-50);
   --title-color: var(--gray-900);
   --difficulty-color: var(--gray-700);
+  --empty-color: var(--gray-400);
+  --empty-border-color: var(--gray-300);
 }
 
 /* Dark mode */
-:root[data-theme="dark"] {
+:root[data-mode="dark"] {
   --bg-color: var(--gray-900);
   --text-color: var(--gray-100);
   --card-bg: var(--gray-800);
@@ -51,6 +53,8 @@
   --header-bg: var(--gray-800);
   --title-color: var(--gray-50);
   --difficulty-color: var(--gray-200);
+  --empty-color: var(--gray-500);
+  --empty-border-color: var(--gray-600);
 }
 
 * {
@@ -597,8 +601,13 @@ header {
 }
 
 .empty-color {
-  color: var(--gray-400);
-  border-color: var(--gray-300);
+  color: var(--empty-color);
+  border-color: var(--empty-border-color);
+  opacity: 0.5;
+}
+
+:root[data-mode="dark"] .empty-color {
+  opacity: 0.25;
 }
 
 /* Tabs */
@@ -761,10 +770,72 @@ header {
   display: none;
 }
 
-:root[data-theme="dark"] .theme-toggle .sun-icon {
+:root[data-mode="dark"] .theme-toggle .sun-icon {
   display: none;
 }
 
-:root[data-theme="dark"] .theme-toggle .moon-icon {
+:root[data-mode="dark"] .theme-toggle .moon-icon {
   display: block;
+}
+
+/* Theme color schemes */
+:root[data-color="green"] {
+  --primary: #0f9d58;
+  --primary-dark: #0b7d46;
+  --primary-light: #b7e4c7;
+}
+
+:root[data-color="blue"] {
+  --primary: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --primary-light: #bfdbfe;
+}
+
+:root[data-color="purple"] {
+  --primary: #7c3aed;
+  --primary-dark: #5b21b6;
+  --primary-light: #ddd6fe;
+}
+
+:root[data-color="orange"] {
+  --primary: #f97316;
+  --primary-dark: #c2410c;
+  --primary-light: #fed7aa;
+}
+
+:root[data-color="pink"] {
+  --primary: #ec4899;
+  --primary-dark: #be185d;
+  --primary-light: #fbcfe8;
+}
+
+/* Color theme toggle button */
+.color-theme-toggle {
+  position: fixed;
+  bottom: 8.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.color-theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow);
+  background-color: var(--primary-dark);
+}
+
+.color-theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: white;
 }
