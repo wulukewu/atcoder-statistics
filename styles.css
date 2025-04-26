@@ -74,28 +74,36 @@ header {
   position: absolute;
   border-radius: 50%;
   background: white;
+  animation: float 6s ease-in-out infinite;
 }
 .circle-1 {
   width: 300px;
   height: 300px;
   top: -150px;
   left: -100px;
+  animation-delay: 0s;
 }
 .circle-2 {
   width: 200px;
   height: 200px;
   bottom: -100px;
   right: -50px;
+  animation-delay: 2s;
 }
-h1 {
+.header-content h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  animation: fadeInDown 0.8s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
-h2 {
+.header-content h2 {
   font-size: 1.25rem;
   font-weight: 500;
-  opacity: 0.9;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.3s;
+  animation-fill-mode: forwards;
 }
 .dashboard-grid {
   display: grid;
@@ -220,6 +228,7 @@ h2 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--gray-900);
+  animation: fadeInRight 0.8s ease-out;
 }
 .card-body {
   padding: 1.25rem;
@@ -258,6 +267,9 @@ h2 {
   position: sticky;
   top: 0;
   z-index: 10;
+  animation: fadeIn 0.5s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 .stats-table tr:last-child td {
   border-bottom: none;
@@ -317,6 +329,9 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  animation: fadeIn 0.5s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 .circle-container {
   display: flex;
@@ -330,6 +345,7 @@ h2 {
   border: 2px solid;
   position: relative;
   overflow: hidden;
+  animation: pulse 2s infinite;
 }
 .progress-circle-inner {
   position: absolute;
@@ -338,6 +354,7 @@ h2 {
   width: 100%;
   height: 0%;
   border-radius: 0;
+  transition: height 1s ease-in-out;
 }
 .count {
   font-weight: 600;
@@ -462,6 +479,7 @@ h2 {
   white-space: nowrap;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
+  animation: fadeInDown 0.8s ease-out;
 }
 .tab:hover {
   color: var(--primary);
@@ -475,4 +493,140 @@ h2 {
 }
 .tab-content.active {
   display: block;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Add animation delay for table rows */
+.stats-table tr {
+  animation: fadeIn 0.5s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+.stats-table tr:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stats-table tr:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stats-table tr:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stats-table tr:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stats-table tr:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.stats-table tr:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.stats-table tr:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.stats-table tr:nth-child(8) {
+  animation-delay: 0.8s;
+}
+.stats-table tr:nth-child(9) {
+  animation-delay: 0.9s;
+}
+.stats-table tr:nth-child(10) {
+  animation-delay: 1s;
+}
+.stats-table tr:nth-child(11) {
+  animation-delay: 1.1s;
+}
+.stats-table tr:nth-child(12) {
+  animation-delay: 1.2s;
+}
+.stats-table tr:nth-child(13) {
+  animation-delay: 1.3s;
+}
+.stats-table tr:nth-child(14) {
+  animation-delay: 1.4s;
+}
+.stats-table tr:nth-child(15) {
+  animation-delay: 1.5s;
+}
+.stats-table tr:nth-child(16) {
+  animation-delay: 1.6s;
+}
+.stats-table tr:nth-child(17) {
+  animation-delay: 1.7s;
+}
+.stats-table tr:nth-child(18) {
+  animation-delay: 1.8s;
+}
+.stats-table tr:nth-child(19) {
+  animation-delay: 1.9s;
+}
+.stats-table tr:nth-child(20) {
+  animation-delay: 2s;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
