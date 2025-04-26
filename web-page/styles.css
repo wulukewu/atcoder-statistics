@@ -224,16 +224,26 @@ h2 {
 .card-body {
   padding: 1.25rem;
 }
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
 .stats-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.875rem;
+  min-width: 800px; /* Ensure table doesn't get too compressed */
 }
 .stats-table th,
 .stats-table td {
   padding: 0.75rem;
   text-align: center;
   border-bottom: 1px solid var(--gray-200);
+  white-space: nowrap; /* Prevent text wrapping */
 }
 .stats-table th {
   background-color: var(--gray-100);
@@ -242,7 +252,9 @@ h2 {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 .stats-table tr:last-child td {
   border-bottom: none;
@@ -253,7 +265,32 @@ h2 {
 .difficulty-label {
   font-weight: 600;
   color: var(--gray-700);
-  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background-color: white;
+  z-index: 5;
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
+}
+/* Add shadow to indicate scrollable content */
+.table-responsive::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.table-responsive:hover::after {
+  opacity: 1;
+}
+/* Ensure the table container has proper positioning */
+.tab-content {
+  position: relative;
+  overflow: hidden;
 }
 .stats-container {
   display: flex;
