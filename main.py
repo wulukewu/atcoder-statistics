@@ -226,6 +226,12 @@ html_content += """
                     innerCircle.style.height = percent + '%';
                 }, 500); // Add a slight delay for better visual effect
             });
+
+            // Set dynamic animation delays for table rows
+            const rows = document.querySelectorAll('.stats-table tbody tr');
+            rows.forEach((row, index) => {
+                row.style.animationDelay = `${(index + 1) * 0.1}s`;
+            });
         });
     </script>
 </body>
