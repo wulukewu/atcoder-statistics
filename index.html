@@ -1795,12 +1795,19 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
     </div>
+    <div class="color-theme-toggle" onclick="cycleThemeColor()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+        </svg>
+    </div>
     <script>
         // Prevent flash of unstyled content
         (function() {
-            const theme = localStorage.getItem('theme') || 
+            const mode = localStorage.getItem('mode') || 
                 (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
+            const colorTheme = localStorage.getItem('color-theme') || 'green';
+            document.documentElement.setAttribute('data-mode', mode);
+            document.documentElement.setAttribute('data-color', colorTheme);
         })();
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -1821,21 +1828,21 @@
             });
 
             // Initialize theme icon
-            const theme = document.documentElement.getAttribute('data-theme');
-            updateThemeIcon(theme);
+            const mode = document.documentElement.getAttribute('data-mode');
+            updateThemeIcon(mode);
         });
 
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const currentMode = document.documentElement.getAttribute('data-mode');
+            const newMode = currentMode === 'dark' ? 'light' : 'dark';
             
             // Add transition class to body
             document.body.classList.add('theme-transition');
             
-            // Update theme
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
+            // Update mode
+            document.documentElement.setAttribute('data-mode', newMode);
+            localStorage.setItem('mode', newMode);
+            updateThemeIcon(newMode);
             
             // Remove transition class after transition completes
             setTimeout(() => {
@@ -1843,10 +1850,10 @@
             }, 300);
         }
 
-        function updateThemeIcon(theme) {
+        function updateThemeIcon(mode) {
             const sunIcon = document.querySelector('.sun-icon');
             const moonIcon = document.querySelector('.moon-icon');
-            if (theme === 'dark') {
+            if (mode === 'dark') {
                 sunIcon.style.display = 'none';
                 moonIcon.style.display = 'block';
             } else {
@@ -1854,6 +1861,24 @@
                 moonIcon.style.display = 'none';
             }
         }
+
+        // Theme color cycling
+        const colorThemes = ['green', 'blue', 'purple', 'orange', 'pink'];
+        let currentColorIndex = 0;
+
+        function cycleThemeColor() {
+            currentColorIndex = (currentColorIndex + 1) % colorThemes.length;
+            const newColorTheme = colorThemes[currentColorIndex];
+            document.documentElement.setAttribute('data-color', newColorTheme);
+            localStorage.setItem('color-theme', newColorTheme);
+        }
+
+        // Initialize color theme
+        (function() {
+            const savedColorTheme = localStorage.getItem('color-theme') || 'green';
+            document.documentElement.setAttribute('data-color', savedColorTheme);
+            currentColorIndex = colorThemes.indexOf(savedColorTheme);
+        })();
     </script>
 </body>
 </html>
