@@ -36,6 +36,8 @@
   --header-bg: var(--gray-50);
   --title-color: var(--gray-900);
   --difficulty-color: var(--gray-700);
+  --empty-color: var(--gray-400);
+  --empty-border-color: var(--gray-300);
 }
 
 /* Dark mode */
@@ -51,6 +53,8 @@
   --header-bg: var(--gray-800);
   --title-color: var(--gray-50);
   --difficulty-color: var(--gray-200);
+  --empty-color: var(--gray-500);
+  --empty-border-color: var(--gray-600);
 }
 
 * {
@@ -597,8 +601,13 @@ header {
 }
 
 .empty-color {
-  color: var(--gray-400);
-  border-color: var(--gray-300);
+  color: var(--empty-color);
+  border-color: var(--empty-border-color);
+  opacity: 0.5;
+}
+
+:root[data-mode="dark"] .empty-color {
+  opacity: 0.25;
 }
 
 /* Tabs */
