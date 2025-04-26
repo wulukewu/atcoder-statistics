@@ -198,8 +198,7 @@ h2 {
 .card {
   background-color: white;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   overflow: hidden;
   margin-bottom: 2rem;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -215,6 +214,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--gray-50);
 }
 .card-title {
   font-size: 1.25rem;
@@ -223,6 +223,7 @@ h2 {
 }
 .card-body {
   padding: 1.25rem;
+  background-color: white;
 }
 .table-responsive {
   width: 100%;
@@ -231,22 +232,24 @@ h2 {
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  background-color: white;
 }
 .stats-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.875rem;
-  min-width: 800px; /* Ensure table doesn't get too compressed */
+  min-width: 800px;
 }
 .stats-table th,
 .stats-table td {
   padding: 0.75rem;
   text-align: center;
   border-bottom: 1px solid var(--gray-200);
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 .stats-table th {
-  background-color: var(--gray-100);
+  background-color: var(--gray-50);
   font-weight: 600;
   color: var(--gray-700);
   text-transform: uppercase;
@@ -279,13 +282,13 @@ h2 {
 .stats-table th:first-child {
   position: sticky;
   left: 0;
-  background-color: var(--gray-100);
+  background-color: var(--gray-50);
   z-index: 15;
   box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
   border-right: 1px solid var(--gray-200);
 }
 .stats-table tr:hover th:first-child {
-  background-color: var(--gray-100);
+  background-color: var(--gray-50);
 }
 /* Add shadow to indicate scrollable content */
 .table-responsive::after {
