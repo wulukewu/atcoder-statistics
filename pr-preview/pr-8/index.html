@@ -1788,16 +1788,18 @@
         </svg>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {{
+        document.addEventListener('DOMContentLoaded', function() {
             // Initialize progress circles
             const circles = document.querySelectorAll('.progress-circle');
-            circles.forEach(circle => {{
+            circles.forEach(circle => {
                 const percent = parseFloat(circle.getAttribute('data-percent'));
                 const innerCircle = circle.querySelector('.progress-circle-inner');
                 // Set the height based on the percentage (fill from bottom)
-                innerCircle.style.height = percent + '%';
-            }});
-        }});
+                setTimeout(() => {
+                    innerCircle.style.height = percent + '%';
+                }, 500); // Add a slight delay for better visual effect
+            });
+        });
     </script>
 </body>
 </html>
