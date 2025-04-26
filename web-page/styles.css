@@ -73,29 +73,33 @@ header {
 .header-bg-circle {
   position: absolute;
   border-radius: 50%;
-  background: white;
+  background: rgba(255, 255, 255, 0.3);
+  animation: float 6s ease-in-out infinite;
 }
 .circle-1 {
   width: 300px;
   height: 300px;
   top: -150px;
-  left: -100px;
+  right: -150px;
 }
 .circle-2 {
   width: 200px;
   height: 200px;
   bottom: -100px;
-  right: -50px;
+  left: -100px;
+  animation-delay: -3s;
 }
 h1 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  animation: fadeInDown 1s ease-out;
 }
 h2 {
   font-size: 1.25rem;
   font-weight: 500;
   opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.3s both;
 }
 .dashboard-grid {
   display: grid;
@@ -475,4 +479,33 @@ h2 {
 }
 .tab-content.active {
   display: block;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
