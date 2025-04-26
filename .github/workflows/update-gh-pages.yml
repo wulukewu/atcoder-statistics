@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: "*/5 * * * *"
   push:
     branches:
       - main
@@ -39,10 +39,23 @@ jobs:
           path: gh-pages
           fetch-depth: 0
 
+      - name: Backup pr-preview directory
+        run: |
+          if [ -d "gh-pages/pr-preview" ]; then
+            mv gh-pages/pr-preview /tmp/pr-preview-backup
+          fi
+
       - name: Copy files to gh-pages branch
         run: |
           rm -rf gh-pages/*
           cp -r web-page/* gh-pages/
+
+      - name: Restore pr-preview directory
+        run: |
+          if [ -d "/tmp/pr-preview-backup" ]; then
+            mkdir -p gh-pages/pr-preview
+            mv /tmp/pr-preview-backup/* gh-pages/pr-preview/
+          fi
 
       - name: Commit and push changes
         run: |
