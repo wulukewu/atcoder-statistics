@@ -9,6 +9,7 @@ This project scrapes difficulty statistics for AtCoder Beginner Contest (ABC) pr
 - **Responsive Design:** The generated HTML table is responsive and adapts to different screen sizes.
 - **Dynamic Progress Circles:** Uses JavaScript to dynamically generate progress circles based on problem statistics.
 - **Headless Browser:** Runs Chrome in headless mode for automated scraping.
+- **PR Previews:** Automatically generates preview deployments for pull requests.
 
 ## Requirements
 
@@ -69,6 +70,49 @@ The generated HTML page displays a table similar to this:
 | ...        | ...        | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
 
 Each cell in the table contains a progress circle visually representing the percentage, along with the raw count and percentage value.
+
+## Contributing
+
+We welcome contributions! Here's how you can help:
+
+1. **Fork the Repository:**
+
+   - Click the "Fork" button on the top right of this repository
+   - Clone your fork to your local machine
+
+2. **Create a Branch:**
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. **Make Changes:**
+
+   - Make your changes
+   - Test your changes locally
+   - Commit your changes with clear commit messages
+
+4. **Create a Pull Request:**
+
+   - Push your branch to your fork
+   - Create a Pull Request (PR) to the main repository
+   - For work in progress, create a Draft PR:
+     - Click "Create Pull Request"
+     - Click the dropdown arrow next to "Create Pull Request"
+     - Select "Create Draft Pull Request"
+   - Once ready for review, click "Ready for review" on your Draft PR
+
+5. **PR Preview:**
+
+   - Each PR automatically gets a preview deployment
+   - The preview URL will be posted as a comment on your PR
+   - Preview URL format: `https://<username>.github.io/atcoder-abc-problems/pr-preview/pr-<number>/`
+   - Use the preview to verify your changes before requesting review
+
+6. **Code Review:**
+   - Address any feedback from reviewers
+   - Make additional commits if needed
+   - Once approved, your PR will be merged
 
 ## Customization
 
