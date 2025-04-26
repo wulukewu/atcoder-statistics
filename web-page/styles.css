@@ -74,18 +74,21 @@ header {
   position: absolute;
   border-radius: 50%;
   background: white;
+  animation: float 6s ease-in-out infinite;
 }
 .circle-1 {
   width: 300px;
   height: 300px;
   top: -150px;
   left: -100px;
+  animation-delay: 0s;
 }
 .circle-2 {
   width: 200px;
   height: 200px;
   bottom: -100px;
   right: -50px;
+  animation-delay: 2s;
 }
 .header-content h1 {
   font-size: 2rem;
@@ -342,6 +345,7 @@ header {
   border: 2px solid;
   position: relative;
   overflow: hidden;
+  animation: pulse 2s infinite;
 }
 .progress-circle-inner {
   position: absolute;
@@ -350,6 +354,7 @@ header {
   width: 100%;
   height: 0%;
   border-radius: 0;
+  transition: height 1s ease-in-out;
 }
 .count {
   font-weight: 600;
@@ -602,4 +607,26 @@ header {
 }
 .stats-table tr:nth-child(20) {
   animation-delay: 2s;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
