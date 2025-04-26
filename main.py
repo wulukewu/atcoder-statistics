@@ -2,8 +2,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 
 
 def update_statics(diff, color, statics):
@@ -131,10 +129,7 @@ for diff, color_counts in statics.items():
     total_possible += sum(color_counts.values())
 solve_rate = (
     round((total_solved / total_possible) * 100, 2) if total_possible > 0 else 0
-)  # Success Rate - replace with actual logic if possible
-Rating = 1245  # Replace with actual logic if scraping rating
-contests = 28  # Replace with actual logic if scraping contests
-
+)
 
 # Generate HTML
 html_content = f"""
@@ -169,21 +164,22 @@ html_content = f"""
                 <div class="tab active" data-tab="table">AtCoder Beginner Contest</div>
             </div>
             <div class="tab-content active" id="table-content">
-                <table class="stats-table">
-                    <thead>
-                        <tr>
-                            <th>Difficulty</th>
-                            <th>Grey</th>
-                            <th>Brown</th>
-                            <th>Green</th>
-                            <th>Cyan</th>
-                            <th>Blue</th>
-                            <th>Yellow</th>
-                            <th>Orange</th>
-                            <th>Red</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Difficulty</th>
+                                <th>Grey</th>
+                                <th>Brown</th>
+                                <th>Green</th>
+                                <th>Cyan</th>
+                                <th>Blue</th>
+                                <th>Yellow</th>
+                                <th>Orange</th>
+                                <th>Red</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 """
 for diff, color_counts in sorted(statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
@@ -207,8 +203,9 @@ for diff, color_counts in sorted(statics.items()):
         html_content += "                </td>\n"
     html_content += "            </tr>\n"
 html_content += """
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
