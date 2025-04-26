@@ -131,10 +131,7 @@ for diff, color_counts in statics.items():
     total_possible += sum(color_counts.values())
 solve_rate = (
     round((total_solved / total_possible) * 100, 2) if total_possible > 0 else 0
-)  # Success Rate - replace with actual logic if possible
-Rating = 1245  # Replace with actual logic if scraping rating
-contests = 28  # Replace with actual logic if scraping contests
-
+)
 
 # Generate HTML
 html_content = f"""
