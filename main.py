@@ -142,7 +142,7 @@ html_content = f"""
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AtCoder Statistics Dashboard</title>
     <link rel="icon" href="favicon.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -169,21 +169,22 @@ html_content = f"""
                 <div class="tab active" data-tab="table">AtCoder Beginner Contest</div>
             </div>
             <div class="tab-content active" id="table-content">
-                <table class="stats-table">
-                    <thead>
-                        <tr>
-                            <th>Difficulty</th>
-                            <th>Grey</th>
-                            <th>Brown</th>
-                            <th>Green</th>
-                            <th>Cyan</th>
-                            <th>Blue</th>
-                            <th>Yellow</th>
-                            <th>Orange</th>
-                            <th>Red</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Difficulty</th>
+                                <th>Grey</th>
+                                <th>Brown</th>
+                                <th>Green</th>
+                                <th>Cyan</th>
+                                <th>Blue</th>
+                                <th>Yellow</th>
+                                <th>Orange</th>
+                                <th>Red</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 """
 for diff, color_counts in sorted(statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
@@ -207,8 +208,9 @@ for diff, color_counts in sorted(statics.items()):
         html_content += "                </td>\n"
     html_content += "            </tr>\n"
 html_content += """
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
