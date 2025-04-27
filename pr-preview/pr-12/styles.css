@@ -352,6 +352,12 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Different hover effect for header row */
+.stats-table thead tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .stats-table tr:hover td {
   background-color: var(--hover-bg);
 }
@@ -370,6 +376,10 @@ header {
 
 :root[data-mode="dark"] .stats-table tr:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-mode="dark"] .stats-table thead tr:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .difficulty-label {
