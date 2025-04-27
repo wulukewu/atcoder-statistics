@@ -496,7 +496,7 @@ header {
   transition: transform 0.2s ease;
 }
 
-.count:hover {
+.count:not(.empty-color):hover {
   transform: scale(1.1);
 }
 
@@ -506,17 +506,17 @@ header {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.percentage:hover {
+.percentage:not(.empty-color):hover {
   transform: scale(1.1);
   opacity: 1;
 }
 
-.stats-container:hover .count,
-.stats-container:hover .percentage {
+.stats-container:not(.empty-color):hover .count:not(.empty-color),
+.stats-container:not(.empty-color):hover .percentage:not(.empty-color) {
   transform: scale(1.1);
 }
 
-.stats-container:hover .percentage {
+.stats-container:not(.empty-color):hover .percentage:not(.empty-color) {
   opacity: 1;
 }
 
@@ -882,4 +882,8 @@ header {
 /* Remove bottom padding if table-responsive is last in card-body */
 .card-body > .table-responsive:last-child {
   margin-bottom: 0;
+}
+
+.progress-circle.empty-color {
+  animation: none !important;
 }
