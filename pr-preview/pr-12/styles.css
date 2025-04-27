@@ -83,7 +83,7 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
   color: white;
   padding: 1.5rem 0;
   margin-bottom: 1.5rem;
@@ -91,6 +91,15 @@ header {
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
+}
+
+:root[data-mode="dark"] header {
+  background: linear-gradient(
+    135deg,
+    #15181e 0%,
+    #0b1120 60%,
+    var(--primary-dark) 100%
+  );
 }
 
 .header-content {
