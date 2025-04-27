@@ -375,12 +375,16 @@ header {
   color: var(--primary);
   transform: translateX(5px);
   background-color: var(--hover-bg);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
 }
 
-.stats-table tr:hover .difficulty-label {
-  color: var(--primary);
-  transform: translateX(5px);
-  background-color: var(--hover-bg);
+:root[data-mode="dark"] .difficulty-label {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-mode="dark"] .difficulty-label:hover {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.4);
 }
 
 .stats-table th:first-child {
