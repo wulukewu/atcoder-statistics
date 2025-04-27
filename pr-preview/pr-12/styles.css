@@ -299,7 +299,7 @@ header {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   border-radius: 0.5rem;
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
@@ -877,4 +877,9 @@ header {
   width: 24px;
   height: 24px;
   stroke: white;
+}
+
+/* Remove bottom padding if table-responsive is last in card-body */
+.card-body > .table-responsive:last-child {
+  margin-bottom: 0;
 }
