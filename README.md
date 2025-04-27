@@ -1,4 +1,4 @@
-# atcoder-abc-problems
+# AtCoder Statistics
 
 This project scrapes difficulty statistics for AtCoder Beginner Contest (ABC) problems from [AtCoder Problems](https://kenkoooo.com/atcoder/#/table) and generates a simple HTML page visualizing the distribution of problems by difficulty and color rating.
 
