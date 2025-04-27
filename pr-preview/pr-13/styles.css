@@ -25,7 +25,7 @@
 
 /* Light mode (default) */
 :root[data-mode="light"] {
-  --bg-color: #f9fafb;
+  --bg-color: var(--primary-lightest);
   --text-color: var(--gray-800);
   --card-bg: white;
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -48,11 +48,11 @@
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
     0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --border-color: var(--gray-600);
+  --border-color: var(--gray-700);
   --hover-bg: var(--gray-700);
   --header-bg: var(--gray-800);
   --title-color: var(--gray-50);
-  --difficulty-color: var(--gray-100);
+  --difficulty-color: var(--gray-200);
   --empty-color: var(--gray-500);
   --empty-border-color: var(--gray-600);
 }
@@ -73,7 +73,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: var(--primary-lightest);
 }
 
 .container {
@@ -92,10 +91,6 @@ header {
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
-}
-
-:root[data-mode="dark"] header {
-  background: linear-gradient(135deg, #22313a 0%, var(--primary-dark) 100%);
 }
 
 .header-content {
@@ -300,7 +295,7 @@ header {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   border-radius: 0.5rem;
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
@@ -313,7 +308,6 @@ header {
   border-spacing: 0;
   font-size: 0.875rem;
   min-width: 800px;
-  background-color: var(--primary-light);
 }
 
 .stats-table th,
@@ -349,19 +343,11 @@ header {
   animation: fadeIn 0.5s ease-out;
   opacity: 0;
   animation-fill-mode: forwards;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.2s ease;
 }
 
 .stats-table tr:hover {
   background-color: var(--hover-bg);
-  transform: translateX(4px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* Different hover effect for header row */
-.stats-table thead tr:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .stats-table tr:hover td {
@@ -370,22 +356,6 @@ header {
 
 .stats-table tr:hover th {
   background-color: var(--hover-bg);
-}
-
-.stats-table tr:hover .difficulty-label {
-  color: var(--primary);
-  transform: translateX(5px);
-  background-color: var(--hover-bg);
-  border-right: 1px solid var(--border-color);
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
-}
-
-:root[data-mode="dark"] .stats-table tr:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-:root[data-mode="dark"] .stats-table thead tr:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .difficulty-label {
@@ -405,17 +375,12 @@ header {
   color: var(--primary);
   transform: translateX(5px);
   background-color: var(--hover-bg);
-  border-right: 1px solid var(--border-color);
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
 }
 
-:root[data-mode="dark"] .difficulty-label {
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.4);
-}
-
-:root[data-mode="dark"] .difficulty-label:hover {
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
-  background-color: var(--gray-700);
+.stats-table tr:hover .difficulty-label {
+  color: var(--primary);
+  transform: translateX(5px);
+  background-color: var(--hover-bg);
 }
 
 .stats-table th:first-child {
@@ -879,9 +844,4 @@ header {
   width: 24px;
   height: 24px;
   stroke: white;
-}
-
-/* Remove bottom padding if table-responsive is last in card-body */
-.card-body > .table-responsive:last-child {
-  margin-bottom: 0;
 }
