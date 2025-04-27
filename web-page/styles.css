@@ -25,7 +25,7 @@
 
 /* Light mode (default) */
 :root[data-mode="light"] {
-  --bg-color: var(--primary-lightest);
+  --bg-color: var(--primary-lightest-bg);
   --text-color: var(--gray-800);
   --card-bg: white;
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -42,17 +42,17 @@
 
 /* Dark mode */
 :root[data-mode="dark"] {
-  --bg-color: var(--gray-900);
+  --bg-color: var(--primary-darkest-bg);
   --text-color: var(--gray-100);
   --card-bg: var(--gray-800);
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
     0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --border-color: var(--gray-700);
+  --border-color: var(--gray-600);
   --hover-bg: var(--gray-700);
   --header-bg: var(--gray-800);
   --title-color: var(--gray-50);
-  --difficulty-color: var(--gray-200);
+  --difficulty-color: var(--gray-100);
   --empty-color: var(--gray-500);
   --empty-border-color: var(--gray-600);
 }
@@ -91,6 +91,10 @@ header {
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
+}
+
+:root[data-mode="dark"] header {
+  background: linear-gradient(135deg, #22313a 0%, var(--primary-dark) 100%);
 }
 
 .header-content {
@@ -295,7 +299,7 @@ header {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   border-radius: 0.5rem;
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
@@ -343,11 +347,19 @@ header {
   animation: fadeIn 0.5s ease-out;
   opacity: 0;
   animation-fill-mode: forwards;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stats-table tr:hover {
   background-color: var(--hover-bg);
+  transform: translateX(4px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Different hover effect for header row */
+.stats-table thead tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .stats-table tr:hover td {
@@ -356,6 +368,22 @@ header {
 
 .stats-table tr:hover th {
   background-color: var(--hover-bg);
+}
+
+.stats-table tr:hover .difficulty-label {
+  color: var(--primary);
+  transform: translateX(5px);
+  background-color: var(--hover-bg);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-mode="dark"] .stats-table tr:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-mode="dark"] .stats-table thead tr:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .difficulty-label {
@@ -375,12 +403,17 @@ header {
   color: var(--primary);
   transform: translateX(5px);
   background-color: var(--hover-bg);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
 }
 
-.stats-table tr:hover .difficulty-label {
-  color: var(--primary);
-  transform: translateX(5px);
-  background-color: var(--hover-bg);
+:root[data-mode="dark"] .difficulty-label {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-mode="dark"] .difficulty-label:hover {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
+  background-color: var(--gray-700);
 }
 
 .stats-table th:first-child {
@@ -636,7 +669,7 @@ header {
 
 .tab:hover {
   color: var(--primary);
-  background-color: var(--primary-lightest);
+  background-color: var(--tab-hover-bg);
 }
 
 .tab.active {
@@ -784,35 +817,45 @@ header {
   --primary: #0f9d58;
   --primary-dark: #0b7d46;
   --primary-light: #b7e4c7;
-  --primary-lightest: rgb(240,255,246);
+  --tab-hover-bg: rgba(15, 157, 88, 0.08);
+  --primary-darkest-bg: rgba(15, 157, 88, 0.08);
+  --primary-lightest-bg: #f8fdfa;
 }
 
 :root[data-color="blue"] {
   --primary: #3b82f6;
   --primary-dark: #1d4ed8;
   --primary-light: #bfdbfe;
-  --primary-lightest:rgb(245, 250, 255);
+  --tab-hover-bg: rgba(59, 130, 246, 0.08);
+  --primary-darkest-bg: rgba(59, 130, 246, 0.08);
+  --primary-lightest-bg: #f8fbff;
 }
 
 :root[data-color="purple"] {
   --primary: #7c3aed;
   --primary-dark: #5b21b6;
   --primary-light: #ddd6fe;
-  --primary-lightest: rgb(248, 248, 248);
+  --tab-hover-bg: rgba(124, 58, 237, 0.08);
+  --primary-darkest-bg: rgba(124, 58, 237, 0.08);
+  --primary-lightest-bg: #faf9ff;
 }
 
 :root[data-color="orange"] {
   --primary: #f97316;
   --primary-dark: #c2410c;
   --primary-light: #fed7aa;
-  --primary-lightest: rgb(255, 254, 245);
+  --tab-hover-bg: rgba(249, 115, 22, 0.08);
+  --primary-darkest-bg: rgba(249, 115, 22, 0.08);
+  --primary-lightest-bg: #fffbf7;
 }
 
 :root[data-color="pink"] {
   --primary: #ec4899;
   --primary-dark: #be185d;
   --primary-light: #fbcfe8;
-  --primary-lightest: rgb(255, 246, 255);
+  --tab-hover-bg: rgba(236, 72, 153, 0.08);
+  --primary-darkest-bg: rgba(236, 72, 153, 0.08);
+  --primary-lightest-bg: #fff9fc;
 }
 
 /* Color theme toggle button */
