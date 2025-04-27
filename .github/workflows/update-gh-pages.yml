@@ -47,9 +47,7 @@ jobs:
 
       - name: Copy files to gh-pages branch
         run: |
-          cd gh-pages
-          find . -mindepth 1 ! -regex '^\.git\(/.*\)?' -delete
-          cd ..
+          rm -rf gh-pages/*
           cp -r web-page/* gh-pages/
 
       - name: Restore pr-preview directory
@@ -61,15 +59,15 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          set -e
           cd gh-pages
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
           git add .
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Update website content"
-            git push
+            git push origin gh-pages
           fi
+          git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+          git push
