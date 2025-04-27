@@ -883,3 +883,7 @@ header {
 .card-body > .table-responsive:last-child {
   margin-bottom: 0;
 }
+
+.progress-circle.empty-color {
+  animation: none !important;
+}
