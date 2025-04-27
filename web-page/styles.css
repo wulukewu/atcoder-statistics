@@ -25,7 +25,7 @@
 
 /* Light mode (default) */
 :root[data-mode="light"] {
-  --bg-color: #f9fafb;
+  --bg-color: var(--primary-lightest-bg);
   --text-color: var(--gray-800);
   --card-bg: white;
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -819,6 +819,7 @@ header {
   --primary-light: #b7e4c7;
   --tab-hover-bg: rgba(15, 157, 88, 0.08);
   --primary-darkest-bg: rgba(15, 157, 88, 0.08);
+  --primary-lightest-bg: #f8fdfa;
 }
 
 :root[data-color="blue"] {
@@ -827,6 +828,7 @@ header {
   --primary-light: #bfdbfe;
   --tab-hover-bg: rgba(59, 130, 246, 0.08);
   --primary-darkest-bg: rgba(59, 130, 246, 0.08);
+  --primary-lightest-bg: #f8fbff;
 }
 
 :root[data-color="purple"] {
@@ -835,6 +837,7 @@ header {
   --primary-light: #ddd6fe;
   --tab-hover-bg: rgba(124, 58, 237, 0.08);
   --primary-darkest-bg: rgba(124, 58, 237, 0.08);
+  --primary-lightest-bg: #faf9ff;
 }
 
 :root[data-color="orange"] {
@@ -843,6 +846,7 @@ header {
   --primary-light: #fed7aa;
   --tab-hover-bg: rgba(249, 115, 22, 0.08);
   --primary-darkest-bg: rgba(249, 115, 22, 0.08);
+  --primary-lightest-bg: #fffbf7;
 }
 
 :root[data-color="pink"] {
@@ -851,6 +855,7 @@ header {
   --primary-light: #fbcfe8;
   --tab-hover-bg: rgba(236, 72, 153, 0.08);
   --primary-darkest-bg: rgba(236, 72, 153, 0.08);
+  --primary-lightest-bg: #fff9fc;
 }
 
 /* Color theme toggle button */
