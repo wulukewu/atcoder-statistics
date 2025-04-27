@@ -81,11 +81,13 @@ jobs:
         with:
           script: |
             const previewUrl = `https://${context.repo.owner}.github.io/${context.repo.repo}/pr-preview/pr-${context.payload.pull_request.number}/`;
+            const branch = context.payload.pull_request.base.ref;
+            const timestamp = new Date().toISOString().replace('T', ' ').replace(/\..+/, ' UTC');
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀 Preview deployed to: ${previewUrl}\n\nIf you see a 404 error, please check:\n1. The files were properly copied to the gh-pages branch\n2. The base URL in your site configuration is correct\n3. GitHub Pages is enabled in your repository settings`
+              body: `**PR Preview**\n\n| Preview | Branch | Timestamp |\n|---------|--------|-----------|\n| [Deployed preview](${previewUrl}) | \`${branch}\` | ${timestamp} |`
             });
 
   cleanup:
