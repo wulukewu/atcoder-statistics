@@ -669,6 +669,7 @@ header {
 
 .tab:hover {
   color: var(--primary);
+  background-color: var(--tab-hover-bg);
 }
 
 .tab.active {
@@ -816,30 +817,35 @@ header {
   --primary: #0f9d58;
   --primary-dark: #0b7d46;
   --primary-light: #b7e4c7;
+  --tab-hover-bg: rgba(15, 157, 88, 0.08);
 }
 
 :root[data-color="blue"] {
   --primary: #3b82f6;
   --primary-dark: #1d4ed8;
   --primary-light: #bfdbfe;
+  --tab-hover-bg: rgba(59, 130, 246, 0.08);
 }
 
 :root[data-color="purple"] {
   --primary: #7c3aed;
   --primary-dark: #5b21b6;
   --primary-light: #ddd6fe;
+  --tab-hover-bg: rgba(124, 58, 237, 0.08);
 }
 
 :root[data-color="orange"] {
   --primary: #f97316;
   --primary-dark: #c2410c;
   --primary-light: #fed7aa;
+  --tab-hover-bg: rgba(249, 115, 22, 0.08);
 }
 
 :root[data-color="pink"] {
   --primary: #ec4899;
   --primary-dark: #be185d;
   --primary-light: #fbcfe8;
+  --tab-hover-bg: rgba(236, 72, 153, 0.08);
 }
 
 /* Color theme toggle button */
