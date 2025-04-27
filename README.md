@@ -28,8 +28,8 @@ pip install -r requirements.txt
 1.  Clone the repository:
 
     ```bash
-    git clone git@github.com:wulukewu/atcoder-abc-problems.git
-    cd atcoder-abc-problems
+    git clone git@github.com:wulukewu/atcoder-statistics.git
+    cd atcoder-statistics
     ```
 
 2.  Run the `main.py` script:
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ## File Structure
 
 ```
-atcoder-abc-problems/
+atcoder-statistics/
 ├── main.py            # Python script to scrape data and generate HTML
 ├── web-page/          # Directory for web page files
 │   ├── index.html       # Generated HTML file with the table and visualization
@@ -106,7 +106,7 @@ We welcome contributions! Here's how you can help:
 
    - Each PR automatically gets a preview deployment
    - The preview URL will be posted as a comment on your PR
-   - Preview URL format: `https://<username>.github.io/atcoder-abc-problems/pr-preview/pr-<number>/`
+   - Preview URL format: `https://<username>.github.io/atcoder-statistics/pr-preview/pr-<number>/`
    - Use the preview to verify your changes before requesting review
 
 6. **Code Review:**
