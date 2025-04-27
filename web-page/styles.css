@@ -73,6 +73,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--primary-lightest);
 }
 
 .container {
@@ -308,6 +309,7 @@ header {
   border-spacing: 0;
   font-size: 0.875rem;
   min-width: 800px;
+  background-color: var(--primary-light);
 }
 
 .stats-table th,
@@ -636,6 +638,7 @@ header {
 
 .tab:hover {
   color: var(--primary);
+  background-color: var(--primary-light);
 }
 
 .tab.active {
@@ -783,30 +786,35 @@ header {
   --primary: #0f9d58;
   --primary-dark: #0b7d46;
   --primary-light: #b7e4c7;
+  --primary-lightest: rgb(240,255,246);
 }
 
 :root[data-color="blue"] {
   --primary: #3b82f6;
   --primary-dark: #1d4ed8;
   --primary-light: #bfdbfe;
+  --primary-lightest:rgb(245, 250, 255);
 }
 
 :root[data-color="purple"] {
   --primary: #7c3aed;
   --primary-dark: #5b21b6;
   --primary-light: #ddd6fe;
+  --primary-lightest: rgb(248, 248, 248);
 }
 
 :root[data-color="orange"] {
   --primary: #f97316;
   --primary-dark: #c2410c;
   --primary-light: #fed7aa;
+  --primary-lightest: rgb(255, 254, 245);
 }
 
 :root[data-color="pink"] {
   --primary: #ec4899;
   --primary-dark: #be185d;
   --primary-light: #fbcfe8;
+  --primary-lightest: rgb(255, 246, 255);
 }
 
 /* Color theme toggle button */
