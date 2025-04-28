@@ -87,7 +87,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `**PR Preview**\n\n| Preview | Branch | Timestamp |\n|---------|--------|-----------|\n| [Deployed preview](${previewUrl}) | \`${branch}\` | ${timestamp} |`
+              body: `**PR Preview**\n\n| Preview | Branch | Timestamp |\n|---------|--------|-----------|\n| [Deployed Preview](${previewUrl}) | \`${branch}\` | ${timestamp} |`
             });
 
   cleanup:
