@@ -32,6 +32,24 @@ jobs:
       - name: Run main.py
         run: python main.py
 
+      - name: Check if gh-pages branch exists
+        id: check-branch
+        run: |
+          if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create gh-pages branch if it doesn't exist
+        if: steps.check-branch.outputs.exists == 'false'
+        run: |
+          git checkout --orphan gh-pages
+          git rm -rf .
+          git commit --allow-empty -m "Initial commit for gh-pages"
+          git push origin gh-pages
+          git checkout main
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
@@ -47,7 +65,12 @@ jobs:
 
       - name: Copy files to gh-pages branch
         run: |
-          rm -rf gh-pages/*
+          # Only remove files that are in web-page directory
+          for file in $(ls web-page/); do
+            if [ -e "gh-pages/$file" ]; then
+              rm -rf "gh-pages/$file"
+            fi
+          done
           cp -r web-page/* gh-pages/
 
       - name: Restore pr-preview directory
