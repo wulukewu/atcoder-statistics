@@ -814,12 +814,8 @@ header {
   width: 24px;
   height: 24px;
   stroke: white;
-  fill: none;
-  display: none; /* Hide by default and control via JS */
 }
 
-/* Remove these rules as we're handling display via JS */
-/*
 .theme-toggle .moon-icon {
   display: none;
 }
@@ -831,7 +827,6 @@ header {
 :root[data-mode="dark"] .theme-toggle .moon-icon {
   display: block;
 }
-*/
 
 /* Theme color schemes */
 :root[data-color="green"] {
