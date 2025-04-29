@@ -1,7 +1,8 @@
-import requests
-import json
-import math
 import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+
 
 def update_statics(diff, color, statics):
     if diff in statics:
@@ -13,38 +14,39 @@ def update_statics(diff, color, statics):
         statics[diff] = {}
         statics[diff][color] = 1
 
-def clip_difficulty(difficulty):
-    """
-    Clips the difficulty value using the same algorithm as in the frontend code.
-    """
-    if difficulty >= 400:
-        return round(difficulty)
-    else:
-        return round(400 / math.exp(1.0 - difficulty / 400))
 
-def get_rating_color(rating):
-    """
-    Returns the color name based on the rating value.
-    Uses the exact same logic as AtCoder Problems frontend.
-    """
-    if rating < 400:
-        return "grey"
-    elif rating < 800:
-        return "brown"
-    elif rating < 1200:
-        return "green"
-    elif rating < 1600:
-        return "cyan"
-    elif rating < 2000:
-        return "blue"
-    elif rating < 2400:
-        return "yellow"
-    elif rating < 2800:
-        return "orange"
-    else:
-        return "red"
+def process_problem_link(driver, link, color, statics):
+    driver.get(link)
+    try:
+        WebDriverWait(driver, 5).until(
+            lambda d: d.find_element(
+                By.XPATH,
+                '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
+            )
+        )
+        score = driver.find_element(
+            By.XPATH,
+            '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
+        )
+        diff = int(score.text)
+        # print(problem, diff, color)
+        update_statics(diff, color, statics)
+    except Exception as e:
+        print(f"Error to get score from {link}")
+        return
 
-# Define colors and color codes
+
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-gpu")
+options.add_argument("--window-size=1920x1080")
+options.add_argument("--ignore-certificate-errors")
+options.add_argument("--allow-insecure-localhost")
+driver = webdriver.Chrome(options=options)
+driver.get("https://kenkoooo.com/atcoder/#/table")
+latest_problem = None
 statics = {}
 colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
 color_codes = {
@@ -57,66 +59,68 @@ color_codes = {
     "orange": "#f97316",  # --orange
     "red": "#ef4444",  # --red
 }
-
-latest_problem = "ABC000"  # Default value in case of error
-
+problem_links = []
 try:
-    # Fetch problem models with difficulty ratings
-    print("Fetching problem models with difficulty ratings...")
-    models_response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
-    problem_models = models_response.json()
-    print(f"Found {len(problem_models)} problem models")
+    time.sleep(5)
+    table = driver.find_element(
+        By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody'
+    )
+    for row in table.find_elements(By.TAG_NAME, "tr"):
+        idx = 0
+        contest_problem_count = 0
+        for cell in row.find_elements(By.TAG_NAME, "td"):
+            try:
+                if idx == 0:
+                    problem = cell.text.split(" ")[1]
+                    # print(problem)
+                else:
+                    try:
+                        diff = cell.find_element(
+                            By.CLASS_NAME, "table-problem-point"
+                        ).text
+                        diff = int(diff)
+                    except:
+                        diff = -1
 
-    # Also fetch problems data for additional information
-    print("Fetching problems data...")
-    problems_response = requests.get("https://kenkoooo.com/atcoder/resources/problems.json")
-    problems = {p["id"]: p for p in problems_response.json()}
-    print(f"Found {len(problems)} problems")
-
-    # Also fetch contest information to identify ABC contests
-    print("Fetching contest information...")
-    contests_response = requests.get("https://kenkoooo.com/atcoder/resources/contests.json")
-    contests = contests_response.json()
-
-    # Find the latest ABC contest
-    abc_contests = [contest for contest in contests if contest["title"].startswith("AtCoder Beginner Contest")]
-    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")
-                     if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0))
-    latest_problem = f"ABC{latest_abc['title'].replace('AtCoder Beginner Contest ', '')}"
-    print(f"Latest ABC contest: {latest_problem}")
-
-    # Process problem data
-    print("\nProcessing problem data...")
-    difficulty_distribution = {}
-
-    for problem_id, model in problem_models.items():
-        if "difficulty" in model:
-            raw_difficulty = model["difficulty"]
-            clipped_difficulty = clip_difficulty(raw_difficulty)
-            color = get_rating_color(clipped_difficulty)
-
-            # Get problem details if available
-            problem_info = problems.get(problem_id, {})
-
-            # Check if this is an ABC problem and print some debug info
-            if problem_id.startswith("abc"):
-                print(f"Problem: {problem_id}, Raw Difficulty: {raw_difficulty}, Clipped: {clipped_difficulty}, Color: {color}")
-
-            # Track difficulty distribution
-            if color not in difficulty_distribution:
-                difficulty_distribution[color] = 0
-            difficulty_distribution[color] += 1
-
-            update_statics(clipped_difficulty, color, statics)
-
-    # Debug: Print difficulty distribution
-    print("\nDifficulty distribution:")
-    for color, count in sorted(difficulty_distribution.items()):
-        print(f"{color}: {count} problems")
-
-    print("\nStatistics generated successfully")
+                    try:
+                        problem_tmp = cell.find_element(By.TAG_NAME, "a")
+                        problem_link = problem_tmp.get_attribute("href")
+                        color = problem_tmp.get_attribute("class")
+                        color = color.split("difficulty-")[1]
+                    except:
+                        color = None
+                    # print(diff, color)
+                    if color is None:
+                        continue
+                    elif diff == -1:
+                        contest_problem_count += 1
+                        try:
+                            if int(problem.replace("ABC", "")) > 41:
+                                # print(problem_link)
+                                problem_links.append([problem, problem_link, color])
+                        except Exception as e:
+                            continue
+                    else:
+                        contest_problem_count += 1
+                        update_statics(diff, color, statics)
+                if contest_problem_count >= 4:
+                    if latest_problem is None:
+                        latest_problem = problem
+                    elif int(problem.replace("ABC", "")) > int(
+                        latest_problem.replace("ABC", "")
+                    ):
+                        latest_problem = problem
+                    # print(f'Latest Problem: {latest_problem}')
+            except Exception as e:
+                pass
+            idx += 1
+    # print(problem_links)
+    for problem, link, color in problem_links:
+        process_problem_link(driver, link, color, statics)
+    print(statics)
 except Exception as e:
-    print(f"Error fetching data from API: {e}")
+    print(e)
+driver.quit()
 
 # Calculate summary statistics
 total_solved = sum(sum(v.values()) for v in statics.values())
@@ -151,6 +155,87 @@ for diff, color_counts in sorted(statics.items()):
         table_rows += "                </td>\n"
     table_rows += "            </tr>\n"
 
+try:
+    # Fetch problem models with difficulty ratings
+    print("Fetching problem models with difficulty ratings...")
+    models_response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
+    problem_models = models_response.json()
+    print(f"Found {len(problem_models)} problem models")
+
+    # Also fetch problems data for additional information
+    print("Fetching problems data...")
+    problems_response = requests.get("https://kenkoooo.com/atcoder/resources/problems.json")
+    problems = {p["id"]: p for p in problems_response.json()}
+    print(f"Found {len(problems)} problems")
+
+    # Fetch merged problems data which contains point values
+    print("Fetching merged problems data...")
+    merged_problems_response = requests.get("https://kenkoooo.com/atcoder/resources/merged-problems.json")
+    merged_problems = {p["id"]: p for p in merged_problems_response.json()}
+    print(f"Found {len(merged_problems)} merged problems")
+
+    # Also fetch contest information to identify ABC contests
+    print("Fetching contest information...")
+    contests_response = requests.get("https://kenkoooo.com/atcoder/resources/contests.json")
+    contests = {c["id"]: c for c in contests_response.json()}
+
+    # Find the latest ABC contest
+    abc_contests = [contest for contest in contests.values() if contest["title"].startswith("AtCoder Beginner Contest")]
+    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")
+                     if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0))
+    latest_problem = f"ABC{latest_abc['title'].replace('AtCoder Beginner Contest ', '')}"
+    print(f"Latest ABC contest: {latest_problem}")
+
+    # Process problem data
+    print("\nProcessing problem data...")
+    difficulty_distribution = {}
+
+    for problem_id, model in problem_models.items():
+        if problem_id in merged_problems and "point" in merged_problems[problem_id] and merged_problems[problem_id]["point"] is not None:
+            # Use the actual point value as difficulty
+            point_value = int(merged_problems[problem_id]["point"])
+
+            # Determine color based on difficulty ranges
+            if point_value < 400:
+                color = "grey"
+            elif point_value < 800:
+                color = "brown"
+            elif point_value < 1200:
+                color = "green"
+            elif point_value < 1600:
+                color = "cyan"
+            elif point_value < 2000:
+                color = "blue"
+            elif point_value < 2400:
+                color = "yellow"
+            elif point_value < 2800:
+                color = "orange"
+            else:
+                color = "red"
+
+            # Get problem details if available
+            problem_info = problems.get(problem_id, {})
+
+            # Check if this is an ABC problem and print some debug info
+            if problem_id.startswith("abc"):
+                print(f"Problem: {problem_id}, Point Value: {point_value}, Color: {color}")
+
+            # Track difficulty distribution
+            if color not in difficulty_distribution:
+                difficulty_distribution[color] = 0
+            difficulty_distribution[color] += 1
+
+            update_statics(point_value, color, statics)
+
+    # Debug: Print difficulty distribution
+    print("\nDifficulty distribution:")
+    for color, count in sorted(difficulty_distribution.items()):
+        print(f"{color}: {count} problems")
+
+    print("\nStatistics generated successfully")
+except Exception as e:
+    print(f"Error fetching problem data: {e}")
+
 # Read the template file
 with open("web-page/template.html", "r") as template_file:
     template = template_file.read()
@@ -164,5 +249,3 @@ html_content = template.format(
 # Write the final HTML
 with open("web-page/index.html", "w") as file:
     file.write(html_content)
-
-print("HTML file generated successfully at web-page/index.html")
