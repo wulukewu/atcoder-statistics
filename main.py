@@ -131,184 +131,40 @@ solve_rate = (
     round((total_solved / total_possible) * 100, 2) if total_possible > 0 else 0
 )
 
-# Generate HTML
-html_content = f"""
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AtCoder Statistics Dashboard</title>
-    <link rel="icon" href="favicon.svg" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="header-bg">
-            <div class="header-bg-circle circle-1"></div>
-            <div class="header-bg-circle circle-2"></div>
-        </div>
-        <div class="container header-content">
-            <h1>AtCoder Statistics</h1>
-            <h2>Latest Contest: {latest_problem}</h2>
-        </div>
-    </header>
-    <div class="container">
-        <!-- Main Content with Tabs -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">AtCoder Problems</div>
-            </div>
-            <div class="tabs">
-                <div class="tab active" data-tab="table">AtCoder Beginner Contest</div>
-            </div>
-            <div class="tab-content active" id="table-content">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Difficulty</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-"""
+# Generate table rows HTML
+table_rows = ""
 for diff, color_counts in sorted(statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
-    html_content += f"            <tr>\n"
-    html_content += f"                <td class='difficulty-label'>{diff}</td>\n"
+    table_rows += f"            <tr>\n"
+    table_rows += f"                <td class='difficulty-label'>{diff}</td>\n"
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = round((count / total_count) * 100, 2)
         circle_color_class = f"color-{color}" if count > 0 else "empty-color"
         bg_color_class = f"bg-{color}" if count > 0 else ""
-        html_content += f"                <td>\n"
-        html_content += f"                    <div class='stats-container'>\n"
-        html_content += f"                        <div class='circle-container'>\n"
-        html_content += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
-        html_content += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
-        html_content += f"                            </div>\n"
-        html_content += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
-        html_content += "                        </div>\n"
-        html_content += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
-        html_content += "                    </div>\n"
-        html_content += "                </td>\n"
-    html_content += "            </tr>\n"
-html_content += """
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="floating-button" onclick="window.open('https://kenkoooo.com/atcoder/#/table', '_blank');">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-    </div>
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-    </div>
-    <div class="color-theme-toggle" onclick="cycleThemeColor()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-    </div>
-    <script>
-        // Prevent flash of unstyled content
-        (function() {
-            const mode = localStorage.getItem('mode') || 
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            const colorTheme = localStorage.getItem('color-theme') || 'green';
-            document.documentElement.setAttribute('data-mode', mode);
-            document.documentElement.setAttribute('data-color', colorTheme);
-        })();
+        table_rows += f"                <td>\n"
+        table_rows += f"                    <div class='stats-container'>\n"
+        table_rows += f"                        <div class='circle-container'>\n"
+        table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
+        table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
+        table_rows += f"                            </div>\n"
+        table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
+        table_rows += "                        </div>\n"
+        table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
+        table_rows += "                    </div>\n"
+        table_rows += "                </td>\n"
+    table_rows += "            </tr>\n"
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize progress circles
-            const circles = document.querySelectorAll('.progress-circle');
-            circles.forEach(circle => {
-                const percent = parseFloat(circle.getAttribute('data-percent'));
-                const innerCircle = circle.querySelector('.progress-circle-inner');
-                setTimeout(() => {
-                    innerCircle.style.height = percent + '%';
-                }, 500);
-            });
+# Read the template file
+with open("web-page/template.html", "r") as template_file:
+    template = template_file.read()
 
-            // Set dynamic animation delays for table rows
-            const rows = document.querySelectorAll('.stats-table tbody tr');
-            rows.forEach((row, index) => {
-                row.style.animationDelay = `${(index + 1) * 0.1}s`;
-            });
+# Replace placeholders with actual content
+html_content = template.format(
+    latest_problem=latest_problem,
+    table_rows=table_rows
+)
 
-            // Initialize theme icon
-            const mode = document.documentElement.getAttribute('data-mode');
-            updateThemeIcon(mode);
-        });
-
-        function toggleTheme() {
-            const currentMode = document.documentElement.getAttribute('data-mode');
-            const newMode = currentMode === 'dark' ? 'light' : 'dark';
-            
-            // Add transition class to body
-            document.body.classList.add('theme-transition');
-            
-            // Update mode
-            document.documentElement.setAttribute('data-mode', newMode);
-            localStorage.setItem('mode', newMode);
-            updateThemeIcon(newMode);
-            
-            // Remove transition class after transition completes
-            setTimeout(() => {
-                document.body.classList.remove('theme-transition');
-            }, 300);
-        }
-
-        function updateThemeIcon(mode) {
-            const sunIcon = document.querySelector('.sun-icon');
-            const moonIcon = document.querySelector('.moon-icon');
-            if (mode === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            }
-        }
-
-        // Theme color cycling
-        const colorThemes = ['green', 'blue', 'purple', 'orange', 'pink'];
-        let currentColorIndex = 0;
-
-        function cycleThemeColor() {
-            currentColorIndex = (currentColorIndex + 1) % colorThemes.length;
-            const newColorTheme = colorThemes[currentColorIndex];
-            document.documentElement.setAttribute('data-color', newColorTheme);
-            localStorage.setItem('color-theme', newColorTheme);
-        }
-
-        // Initialize color theme
-        (function() {
-            const savedColorTheme = localStorage.getItem('color-theme') || 'green';
-            document.documentElement.setAttribute('data-color', savedColorTheme);
-            currentColorIndex = colorThemes.indexOf(savedColorTheme);
-        })();
-    </script>
-</body>
-</html>
-"""
+# Write the final HTML
 with open("web-page/index.html", "w") as file:
     file.write(html_content)
