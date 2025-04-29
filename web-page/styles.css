@@ -814,6 +814,7 @@ header {
   width: 24px;
   height: 24px;
   stroke: white;
+  fill: none;
 }
 
 .theme-toggle .moon-icon {

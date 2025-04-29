@@ -56,15 +56,8 @@ function toggleTheme() {
 }
 
 function updateThemeIcon(mode) {
-    const sunIcon = document.querySelector('.sun-icon');
-    const moonIcon = document.querySelector('.moon-icon');
-    if (mode === 'dark') {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-    } else {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-    }
+    // No need to manually set display style as CSS handles this
+    // The sun-icon and moon-icon visibility is controlled by CSS based on data-mode
 }
 
 // Theme color cycling
