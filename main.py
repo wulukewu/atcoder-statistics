@@ -1,8 +1,6 @@
+import requests
+import json
 import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-
 
 def update_statics(diff, color, statics):
     if diff in statics:
@@ -59,68 +57,53 @@ color_codes = {
     "orange": "#f97316",  # --orange
     "red": "#ef4444",  # --red
 }
-problem_links = []
-try:
-    time.sleep(5)
-    table = driver.find_element(
-        By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody'
-    )
-    for row in table.find_elements(By.TAG_NAME, "tr"):
-        idx = 0
-        contest_problem_count = 0
-        for cell in row.find_elements(By.TAG_NAME, "td"):
-            try:
-                if idx == 0:
-                    problem = cell.text.split(" ")[1]
-                    # print(problem)
-                else:
-                    try:
-                        diff = cell.find_element(
-                            By.CLASS_NAME, "table-problem-point"
-                        ).text
-                        diff = int(diff)
-                    except:
-                        diff = -1
 
-                    try:
-                        problem_tmp = cell.find_element(By.TAG_NAME, "a")
-                        problem_link = problem_tmp.get_attribute("href")
-                        color = problem_tmp.get_attribute("class")
-                        color = color.split("difficulty-")[1]
-                    except:
-                        color = None
-                    # print(diff, color)
-                    if color is None:
-                        continue
-                    elif diff == -1:
-                        contest_problem_count += 1
-                        try:
-                            if int(problem.replace("ABC", "")) > 41:
-                                # print(problem_link)
-                                problem_links.append([problem, problem_link, color])
-                        except Exception as e:
-                            continue
-                    else:
-                        contest_problem_count += 1
-                        update_statics(diff, color, statics)
-                if contest_problem_count >= 4:
-                    if latest_problem is None:
-                        latest_problem = problem
-                    elif int(problem.replace("ABC", "")) > int(
-                        latest_problem.replace("ABC", "")
-                    ):
-                        latest_problem = problem
-                    # print(f'Latest Problem: {latest_problem}')
-            except Exception as e:
-                pass
-            idx += 1
-    # print(problem_links)
-    for problem, link, color in problem_links:
-        process_problem_link(driver, link, color, statics)
+try:
+    # Fetch data from the API
+    response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
+    problem_data = response.json()
+
+    # Also fetch contest information to identify ABC contests
+    contests_response = requests.get("https://kenkoooo.com/atcoder/resources/contests.json")
+    contests = contests_response.json()
+
+    # Create a mapping of contest IDs to contest names
+    contest_id_to_name = {contest["id"]: contest["title"] for contest in contests}
+
+    # Find the latest ABC contest
+    abc_contests = [contest for contest in contests if contest["title"].startswith("AtCoder Beginner Contest")]
+    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")))
+    latest_problem = f"ABC{latest_abc['title'].replace('AtCoder Beginner Contest ', '')}"
+
+    # Process problem data
+    for problem_id, problem_info in problem_data.items():
+        if "difficulty" in problem_info:
+            diff = problem_info["difficulty"]
+
+            # Determine color based on difficulty
+            color = None
+            if diff < 400:
+                color = "grey"
+            elif diff < 800:
+                color = "brown"
+            elif diff < 1200:
+                color = "green"
+            elif diff < 1600:
+                color = "cyan"
+            elif diff < 2000:
+                color = "blue"
+            elif diff < 2400:
+                color = "yellow"
+            elif diff < 2800:
+                color = "orange"
+            else:
+                color = "red"
+
+            update_statics(diff, color, statics)
+
     print(statics)
 except Exception as e:
-    print(e)
-driver.quit()
+    print(f"Error fetching data from API: {e}")
 
 # Calculate summary statistics
 total_solved = sum(sum(v.values()) for v in statics.values())
