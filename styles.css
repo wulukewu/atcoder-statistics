@@ -1,3 +1,4 @@
+/* Base Variables */
 :root {
   --primary: #0f9d58; /* Darker green for better contrast */
   --primary-dark: #0b7d46;
@@ -25,6 +26,7 @@
   color-scheme: light dark;
 }
 
+/* Theme Modes */
 /* Light mode (default) */
 :root[data-mode="light"] {
   --bg-color: var(--primary-lightest-bg);
@@ -59,6 +61,7 @@
   --empty-border-color: var(--gray-600);
 }
 
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -84,6 +87,7 @@ body {
   width: 100%;
 }
 
+/* Header Styles */
 header {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
@@ -260,6 +264,7 @@ header {
   }
 }
 
+/* Card Styles */
 .card {
   background-color: var(--card-bg);
   border-radius: 0.75rem;
@@ -297,6 +302,7 @@ header {
   background-color: white;
 }
 
+/* Table Styles */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -528,6 +534,7 @@ header {
   opacity: 1;
 }
 
+/* Button Styles */
 .floating-button {
   position: fixed;
   bottom: 1.5rem;
@@ -560,6 +567,7 @@ header {
   object-fit: contain;
 }
 
+/* Color Classes */
 .color-grey {
   color: var(--gray-500);
   border-color: var(--gray-500);
