@@ -1,5 +1,6 @@
 import requests
 import json
+import math
 import time
 
 def update_statics(diff, color, statics):
@@ -11,6 +12,23 @@ def update_statics(diff, color, statics):
     else:
         statics[diff] = {}
         statics[diff][color] = 1
+
+def clip_difficulty(difficulty):
+    """
+    Clips the difficulty value using the same algorithm as in the frontend code.
+    """
+    if difficulty >= 400:
+        return round(difficulty)
+    else:
+        return round(400 / math.exp(1.0 - difficulty / 400))
+
+def get_rating_color(rating):
+    """
+    Returns the color name based on the rating value.
+    """
+    colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
+    index = min(math.floor(rating / 400), len(colors) - 1)
+    return colors[index]
 
 # Define colors and color codes
 statics = {}
@@ -29,48 +47,36 @@ color_codes = {
 try:
     # Fetch data from the API
     print("Fetching problem data from API...")
-    response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
-    problem_data = response.json()
-    
+    problems_response = requests.get("https://kenkoooo.com/atcoder/resources/problems.json")
+    problems = problems_response.json()
+    print(f"Found {len(problems)} problems")
+
+    print("Fetching problem models with difficulty ratings...")
+    models_response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
+    problem_models = models_response.json()
+    print(f"Found {len(problem_models)} problem models")
+
     # Also fetch contest information to identify ABC contests
     print("Fetching contest information...")
     contests_response = requests.get("https://kenkoooo.com/atcoder/resources/contests.json")
     contests = contests_response.json()
-    
+
     # Find the latest ABC contest
     abc_contests = [contest for contest in contests if contest["title"].startswith("AtCoder Beginner Contest")]
-    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")) 
-                     if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0)
+    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")
+                     if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0))
     latest_problem = f"ABC{latest_abc['title'].replace('AtCoder Beginner Contest ', '')}"
     print(f"Latest ABC contest: {latest_problem}")
-    
+
     # Process problem data
     print("Processing problem data...")
-    for problem_id, problem_info in problem_data.items():
-        if "difficulty" in problem_info:
-            diff = problem_info["difficulty"]
-            
-            # Determine color based on difficulty
-            color = None
-            if diff < 400:
-                color = "grey"
-            elif diff < 800:
-                color = "brown"
-            elif diff < 1200:
-                color = "green"
-            elif diff < 1600:
-                color = "cyan"
-            elif diff < 2000:
-                color = "blue"
-            elif diff < 2400:
-                color = "yellow"
-            elif diff < 2800:
-                color = "orange"
-            else:
-                color = "red"
-                
-            update_statics(diff, color, statics)
-    
+    for problem_id, model in problem_models.items():
+        if "difficulty" in model:
+            raw_difficulty = model["difficulty"]
+            clipped_difficulty = clip_difficulty(raw_difficulty)
+            color = get_rating_color(clipped_difficulty)
+            update_statics(clipped_difficulty, color, statics)
+
     print("Statistics generated successfully")
     print(statics)
 except Exception as e:
