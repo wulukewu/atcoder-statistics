@@ -57,13 +57,14 @@ color_codes = {
     "orange": "#f97316",  # --orange
     "red": "#ef4444",  # --red
 }
-
 try:
     # Fetch data from the API
+    print("Fetching problem data from API...")
     response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
     problem_data = response.json()
 
     # Also fetch contest information to identify ABC contests
+    print("Fetching contest information...")
     contests_response = requests.get("https://kenkoooo.com/atcoder/resources/contests.json")
     contests = contests_response.json()
 
@@ -72,10 +73,12 @@ try:
 
     # Find the latest ABC contest
     abc_contests = [contest for contest in contests if contest["title"].startswith("AtCoder Beginner Contest")]
-    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")))
+    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")) if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0)
     latest_problem = f"ABC{latest_abc['title'].replace('AtCoder Beginner Contest ', '')}"
+    print(f"Latest ABC contest: {latest_problem}")
 
     # Process problem data
+    print("Processing problem data...")
     for problem_id, problem_info in problem_data.items():
         if "difficulty" in problem_info:
             diff = problem_info["difficulty"]
@@ -101,7 +104,7 @@ try:
 
             update_statics(diff, color, statics)
 
-    print(statics)
+    print("Statistics generated successfully")
 except Exception as e:
     print(f"Error fetching data from API: {e}")
 
