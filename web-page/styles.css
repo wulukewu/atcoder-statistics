@@ -258,26 +258,6 @@ header {
     bottom: 1rem;
     right: 1rem;
   }
-
-  /* Better mobile positioning for theme toggles */
-  .theme-toggle,
-  .color-theme-toggle {
-    bottom: auto;
-    top: 1rem;
-  }
-
-  .theme-toggle {
-    right: 1rem;
-  }
-
-  .color-theme-toggle {
-    right: 4.5rem;
-  }
-
-  .floating-button {
-    bottom: 1rem;
-    right: 1rem;
-  }
 }
 
 .card {
@@ -326,6 +306,12 @@ header {
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.table-responsive::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .stats-table {

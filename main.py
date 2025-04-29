@@ -248,9 +248,6 @@ html_content += """
                 }, 500);
             });
 
-            // Add loading indicator
-            document.body.classList.add('loaded');
-
             // Set dynamic animation delays for table rows
             const rows = document.querySelectorAll('.stats-table tbody tr');
             rows.forEach((row, index) => {
