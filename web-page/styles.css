@@ -306,6 +306,12 @@ header {
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.table-responsive::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .stats-table {
