@@ -56,10 +56,8 @@ function toggleTheme() {
 }
 
 function updateThemeIcon(mode) {
-    // This function is needed to properly initialize the icons
     const sunIcon = document.querySelector('.sun-icon');
     const moonIcon = document.querySelector('.moon-icon');
-
     if (mode === 'dark') {
         sunIcon.style.display = 'none';
         moonIcon.style.display = 'block';
