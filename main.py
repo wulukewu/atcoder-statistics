@@ -12,39 +12,7 @@ def update_statics(diff, color, statics):
         statics[diff] = {}
         statics[diff][color] = 1
 
-
-def process_problem_link(driver, link, color, statics):
-    driver.get(link)
-    try:
-        WebDriverWait(driver, 5).until(
-            lambda d: d.find_element(
-                By.XPATH,
-                '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
-            )
-        )
-        score = driver.find_element(
-            By.XPATH,
-            '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
-        )
-        diff = int(score.text)
-        # print(problem, diff, color)
-        update_statics(diff, color, statics)
-    except Exception as e:
-        print(f"Error to get score from {link}")
-        return
-
-
-options = webdriver.ChromeOptions()
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("--window-size=1920x1080")
-options.add_argument("--ignore-certificate-errors")
-options.add_argument("--allow-insecure-localhost")
-driver = webdriver.Chrome(options=options)
-driver.get("https://kenkoooo.com/atcoder/#/table")
-latest_problem = None
+# Define colors and color codes
 statics = {}
 colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
 color_codes = {
@@ -57,32 +25,31 @@ color_codes = {
     "orange": "#f97316",  # --orange
     "red": "#ef4444",  # --red
 }
+
 try:
     # Fetch data from the API
     print("Fetching problem data from API...")
     response = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json")
     problem_data = response.json()
-
+    
     # Also fetch contest information to identify ABC contests
     print("Fetching contest information...")
     contests_response = requests.get("https://kenkoooo.com/atcoder/resources/contests.json")
     contests = contests_response.json()
-
-    # Create a mapping of contest IDs to contest names
-    contest_id_to_name = {contest["id"]: contest["title"] for contest in contests}
-
+    
     # Find the latest ABC contest
     abc_contests = [contest for contest in contests if contest["title"].startswith("AtCoder Beginner Contest")]
-    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")) if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0)
+    latest_abc = max(abc_contests, key=lambda x: int(x["title"].replace("AtCoder Beginner Contest ", "")) 
+                     if x["title"].replace("AtCoder Beginner Contest ", "").isdigit() else 0)
     latest_problem = f"ABC{latest_abc['title'].replace('AtCoder Beginner Contest ', '')}"
     print(f"Latest ABC contest: {latest_problem}")
-
+    
     # Process problem data
     print("Processing problem data...")
     for problem_id, problem_info in problem_data.items():
         if "difficulty" in problem_info:
             diff = problem_info["difficulty"]
-
+            
             # Determine color based on difficulty
             color = None
             if diff < 400:
@@ -101,10 +68,11 @@ try:
                 color = "orange"
             else:
                 color = "red"
-
+                
             update_statics(diff, color, statics)
-
+    
     print("Statistics generated successfully")
+    print(statics)
 except Exception as e:
     print(f"Error fetching data from API: {e}")
 
@@ -154,3 +122,5 @@ html_content = template.format(
 # Write the final HTML
 with open("web-page/index.html", "w") as file:
     file.write(html_content)
+
+print("HTML file generated successfully at web-page/index.html")
