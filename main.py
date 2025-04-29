@@ -224,89 +224,10 @@ html_content += """
     </div>
     <div class="color-theme-toggle" onclick="cycleThemeColor()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h.01" />
         </svg>
     </div>
-    <script>
-        // Prevent flash of unstyled content
-        (function() {
-            const mode = localStorage.getItem('mode') || 
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            const colorTheme = localStorage.getItem('color-theme') || 'green';
-            document.documentElement.setAttribute('data-mode', mode);
-            document.documentElement.setAttribute('data-color', colorTheme);
-        })();
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize progress circles
-            const circles = document.querySelectorAll('.progress-circle');
-            circles.forEach(circle => {
-                const percent = parseFloat(circle.getAttribute('data-percent'));
-                const innerCircle = circle.querySelector('.progress-circle-inner');
-                setTimeout(() => {
-                    innerCircle.style.height = percent + '%';
-                }, 500);
-            });
-
-            // Set dynamic animation delays for table rows
-            const rows = document.querySelectorAll('.stats-table tbody tr');
-            rows.forEach((row, index) => {
-                row.style.animationDelay = `${(index + 1) * 0.1}s`;
-            });
-
-            // Initialize theme icon
-            const mode = document.documentElement.getAttribute('data-mode');
-            updateThemeIcon(mode);
-        });
-
-        function toggleTheme() {
-            const currentMode = document.documentElement.getAttribute('data-mode');
-            const newMode = currentMode === 'dark' ? 'light' : 'dark';
-            
-            // Add transition class to body
-            document.body.classList.add('theme-transition');
-            
-            // Update mode
-            document.documentElement.setAttribute('data-mode', newMode);
-            localStorage.setItem('mode', newMode);
-            updateThemeIcon(newMode);
-            
-            // Remove transition class after transition completes
-            setTimeout(() => {
-                document.body.classList.remove('theme-transition');
-            }, 300);
-        }
-
-        function updateThemeIcon(mode) {
-            const sunIcon = document.querySelector('.sun-icon');
-            const moonIcon = document.querySelector('.moon-icon');
-            if (mode === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            }
-        }
-
-        // Theme color cycling
-        const colorThemes = ['green', 'blue', 'purple', 'orange', 'pink'];
-        let currentColorIndex = 0;
-
-        function cycleThemeColor() {
-            currentColorIndex = (currentColorIndex + 1) % colorThemes.length;
-            const newColorTheme = colorThemes[currentColorIndex];
-            document.documentElement.setAttribute('data-color', newColorTheme);
-            localStorage.setItem('color-theme', newColorTheme);
-        }
-
-        // Initialize color theme
-        (function() {
-            const savedColorTheme = localStorage.getItem('color-theme') || 'green';
-            document.documentElement.setAttribute('data-color', savedColorTheme);
-            currentColorIndex = colorThemes.indexOf(savedColorTheme);
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 """
