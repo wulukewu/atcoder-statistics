@@ -1,7 +1,13 @@
 import time
+import requests
 
 latest_problem = None
-statics = {}
+statics = {
+    'abc': {},
+    'arc': {},
+    'agc': {},
+    'other': {}
+}
 colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
 color_codes = {
     "grey": "#6b7280",  # --gray-500
@@ -13,6 +19,46 @@ color_codes = {
     "orange": "#f97316",  # --orange
     "red": "#ef4444",  # --red
 }
+
+contest_problems = requests.get("https://kenkoooo.com/atcoder/resources/contest-problem.json").json()
+# print('contest_problems', contest_problems)
+problem_models = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json").json()
+# print('problem_models', problem_models)
+merged_problems = requests.get("https://kenkoooo.com/atcoder/resources/merged-problems.json").json()
+# print('merged_problems', merged_problems)
+
+for problem in contest_problems:
+    print(f'problem: {problem}')
+    if 'abc' in problem['contest_id']:
+        if problem['contest_id'] not in statics['abc']:
+            statics['abc'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['abc'][problem['contest_id']]:
+            statics['abc'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    elif 'arc' in problem['contest_id']:
+        if problem['contest_id'] not in statics['arc']:
+            statics['arc'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['arc'][problem['contest_id']]:
+            statics['arc'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    elif 'agc' in problem['contest_id']:
+        if problem['contest_id'] not in statics['agc']:
+            statics['agc'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['agc'][problem['contest_id']]:
+            statics['agc'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    else:
+        if problem['contest_id'] not in statics['other']:
+            statics['other'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['other'][problem['contest_id']]:
+            statics['other'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+
+print(statics)
 
 # Generate table rows HTML
 table_rows = ""
