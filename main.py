@@ -1,51 +1,5 @@
 import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 
-
-def update_statics(diff, color, statics):
-    if diff in statics:
-        if color in statics[diff]:
-            statics[diff][color] += 1
-        else:
-            statics[diff][color] = 1
-    else:
-        statics[diff] = {}
-        statics[diff][color] = 1
-
-
-def process_problem_link(driver, link, color, statics):
-    driver.get(link)
-    try:
-        WebDriverWait(driver, 5).until(
-            lambda d: d.find_element(
-                By.XPATH,
-                '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
-            )
-        )
-        score = driver.find_element(
-            By.XPATH,
-            '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
-        )
-        diff = int(score.text)
-        # print(problem, diff, color)
-        update_statics(diff, color, statics)
-    except Exception as e:
-        print(f"Error to get score from {link}")
-        return
-
-
-options = webdriver.ChromeOptions()
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("--window-size=1920x1080")
-options.add_argument("--ignore-certificate-errors")
-options.add_argument("--allow-insecure-localhost")
-driver = webdriver.Chrome(options=options)
-driver.get("https://kenkoooo.com/atcoder/#/table")
 latest_problem = None
 statics = {}
 colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
@@ -59,77 +13,6 @@ color_codes = {
     "orange": "#f97316",  # --orange
     "red": "#ef4444",  # --red
 }
-problem_links = []
-try:
-    time.sleep(5)
-    table = driver.find_element(
-        By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody'
-    )
-    for row in table.find_elements(By.TAG_NAME, "tr"):
-        idx = 0
-        contest_problem_count = 0
-        for cell in row.find_elements(By.TAG_NAME, "td"):
-            try:
-                if idx == 0:
-                    problem = cell.text.split(" ")[1]
-                    # print(problem)
-                else:
-                    try:
-                        diff = cell.find_element(
-                            By.CLASS_NAME, "table-problem-point"
-                        ).text
-                        diff = int(diff)
-                    except:
-                        diff = -1
-
-                    try:
-                        problem_tmp = cell.find_element(By.TAG_NAME, "a")
-                        problem_link = problem_tmp.get_attribute("href")
-                        color = problem_tmp.get_attribute("class")
-                        color = color.split("difficulty-")[1]
-                    except:
-                        color = None
-                    # print(diff, color)
-                    if color is None:
-                        continue
-                    elif diff == -1:
-                        contest_problem_count += 1
-                        try:
-                            if int(problem.replace("ABC", "")) > 41:
-                                # print(problem_link)
-                                problem_links.append([problem, problem_link, color])
-                        except Exception as e:
-                            continue
-                    else:
-                        contest_problem_count += 1
-                        update_statics(diff, color, statics)
-                if contest_problem_count >= 4:
-                    if latest_problem is None:
-                        latest_problem = problem
-                    elif int(problem.replace("ABC", "")) > int(
-                        latest_problem.replace("ABC", "")
-                    ):
-                        latest_problem = problem
-                    # print(f'Latest Problem: {latest_problem}')
-            except Exception as e:
-                pass
-            idx += 1
-    # print(problem_links)
-    for problem, link, color in problem_links:
-        process_problem_link(driver, link, color, statics)
-    print(statics)
-except Exception as e:
-    print(e)
-driver.quit()
-
-# Calculate summary statistics
-total_solved = sum(sum(v.values()) for v in statics.values())
-total_possible = 0
-for diff, color_counts in statics.items():
-    total_possible += sum(color_counts.values())
-solve_rate = (
-    round((total_solved / total_possible) * 100, 2) if total_possible > 0 else 0
-)
 
 # Generate table rows HTML
 table_rows = ""
