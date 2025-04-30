@@ -69,8 +69,8 @@ with open('debug_problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
     json.dump(problem_id_to_contest_id, f, ensure_ascii=False, indent=2)
 
 for problem in problem_models:
-    print(f'problem: {problem}')
-    print(f'problem_models: {problem_models[problem]}')
+    # print(f'problem: {problem}')
+    # print(f'problem_models: {problem_models[problem]}')
     if 'difficulty' in problem_models[problem] and problem in problem_id_to_contest_id:
         for contest_id in problem_id_to_contest_id[problem]:
             if 'abc' in contest_id:
@@ -101,24 +101,27 @@ for problem in problem_models:
                     statics['other'][contest_id][problem] = {
                         'difficulty': problem_models[problem]['difficulty'],
                     }
-        # if 'abc' in problem:
-        #     if contest_id in statics['abc'] and problem in statics['abc'][contest_id]:
-        #         statics['abc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
-        # elif 'arc' in problem:
-        #     if contest_id in statics['arc'] and problem in statics['arc'][contest_id]:
-        #         statics['arc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
-        # elif 'agc' in problem:
-        #     if contest_id in statics['agc'] and problem in statics['agc'][contest_id]:
-        #         statics['agc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
-        # else:
-        #     if contest_id in statics['other'] and problem in statics['other'][contest_id]:
-        #         statics['other'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+
+for problem in merged_problems:
+    # print(f'problem: {problem}')
+    if problem['id'] in problem_id_to_contest_id:
+        for contest_id in problem_id_to_contest_id[problem['id']]:
+            if contest_id in statics['abc']:
+                statics['abc'][contest_id][problem['id']]['point'] = problem['point']
+            elif contest_id in statics['arc']:
+                statics['arc'][contest_id][problem['id']]['point'] = problem['point']
+            elif contest_id in statics['agc']:
+                statics['agc'][contest_id][problem['id']]['point'] = problem['point']
+            else:
+                statics['other'][contest_id][problem['id']] = {
+                    'point': problem['point'],
+                }
 
 # Save statics to a JSON file for debugging
 with open('debug_statics.json', 'w', encoding='utf-8') as f:
     json.dump(statics, f, ensure_ascii=False, indent=2)
 
-print(statics)
+# print(statics)
 
 # Generate table rows HTML
 table_rows = ""
