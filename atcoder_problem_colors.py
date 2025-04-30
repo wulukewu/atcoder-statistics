@@ -6,6 +6,7 @@ from typing import Dict, List, Any
 # API endpoints from AtCoder Problems
 PROBLEMS_URL = "https://kenkoooo.com/atcoder/resources/problems.json"
 PROBLEM_MODELS_URL = "https://kenkoooo.com/atcoder/resources/problem-models.json"
+MERGED_PROBLEMS_URL = "https://kenkoooo.com/atcoder/resources/merged-problems.json"
 
 def clip_difficulty(difficulty: float) -> int:
     """
@@ -51,6 +52,13 @@ def fetch_problem_models() -> Dict[str, Dict[str, Any]]:
     response = requests.get(PROBLEM_MODELS_URL)
     return response.json()
 
+def fetch_merged_problems() -> List[Dict[str, Any]]:
+    """
+    Fetches merged problems data which includes point values.
+    """
+    response = requests.get(MERGED_PROBLEMS_URL)
+    return response.json()
+
 def main():
     # Fetch data from APIs
     print("Fetching problem data...")
@@ -61,13 +69,20 @@ def main():
     problem_models = fetch_problem_models()
     print(f"Found {len(problem_models)} problem models")
     
-    # Combine problem data with difficulty and color
+    print("Fetching merged problems data with point values...")
+    merged_problems = fetch_merged_problems()
+    merged_problems_dict = {p['id']: p for p in merged_problems}
+    print(f"Found {len(merged_problems)} merged problems")
+    
+    # Combine problem data with difficulty, color, and point
     enriched_problems = []
     for problem in problems:
         problem_id = problem['id']
         model = problem_models.get(problem_id, {})
+        merged_data = merged_problems_dict.get(problem_id, {})
         
         difficulty = model.get('difficulty')
+        point = merged_data.get('point')
         
         if difficulty is not None:
             # Clip the difficulty rating
@@ -80,7 +95,8 @@ def main():
                 **problem,
                 'difficulty': difficulty,
                 'clipped_difficulty': clipped_difficulty,
-                'color': color
+                'color': color,
+                'point': point
             }
             enriched_problems.append(enriched_problem)
     
@@ -93,10 +109,10 @@ def main():
     with open('atcoder_problems_with_colors.json', 'w') as f:
         json.dump(enriched_problems, f, indent=2)
     
-    # Print first 5 problems with their colors
-    print("\nSample of problems with their colors:")
+    # Print first 5 problems with their colors and points
+    print("\nSample of problems with their colors and points:")
     for problem in enriched_problems[:5]:
-        print(f"Problem: {problem['name']}, Difficulty: {problem.get('clipped_difficulty')}, Color: {problem.get('color')}")
+        print(f"Problem: {problem['name']}, Difficulty: {problem.get('clipped_difficulty')}, Color: {problem.get('color')}, Point: {problem.get('point')}")
 
 if __name__ == "__main__":
     main()
