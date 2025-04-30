@@ -1,5 +1,6 @@
 import time
 import requests
+import json
 
 latest_problem = None
 statics = {
@@ -8,6 +9,7 @@ statics = {
     'agc': {},
     'other': {}
 }
+problem_id_to_contest_id = {}
 colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
 color_codes = {
     "grey": "#6b7280",  # --gray-500
@@ -28,7 +30,7 @@ merged_problems = requests.get("https://kenkoooo.com/atcoder/resources/merged-pr
 # print('merged_problems', merged_problems)
 
 for problem in contest_problems:
-    print(f'problem: {problem}')
+    # print(f'problem: {problem}')
     if 'abc' in problem['contest_id']:
         if problem['contest_id'] not in statics['abc']:
             statics['abc'][problem['contest_id']] = {}
@@ -57,6 +59,64 @@ for problem in contest_problems:
             statics['other'][problem['contest_id']][problem['problem_id']] = {
                 'problem_index': problem['problem_index'],
             }
+    if problem['problem_id'] not in problem_id_to_contest_id:
+        problem_id_to_contest_id[problem['problem_id']] = [problem['contest_id']]
+    else:
+        problem_id_to_contest_id[problem['problem_id']].append(problem['contest_id'])
+
+# Save problem_id_to_contest_id to a JSON file for debugging
+with open('debug_problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
+    json.dump(problem_id_to_contest_id, f, ensure_ascii=False, indent=2)
+
+for problem in problem_models:
+    print(f'problem: {problem}')
+    print(f'problem_models: {problem_models[problem]}')
+    if 'difficulty' in problem_models[problem] and problem in problem_id_to_contest_id:
+        for contest_id in problem_id_to_contest_id[problem]:
+            if 'abc' in contest_id:
+                if contest_id in statics['abc']:
+                    statics['abc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['abc'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+            elif 'arc' in contest_id:
+                if contest_id in statics['arc']:
+                    statics['arc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['arc'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+            elif 'agc' in contest_id:
+                if contest_id in statics['agc']:
+                    statics['agc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['agc'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+            else:
+                if contest_id in statics['other']:
+                    statics['other'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['other'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+        # if 'abc' in problem:
+        #     if contest_id in statics['abc'] and problem in statics['abc'][contest_id]:
+        #         statics['abc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+        # elif 'arc' in problem:
+        #     if contest_id in statics['arc'] and problem in statics['arc'][contest_id]:
+        #         statics['arc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+        # elif 'agc' in problem:
+        #     if contest_id in statics['agc'] and problem in statics['agc'][contest_id]:
+        #         statics['agc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+        # else:
+        #     if contest_id in statics['other'] and problem in statics['other'][contest_id]:
+        #         statics['other'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+
+# Save statics to a JSON file for debugging
+with open('debug_statics.json', 'w', encoding='utf-8') as f:
+    json.dump(statics, f, ensure_ascii=False, indent=2)
 
 print(statics)
 
