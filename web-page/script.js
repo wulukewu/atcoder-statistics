@@ -1,6 +1,6 @@
 // Prevent flash of unstyled content
 (function() {
-    const mode = localStorage.getItem('mode') || 
+    const mode = localStorage.getItem('mode') ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const colorTheme = localStorage.getItem('color-theme') || 'green';
     document.documentElement.setAttribute('data-mode', mode);
@@ -70,24 +70,6 @@ function updateThemeIcon(mode) {
     }
 }
 
-// Theme color cycling
-const colorThemes = ['green', 'blue', 'purple', 'orange', 'pink'];
-let currentColorIndex = 0;
-
-function cycleThemeColor() {
-    currentColorIndex = (currentColorIndex + 1) % colorThemes.length;
-    const newColorTheme = colorThemes[currentColorIndex];
-    document.documentElement.setAttribute('data-color', newColorTheme);
-    localStorage.setItem('color-theme', newColorTheme);
-}
-
-// Initialize color theme
-(function() {
-    const savedColorTheme = localStorage.getItem('color-theme') || 'green';
-    document.documentElement.setAttribute('data-color', savedColorTheme);
-    currentColorIndex = colorThemes.indexOf(savedColorTheme);
-})();
-
 // Tab functionality
 function initializeTabs() {
     const tabs = document.querySelectorAll('.tab');
@@ -109,3 +91,21 @@ function initializeTabs() {
         });
     });
 }
+
+// Theme color cycling
+const colorThemes = ['green', 'blue', 'purple', 'orange', 'pink'];
+let currentColorIndex = 0;
+
+function cycleThemeColor() {
+    currentColorIndex = (currentColorIndex + 1) % colorThemes.length;
+    const newColorTheme = colorThemes[currentColorIndex];
+    document.documentElement.setAttribute('data-color', newColorTheme);
+    localStorage.setItem('color-theme', newColorTheme);
+}
+
+// Initialize color theme
+(function() {
+    const savedColorTheme = localStorage.getItem('color-theme') || 'green';
+    document.documentElement.setAttribute('data-color', savedColorTheme);
+    currentColorIndex = colorThemes.indexOf(savedColorTheme);
+})();

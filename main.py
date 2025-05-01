@@ -5,6 +5,8 @@ import os
 
 # Initialize variables to store contest statistics and problem mappings
 latest_contest_abc = None
+latest_contest_arc = None
+latest_contest_agc = None
 statics = {
     'abc': {},  # Store ABC contest problems and their details
     'arc': {},  # Store ARC contest problems and their details
