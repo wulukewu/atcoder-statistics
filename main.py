@@ -5,8 +5,6 @@ import os
 
 # Initialize variables to store contest statistics and problem mappings
 latest_contest_abc = None
-latest_contest_arc = None
-latest_contest_agc = None
 statics = {
     'abc': {},  # Store ABC contest problems and their details
     'arc': {},  # Store ARC contest problems and their details
@@ -142,6 +140,10 @@ for contest_id in statics['abc']:
             point = statics['abc'][contest_id][problem_id]['point']
             difficulty = statics['abc'][contest_id][problem_id]['difficulty']
 
+            # Skip problems with None point values
+            if point is None:
+                continue
+
             # print(f'    problem_id: {problem_id}')
             # print(f'        point: {point}')
             # print(f'        difficulty: {difficulty}')
@@ -175,6 +177,97 @@ for contest_id in statics['abc']:
         elif int(contest_id.replace('abc', '')) > int(latest_contest_abc.replace('ABC', '')):
             latest_contest_abc = contest_id.upper()
 
+# Process ARC contest statistics specifically
+arc_statics = {}
+for contest_id in statics['arc']:
+    # Skip older contests if needed
+    # if int(contest_id.replace('arc', '')) <= 41: continue
+
+    contest_has_data = False
+
+    # Process each problem in the contest
+    for problem_id in statics['arc'][contest_id]:
+        if 'difficulty' in statics['arc'][contest_id][problem_id] and 'point' in statics['arc'][contest_id][problem_id]:
+            point = statics['arc'][contest_id][problem_id]['point']
+            difficulty = statics['arc'][contest_id][problem_id]['difficulty']
+
+            # Skip problems with None point values
+            if point is None:
+                continue
+
+            contest_has_data = True
+
+            # Determine color based on difficulty
+            if difficulty < 400: color = 'grey'
+            elif difficulty < 800: color = 'brown'
+            elif difficulty < 1200: color = 'green'
+            elif difficulty < 1600: color = 'cyan'
+            elif difficulty < 2000: color = 'blue'
+            elif difficulty < 2400: color = 'yellow'
+            elif difficulty < 2800: color = 'orange'
+            else: color = 'red'
+
+            # Assign the determined color to the problem based on its difficulty
+            statics['arc'][contest_id][problem_id]['color'] = color
+
+            # Update statistics for this point value and color
+            if point not in arc_statics:
+                arc_statics[point] = {}
+            if color not in arc_statics[point]:
+                arc_statics[point][color] = 0
+            arc_statics[point][color] += 1
+
+    # Update latest ARC contest ID
+    if contest_has_data:
+        if latest_contest_arc is None:
+            latest_contest_arc = contest_id.upper()
+        elif int(contest_id.replace('arc', '')) > int(latest_contest_arc.replace('ARC', '')):
+            latest_contest_arc = contest_id.upper()
+
+# Process AGC contest statistics specifically
+agc_statics = {}
+for contest_id in statics['agc']:
+    contest_has_data = False
+
+    # Process each problem in the contest
+    for problem_id in statics['agc'][contest_id]:
+        if 'difficulty' in statics['agc'][contest_id][problem_id] and 'point' in statics['agc'][contest_id][problem_id]:
+            point = statics['agc'][contest_id][problem_id]['point']
+            difficulty = statics['agc'][contest_id][problem_id]['difficulty']
+
+            # Skip problems with None point values
+            if point is None:
+                continue
+
+            contest_has_data = True
+
+            # Determine color based on difficulty
+            if difficulty < 400: color = 'grey'
+            elif difficulty < 800: color = 'brown'
+            elif difficulty < 1200: color = 'green'
+            elif difficulty < 1600: color = 'cyan'
+            elif difficulty < 2000: color = 'blue'
+            elif difficulty < 2400: color = 'yellow'
+            elif difficulty < 2800: color = 'orange'
+            else: color = 'red'
+
+            # Assign the determined color to the problem based on its difficulty
+            statics['agc'][contest_id][problem_id]['color'] = color
+
+            # Update statistics for this point value and color
+            if point not in agc_statics:
+                agc_statics[point] = {}
+            if color not in agc_statics[point]:
+                agc_statics[point][color] = 0
+            agc_statics[point][color] += 1
+
+    # Update latest AGC contest ID
+    if contest_has_data:
+        if latest_contest_agc is None:
+            latest_contest_agc = contest_id.upper()
+        elif int(contest_id.replace('agc', '')) > int(latest_contest_agc.replace('AGC', '')):
+            latest_contest_agc = contest_id.upper()
+
 # Create directory for JSON output if it doesn't exist
 os.makedirs('web-page/json', exist_ok=True)
 
@@ -190,32 +283,96 @@ with open('web-page/json/statics.json', 'w', encoding='utf-8') as f:
 with open('web-page/json/abc_statics.json', 'w', encoding='utf-8') as f:
     json.dump(abc_statics, f, ensure_ascii=False, indent=2)
 
+# Save ARC statistics for debugging
+with open('web-page/json/arc_statics.json', 'w', encoding='utf-8') as f:
+    json.dump(arc_statics, f, ensure_ascii=False, indent=2)
+
+# Save AGC statistics for debugging
+with open('web-page/json/agc_statics.json', 'w', encoding='utf-8') as f:
+    json.dump(agc_statics, f, ensure_ascii=False, indent=2)
+
 print(f'latest_contest_abc: {latest_contest_abc}')
 print(f'abc_statics: {abc_statics}')
+print(f'latest_contest_arc: {latest_contest_arc}')
+print(f'arc_statics: {arc_statics}')
+print(f'latest_contest_agc: {latest_contest_agc}')
+print(f'agc_statics: {agc_statics}')
 
-# Generate HTML table rows for the statistics
-table_rows = ""
+# Generate HTML table rows for the ABC statistics
+abc_table_rows = ""
 for point, color_counts in sorted(abc_statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
-    table_rows += f"            <tr>\n"
-    table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
+    abc_table_rows += f"            <tr>\n"
+    abc_table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = round((count / total_count) * 100, 2)
         circle_color_class = f"color-{color}" if count > 0 else "empty-color"
         bg_color_class = f"bg-{color}" if count > 0 else ""
-        table_rows += f"                <td>\n"
-        table_rows += f"                    <div class='stats-container'>\n"
-        table_rows += f"                        <div class='circle-container'>\n"
-        table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
-        table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
-        table_rows += f"                            </div>\n"
-        table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
-        table_rows += "                        </div>\n"
-        table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
-        table_rows += "                    </div>\n"
-        table_rows += "                </td>\n"
-    table_rows += "            </tr>\n"
+        abc_table_rows += f"                <td>\n"
+        abc_table_rows += f"                    <div class='stats-container'>\n"
+        abc_table_rows += f"                        <div class='circle-container'>\n"
+        abc_table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
+        abc_table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
+        abc_table_rows += f"                            </div>\n"
+        abc_table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
+        abc_table_rows += "                        </div>\n"
+        abc_table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
+        abc_table_rows += "                    </div>\n"
+        abc_table_rows += "                </td>\n"
+    abc_table_rows += "            </tr>\n"
+
+# Generate HTML table rows for the ARC statistics
+arc_table_rows = ""
+# Filter out None keys from arc_statics before sorting
+filtered_arc_statics = {k: v for k, v in arc_statics.items() if k is not None}
+for point, color_counts in sorted(filtered_arc_statics.items()):
+    total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
+    arc_table_rows += f"            <tr>\n"
+    arc_table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
+    for color in colors:
+        count = color_counts.get(color, 0)  # Default to 0 if color not found
+        percentage = round((count / total_count) * 100, 2)
+        circle_color_class = f"color-{color}" if count > 0 else "empty-color"
+        bg_color_class = f"bg-{color}" if count > 0 else ""
+        arc_table_rows += f"                <td>\n"
+        arc_table_rows += f"                    <div class='stats-container'>\n"
+        arc_table_rows += f"                        <div class='circle-container'>\n"
+        arc_table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
+        arc_table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
+        arc_table_rows += f"                            </div>\n"
+        arc_table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
+        arc_table_rows += "                        </div>\n"
+        arc_table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
+        arc_table_rows += "                    </div>\n"
+        arc_table_rows += "                </td>\n"
+    arc_table_rows += "            </tr>\n"
+
+# Generate HTML table rows for the AGC statistics
+agc_table_rows = ""
+# Filter out None keys from agc_statics before sorting
+filtered_agc_statics = {k: v for k, v in agc_statics.items() if k is not None}
+for point, color_counts in sorted(filtered_agc_statics.items()):
+    total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
+    agc_table_rows += f"            <tr>\n"
+    agc_table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
+    for color in colors:
+        count = color_counts.get(color, 0)  # Default to 0 if color not found
+        percentage = round((count / total_count) * 100, 2)
+        circle_color_class = f"color-{color}" if count > 0 else "empty-color"
+        bg_color_class = f"bg-{color}" if count > 0 else ""
+        agc_table_rows += f"                <td>\n"
+        agc_table_rows += f"                    <div class='stats-container'>\n"
+        agc_table_rows += f"                        <div class='circle-container'>\n"
+        agc_table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
+        agc_table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
+        agc_table_rows += f"                            </div>\n"
+        agc_table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
+        agc_table_rows += "                        </div>\n"
+        agc_table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
+        agc_table_rows += "                    </div>\n"
+        agc_table_rows += "                </td>\n"
+    agc_table_rows += "            </tr>\n"
 
 # Read the HTML template
 with open('web-page/template.html', 'r') as template_file:
@@ -224,7 +381,11 @@ with open('web-page/template.html', 'r') as template_file:
 # Generate final HTML by replacing placeholders
 html_content = template.format(
     latest_contest_abc=latest_contest_abc,
-    table_rows=table_rows
+    latest_contest_arc=latest_contest_arc if latest_contest_arc else "N/A",
+    latest_contest_agc=latest_contest_agc if latest_contest_agc else "N/A",
+    abc_table_rows=abc_table_rows,
+    arc_table_rows=arc_table_rows,
+    agc_table_rows=agc_table_rows
 )
 
 # Write the final HTML file
