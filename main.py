@@ -73,13 +73,6 @@ for problem in contest_problems:
     else:
         problem_id_to_contest_id[problem['problem_id']].append(problem['contest_id'])
 
-# Create directory for JSON output if it doesn't exist
-os.makedirs('web-page/json', exist_ok=True)
-
-# Save problem ID to contest ID mapping for debugging
-with open('web-page/json/problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
-    json.dump(problem_id_to_contest_id, f, ensure_ascii=False, indent=2)
-
 # Add difficulty information from problem models
 for problem in problem_models:
     # print(f'problem: {problem}')
@@ -131,10 +124,6 @@ for problem in merged_problems:
                     'point': problem['point'],
                 }
 
-# Save complete statistics for debugging
-with open('web-page/json/statics.json', 'w', encoding='utf-8') as f:
-    json.dump(statics, f, ensure_ascii=False, indent=2)
-
 # print(statics)
 
 # Process ABC contest statistics specifically
@@ -167,6 +156,9 @@ for contest_id in statics['abc']:
             elif difficulty < 2800: color = 'orange'
             else: color = 'red'
 
+            # Assign the determined color to the problem based on its difficulty
+            statics['abc'][contest_id][problem_id]['color'] = color
+
             # Update statistics for this point value and color
             if point not in abc_statics:
                 abc_statics[point] = {}
@@ -180,6 +172,17 @@ for contest_id in statics['abc']:
             latest_contest_abc = contest_id.upper()
         elif int(contest_id.replace('abc', '')) > int(latest_contest_abc.replace('ABC', '')):
             latest_contest_abc = contest_id.upper()
+
+# Create directory for JSON output if it doesn't exist
+os.makedirs('web-page/json', exist_ok=True)
+
+# Save problem ID to contest ID mapping for debugging
+with open('web-page/json/problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
+    json.dump(problem_id_to_contest_id, f, ensure_ascii=False, indent=2)
+
+# Save complete statistics for debugging
+with open('web-page/json/statics.json', 'w', encoding='utf-8') as f:
+    json.dump(statics, f, ensure_ascii=False, indent=2)
 
 # Save ABC statistics for debugging
 with open('web-page/json/abc_statics.json', 'w', encoding='utf-8') as f:
