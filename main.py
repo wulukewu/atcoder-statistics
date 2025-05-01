@@ -5,6 +5,7 @@ import os
 
 # Initialize variables to store contest statistics and problem mappings
 latest_contest_abc = None
+latest_contest_arc = None
 statics = {
     'abc': {},  # Store ABC contest problems and their details
     'arc': {},  # Store ARC contest problems and their details
@@ -220,53 +221,6 @@ for contest_id in statics['arc']:
         elif int(contest_id.replace('arc', '')) > int(latest_contest_arc.replace('ARC', '')):
             latest_contest_arc = contest_id.upper()
 
-# Process AGC contest statistics specifically
-agc_statics = {}
-for contest_id in statics['agc']:
-    # Skip older contests if needed
-    # if int(contest_id.replace('agc', '')) <= 41: continue
-
-    contest_has_data = False
-
-    # Process each problem in the contest
-    for problem_id in statics['agc'][contest_id]:
-        if 'difficulty' in statics['agc'][contest_id][problem_id] and 'point' in statics['agc'][contest_id][problem_id]:
-            point = statics['agc'][contest_id][problem_id]['point']
-            difficulty = statics['agc'][contest_id][problem_id]['difficulty']
-
-            # print(f'    problem_id: {problem_id}')
-            # print(f'        point: {point}')
-            # print(f'        difficulty: {difficulty}')
-            # print(f'        problem_index: {statics["agc"][contest_id][problem_id]["problem_index"]}')
-            contest_has_data = True
-
-            # Determine color based on difficulty
-            if difficulty < 400: color = 'grey'
-            elif difficulty < 800: color = 'brown'
-            elif difficulty < 1200: color = 'green'
-            elif difficulty < 1600: color = 'cyan'
-            elif difficulty < 2000: color = 'blue'
-            elif difficulty < 2400: color = 'yellow'
-            elif difficulty < 2800: color = 'orange'
-            else: color = 'red'
-
-            # Assign the determined color to the problem based on its difficulty
-            statics['agc'][contest_id][problem_id]['color'] = color
-
-            # Update statistics for this point value and color
-            if point not in agc_statics:
-                agc_statics[point] = {}
-            if color not in agc_statics[point]:
-                agc_statics[point][color] = 0
-            agc_statics[point][color] += 1
-
-    # Update latest AGC contest ID
-    if contest_has_data:
-        if latest_contest_agc is None:
-            latest_contest_agc = contest_id.upper()
-        elif int(contest_id.replace('agc', '')) > int(latest_contest_agc.replace('AGC', '')):
-            latest_contest_agc = contest_id.upper()
-
 # Create directory for JSON output if it doesn't exist
 os.makedirs('web-page/json', exist_ok=True)
 
@@ -284,6 +238,8 @@ with open('web-page/json/abc_statics.json', 'w', encoding='utf-8') as f:
 
 print(f'latest_contest_abc: {latest_contest_abc}')
 print(f'abc_statics: {abc_statics}')
+print(f'latest_contest_arc: {latest_contest_arc}')
+print(f'arc_statics: {arc_statics}')
 
 # Generate HTML table rows for the statistics
 table_rows = ""
@@ -308,20 +264,6 @@ for point, color_counts in sorted(abc_statics.items()):
         table_rows += "                    </div>\n"
         table_rows += "                </td>\n"
     table_rows += "            </tr>\n"
-
-# Read the HTML template
-with open('web-page/template.html', 'r') as template_file:
-    template = template_file.read()
-
-# Generate final HTML by replacing placeholders
-html_content = template.format(
-    latest_contest_abc=latest_contest_abc,
-    table_rows=table_rows
-)
-
-# Write the final HTML file
-with open('web-page/index.html', 'w') as file:
-    file.write(html_content)
 
 # Generate HTML table rows for the ARC statistics
 arc_table_rows = ""
@@ -349,14 +291,9 @@ for point, color_counts in sorted(filtered_arc_statics.items()):
         arc_table_rows += "                </td>\n"
     arc_table_rows += "            </tr>\n"
 
-# Save ARC statistics for debugging
-with open('web-page/json/arc_statics.json', 'w', encoding='utf-8') as f:
-    json.dump(arc_statics, f, ensure_ascii=False, indent=2)
-
-print(f'latest_contest_abc: {latest_contest_abc}')
-print(f'abc_statics: {abc_statics}')
-print(f'latest_contest_arc: {latest_contest_arc}')
-print(f'arc_statics: {arc_statics}')
+# Read the HTML template
+with open('web-page/template.html', 'r') as template_file:
+    template = template_file.read()
 
 # Generate final HTML by replacing placeholders
 html_content = template.format(
