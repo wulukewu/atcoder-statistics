@@ -173,6 +173,50 @@ for contest_id in statics['abc']:
         elif int(contest_id.replace('abc', '')) > int(latest_contest_abc.replace('ABC', '')):
             latest_contest_abc = contest_id.upper()
 
+# Process ARC contest statistics specifically
+arc_statics = {}
+for contest_id in statics['arc']:
+    # Skip older contests if needed
+    # if int(contest_id.replace('arc', '')) <= 41: continue
+
+    contest_has_data = False
+    latest_contest_arc = None
+
+    # Process each problem in the contest
+    for problem_id in statics['arc'][contest_id]:
+        if 'difficulty' in statics['arc'][contest_id][problem_id] and 'point' in statics['arc'][contest_id][problem_id]:
+            point = statics['arc'][contest_id][problem_id]['point']
+            difficulty = statics['arc'][contest_id][problem_id]['difficulty']
+
+            contest_has_data = True
+
+            # Determine color based on difficulty
+            if difficulty < 400: color = 'grey'
+            elif difficulty < 800: color = 'brown'
+            elif difficulty < 1200: color = 'green'
+            elif difficulty < 1600: color = 'cyan'
+            elif difficulty < 2000: color = 'blue'
+            elif difficulty < 2400: color = 'yellow'
+            elif difficulty < 2800: color = 'orange'
+            else: color = 'red'
+
+            # Assign the determined color to the problem based on its difficulty
+            statics['arc'][contest_id][problem_id]['color'] = color
+
+            # Update statistics for this point value and color
+            if point not in arc_statics:
+                arc_statics[point] = {}
+            if color not in arc_statics[point]:
+                arc_statics[point][color] = 0
+            arc_statics[point][color] += 1
+
+    # Update latest ARC contest ID
+    if contest_has_data:
+        if latest_contest_arc is None:
+            latest_contest_arc = contest_id.upper()
+        elif int(contest_id.replace('arc', '')) > int(latest_contest_arc.replace('ARC', '')):
+            latest_contest_arc = contest_id.upper()
+
 # Create directory for JSON output if it doesn't exist
 os.makedirs('web-page/json', exist_ok=True)
 
@@ -190,6 +234,8 @@ with open('web-page/json/abc_statics.json', 'w', encoding='utf-8') as f:
 
 print(f'latest_contest_abc: {latest_contest_abc}')
 print(f'abc_statics: {abc_statics}')
+print(f'latest_contest_arc: {latest_contest_arc}')
+print(f'arc_statics: {arc_statics}')
 
 # Generate HTML table rows for the statistics
 table_rows = ""
@@ -215,6 +261,30 @@ for point, color_counts in sorted(abc_statics.items()):
         table_rows += "                </td>\n"
     table_rows += "            </tr>\n"
 
+# Generate HTML table rows for the ARC statistics
+arc_table_rows = ""
+for point, color_counts in sorted(arc_statics.items()):
+    total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
+    arc_table_rows += f"            <tr>\n"
+    arc_table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
+    for color in colors:
+        count = color_counts.get(color, 0)
+        percentage = round((count / total_count) * 100, 2)
+        circle_color_class = f"color-{color}" if count > 0 else "empty-color"
+        bg_color_class = f"bg-{color}" if count > 0 else ""
+        arc_table_rows += f"                <td>\n"
+        arc_table_rows += f"                    <div class='stats-container'>\n"
+        arc_table_rows += f"                        <div class='circle-container'>\n"
+        arc_table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
+        arc_table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
+        arc_table_rows += f"                            </div>\n"
+        arc_table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
+        arc_table_rows += "                        </div>\n"
+        arc_table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
+        arc_table_rows += "                    </div>\n"
+        arc_table_rows += "                </td>\n"
+    arc_table_rows += "            </tr>\n"
+
 # Read the HTML template
 with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
@@ -222,7 +292,9 @@ with open('web-page/template.html', 'r') as template_file:
 # Generate final HTML by replacing placeholders
 html_content = template.format(
     latest_contest_abc=latest_contest_abc,
-    table_rows=table_rows
+    latest_contest_arc=latest_contest_arc if 'latest_contest_arc' in locals() else "N/A",
+    table_rows=table_rows,
+    arc_table_rows=arc_table_rows
 )
 
 # Write the final HTML file
