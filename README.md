@@ -61,11 +61,11 @@ atcoder-statistics/
 
 The generated HTML page displays a table similar to this:
 
-| Difficulty | Grey       | Brown  | Green  | Cyan   | Blue   | Yellow | Orange | Red    |
-| :--------- | :--------- | :----- | :----- | :----- | :----- | :----- | :----- | :----- |
-| 100        | 331 (100%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
-| 150        | 20 (100%)  | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
-| ...        | ...        | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
+| Score    | Grey       | Brown  | Green  | Cyan   | Blue   | Yellow | Orange | Red    |
+| :------- | :--------- | :----- | :----- | :----- | :----- | :----- | :----- | :----- |
+| 100      | 331 (100%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
+| 150      | 20 (100%)  | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
+| ...      | ...        | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
 
 Each cell in the table contains a progress circle visually representing the percentage, along with the raw count and percentage value.
 
