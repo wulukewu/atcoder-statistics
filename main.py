@@ -2,7 +2,7 @@ import time
 import requests
 import json
 
-latest_contest = None
+latest_contest_abc = None
 statics = {
     'abc': {},
     'arc': {},
@@ -157,12 +157,12 @@ for contest_id in statics['abc']:
             abc_statics[point][color] += 1
 
     if contest_has_data:
-        if latest_contest is None:
-            latest_contest = contest_id.upper()
-        elif int(contest_id.replace('abc', '')) > int(latest_contest.replace('ABC', '')):
-            latest_contest = contest_id.upper()
+        if latest_contest_abc is None:
+            latest_contest_abc = contest_id.upper()
+        elif int(contest_id.replace('abc', '')) > int(latest_contest_abc.replace('ABC', '')):
+            latest_contest_abc = contest_id.upper()
 
-print(f'latest_contest: {latest_contest}')
+print(f'latest_contest_abc: {latest_contest_abc}')
 print(f'abc_statics: {abc_statics}')
 
 # Generate table rows HTML
@@ -195,7 +195,7 @@ with open("web-page/template.html", "r") as template_file:
 
 # Replace placeholders with actual content
 html_content = template.format(
-    latest_contest=latest_contest,
+    latest_contest_abc=latest_contest_abc,
     table_rows=table_rows
 )
 
