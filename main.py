@@ -323,4 +323,51 @@ html_content = template.format(
 with open('web-page/index.html', 'w') as file:
     file.write(html_content)
 
+# Generate HTML table rows for the ARC statistics
+arc_table_rows = ""
+# Filter out None keys from arc_statics before sorting
+filtered_arc_statics = {k: v for k, v in arc_statics.items() if k is not None}
+for point, color_counts in sorted(filtered_arc_statics.items()):
+    total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
+    arc_table_rows += f"            <tr>\n"
+    arc_table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
+    for color in colors:
+        count = color_counts.get(color, 0)  # Default to 0 if color not found
+        percentage = round((count / total_count) * 100, 2)
+        circle_color_class = f"color-{color}" if count > 0 else "empty-color"
+        bg_color_class = f"bg-{color}" if count > 0 else ""
+        arc_table_rows += f"                <td>\n"
+        arc_table_rows += f"                    <div class='stats-container'>\n"
+        arc_table_rows += f"                        <div class='circle-container'>\n"
+        arc_table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
+        arc_table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
+        arc_table_rows += f"                            </div>\n"
+        arc_table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
+        arc_table_rows += "                        </div>\n"
+        arc_table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
+        arc_table_rows += "                    </div>\n"
+        arc_table_rows += "                </td>\n"
+    arc_table_rows += "            </tr>\n"
+
+# Save ARC statistics for debugging
+with open('web-page/json/arc_statics.json', 'w', encoding='utf-8') as f:
+    json.dump(arc_statics, f, ensure_ascii=False, indent=2)
+
+print(f'latest_contest_abc: {latest_contest_abc}')
+print(f'abc_statics: {abc_statics}')
+print(f'latest_contest_arc: {latest_contest_arc}')
+print(f'arc_statics: {arc_statics}')
+
+# Generate final HTML by replacing placeholders
+html_content = template.format(
+    latest_contest_abc=latest_contest_abc,
+    latest_contest_arc=latest_contest_arc if latest_contest_arc else "N/A",
+    table_rows=table_rows,
+    arc_table_rows=arc_table_rows
+)
+
+# Write the final HTML file
+with open('web-page/index.html', 'w') as file:
+    file.write(html_content)
+
 print('[INFO] Successfully generated web page')
