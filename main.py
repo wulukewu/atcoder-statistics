@@ -2,7 +2,7 @@ import time
 import requests
 import json
 
-latest_problem = None
+latest_contest = None
 statics = {
     'abc': {},
     'arc': {},
@@ -123,6 +123,28 @@ with open('debug_statics.json', 'w', encoding='utf-8') as f:
 
 # print(statics)
 
+for contest_id in statics['abc']:
+    print(f'contest_id: {contest_id}')
+    if int(contest_id.replace('abc', '')) <= 41: continue
+
+    contest_has_data = False
+
+    for problem_id in statics['abc'][contest_id]:
+        if 'difficulty' in statics['abc'][contest_id][problem_id] and 'point' in statics['abc'][contest_id][problem_id]:
+            print(f'    problem_id: {problem_id}')
+            print(f'        point: {statics["abc"][contest_id][problem_id]["point"]}')
+            print(f'        difficulty: {statics["abc"][contest_id][problem_id]["difficulty"]}')
+            print(f'        problem_index: {statics["abc"][contest_id][problem_id]["problem_index"]}')
+            contest_has_data = True
+    
+    if contest_has_data:
+        if latest_contest is None:
+            latest_contest = contest_id.upper()
+        elif int(contest_id.replace('abc', '')) > int(latest_contest.replace('ABC', '')):
+            latest_contest = contest_id.upper()
+
+print(f'latest_contest: {latest_contest}')
+
 # Generate table rows HTML
 table_rows = ""
 for diff, color_counts in sorted(statics.items()):
@@ -153,7 +175,7 @@ with open("web-page/template.html", "r") as template_file:
 
 # Replace placeholders with actual content
 html_content = template.format(
-    latest_problem=latest_problem,
+    latest_contest=latest_contest,
     table_rows=table_rows
 )
 
