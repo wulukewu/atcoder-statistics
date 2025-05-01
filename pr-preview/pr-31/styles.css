@@ -39,7 +39,7 @@
   --hover-bg: var(--gray-100);
   --header-bg: var(--gray-50);
   --title-color: var(--gray-900);
-  --score-color: var(--gray-700);
+  --difficulty-color: var(--gray-700);
   --empty-color: var(--gray-400);
   --empty-border-color: var(--gray-300);
 }
@@ -56,7 +56,7 @@
   --hover-bg: var(--gray-700);
   --header-bg: var(--gray-800);
   --title-color: var(--gray-50);
-  --score-color: var(--gray-100);
+  --difficulty-color: var(--gray-100);
   --empty-color: var(--gray-500);
   --empty-border-color: var(--gray-600);
 }
@@ -384,7 +384,37 @@ header {
   background-color: var(--hover-bg);
 }
 
-.stats-table tr:hover .difficulty-label {
+.score-label {
+  font-weight: 600;
+  color: var(--score-color);
+  position: sticky;
+  left: 0;
+  background-color: var(--card-bg);
+  z-index: 5;
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
+  padding-right: 1rem;
+  border-right: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.score-label:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+  background-color: var(--hover-bg);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-mode="dark"] .score-label {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-mode="dark"] .score-label:hover {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
+  background-color: var(--gray-700);
+}
+
+.stats-table tr:hover .score-label {
   color: var(--primary);
   transform: translateX(5px);
   background-color: var(--hover-bg);
@@ -398,36 +428,6 @@ header {
 
 :root[data-mode="dark"] .stats-table thead tr:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.difficulty-label {
-  font-weight: 600;
-  color: var(--score-color);
-  position: sticky;
-  left: 0;
-  background-color: var(--card-bg);
-  z-index: 5;
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
-  padding-right: 1rem;
-  border-right: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-}
-
-.difficulty-label:hover {
-  color: var(--primary);
-  transform: translateX(5px);
-  background-color: var(--hover-bg);
-  border-right: 1px solid var(--border-color);
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
-}
-
-:root[data-mode="dark"] .difficulty-label {
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.4);
-}
-
-:root[data-mode="dark"] .difficulty-label:hover {
-  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
-  background-color: var(--gray-700);
 }
 
 .stats-table th:first-child {
