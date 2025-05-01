@@ -123,6 +123,7 @@ with open('debug_statics.json', 'w', encoding='utf-8') as f:
 
 # print(statics)
 
+abc_statics = {}
 for contest_id in statics['abc']:
     print(f'contest_id: {contest_id}')
     if int(contest_id.replace('abc', '')) <= 41: continue
@@ -148,7 +149,14 @@ for contest_id in statics['abc']:
             elif difficulty < 2400: color = 'yellow'
             elif difficulty < 2800: color = 'orange'
             else: color = 'red'
-    
+
+            point = int(point)
+            if point not in abc_statics:
+                abc_statics[point] = {}
+            if color not in abc_statics[point]:
+                abc_statics[point][color] = 0
+            abc_statics[point][color] += 1
+
     if contest_has_data:
         if latest_contest is None:
             latest_contest = contest_id.upper()
@@ -156,10 +164,11 @@ for contest_id in statics['abc']:
             latest_contest = contest_id.upper()
 
 print(f'latest_contest: {latest_contest}')
+print(f'abc_statics: {abc_statics}')
 
 # Generate table rows HTML
 table_rows = ""
-for diff, color_counts in sorted(statics.items()):
+for diff, color_counts in sorted(abc_statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
     table_rows += f"            <tr>\n"
     table_rows += f"                <td class='difficulty-label'>{diff}</td>\n"
@@ -194,3 +203,5 @@ html_content = template.format(
 # Write the final HTML
 with open("web-page/index.html", "w") as file:
     file.write(html_content)
+
+print('[INFO] Successfully generated web page')
