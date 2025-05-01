@@ -1,6 +1,6 @@
 // Prevent flash of unstyled content
 (function() {
-    const mode = localStorage.getItem('mode') || 
+    const mode = localStorage.getItem('mode') ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const colorTheme = localStorage.getItem('color-theme') || 'green';
     document.documentElement.setAttribute('data-mode', mode);
@@ -10,13 +10,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize progress circles
     initializeProgressCircles();
-    
+
     // Set dynamic animation delays for table rows
     setTableRowAnimations();
-    
+
     // Initialize theme icon
     const mode = document.documentElement.getAttribute('data-mode');
     updateThemeIcon(mode);
+
+    // Initialize tab functionality
+    initializeTabs();
 });
 
 function initializeProgressCircles() {
@@ -65,6 +68,28 @@ function updateThemeIcon(mode) {
         sunIcon.style.display = 'block';
         moonIcon.style.display = 'none';
     }
+}
+
+// Tab functionality
+function initializeTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            // Show corresponding content
+            const tabId = tab.getAttribute('data-tab');
+            document.getElementById(tabId + '-content').classList.add('active');
+
+            // Re-initialize progress circles for newly visible content
+            initializeProgressCircles();
+        });
+    });
 }
 
 // Theme color cycling
