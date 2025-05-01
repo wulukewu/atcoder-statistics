@@ -10,23 +10,23 @@ statics = {
     'other': {}
 }
 problem_id_to_contest_id = {}
-colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
+colors = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
 color_codes = {
-    "grey": "#6b7280",  # --gray-500
-    "brown": "#a16207",  # --brown
-    "green": "#22c55e",  # --green
-    "cyan": "#06b6d4",  # --cyan
-    "blue": "#3b82f6",  # --blue
-    "yellow": "#eab308",  # --yellow
-    "orange": "#f97316",  # --orange
-    "red": "#ef4444",  # --red
+    'grey': '#6b7280',  # --gray-500
+    'brown': '#a16207',  # --brown
+    'green': '#22c55e',  # --green
+    'cyan': '#06b6d4',  # --cyan
+    'blue': '#3b82f6',  # --blue
+    'yellow': '#eab308',  # --yellow
+    'orange': '#f97316',  # --orange
+    'red': '#ef4444',  # --red
 }
 
-contest_problems = requests.get("https://kenkoooo.com/atcoder/resources/contest-problem.json").json()
+contest_problems = requests.get('https://kenkoooo.com/atcoder/resources/contest-problem.json').json()
 # print('contest_problems', contest_problems)
-problem_models = requests.get("https://kenkoooo.com/atcoder/resources/problem-models.json").json()
+problem_models = requests.get('https://kenkoooo.com/atcoder/resources/problem-models.json').json()
 # print('problem_models', problem_models)
-merged_problems = requests.get("https://kenkoooo.com/atcoder/resources/merged-problems.json").json()
+merged_problems = requests.get('https://kenkoooo.com/atcoder/resources/merged-problems.json').json()
 # print('merged_problems', merged_problems)
 
 for problem in contest_problems:
@@ -131,11 +131,23 @@ for contest_id in statics['abc']:
 
     for problem_id in statics['abc'][contest_id]:
         if 'difficulty' in statics['abc'][contest_id][problem_id] and 'point' in statics['abc'][contest_id][problem_id]:
+            point = statics['abc'][contest_id][problem_id]['point']
+            difficulty = statics['abc'][contest_id][problem_id]['difficulty']
+
             print(f'    problem_id: {problem_id}')
-            print(f'        point: {statics["abc"][contest_id][problem_id]["point"]}')
-            print(f'        difficulty: {statics["abc"][contest_id][problem_id]["difficulty"]}')
+            print(f'        point: {point}')
+            print(f'        difficulty: {difficulty}')
             print(f'        problem_index: {statics["abc"][contest_id][problem_id]["problem_index"]}')
             contest_has_data = True
+
+            if difficulty < 400: color = 'grey'
+            elif difficulty < 800: color = 'brown'
+            elif difficulty < 1200: color = 'green'
+            elif difficulty < 1600: color = 'cyan'
+            elif difficulty < 2000: color = 'blue'
+            elif difficulty < 2400: color = 'yellow'
+            elif difficulty < 2800: color = 'orange'
+            else: color = 'red'
     
     if contest_has_data:
         if latest_contest is None:
