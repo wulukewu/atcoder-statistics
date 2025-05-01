@@ -16,7 +16,7 @@
         </div>
         <div class="container header-content">
             <h1>AtCoder Statistics</h1>
-            <h2>Latest Contest: ABC - {latest_contest_abc} | ARC - {latest_contest_arc} | AGC - {latest_contest_agc}</h2>
+            <h2>Latest Contest: {latest_contest_abc}</h2>
         </div>
     </header>
     <div class="container">
@@ -26,11 +26,9 @@
                 <div class="card-title">AtCoder Problems</div>
             </div>
             <div class="tabs">
-                <div class="tab active" data-tab="abc-table">AtCoder Beginner Contest</div>
-                <div class="tab" data-tab="arc-table">AtCoder Regular Contest</div>
-                <div class="tab" data-tab="agc-table">AtCoder Grand Contest</div>
+                <div class="tab active" data-tab="table">AtCoder Beginner Contest</div>
             </div>
-            <div class="tab-content active" id="abc-table-content">
+            <div class="tab-content active" id="table-content">
                 <div class="table-responsive">
                     <table class="stats-table">
                         <thead>
@@ -47,51 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {abc_table_rows}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="tab-content" id="arc-table-content">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Difficulty</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {arc_table_rows}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="tab-content" id="agc-table-content">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Difficulty</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {agc_table_rows}
+                            {table_rows}
                         </tbody>
                     </table>
                 </div>

@@ -10,16 +10,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize progress circles
     initializeProgressCircles();
-
+    
     // Set dynamic animation delays for table rows
     setTableRowAnimations();
-
+    
     // Initialize theme icon
     const mode = document.documentElement.getAttribute('data-mode');
     updateThemeIcon(mode);
-
-    // Initialize tab functionality
-    initializeTabs();
 });
 
 function initializeProgressCircles() {
@@ -87,25 +84,3 @@ function cycleThemeColor() {
     document.documentElement.setAttribute('data-color', savedColorTheme);
     currentColorIndex = colorThemes.indexOf(savedColorTheme);
 })();
-
-// Tab functionality
-function initializeTabs() {
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove active class from all tabs and content
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-            // Add active class to clicked tab
-            tab.classList.add('active');
-
-            // Show corresponding content
-            const tabId = tab.getAttribute('data-tab');
-            document.getElementById(tabId + '-content').classList.add('active');
-
-            // Re-initialize progress circles for newly visible content
-            initializeProgressCircles();
-        });
-    });
-}
