@@ -1,142 +1,202 @@
 import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+import requests
+import json
+import os
 
-
-def update_statics(diff, color, statics):
-    if diff in statics:
-        if color in statics[diff]:
-            statics[diff][color] += 1
-        else:
-            statics[diff][color] = 1
-    else:
-        statics[diff] = {}
-        statics[diff][color] = 1
-
-
-def process_problem_link(driver, link, color, statics):
-    driver.get(link)
-    try:
-        WebDriverWait(driver, 5).until(
-            lambda d: d.find_element(
-                By.XPATH,
-                '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
-            )
-        )
-        score = driver.find_element(
-            By.XPATH,
-            '//*[@id="task-statement"]/span/span[2]/p/var/span/span/span[2]',
-        )
-        diff = int(score.text)
-        # print(problem, diff, color)
-        update_statics(diff, color, statics)
-    except Exception as e:
-        print(f"Error to get score from {link}")
-        return
-
-
-options = webdriver.ChromeOptions()
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("--window-size=1920x1080")
-options.add_argument("--ignore-certificate-errors")
-options.add_argument("--allow-insecure-localhost")
-driver = webdriver.Chrome(options=options)
-driver.get("https://kenkoooo.com/atcoder/#/table")
-latest_problem = None
-statics = {}
-colors = ["grey", "brown", "green", "cyan", "blue", "yellow", "orange", "red"]
-color_codes = {
-    "grey": "#6b7280",  # --gray-500
-    "brown": "#a16207",  # --brown
-    "green": "#22c55e",  # --green
-    "cyan": "#06b6d4",  # --cyan
-    "blue": "#3b82f6",  # --blue
-    "yellow": "#eab308",  # --yellow
-    "orange": "#f97316",  # --orange
-    "red": "#ef4444",  # --red
+# Initialize variables to store contest statistics and problem mappings
+latest_contest_abc = None
+statics = {
+    'abc': {},  # Store ABC contest problems and their details
+    'arc': {},  # Store ARC contest problems and their details
+    'agc': {},  # Store AGC contest problems and their details
+    'other': {} # Store other contest problems and their details
 }
-problem_links = []
-try:
-    time.sleep(5)
-    table = driver.find_element(
-        By.XPATH, '//*[@id="root"]/div/div[2]/div/div[3]/div/div[1]/div[2]/table/tbody'
-    )
-    for row in table.find_elements(By.TAG_NAME, "tr"):
-        idx = 0
-        contest_problem_count = 0
-        for cell in row.find_elements(By.TAG_NAME, "td"):
-            try:
-                if idx == 0:
-                    problem = cell.text.split(" ")[1]
-                    # print(problem)
+problem_id_to_contest_id = {}  # Map problem IDs to their contest IDs
+
+# Define color scheme for difficulty levels
+colors = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
+color_codes = {
+    'grey': '#6b7280',   # --gray-500
+    'brown': '#a16207',  # --brown
+    'green': '#22c55e',  # --green
+    'cyan': '#06b6d4',   # --cyan
+    'blue': '#3b82f6',   # --blue
+    'yellow': '#eab308', # --yellow
+    'orange': '#f97316', # --orange
+    'red': '#ef4444',    # --red
+}
+
+# Fetch contest data from AtCoder API
+contest_problems = requests.get('https://kenkoooo.com/atcoder/resources/contest-problem.json').json()
+# print('contest_problems', contest_problems)
+problem_models = requests.get('https://kenkoooo.com/atcoder/resources/problem-models.json').json()
+# print('problem_models', problem_models)
+merged_problems = requests.get('https://kenkoooo.com/atcoder/resources/merged-problems.json').json()
+# print('merged_problems', merged_problems)
+
+# Process contest problems and organize them by contest type
+for problem in contest_problems:
+    # print(f'problem: {problem}')
+    # Categorize problems based on contest type (ABC, ARC, AGC, or other)
+    if 'abc' in problem['contest_id']:
+        if problem['contest_id'] not in statics['abc']:
+            statics['abc'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['abc'][problem['contest_id']]:
+            statics['abc'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    elif 'arc' in problem['contest_id']:
+        if problem['contest_id'] not in statics['arc']:
+            statics['arc'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['arc'][problem['contest_id']]:
+            statics['arc'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    elif 'agc' in problem['contest_id']:
+        if problem['contest_id'] not in statics['agc']:
+            statics['agc'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['agc'][problem['contest_id']]:
+            statics['agc'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    else:
+        if problem['contest_id'] not in statics['other']:
+            statics['other'][problem['contest_id']] = {}
+        if problem['problem_id'] not in statics['other'][problem['contest_id']]:
+            statics['other'][problem['contest_id']][problem['problem_id']] = {
+                'problem_index': problem['problem_index'],
+            }
+    
+    # Build problem ID to contest ID mapping
+    if problem['problem_id'] not in problem_id_to_contest_id:
+        problem_id_to_contest_id[problem['problem_id']] = [problem['contest_id']]
+    else:
+        problem_id_to_contest_id[problem['problem_id']].append(problem['contest_id'])
+
+# Add difficulty information from problem models
+for problem in problem_models:
+    # print(f'problem: {problem}')
+    # print(f'problem_models: {problem_models[problem]}')
+    if 'difficulty' in problem_models[problem] and problem in problem_id_to_contest_id:
+        for contest_id in problem_id_to_contest_id[problem]:
+            if 'abc' in contest_id:
+                if contest_id in statics['abc']:
+                    statics['abc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
                 else:
-                    try:
-                        diff = cell.find_element(
-                            By.CLASS_NAME, "table-problem-point"
-                        ).text
-                        diff = int(diff)
-                    except:
-                        diff = -1
+                    statics['abc'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+            elif 'arc' in contest_id:
+                if contest_id in statics['arc']:
+                    statics['arc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['arc'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+            elif 'agc' in contest_id:
+                if contest_id in statics['agc']:
+                    statics['agc'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['agc'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
+            else:
+                if contest_id in statics['other']:
+                    statics['other'][contest_id][problem]['difficulty'] = problem_models[problem]['difficulty']
+                else:
+                    statics['other'][contest_id][problem] = {
+                        'difficulty': problem_models[problem]['difficulty'],
+                    }
 
-                    try:
-                        problem_tmp = cell.find_element(By.TAG_NAME, "a")
-                        problem_link = problem_tmp.get_attribute("href")
-                        color = problem_tmp.get_attribute("class")
-                        color = color.split("difficulty-")[1]
-                    except:
-                        color = None
-                    # print(diff, color)
-                    if color is None:
-                        continue
-                    elif diff == -1:
-                        contest_problem_count += 1
-                        try:
-                            if int(problem.replace("ABC", "")) > 41:
-                                # print(problem_link)
-                                problem_links.append([problem, problem_link, color])
-                        except Exception as e:
-                            continue
-                    else:
-                        contest_problem_count += 1
-                        update_statics(diff, color, statics)
-                if contest_problem_count >= 4:
-                    if latest_problem is None:
-                        latest_problem = problem
-                    elif int(problem.replace("ABC", "")) > int(
-                        latest_problem.replace("ABC", "")
-                    ):
-                        latest_problem = problem
-                    # print(f'Latest Problem: {latest_problem}')
-            except Exception as e:
-                pass
-            idx += 1
-    # print(problem_links)
-    for problem, link, color in problem_links:
-        process_problem_link(driver, link, color, statics)
-    print(statics)
-except Exception as e:
-    print(e)
-driver.quit()
+# Add point information from merged problems
+for problem in merged_problems:
+    # print(f'problem: {problem}')
+    if problem['id'] in problem_id_to_contest_id:
+        for contest_id in problem_id_to_contest_id[problem['id']]:
+            if contest_id in statics['abc']:
+                statics['abc'][contest_id][problem['id']]['point'] = problem['point']
+            elif contest_id in statics['arc']:
+                statics['arc'][contest_id][problem['id']]['point'] = problem['point']
+            elif contest_id in statics['agc']:
+                statics['agc'][contest_id][problem['id']]['point'] = problem['point']
+            else:
+                statics['other'][contest_id][problem['id']] = {
+                    'point': problem['point'],
+                }
 
-# Calculate summary statistics
-total_solved = sum(sum(v.values()) for v in statics.values())
-total_possible = 0
-for diff, color_counts in statics.items():
-    total_possible += sum(color_counts.values())
-solve_rate = (
-    round((total_solved / total_possible) * 100, 2) if total_possible > 0 else 0
-)
+# print(statics)
 
-# Generate table rows HTML
+# Process ABC contest statistics specifically
+abc_statics = {}
+for contest_id in statics['abc']:
+    # print(f'contest_id: {contest_id}')
+    if int(contest_id.replace('abc', '')) <= 41: continue  # Skip older contests
+
+    contest_has_data = False
+
+    # Process each problem in the contest
+    for problem_id in statics['abc'][contest_id]:
+        if 'difficulty' in statics['abc'][contest_id][problem_id] and 'point' in statics['abc'][contest_id][problem_id]:
+            point = statics['abc'][contest_id][problem_id]['point']
+            difficulty = statics['abc'][contest_id][problem_id]['difficulty']
+
+            # print(f'    problem_id: {problem_id}')
+            # print(f'        point: {point}')
+            # print(f'        difficulty: {difficulty}')
+            # print(f'        problem_index: {statics["abc"][contest_id][problem_id]["problem_index"]}')
+            contest_has_data = True
+
+            # Determine color based on difficulty
+            if difficulty < 400: color = 'grey'
+            elif difficulty < 800: color = 'brown'
+            elif difficulty < 1200: color = 'green'
+            elif difficulty < 1600: color = 'cyan'
+            elif difficulty < 2000: color = 'blue'
+            elif difficulty < 2400: color = 'yellow'
+            elif difficulty < 2800: color = 'orange'
+            else: color = 'red'
+
+            # Assign the determined color to the problem based on its difficulty
+            statics['abc'][contest_id][problem_id]['color'] = color
+
+            # Update statistics for this point value and color
+            if point not in abc_statics:
+                abc_statics[point] = {}
+            if color not in abc_statics[point]:
+                abc_statics[point][color] = 0
+            abc_statics[point][color] += 1
+
+    # Update latest ABC contest ID
+    if contest_has_data:
+        if latest_contest_abc is None:
+            latest_contest_abc = contest_id.upper()
+        elif int(contest_id.replace('abc', '')) > int(latest_contest_abc.replace('ABC', '')):
+            latest_contest_abc = contest_id.upper()
+
+# Create directory for JSON output if it doesn't exist
+os.makedirs('web-page/json', exist_ok=True)
+
+# Save problem ID to contest ID mapping for debugging
+with open('web-page/json/problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
+    json.dump(problem_id_to_contest_id, f, ensure_ascii=False, indent=2)
+
+# Save complete statistics for debugging
+with open('web-page/json/statics.json', 'w', encoding='utf-8') as f:
+    json.dump(statics, f, ensure_ascii=False, indent=2)
+
+# Save ABC statistics for debugging
+with open('web-page/json/abc_statics.json', 'w', encoding='utf-8') as f:
+    json.dump(abc_statics, f, ensure_ascii=False, indent=2)
+
+print(f'latest_contest_abc: {latest_contest_abc}')
+print(f'abc_statics: {abc_statics}')
+
+# Generate HTML table rows for the statistics
 table_rows = ""
-for diff, color_counts in sorted(statics.items()):
+for point, color_counts in sorted(abc_statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
     table_rows += f"            <tr>\n"
-    table_rows += f"                <td class='difficulty-label'>{diff}</td>\n"
+    table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = round((count / total_count) * 100, 2)
@@ -155,16 +215,18 @@ for diff, color_counts in sorted(statics.items()):
         table_rows += "                </td>\n"
     table_rows += "            </tr>\n"
 
-# Read the template file
-with open("web-page/template.html", "r") as template_file:
+# Read the HTML template
+with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
-# Replace placeholders with actual content
+# Generate final HTML by replacing placeholders
 html_content = template.format(
-    latest_problem=latest_problem,
+    latest_contest_abc=latest_contest_abc,
     table_rows=table_rows
 )
 
-# Write the final HTML
-with open("web-page/index.html", "w") as file:
+# Write the final HTML file
+with open('web-page/index.html', 'w') as file:
     file.write(html_content)
+
+print('[INFO] Successfully generated web page')
