@@ -2,6 +2,7 @@ import time
 import requests
 import json
 import os
+from bs4 import BeautifulSoup
 
 # Initialize variables to store contest statistics and problem mappings
 latest_contest_abc = None
@@ -228,5 +229,15 @@ html_content = template.format(
 # Write the final HTML file
 with open('web-page/index.html', 'w') as file:
     file.write(html_content)
+
+# Format the HTML with better indentation
+with open('web-page/index.html', 'r') as file:
+    soup = BeautifulSoup(file.read(), 'html5lib')
+    # Set indentation to 2 spaces
+    soup.prettify(formatter=lambda s: s.replace('\t', '  '))
+    formatted_html = soup.prettify()
+
+with open('web-page/index.html', 'w') as file:
+    file.write(formatted_html)
 
 print('[INFO] Successfully generated web page')
