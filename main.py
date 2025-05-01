@@ -150,7 +150,6 @@ for contest_id in statics['abc']:
             elif difficulty < 2800: color = 'orange'
             else: color = 'red'
 
-            point = int(point)
             if point not in abc_statics:
                 abc_statics[point] = {}
             if color not in abc_statics[point]:
@@ -168,10 +167,10 @@ print(f'abc_statics: {abc_statics}')
 
 # Generate table rows HTML
 table_rows = ""
-for diff, color_counts in sorted(abc_statics.items()):
+for point, color_counts in sorted(abc_statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
     table_rows += f"            <tr>\n"
-    table_rows += f"                <td class='difficulty-label'>{diff}</td>\n"
+    table_rows += f"                <td class='difficulty-label'>{int(point)}</td>\n"
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = round((count / total_count) * 100, 2)
