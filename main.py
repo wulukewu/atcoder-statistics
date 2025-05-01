@@ -216,7 +216,7 @@ for point, color_counts in sorted(abc_statics.items()):
     table_rows += "            </tr>\n"
 
 # Read the HTML template
-with open("web-page/template.html", "r") as template_file:
+with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
 # Generate final HTML by replacing placeholders
@@ -226,7 +226,7 @@ html_content = template.format(
 )
 
 # Write the final HTML file
-with open("web-page/index.html", "w") as file:
+with open('web-page/index.html', 'w') as file:
     file.write(html_content)
 
 print('[INFO] Successfully generated web page')
