@@ -8,7 +8,7 @@ This dashboard scrapes and analyzes AtCoder problem data to provide insights int
 
 ## Features
 
-- **Difficulty Distribution**: View problems organized by difficulty score
+- **Score Distribution**: View problems organized by score
 - **Color Rating Analysis**: See the breakdown of problems by AtCoder's color rating system
 - **Responsive Design**: Works on desktop and mobile devices
 - **Dark/Light Mode**: Toggle between dark and light themes for comfortable viewing
