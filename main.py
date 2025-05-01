@@ -1,6 +1,7 @@
 import time
 import requests
 import json
+import os
 
 latest_contest_abc = None
 statics = {
@@ -64,8 +65,11 @@ for problem in contest_problems:
     else:
         problem_id_to_contest_id[problem['problem_id']].append(problem['contest_id'])
 
+# Create directory if it doesn't exist
+os.makedirs('web-page/json', exist_ok=True)
+
 # Save problem_id_to_contest_id to a JSON file for debugging
-with open('debug_problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
+with open('web-page/json/problem_id_to_contest_id.json', 'w', encoding='utf-8') as f:
     json.dump(problem_id_to_contest_id, f, ensure_ascii=False, indent=2)
 
 for problem in problem_models:
@@ -118,7 +122,7 @@ for problem in merged_problems:
                 }
 
 # Save statics to a JSON file for debugging
-with open('debug_statics.json', 'w', encoding='utf-8') as f:
+with open('web-page/json/statics.json', 'w', encoding='utf-8') as f:
     json.dump(statics, f, ensure_ascii=False, indent=2)
 
 # print(statics)
@@ -161,6 +165,10 @@ for contest_id in statics['abc']:
             latest_contest_abc = contest_id.upper()
         elif int(contest_id.replace('abc', '')) > int(latest_contest_abc.replace('ABC', '')):
             latest_contest_abc = contest_id.upper()
+
+# Save abc_statics to a JSON file for debugging
+with open('web-page/json/abc_statics.json', 'w', encoding='utf-8') as f:
+    json.dump(abc_statics, f, ensure_ascii=False, indent=2)
 
 print(f'latest_contest_abc: {latest_contest_abc}')
 print(f'abc_statics: {abc_statics}')
