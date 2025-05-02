@@ -29,7 +29,7 @@ for stat in merged_problems:
         if "difficulty" in problem_models[stat["id"]]:
             stats[stat[x]][stat["id"]]["difficulty"] = problem_models[stat["id"]]["difficulty"]
             y=problem_models[stat["id"]]["difficulty"]
-            if y<400: color="gray"
+            if y<400: color="grey"
             elif y<800: color="brown"
             elif y<1200: color="green"
             elif y<1600: color="cyan"
