@@ -46,13 +46,14 @@ for stat in stats:
     elif "agc" in stat:x="agc"
     else: continue
     for i in stats[stat].values():
+        # print(i)
         if ("color" not in i) or ("point" not in i): continue
         if i["point"]==None: continue
         if i["point"] not in chart[x]:chart[x][i["point"]]={}
         if i["color"] in chart[x][i["point"]]:
             chart[x][i["point"]][i["color"]]+=1
         else:
-            chart[x][i["point"]]={i["color"]:1}
+            chart[x][i["point"]][i["color"]]=1
 
 os.makedirs('web-page/json', exist_ok=True)
 # Save the stats dictionary to a JSON file
