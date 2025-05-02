@@ -61,7 +61,7 @@ atcoder-statistics/
 
 The generated HTML page displays a table similar to this:
 
-| Difficulty | Grey       | Brown  | Green  | Cyan   | Blue   | Yellow | Orange | Red    |
+| Score      | Grey       | Brown  | Green  | Cyan   | Blue   | Yellow | Orange | Red    |
 | :--------- | :--------- | :----- | :----- | :----- | :----- | :----- | :----- | :----- |
 | 100        | 331 (100%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
 | 150        | 20 (100%)  | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
