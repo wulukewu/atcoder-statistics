@@ -27,7 +27,7 @@ table_rows = ""
 for point, color_counts in sorted(abc_statics.items()):
     total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
     table_rows += f"            <tr>\n"
-    table_rows += f"                <td class='score-label'>{float(point)}</td>\n"
+    table_rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
     for color in colors:
         count = color_counts.get(color, 0)
         percentage = round((count / total_count) * 100, 2)
