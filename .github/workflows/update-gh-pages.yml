@@ -29,6 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run dict.py
+        run: python dict.py
+
       - name: Run main.py
         run: python main.py
 
@@ -51,7 +54,7 @@ jobs:
         run: |
           git checkout --orphan gh-pages
           git rm -rf .
-          git commit --allow-empty -m "Initial commit for gh-pages at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          git commit --allow-empty -m "Initial commit for gh-pages"
           git push origin gh-pages
           git checkout main
 
@@ -92,7 +95,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update website content at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            git commit -m "Update website content"
             git push origin gh-pages
           fi
           git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
