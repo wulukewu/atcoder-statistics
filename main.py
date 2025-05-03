@@ -4,6 +4,8 @@ import os
 # Load chart data from chart.json
 with open('web-page/json/chart.json', 'r', encoding='utf-8') as f:
     chart = json.load(f)
+with open('web-page/json/stats.json', 'r', encoding='utf-8') as f:
+    stats = json.load(f)
 
 # Initialize variables to store contest statistics
 latest_contest_abc = None
@@ -49,8 +51,14 @@ with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
 # Generate final HTML by replacing placeholders
+latest_contest_abc = "N/A"
+for contest_id in reversed(stats['abc']):
+    if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
+        latest_contest_abc = contest_id
+        break
+
 html_content = template.format(
-    latest_contest_abc="N/A",  # Replace with actual logic if needed
+    latest_contest_abc=latest_contest_abc.upper(),
     table_rows=table_rows
 )
 
