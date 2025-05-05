@@ -54,7 +54,7 @@ jobs:
         run: |
           git checkout --orphan gh-pages
           git rm -rf .
-          git commit --allow-empty -m "Initial commit for gh-pages"
+          git commit --allow-empty -m "Initial commit for gh-pages - $(date '+%Y-%m-%d %H:%M:%S')"
           git push origin gh-pages
           git checkout main
 
