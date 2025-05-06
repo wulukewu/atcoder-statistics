@@ -139,6 +139,10 @@ for contest_id in statics['abc']:
         if 'difficulty' in statics['abc'][contest_id][problem_id] and 'point' in statics['abc'][contest_id][problem_id]:
             point = statics['abc'][contest_id][problem_id]['point']
             difficulty = statics['abc'][contest_id][problem_id]['difficulty']
+            
+            # Skip problems with no difficulty
+            if difficulty is None:
+                continue
 
             # print(f'    problem_id: {problem_id}')
             # print(f'        point: {point}')
