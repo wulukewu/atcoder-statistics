@@ -146,8 +146,10 @@ for contest_id in statics['abc']:
             # print(f'        problem_index: {statics["abc"][contest_id][problem_id]["problem_index"]}')
             contest_has_data = True
 
-            # Determine color based on difficulty
-            if difficulty < 400: color = 'grey'
+            # Determine color based on difficulty - handle None case
+            if difficulty is None:
+                color = 'grey'  # Default color for problems with no difficulty
+            elif difficulty < 400: color = 'grey'
             elif difficulty < 800: color = 'brown'
             elif difficulty < 1200: color = 'green'
             elif difficulty < 1600: color = 'cyan'
