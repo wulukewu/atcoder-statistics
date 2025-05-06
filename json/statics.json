@@ -1087,6 +1087,7 @@
     "abc049": {
       "abc049_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc049_b": {
@@ -2541,10 +2542,12 @@
     "abc105": {
       "abc105_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc105_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc105_c": {
@@ -2667,10 +2670,12 @@
     "abc110": {
       "abc110_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc110_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc110_c": {
@@ -3079,10 +3084,12 @@
     "abc126": {
       "abc126_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc126_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc126_c": {
@@ -3949,10 +3956,12 @@
     "abc149": {
       "abc149_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc149_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc149_c": {
@@ -3983,10 +3992,12 @@
     "abc150": {
       "abc150_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc150_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc150_c": {
@@ -4473,10 +4484,12 @@
     "abc163": {
       "abc163_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc163_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc163_c": {
@@ -10631,10 +10644,12 @@
     "abc298": {
       "abc298_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc298_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc298_c": {
@@ -10677,10 +10692,12 @@
     "abc299": {
       "abc299_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc299_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc299_c": {
@@ -10923,10 +10940,12 @@
     "abc304": {
       "abc304_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc304_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc304_c": {
@@ -11019,10 +11038,12 @@
     "abc306": {
       "abc306_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 100.0
       },
       "abc306_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 200.0
       },
       "abc306_c": {
@@ -15047,220 +15068,353 @@
     "abc397": {
       "abc397_a": {
         "problem_index": "A",
-        "point": 100.0
+        "difficulty": -1252,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc397_b": {
         "problem_index": "B",
-        "point": 250.0
+        "difficulty": -340,
+        "point": 250.0,
+        "color": "grey"
       },
       "abc397_c": {
         "problem_index": "C",
-        "point": 350.0
+        "difficulty": 90,
+        "point": 350.0,
+        "color": "grey"
       },
       "abc397_d": {
         "problem_index": "D",
-        "point": 425.0
+        "difficulty": 1132,
+        "point": 425.0,
+        "color": "green"
       },
       "abc397_e": {
         "problem_index": "E",
-        "point": 475.0
+        "difficulty": 1484,
+        "point": 475.0,
+        "color": "cyan"
       },
       "abc397_f": {
         "problem_index": "F",
-        "point": 550.0
+        "difficulty": 1753,
+        "point": 550.0,
+        "color": "blue"
       },
       "abc397_g": {
         "problem_index": "G",
-        "point": 625.0
+        "difficulty": 2947,
+        "point": 625.0,
+        "color": "red"
       }
     },
     "abc398": {
       "abc398_a": {
         "problem_index": "A",
-        "point": 100.0
+        "difficulty": -1093,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc398_b": {
         "problem_index": "B",
-        "point": 250.0
+        "difficulty": -461,
+        "point": 250.0,
+        "color": "grey"
       },
       "abc398_c": {
         "problem_index": "C",
-        "point": 300.0
+        "difficulty": -70,
+        "point": 300.0,
+        "color": "grey"
       },
       "abc398_d": {
         "problem_index": "D",
-        "point": 425.0
+        "difficulty": 746,
+        "point": 425.0,
+        "color": "brown"
       },
       "abc398_e": {
         "problem_index": "E",
-        "point": 425.0
+        "difficulty": 1238,
+        "point": 425.0,
+        "color": "cyan"
       },
       "abc398_f": {
         "problem_index": "F",
-        "point": 500.0
+        "difficulty": 1033,
+        "point": 500.0,
+        "color": "green"
       },
       "abc398_g": {
         "problem_index": "G",
-        "point": 600.0
+        "difficulty": 3352,
+        "point": 600.0,
+        "color": "red"
       }
     },
     "abc399": {
       "abc399_a": {
         "problem_index": "A",
-        "point": 100.0
+        "difficulty": -1129,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc399_b": {
         "problem_index": "B",
-        "point": 200.0
+        "difficulty": -512,
+        "point": 200.0,
+        "color": "grey"
       },
       "abc399_c": {
         "problem_index": "C",
-        "point": 350.0
+        "difficulty": 312,
+        "point": 350.0,
+        "color": "grey"
       },
       "abc399_d": {
         "problem_index": "D",
-        "point": 400.0
+        "difficulty": 964,
+        "point": 400.0,
+        "color": "green"
       },
       "abc399_e": {
         "problem_index": "E",
-        "point": 500.0
+        "difficulty": 2045,
+        "point": 500.0,
+        "color": "yellow"
       },
       "abc399_f": {
         "problem_index": "F",
-        "point": 550.0
+        "difficulty": 1558,
+        "point": 550.0,
+        "color": "cyan"
       },
       "abc399_g": {
         "problem_index": "G",
-        "point": 675.0
+        "difficulty": 3625,
+        "point": 675.0,
+        "color": "red"
       }
     },
     "abc400": {
       "abc400_a": {
         "problem_index": "A",
-        "point": 100.0
+        "difficulty": -1201,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc400_b": {
         "problem_index": "B",
-        "point": 200.0
+        "difficulty": -600,
+        "point": 200.0,
+        "color": "grey"
       },
       "abc400_c": {
         "problem_index": "C",
-        "point": 350.0
+        "difficulty": 702,
+        "point": 350.0,
+        "color": "brown"
       },
       "abc400_d": {
         "problem_index": "D",
-        "point": 400.0
+        "difficulty": 1026,
+        "point": 400.0,
+        "color": "green"
       },
       "abc400_e": {
         "problem_index": "E",
-        "point": 425.0
+        "difficulty": 1226,
+        "point": 425.0,
+        "color": "cyan"
       },
       "abc400_f": {
         "problem_index": "F",
-        "point": 550.0
+        "difficulty": 2263,
+        "point": 550.0,
+        "color": "yellow"
       },
       "abc400_g": {
         "problem_index": "G",
-        "point": 625.0
+        "difficulty": 2813,
+        "point": 625.0,
+        "color": "red"
       }
     },
     "abc401": {
       "abc401_a": {
         "problem_index": "A",
-        "point": 100.0
+        "difficulty": -1160,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc401_b": {
         "problem_index": "B",
-        "point": 200.0
+        "difficulty": -807,
+        "point": 200.0,
+        "color": "grey"
       },
       "abc401_c": {
         "problem_index": "C",
-        "point": 300.0
+        "difficulty": 209,
+        "point": 300.0,
+        "color": "grey"
       },
       "abc401_d": {
         "problem_index": "D",
-        "point": 400.0
+        "difficulty": 1148,
+        "point": 400.0,
+        "color": "green"
       },
       "abc401_e": {
         "problem_index": "E",
-        "point": 450.0
+        "difficulty": 1270,
+        "point": 450.0,
+        "color": "cyan"
       },
       "abc401_f": {
         "problem_index": "F",
-        "point": 500.0
+        "difficulty": 1666,
+        "point": 500.0,
+        "color": "blue"
       },
       "abc401_g": {
         "problem_index": "G",
-        "point": 575.0
+        "difficulty": 2022,
+        "point": 575.0,
+        "color": "yellow"
       }
     },
     "abc402": {
       "abc402_a": {
-        "problem_index": "A"
+        "problem_index": "A",
+        "difficulty": -1084,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc402_b": {
-        "problem_index": "B"
+        "problem_index": "B",
+        "difficulty": -680,
+        "point": 200.0,
+        "color": "grey"
       },
       "abc402_c": {
-        "problem_index": "C"
+        "problem_index": "C",
+        "difficulty": 331,
+        "point": 300.0,
+        "color": "grey"
       },
       "abc402_d": {
-        "problem_index": "D"
+        "problem_index": "D",
+        "difficulty": 827,
+        "point": 400.0,
+        "color": "green"
       },
       "abc402_e": {
-        "problem_index": "E"
+        "problem_index": "E",
+        "difficulty": 1409,
+        "point": 450.0,
+        "color": "cyan"
       },
       "abc402_f": {
-        "problem_index": "F"
+        "problem_index": "F",
+        "difficulty": 1645,
+        "point": 525.0,
+        "color": "blue"
       },
       "abc402_g": {
-        "problem_index": "G"
+        "problem_index": "G",
+        "difficulty": 3381,
+        "point": 650.0,
+        "color": "red"
       }
     },
     "abc403": {
       "abc403_a": {
-        "problem_index": "A"
+        "problem_index": "A",
+        "difficulty": -1129,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc403_b": {
-        "problem_index": "B"
+        "problem_index": "B",
+        "difficulty": -277,
+        "point": 250.0,
+        "color": "grey"
       },
       "abc403_c": {
-        "problem_index": "C"
+        "problem_index": "C",
+        "difficulty": 138,
+        "point": 300.0,
+        "color": "grey"
       },
       "abc403_d": {
-        "problem_index": "D"
+        "problem_index": "D",
+        "difficulty": 1052,
+        "point": 425.0,
+        "color": "green"
       },
       "abc403_e": {
-        "problem_index": "E"
+        "problem_index": "E",
+        "difficulty": 1447,
+        "point": 500.0,
+        "color": "cyan"
       },
       "abc403_f": {
-        "problem_index": "F"
+        "problem_index": "F",
+        "difficulty": 1733,
+        "point": 500.0,
+        "color": "blue"
       },
       "abc403_g": {
-        "problem_index": "G"
+        "problem_index": "G",
+        "difficulty": 2028,
+        "point": 600.0,
+        "color": "yellow"
       }
     },
     "abc404": {
       "abc404_a": {
-        "problem_index": "A"
+        "problem_index": "A",
+        "difficulty": -724,
+        "point": 100.0,
+        "color": "grey"
       },
       "abc404_b": {
-        "problem_index": "B"
+        "problem_index": "B",
+        "difficulty": 83,
+        "point": 250.0,
+        "color": "grey"
       },
       "abc404_c": {
-        "problem_index": "C"
+        "problem_index": "C",
+        "difficulty": 370,
+        "point": 300.0,
+        "color": "grey"
       },
       "abc404_d": {
-        "problem_index": "D"
+        "problem_index": "D",
+        "difficulty": 803,
+        "point": 400.0,
+        "color": "green"
       },
       "abc404_e": {
-        "problem_index": "E"
+        "problem_index": "E",
+        "difficulty": 1286,
+        "point": 475.0,
+        "color": "cyan"
       },
       "abc404_f": {
-        "problem_index": "F"
+        "problem_index": "F",
+        "difficulty": 2162,
+        "point": 550.0,
+        "color": "yellow"
       },
       "abc404_g": {
-        "problem_index": "G"
+        "problem_index": "G",
+        "difficulty": 1894,
+        "point": 600.0,
+        "color": "blue"
       }
     }
   },
@@ -15268,18 +15422,22 @@
     "arc001": {
       "arc001_1": {
         "problem_index": "A",
+        "difficulty": null,
         "point": null
       },
       "arc001_2": {
         "problem_index": "B",
+        "difficulty": null,
         "point": null
       },
       "arc001_3": {
         "problem_index": "C",
+        "difficulty": null,
         "point": null
       },
       "arc001_4": {
         "problem_index": "D",
+        "difficulty": null,
         "point": null
       }
     },
@@ -15550,6 +15708,7 @@
     "arc014": {
       "arc014_1": {
         "problem_index": "A",
+        "difficulty": null,
         "point": null
       },
       "arc014_2": {
@@ -15740,6 +15899,7 @@
       },
       "arc022_4": {
         "problem_index": "D",
+        "difficulty": null,
         "point": null
       }
     },
@@ -16289,6 +16449,7 @@
       },
       "arc047_d": {
         "problem_index": "D",
+        "difficulty": null,
         "point": null
       }
     },
@@ -16464,6 +16625,7 @@
       },
       "arc055_d": {
         "problem_index": "D",
+        "difficulty": null,
         "point": null
       }
     },
@@ -16705,6 +16867,7 @@
       },
       "arc066_d": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1400.0
       }
     },
@@ -17144,6 +17307,7 @@
       },
       "arc086_d": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1200.0
       }
     },
@@ -18066,6 +18230,7 @@
       },
       "arc120_f2": {
         "problem_index": "F2",
+        "difficulty": null,
         "point": 800.0
       }
     },
@@ -18129,6 +18294,7 @@
       },
       "arc122_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1200.0
       }
     },
@@ -18480,6 +18646,7 @@
       },
       "arc133_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1100.0
       }
     },
@@ -18671,6 +18838,7 @@
       },
       "arc139_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1000.0
       }
     },
@@ -18798,6 +18966,7 @@
       },
       "arc143_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1200.0
       }
     },
@@ -18893,6 +19062,7 @@
       },
       "arc146_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1200.0
       }
     },
@@ -19180,6 +19350,7 @@
       },
       "arc155_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1000.0
       }
     },
@@ -19595,6 +19766,7 @@
       },
       "arc168_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1100.0
       }
     },
@@ -19754,6 +19926,7 @@
       },
       "arc173_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1200.0
       }
     },
@@ -19817,6 +19990,7 @@
       },
       "arc175_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1000.0
       }
     },
@@ -19907,6 +20081,7 @@
       },
       "arc178_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1000.0
       },
       "arc178_f": {
@@ -19975,6 +20150,7 @@
       },
       "arc180_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1100.0
       }
     },
@@ -20001,6 +20177,7 @@
       },
       "arc181_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1000.0
       },
       "arc181_f": {
@@ -20204,6 +20381,7 @@
       },
       "arc188_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1000.0
       }
     },
@@ -20367,58 +20545,77 @@
     "arc195": {
       "arc195_a": {
         "problem_index": "A",
+        "difficulty": 538,
         "point": 400.0
       },
       "arc195_b": {
         "problem_index": "B",
+        "difficulty": 1433,
         "point": 500.0
       },
       "arc195_c": {
         "problem_index": "C",
+        "difficulty": 1777,
         "point": 600.0
       },
       "arc195_d": {
         "problem_index": "D",
+        "difficulty": 2470,
         "point": 700.0
       },
       "arc195_e": {
         "problem_index": "E",
+        "difficulty": 2734,
         "point": 900.0
       }
     },
     "arc196": {
       "arc196_a": {
         "problem_index": "A",
+        "difficulty": 1569,
         "point": 700.0
       },
       "arc196_b": {
         "problem_index": "B",
+        "difficulty": 2188,
         "point": 700.0
       },
       "arc196_c": {
         "problem_index": "C",
+        "difficulty": 2917,
         "point": 900.0
       },
       "arc196_d": {
         "problem_index": "D",
+        "difficulty": 2956,
         "point": 900.0
       }
     },
     "arc197": {
       "arc197_a": {
-        "problem_index": "A"
+        "problem_index": "A",
+        "difficulty": 860,
+        "point": 400.0
       },
       "arc197_b": {
-        "problem_index": "B"
+        "problem_index": "B",
+        "difficulty": 1100,
+        "point": 500.0
       },
       "arc197_c": {
-        "problem_index": "C"
+        "problem_index": "C",
+        "difficulty": 1505,
+        "point": 600.0
       },
       "arc197_d": {
-        "problem_index": "D"
+        "problem_index": "D",
+        "difficulty": 2062,
+        "point": 700.0
       },
       "arc197_e": {
-        "problem_index": "E"
+        "problem_index": "E",
+        "difficulty": 2647,
+        "point": 800.0
       }
     }
   },
@@ -20426,26 +20623,32 @@
     "agc001": {
       "agc001_a": {
         "problem_index": "A",
+        "difficulty": null,
         "point": 200.0
       },
       "agc001_b": {
         "problem_index": "B",
+        "difficulty": null,
         "point": 500.0
       },
       "agc001_c": {
         "problem_index": "C",
+        "difficulty": null,
         "point": 600.0
       },
       "agc001_d": {
         "problem_index": "D",
+        "difficulty": null,
         "point": 1000.0
       },
       "agc001_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1400.0
       },
       "agc001_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2000.0
       }
     },
@@ -20792,6 +20995,7 @@
       },
       "agc012_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2000.0
       }
     },
@@ -21047,6 +21251,7 @@
       },
       "agc020_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2100.0
       }
     },
@@ -21691,6 +21896,7 @@
       },
       "agc040_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2200.0
       }
     },
@@ -21786,6 +21992,7 @@
       },
       "agc044_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2400.0
       }
     },
@@ -21812,6 +22019,7 @@
       },
       "agc045_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1200.0
       },
       "agc045_f": {
@@ -21912,6 +22120,7 @@
       },
       "agc048_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2200.0
       }
     },
@@ -21943,6 +22152,7 @@
       },
       "agc049_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2400.0
       }
     },
@@ -21969,6 +22179,7 @@
       },
       "agc050_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1800.0
       },
       "agc050_f": {
@@ -22037,6 +22248,7 @@
       },
       "agc052_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2000.0
       }
     },
@@ -22068,6 +22280,7 @@
       },
       "agc053_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2400.0
       }
     },
@@ -22126,6 +22339,7 @@
       },
       "agc055_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1500.0
       },
       "agc055_f": {
@@ -22226,6 +22440,7 @@
       },
       "agc058_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2000.0
       }
     },
@@ -22257,6 +22472,7 @@
       },
       "agc059_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1900.0
       }
     },
@@ -22288,6 +22504,7 @@
       },
       "agc060_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2200.0
       }
     },
@@ -22351,6 +22568,7 @@
       },
       "agc062_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 2000.0
       }
     },
@@ -22414,6 +22632,7 @@
       },
       "agc064_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1700.0
       }
     },
@@ -22477,6 +22696,7 @@
       },
       "agc066_f": {
         "problem_index": "F",
+        "difficulty": null,
         "point": 1600.0
       }
     },
@@ -22503,6 +22723,7 @@
       },
       "agc067_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1900.0
       }
     },
@@ -22583,46 +22804,62 @@
       },
       "agc070_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1800.0
       }
     },
     "agc071": {
       "agc071_a": {
         "problem_index": "A",
+        "difficulty": 2102,
         "point": 700.0
       },
       "agc071_b": {
         "problem_index": "B",
+        "difficulty": 2842,
         "point": 900.0
       },
       "agc071_c": {
         "problem_index": "C",
+        "difficulty": 2774,
         "point": 1100.0
       },
       "agc071_d": {
         "problem_index": "D",
+        "difficulty": 3807,
         "point": 1300.0
       },
       "agc071_e": {
         "problem_index": "E",
+        "difficulty": null,
         "point": 1700.0
       }
     },
     "agc072": {
       "agc072_a": {
-        "problem_index": "A"
+        "problem_index": "A",
+        "difficulty": 2781,
+        "point": 900.0
       },
       "agc072_b": {
-        "problem_index": "B"
+        "problem_index": "B",
+        "difficulty": 3148,
+        "point": 1100.0
       },
       "agc072_c": {
-        "problem_index": "C"
+        "problem_index": "C",
+        "difficulty": 2984,
+        "point": 1100.0
       },
       "agc072_d": {
-        "problem_index": "D"
+        "problem_index": "D",
+        "difficulty": 4043,
+        "point": 1400.0
       },
       "agc072_e": {
-        "problem_index": "E"
+        "problem_index": "E",
+        "difficulty": null,
+        "point": 1400.0
       }
     }
   },
@@ -25581,7 +25818,7 @@
     },
     "ahc009": {
       "ahc009_a": {
-        "point": 7709893236.0
+        "point": 7738057626.0
       }
     },
     "ahc010": {
@@ -25759,7 +25996,7 @@
     },
     "ahc044": {
       "ahc044_a": {
-        "point": 149937568.0
+        "point": 149949530.0
       }
     },
     "ahc045": {
@@ -25769,7 +26006,7 @@
     },
     "ahc046": {
       "ahc046_a": {
-        "problem_index": "A"
+        "point": 221057.0
       }
     },
     "aising2019": {
@@ -32555,27 +32792,27 @@
     },
     "masters2025-final": {
       "masters2025_final_a": {
-        "problem_index": "A"
+        "point": null
       },
       "masters2025_final_b": {
-        "problem_index": "B"
+        "point": null
       },
       "masters2025_final_c": {
-        "problem_index": "C"
+        "point": null
       },
       "masters2025_final_d": {
-        "problem_index": "D"
+        "point": null
       }
     },
     "masters2025-final-open": {
       "masters2025_final_a": {
-        "problem_index": "A"
+        "point": null
       },
       "masters2025_final_b": {
-        "problem_index": "B"
+        "point": null
       },
       "masters2025_final_c": {
-        "problem_index": "C"
+        "point": null
       }
     },
     "masters2025-qual": {
