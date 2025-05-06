@@ -139,6 +139,10 @@ for contest_id in statics['abc']:
         if 'difficulty' in statics['abc'][contest_id][problem_id] and 'point' in statics['abc'][contest_id][problem_id]:
             point = statics['abc'][contest_id][problem_id]['point']
             difficulty = statics['abc'][contest_id][problem_id]['difficulty']
+            
+            # Skip problems with no difficulty
+            if difficulty is None:
+                continue
 
             # print(f'    problem_id: {problem_id}')
             # print(f'        point: {point}')
@@ -146,10 +150,8 @@ for contest_id in statics['abc']:
             # print(f'        problem_index: {statics["abc"][contest_id][problem_id]["problem_index"]}')
             contest_has_data = True
 
-            # Determine color based on difficulty - handle None case
-            if difficulty is None:
-                color = 'grey'  # Default color for problems with no difficulty
-            elif difficulty < 400: color = 'grey'
+            # Determine color based on difficulty
+            if difficulty < 400: color = 'grey'
             elif difficulty < 800: color = 'brown'
             elif difficulty < 1200: color = 'green'
             elif difficulty < 1600: color = 'cyan'
