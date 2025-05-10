@@ -10,7 +10,7 @@ with open('web-page/json/stats.json', 'r', encoding='utf-8') as f:
 print(f"Loaded stats for {len(stats['abc'])} ABC contests")
 
 # Define color order for table columns
-COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
+COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red','bronze', 'silver', 'gold']
 
 # Aggregate ABC contest statistics by point and color
 abc_stats = {}
