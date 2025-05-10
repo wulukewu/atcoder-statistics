@@ -26,24 +26,9 @@ for point, color_counts in chart['abc'].items():
 def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
     """Generate a separate HTML page for each (point, color) box listing the problems."""
     os.makedirs(f'{output_dir}/lists', exist_ok=True)
-    template = '''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Problems for {point} - {color}</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-    <div class="container">
-        <h2>Problems for {point} - <span class="color-{color}">{color}</span></h2>
-        <ul>
-            {problem_list}
-        </ul>
-        <a href="../index.html">&larr; Back to main page</a>
-    </div>
-</body>
-</html>'''
+    # Read the list template from file
+    with open(f'{output_dir}/template-list.html', 'r', encoding='utf-8') as f:
+        template = f.read()
     for point, color_dict in problem_dict['abc'].items():
         for color, problem_ids in color_dict.items():
             items = []
@@ -61,7 +46,7 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                     items.append(f'<li><a href="{url}" target="_blank">{name}</a> <span style="color:var(--{color})">[{pid}]</span></li>')
                 else:
                     items.append(f'<li>{name} <span style="color:var(--{color})">[{pid}]</span></li>')
-            problem_list = '\n            '.join(items)
+            problem_list = '\n                    '.join(items)
             html = template.format(point=point, color=color, problem_list=problem_list)
             filename = f'{output_dir}/lists/abc_{point}_{color}.html'
             with open(filename, 'w', encoding='utf-8') as f:
