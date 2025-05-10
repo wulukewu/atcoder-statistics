@@ -112,7 +112,6 @@ for contest_type in stats:
                 continue
             point = stats[contest_type][contest_id][problem_id]["point"]
             color = stats[contest_type][contest_id][problem_id]["color"]
-            print(point, color)
             if point not in problem_dict[contest_type]:
                 problem_dict[contest_type][point] = {}
             if color not in problem_dict[contest_type][point]:
