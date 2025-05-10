@@ -149,22 +149,37 @@ h2 {
   margin: 0 0 24px 0;
 }
 
+/* Card Styles */
 .card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-  margin-bottom: 32px;
-  padding: 24px 0 0 0;
+  background-color: var(--card-bg);
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .card-header {
-  padding: 0 32px 16px 32px;
-  border-bottom: 1px solid #eee;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .card-title {
   font-size: 1.25rem;
   font-weight: 600;
+  color: var(--title-color);
+  animation: fadeInRight 0.8s ease-out;
+  transition: color 0.3s ease;
 }
 
 .tab-content {
@@ -224,8 +239,7 @@ h2 {
   text-decoration: underline;
 }
 
-.theme-toggle,
-.color-theme-toggle {
+.theme-toggle {
   position: fixed;
   bottom: 32px;
   right: 32px;
@@ -240,6 +254,30 @@ h2 {
   cursor: pointer;
   z-index: 100;
   margin-left: 8px;
+  transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-light);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+:root[data-mode="dark"] .theme-toggle {
+  background: var(--gray-800);
+}
+:root[data-mode="dark"] .theme-toggle .sun-icon {
+  display: none;
+}
+:root[data-mode="dark"] .theme-toggle .moon-icon {
+  display: block;
 }
 
 .color-theme-toggle {
