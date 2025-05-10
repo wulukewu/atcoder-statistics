@@ -5,7 +5,9 @@ import os
 
 # Fetch contest data from AtCoder API
 problem_models = requests.get('https://kenkoooo.com/atcoder/resources/problem-models.json').json()
+print(f"Loaded {len(problem_models)} problem models")
 merged_problems = requests.get('https://kenkoooo.com/atcoder/resources/merged-problems.json').json()
+print(f"Loaded {len(merged_problems)} merged problems")
 
 # Initialize data structures for statistics and chart data
 stats = {
@@ -41,7 +43,10 @@ def get_color(difficulty):
     return "red"
 
 # Process each problem and organize by contest type
-for problem in merged_problems:
+for idx, problem in enumerate(merged_problems):
+    # Print first 5 problems for debugging
+    if idx < 5:
+        print(f"Processing problem: {problem['id']} in contest {problem['contest_id']}")
     # Determine contest type
     if "abc" in problem["contest_id"]:
         contest_type = "abc"
@@ -75,6 +80,9 @@ for problem in merged_problems:
             color = get_color(model["difficulty"])
             if color:
                 stats[contest_type][contest_id][problem_id]["color"] = color
+                # Print color assignment for first 5 problems
+                if idx < 5:
+                    print(f"Problem {problem_id} difficulty: {model['difficulty']}, assigned color: {color}")
 
 # Build chart data: count problems by point and color
 for contest_type in stats:
@@ -94,6 +102,7 @@ for contest_type in stats:
 # Ensure output directory exists
 os.makedirs('web-page/json', exist_ok=True)
 
+print("Saving stats and chart data to JSON files...")
 # Save the stats and chart dictionaries to JSON files
 with open('web-page/json/stats.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=2)

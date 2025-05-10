@@ -4,8 +4,10 @@ import os
 # Load chart and stats data from JSON files
 with open('web-page/json/chart.json', 'r', encoding='utf-8') as f:
     chart = json.load(f)
+print(f"Loaded chart with {len(chart['abc'])} ABC point entries")
 with open('web-page/json/stats.json', 'r', encoding='utf-8') as f:
     stats = json.load(f)
+print(f"Loaded stats for {len(stats['abc'])} ABC contests")
 
 # Define color order for table columns
 COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
@@ -22,6 +24,7 @@ def render_table_rows(stats_by_point):
     """Generate HTML table rows for ABC statistics."""
     rows = ""
     for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
+        print(f"Generating row for point: {point}, color counts: {color_counts}")
         total = sum(color_counts.values()) or 1
         rows += f"            <tr>\n"
         rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
@@ -53,6 +56,7 @@ with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
 # Find the latest ABC contest with at least one colored problem
+print("Searching for latest ABC contest with colored problems...")
 latest_contest_abc = "N/A"
 for contest_id in reversed(stats['abc']):
     if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
