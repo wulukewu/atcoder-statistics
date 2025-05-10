@@ -42,6 +42,11 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                         contest_id = cid
                         name = problems[pid].get('name', pid)
                         break
+                # Format problem tag as 'ABC400A' (contest id upper + problem suffix upper)
+                if contest_id and '_' in pid:
+                    contest_tag = contest_id.upper() + pid.split('_')[-1].upper()
+                else:
+                    contest_tag = pid.upper()
                 if contest_id:
                     url = f"https://atcoder.jp/contests/{contest_id}/tasks/{pid}"
                     # Card layout for each problem
@@ -52,8 +57,7 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                             <span class="problem-badge color-{color}">{color}</span>
                         </div>
                         <div class="problem-meta">
-                            <span class="problem-id">{pid}</span>
-                            <span class="contest-id">{contest_id.upper()}</span>
+                            <span class="problem-id">{contest_tag}</span>
                             <a href="{url}" target="_blank" class="external-link">Open
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14m-4 0h4v4"/></svg>
                             </a>
@@ -68,7 +72,7 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                             <span class="problem-badge color-{color}">{color}</span>
                         </div>
                         <div class="problem-meta">
-                            <span class="problem-id">{pid}</span>
+                            <span class="problem-id">{contest_tag}</span>
                         </div>
                     </div>
                     ''')
