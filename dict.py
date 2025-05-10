@@ -112,11 +112,7 @@ for contest_type in stats:
                 continue
             point = stats[contest_type][contest_id][problem_id]["point"]
             color = stats[contest_type][contest_id][problem_id]["color"]
-            if point not in problem_dict[contest_type]:
-                problem_dict[contest_type][point] = {}
-            if color not in problem_dict[contest_type][point]:
-                problem_dict[contest_type][point][color] = []
-            problem_dict[contest_type][point][color].append(problem_id)
+            problem_dict[contest_type].setdefault(point, {}).setdefault(color, []).append(problem_id)
 
 # Ensure output directory exists
 os.makedirs('web-page/json', exist_ok=True)
