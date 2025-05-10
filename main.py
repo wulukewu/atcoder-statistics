@@ -8,6 +8,9 @@ print(f"Loaded chart with {len(chart['abc'])} ABC point entries")
 with open('web-page/json/stats.json', 'r', encoding='utf-8') as f:
     stats = json.load(f)
 print(f"Loaded stats for {len(stats['abc'])} ABC contests")
+with open('web-page/json/problem_dict.json', 'r', encoding='utf-8') as f:
+    problem_dict = json.load(f)
+print(f"Loaded problem_dict with {len(problem_dict['abc'])} ABC point entries")
 
 # Define color order for table columns
 COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
@@ -20,8 +23,53 @@ for point, color_counts in chart['abc'].items():
     for color, count in color_counts.items():
         abc_stats[point][color] += count
 
+def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
+    """Generate a separate HTML page for each (point, color) box listing the problems."""
+    os.makedirs(f'{output_dir}/lists', exist_ok=True)
+    template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problems for {point} - {color}</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Problems for {point} - <span class="color-{color}">{color}</span></h2>
+        <ul>
+            {problem_list}
+        </ul>
+        <a href="../index.html">&larr; Back to main page</a>
+    </div>
+</body>
+</html>'''
+    for point, color_dict in problem_dict['abc'].items():
+        for color, problem_ids in color_dict.items():
+            items = []
+            for pid in problem_ids:
+                # Find contest_id for this problem_id
+                contest_id = None
+                name = pid
+                for cid, problems in stats['abc'].items():
+                    if pid in problems:
+                        contest_id = cid
+                        name = problems[pid].get('name', pid)
+                        break
+                if contest_id:
+                    url = f"https://atcoder.jp/contests/{contest_id}/tasks/{pid}"
+                    items.append(f'<li><a href="{url}" target="_blank">{name}</a> <span style="color:var(--{color})">[{pid}]</span></li>')
+                else:
+                    items.append(f'<li>{name} <span style="color:var(--{color})">[{pid}]</span></li>')
+            problem_list = '\n            '.join(items)
+            html = template.format(point=point, color=color, problem_list=problem_list)
+            filename = f'{output_dir}/lists/abc_{point}_{color}.html'
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(html)
+    print('[INFO] Problem list pages generated.')
+
 def render_table_rows(stats_by_point):
-    """Generate HTML table rows for ABC statistics."""
+    """Generate HTML table rows for ABC statistics, with links to problem lists."""
     rows = ""
     for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
         total = sum(color_counts.values()) or 1
@@ -32,9 +80,16 @@ def render_table_rows(stats_by_point):
             percent = round((count / total) * 100, 2)
             circle_class = f"color-{color}" if count > 0 else "empty-color"
             bg_class = f"bg-{color}" if count > 0 else ""
+            # Link to list page if count > 0
+            if count > 0:
+                link = f"<a href='lists/abc_{point}_{color}.html' class='box-link'>"
+                link_end = "</a>"
+            else:
+                link = ""
+                link_end = ""
             rows += (
                 f"                <td>\n"
-                f"                    <div class='stats-container'>\n"
+                f"                    {link}<div class='stats-container'>\n"
                 f"                        <div class='circle-container'>\n"
                 f"                            <div class='progress-circle {circle_class}' data-color='var(--{color})' data-percent='{percent}'>\n"
                 f"                                <span class='progress-circle-inner {bg_class}'></span>\n"
@@ -42,7 +97,7 @@ def render_table_rows(stats_by_point):
                 f"                            <span class='count {circle_class}'>{count}</span>\n"
                 f"                        </div>\n"
                 f"                        <span class='percentage {circle_class}'>({percent}%)</span>\n"
-                f"                    </div>\n"
+                f"                    </div>{link_end}\n"
                 f"                </td>\n"
             )
         rows += "            </tr>\n"
@@ -73,3 +128,6 @@ with open('web-page/index.html', 'w') as file:
     file.write(html_content)
 
 print('[INFO] Successfully generated web page')
+
+generate_problem_list_pages(problem_dict, stats)
+

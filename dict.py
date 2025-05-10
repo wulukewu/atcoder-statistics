@@ -22,6 +22,12 @@ chart = {
     "agc": {},
     "others": {}
 }
+problem_dict = {
+    "abc": {},
+    "arc": {},
+    "agc": {},
+    "others": {}
+}
 
 # Helper function to determine color from difficulty
 COLOR_THRESHOLDS = [
@@ -99,6 +105,20 @@ for contest_type in stats:
             else:
                 chart[contest_type][point][color] = 1
 
+for contest_type in stats:
+    for contest_id in stats[contest_type]:
+        for problem_id in stats[contest_type][contest_id]:
+            if "color" not in stats[contest_type][contest_id][problem_id] or "point" not in stats[contest_type][contest_id][problem_id] or stats[contest_type][contest_id][problem_id]["point"] is None:
+                continue
+            point = stats[contest_type][contest_id][problem_id]["point"]
+            color = stats[contest_type][contest_id][problem_id]["color"]
+            print(point, color)
+            if point not in problem_dict[contest_type]:
+                problem_dict[contest_type][point] = {}
+            if color not in problem_dict[contest_type][point]:
+                problem_dict[contest_type][point][color] = []
+            problem_dict[contest_type][point][color].append(problem_id)
+
 # Ensure output directory exists
 os.makedirs('web-page/json', exist_ok=True)
 
@@ -108,3 +128,5 @@ with open('web-page/json/stats.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=2)
 with open('web-page/json/chart.json', 'w', encoding='utf-8') as f:
     json.dump(chart, f, ensure_ascii=False, indent=2)
+with open('web-page/json/problem_dict.json', 'w', encoding='utf-8') as f:
+    json.dump(problem_dict, f, ensure_ascii=False, indent=2)
