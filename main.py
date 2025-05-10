@@ -44,10 +44,35 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                         break
                 if contest_id:
                     url = f"https://atcoder.jp/contests/{contest_id}/tasks/{pid}"
-                    items.append(f'<li><a href="{url}" target="_blank">{name}</a> <span style="color:var(--{color})">[{pid}]</span></li>')
+                    # Card layout for each problem
+                    items.append(f'''
+                    <div class="problem-card">
+                        <div class="problem-header">
+                            <span class="problem-title">{name}</span>
+                            <span class="problem-badge color-{color}">{color}</span>
+                        </div>
+                        <div class="problem-meta">
+                            <span class="problem-id">{pid}</span>
+                            <span class="contest-id">{contest_id.upper()}</span>
+                            <a href="{url}" target="_blank" class="external-link">Open
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14m-4 0h4v4"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    ''')
                 else:
-                    items.append(f'<li>{name} <span style="color:var(--{color})">[{pid}]</span></li>')
-            problem_list = '\n                    '.join(items)
+                    items.append(f'''
+                    <div class="problem-card">
+                        <div class="problem-header">
+                            <span class="problem-title">{name}</span>
+                            <span class="problem-badge color-{color}">{color}</span>
+                        </div>
+                        <div class="problem-meta">
+                            <span class="problem-id">{pid}</span>
+                        </div>
+                    </div>
+                    ''')
+            problem_list = '\n'.join(items)
             html = template.format(point=point_int, color=color, problem_list=problem_list)
             filename = f'{output_dir}/lists/abc_{point_int}_{color}.html'
             with open(filename, 'w', encoding='utf-8') as f:
