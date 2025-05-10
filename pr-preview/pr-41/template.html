@@ -30,70 +30,72 @@
                 <div class="tab" data-tab="table-arc" onclick="showTab('table-arc')">AtCoder Regular Contest</div>
                 <div class="tab" data-tab="table-agc" onclick="showTab('table-agc')">AtCoder Grand Contest</div>
             </div>
-            <div class="tab-content active" id="table-abc">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Score</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {table_rows_abc}
-                        </tbody>
-                    </table>
+            <div class="tables">
+                <div class="tab-content active" id="table-abc">
+                    <div class="table-responsive">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Score</th>
+                                    <th>Grey</th>
+                                    <th>Brown</th>
+                                    <th>Green</th>
+                                    <th>Cyan</th>
+                                    <th>Blue</th>
+                                    <th>Yellow</th>
+                                    <th>Orange</th>
+                                    <th>Red</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table_rows_abc}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="tab-content" id="table-arc">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Score</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {table_rows_arc}
-                        </tbody>
-                    </table>
+                <div class="tab-content" id="table-arc">
+                    <div class="table-responsive">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Score</th>
+                                    <th>Grey</th>
+                                    <th>Brown</th>
+                                    <th>Green</th>
+                                    <th>Cyan</th>
+                                    <th>Blue</th>
+                                    <th>Yellow</th>
+                                    <th>Orange</th>
+                                    <th>Red</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table_rows_arc}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="tab-content" id="table-agc">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Score</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {table_rows_agc}
-                        </tbody>
-                    </table>
+                <div class="tab-content" id="table-agc">
+                    <div class="table-responsive">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Score</th>
+                                    <th>Grey</th>
+                                    <th>Brown</th>
+                                    <th>Green</th>
+                                    <th>Cyan</th>
+                                    <th>Blue</th>
+                                    <th>Yellow</th>
+                                    <th>Orange</th>
+                                    <th>Red</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table_rows_agc}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,18 +119,5 @@
         </svg>
     </div>
     <script src="script.js"></script>
-    <!-- ...existing code... -->
-    <script>
-    function showTab(tabId) {{
-        document.querySelectorAll('.tab').forEach(tab => {{
-            tab.classList.toggle('active', tab.dataset.tab === tabId);
-        }});
-        document.querySelectorAll('.tab-content').forEach(content => {{
-            content.classList.toggle('active', content.id === tabId);
-        }});
-    }}
-    </script>
-<!-- ...existing code... -->
 </body>
-
 </html>
