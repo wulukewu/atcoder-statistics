@@ -24,7 +24,6 @@ def render_table_rows(stats_by_point):
     """Generate HTML table rows for ABC statistics."""
     rows = ""
     for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
-        print(f"Generating row for point: {point}, color counts: {color_counts}")
         total = sum(color_counts.values()) or 1
         rows += f"            <tr>\n"
         rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
