@@ -30,6 +30,7 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
     with open(f'{output_dir}/template-list.html', 'r', encoding='utf-8') as f:
         template = f.read()
     for point, color_dict in problem_dict['abc'].items():
+        point_int = int(float(point))
         for color, problem_ids in color_dict.items():
             items = []
             for pid in problem_ids:
@@ -47,8 +48,8 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                 else:
                     items.append(f'<li>{name} <span style="color:var(--{color})">[{pid}]</span></li>')
             problem_list = '\n                    '.join(items)
-            html = template.format(point=point, color=color, problem_list=problem_list)
-            filename = f'{output_dir}/lists/abc_{point}_{color}.html'
+            html = template.format(point=point_int, color=color, problem_list=problem_list)
+            filename = f'{output_dir}/lists/abc_{point_int}_{color}.html'
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(html)
     print('[INFO] Problem list pages generated.')
@@ -67,7 +68,7 @@ def render_table_rows(stats_by_point):
             bg_class = f"bg-{color}" if count > 0 else ""
             # Link to list page if count > 0
             if count > 0:
-                link = f"<a href='lists/abc_{point}_{color}.html' class='box-link'>"
+                link = f"<a href='lists/abc_{int(float(point))}_{color}.html' class='box-link'>"
                 link_end = "</a>"
             else:
                 link = ""
