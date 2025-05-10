@@ -19,6 +19,19 @@ for point, color_counts in chart['abc'].items():
         abc_stats[point] = {color: 0 for color in COLOR_ORDER}
     for color, count in color_counts.items():
         abc_stats[point][color] += count
+arc_stats = {}
+for point, color_counts in chart['arc'].items():
+    if point not in arc_stats:
+        arc_stats[point] = {color: 0 for color in COLOR_ORDER}
+    for color, count in color_counts.items():
+        arc_stats[point][color] += count
+
+agc_stats = {}
+for point, color_counts in chart['agc'].items():
+    if point not in agc_stats:
+        agc_stats[point] = {color: 0 for color in COLOR_ORDER}
+    for color, count in color_counts.items():
+        agc_stats[point][color] += count
 
 def render_table_rows(stats_by_point):
     """Generate HTML table rows for ABC statistics."""
@@ -48,7 +61,12 @@ def render_table_rows(stats_by_point):
         rows += "            </tr>\n"
     return rows
 
-table_rows = render_table_rows(abc_stats)
+# Fill the template with generated content
+# Generate table rows for each contest type
+Table_rows_abc = render_table_rows(abc_stats)
+Table_rows_arc = render_table_rows(arc_stats)
+Table_rows_agc = render_table_rows(agc_stats)
+
 
 # Read the HTML template
 with open('web-page/template.html', 'r') as template_file:
@@ -56,16 +74,18 @@ with open('web-page/template.html', 'r') as template_file:
 
 # Find the latest ABC contest with at least one colored problem
 print("Searching for latest ABC contest with colored problems...")
-latest_contest_abc = "N/A"
+Latest_contest_abc = "N/A"
 for contest_id in reversed(stats['abc']):
     if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
-        latest_contest_abc = contest_id
+        Latest_contest_abc = contest_id
         break
 
 # Fill the template with generated content
 html_content = template.format(
-    latest_contest_abc=latest_contest_abc.upper(),
-    table_rows=table_rows
+    latest_contest_abc=Latest_contest_abc.upper(),
+    table_rows_abc=Table_rows_abc,
+    table_rows_arc=Table_rows_arc,
+    table_rows_agc=Table_rows_agc
 )
 
 # Write the final HTML file
