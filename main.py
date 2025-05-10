@@ -25,8 +25,7 @@ for point, color_counts in chart['abc'].items():
 
 def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
     """Generate a separate HTML page for each (point, color) box listing the problems."""
-    os.makedirs(f'{output_dir}/lists', exist_ok=True)
-    # Read the list template from file
+    # No need to create 'lists' folder here, will create subfolders per page
     with open(f'{output_dir}/template-list.html', 'r', encoding='utf-8') as f:
         template = f.read()
     for point, color_dict in problem_dict['abc'].items():
@@ -78,7 +77,9 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                     ''')
             problem_list = '\n'.join(items)
             html = template.format(point=point_int, color=color, problem_list=problem_list)
-            filename = f'{output_dir}/lists/abc_{point_int}_{color}.html'
+            folder_path = f'{output_dir}/lists/abc/{point_int}/{color}'
+            os.makedirs(folder_path, exist_ok=True)
+            filename = f'{folder_path}/index.html'
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(html)
     print('[INFO] Problem list pages generated.')
@@ -97,7 +98,7 @@ def render_table_rows(stats_by_point):
             bg_class = f"bg-{color}" if count > 0 else ""
             # Link to list page if count > 0
             if count > 0:
-                link = f"<a href='lists/abc_{int(float(point))}_{color}.html' class='box-link'>"
+                link = f"<a href='lists/abc/{int(float(point))}/{color}/' class='box-link'>"
                 link_end = "</a>"
             else:
                 link = ""
