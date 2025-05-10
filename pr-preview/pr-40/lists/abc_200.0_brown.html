@@ -1,31 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Problems for 200.0 - brown</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
+    <link rel="icon" href="../favicon.svg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-bg">
+        <div class="header-bg-circle circle-1"></div>
+        <div class="header-bg-circle circle-2"></div>
+      </div>
+      <div class="container header-content">
+        <h1>AtCoder Statistics</h1>
+        <h2>
+          Problems for 200.0 - <span class="color-brown">brown</span>
+        </h2>
+      </div>
+    </header>
     <div class="container">
-        <h2>Problems for 200.0 - <span class="color-brown">brown</span></h2>
-        <ul>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Problems for 200.0 - <span class="color-brown">brown</span>
+          </div>
+        </div>
+        <div class="tab-content active" id="list-content">
+          <ul class="problem-list">
             <li><a href="https://atcoder.jp/contests/abc042/tasks/abc042_b" target="_blank">Iroha Loves Strings (ABC Edition)</a> <span style="color:var(--brown)">[abc042_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc043/tasks/abc043_b" target="_blank">Unhappy Hacking (ABC Edit)</a> <span style="color:var(--brown)">[abc043_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc045/tasks/abc045_b" target="_blank">Card Game for Three (ABC Edit)</a> <span style="color:var(--brown)">[abc045_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc046/tasks/abc046_b" target="_blank">Painting Balls with AtCoDeer</a> <span style="color:var(--brown)">[abc046_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc047/tasks/abc047_b" target="_blank">Snuke's Coloring 2 (ABC Edit)</a> <span style="color:var(--brown)">[abc047_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc051/tasks/abc051_b" target="_blank">Sum of Three Integers</a> <span style="color:var(--brown)">[abc051_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc056/tasks/arc070_a" target="_blank">Go Home</a> <span style="color:var(--brown)">[arc070_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc057/tasks/abc057_b" target="_blank">Checkpoints</a> <span style="color:var(--brown)">[abc057_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc060/tasks/abc060_b" target="_blank">Choose Integers</a> <span style="color:var(--brown)">[abc060_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc065/tasks/abc065_b" target="_blank">Trained?</a> <span style="color:var(--brown)">[abc065_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc082/tasks/abc082_b" target="_blank">Two Anagrams</a> <span style="color:var(--brown)">[abc082_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc107/tasks/abc107_b" target="_blank">Grid Compression</a> <span style="color:var(--brown)">[abc107_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc195/tasks/abc195_b" target="_blank">Many Oranges</a> <span style="color:var(--brown)">[abc195_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc258/tasks/abc258_b" target="_blank">Number Box</a> <span style="color:var(--brown)">[abc258_b]</span></li>
-        </ul>
-        <a href="../index.html">&larr; Back to main page</a>
+                    <li><a href="https://atcoder.jp/contests/abc043/tasks/abc043_b" target="_blank">Unhappy Hacking (ABC Edit)</a> <span style="color:var(--brown)">[abc043_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc045/tasks/abc045_b" target="_blank">Card Game for Three (ABC Edit)</a> <span style="color:var(--brown)">[abc045_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc046/tasks/abc046_b" target="_blank">Painting Balls with AtCoDeer</a> <span style="color:var(--brown)">[abc046_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc047/tasks/abc047_b" target="_blank">Snuke's Coloring 2 (ABC Edit)</a> <span style="color:var(--brown)">[abc047_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc051/tasks/abc051_b" target="_blank">Sum of Three Integers</a> <span style="color:var(--brown)">[abc051_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc056/tasks/arc070_a" target="_blank">Go Home</a> <span style="color:var(--brown)">[arc070_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc057/tasks/abc057_b" target="_blank">Checkpoints</a> <span style="color:var(--brown)">[abc057_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc060/tasks/abc060_b" target="_blank">Choose Integers</a> <span style="color:var(--brown)">[abc060_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc065/tasks/abc065_b" target="_blank">Trained?</a> <span style="color:var(--brown)">[abc065_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc082/tasks/abc082_b" target="_blank">Two Anagrams</a> <span style="color:var(--brown)">[abc082_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc107/tasks/abc107_b" target="_blank">Grid Compression</a> <span style="color:var(--brown)">[abc107_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc195/tasks/abc195_b" target="_blank">Many Oranges</a> <span style="color:var(--brown)">[abc195_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc258/tasks/abc258_b" target="_blank">Number Box</a> <span style="color:var(--brown)">[abc258_b]</span></li>
+          </ul>
+          <a href="../index.html" class="back-link">&larr; Back to main page</a>
+        </div>
+      </div>
     </div>
-</body>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <svg
+        class="sun-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        />
+      </svg>
+      <svg
+        class="moon-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+        />
+      </svg>
+    </div>
+    <div class="color-theme-toggle" onclick="cycleThemeColor()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+        ></path>
+      </svg>
+    </div>
+    <script src="../script.js"></script>
+  </body>
 </html>

@@ -1,54 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Problems for 300.0 - green</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
+    <link rel="icon" href="../favicon.svg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-bg">
+        <div class="header-bg-circle circle-1"></div>
+        <div class="header-bg-circle circle-2"></div>
+      </div>
+      <div class="container header-content">
+        <h1>AtCoder Statistics</h1>
+        <h2>
+          Problems for 300.0 - <span class="color-green">green</span>
+        </h2>
+      </div>
+    </header>
     <div class="container">
-        <h2>Problems for 300.0 - <span class="color-green">green</span></h2>
-        <ul>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Problems for 300.0 - <span class="color-green">green</span>
+          </div>
+        </div>
+        <div class="tab-content active" id="list-content">
+          <ul class="problem-list">
             <li><a href="https://atcoder.jp/contests/abc045/tasks/arc061_a" target="_blank">Many Formulas</a> <span style="color:var(--green)">[arc061_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc048/tasks/arc064_a" target="_blank">Boxes and Candies</a> <span style="color:var(--green)">[arc064_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc049/tasks/arc065_a" target="_blank">Daydream</a> <span style="color:var(--green)">[arc065_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc050/tasks/arc066_a" target="_blank">Lining Up</a> <span style="color:var(--green)">[arc066_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc051/tasks/abc051_c" target="_blank">Back and Forth</a> <span style="color:var(--green)">[abc051_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc052/tasks/arc067_a" target="_blank">Factors of Factorial</a> <span style="color:var(--green)">[arc067_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc057/tasks/abc057_c" target="_blank">Digits in Multiplication</a> <span style="color:var(--green)">[abc057_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc061/tasks/abc061_c" target="_blank">Big Array</a> <span style="color:var(--green)">[abc061_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc075/tasks/abc075_c" target="_blank">Bridge</a> <span style="color:var(--green)">[abc075_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc076/tasks/abc076_c" target="_blank">Dubious Document 2</a> <span style="color:var(--green)">[abc076_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc077/tasks/arc084_a" target="_blank">Snuke Festival</a> <span style="color:var(--green)">[arc084_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc080/tasks/abc080_c" target="_blank">Shopping Street</a> <span style="color:var(--green)">[abc080_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc084/tasks/abc084_c" target="_blank">Special Trains</a> <span style="color:var(--green)">[abc084_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc097/tasks/arc097_a" target="_blank">K-th Substring</a> <span style="color:var(--green)">[arc097_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc099/tasks/abc099_c" target="_blank">Strange Bank</a> <span style="color:var(--green)">[abc099_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc102/tasks/arc100_a" target="_blank">Linear Approximation</a> <span style="color:var(--green)">[arc100_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc107/tasks/arc101_a" target="_blank">Candles</a> <span style="color:var(--green)">[arc101_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc108/tasks/arc102_a" target="_blank">Triangular Relationship</a> <span style="color:var(--green)">[arc102_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc110/tasks/abc110_c" target="_blank">String Transformation</a> <span style="color:var(--green)">[abc110_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc111/tasks/arc103_a" target="_blank">/\/\/\/</a> <span style="color:var(--green)">[arc103_a]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc112/tasks/abc112_c" target="_blank">Pyramid</a> <span style="color:var(--green)">[abc112_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc113/tasks/abc113_c" target="_blank">ID</a> <span style="color:var(--green)">[abc113_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc114/tasks/abc114_c" target="_blank">755</a> <span style="color:var(--green)">[abc114_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc125/tasks/abc125_c" target="_blank">GCD on Blackboard</a> <span style="color:var(--green)">[abc125_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc128/tasks/abc128_c" target="_blank">Switches</a> <span style="color:var(--green)">[abc128_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc147/tasks/abc147_c" target="_blank">HonestOrUnkind2</a> <span style="color:var(--green)">[abc147_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc165/tasks/abc165_c" target="_blank">Many Requirements</a> <span style="color:var(--green)">[abc165_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc172/tasks/abc172_c" target="_blank">Tsundoku</a> <span style="color:var(--green)">[abc172_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc174/tasks/abc174_c" target="_blank">Repsept</a> <span style="color:var(--green)">[abc174_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc191/tasks/abc191_c" target="_blank">Digital Graffiti</a> <span style="color:var(--green)">[abc191_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc197/tasks/abc197_c" target="_blank">ORXOR</a> <span style="color:var(--green)">[abc197_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc218/tasks/abc218_c" target="_blank">Shapes</a> <span style="color:var(--green)">[abc218_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc271/tasks/abc271_c" target="_blank">Manga</a> <span style="color:var(--green)">[abc271_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc319/tasks/abc319_c" target="_blank">False Hope</a> <span style="color:var(--green)">[abc319_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc320/tasks/abc320_c" target="_blank">Slot Strategy 2 (Easy)</a> <span style="color:var(--green)">[abc320_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc371/tasks/abc371_c" target="_blank">Make Isomorphic</a> <span style="color:var(--green)">[abc371_c]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc379/tasks/abc379_c" target="_blank">Sowing Stones</a> <span style="color:var(--green)">[abc379_c]</span></li>
-        </ul>
-        <a href="../index.html">&larr; Back to main page</a>
+                    <li><a href="https://atcoder.jp/contests/abc048/tasks/arc064_a" target="_blank">Boxes and Candies</a> <span style="color:var(--green)">[arc064_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc049/tasks/arc065_a" target="_blank">Daydream</a> <span style="color:var(--green)">[arc065_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc050/tasks/arc066_a" target="_blank">Lining Up</a> <span style="color:var(--green)">[arc066_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc051/tasks/abc051_c" target="_blank">Back and Forth</a> <span style="color:var(--green)">[abc051_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc052/tasks/arc067_a" target="_blank">Factors of Factorial</a> <span style="color:var(--green)">[arc067_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc057/tasks/abc057_c" target="_blank">Digits in Multiplication</a> <span style="color:var(--green)">[abc057_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc061/tasks/abc061_c" target="_blank">Big Array</a> <span style="color:var(--green)">[abc061_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc075/tasks/abc075_c" target="_blank">Bridge</a> <span style="color:var(--green)">[abc075_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc076/tasks/abc076_c" target="_blank">Dubious Document 2</a> <span style="color:var(--green)">[abc076_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc077/tasks/arc084_a" target="_blank">Snuke Festival</a> <span style="color:var(--green)">[arc084_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc080/tasks/abc080_c" target="_blank">Shopping Street</a> <span style="color:var(--green)">[abc080_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc084/tasks/abc084_c" target="_blank">Special Trains</a> <span style="color:var(--green)">[abc084_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc097/tasks/arc097_a" target="_blank">K-th Substring</a> <span style="color:var(--green)">[arc097_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc099/tasks/abc099_c" target="_blank">Strange Bank</a> <span style="color:var(--green)">[abc099_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc102/tasks/arc100_a" target="_blank">Linear Approximation</a> <span style="color:var(--green)">[arc100_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc107/tasks/arc101_a" target="_blank">Candles</a> <span style="color:var(--green)">[arc101_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc108/tasks/arc102_a" target="_blank">Triangular Relationship</a> <span style="color:var(--green)">[arc102_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc110/tasks/abc110_c" target="_blank">String Transformation</a> <span style="color:var(--green)">[abc110_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc111/tasks/arc103_a" target="_blank">/\/\/\/</a> <span style="color:var(--green)">[arc103_a]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc112/tasks/abc112_c" target="_blank">Pyramid</a> <span style="color:var(--green)">[abc112_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc113/tasks/abc113_c" target="_blank">ID</a> <span style="color:var(--green)">[abc113_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc114/tasks/abc114_c" target="_blank">755</a> <span style="color:var(--green)">[abc114_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc125/tasks/abc125_c" target="_blank">GCD on Blackboard</a> <span style="color:var(--green)">[abc125_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc128/tasks/abc128_c" target="_blank">Switches</a> <span style="color:var(--green)">[abc128_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc147/tasks/abc147_c" target="_blank">HonestOrUnkind2</a> <span style="color:var(--green)">[abc147_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc165/tasks/abc165_c" target="_blank">Many Requirements</a> <span style="color:var(--green)">[abc165_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc172/tasks/abc172_c" target="_blank">Tsundoku</a> <span style="color:var(--green)">[abc172_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc174/tasks/abc174_c" target="_blank">Repsept</a> <span style="color:var(--green)">[abc174_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc191/tasks/abc191_c" target="_blank">Digital Graffiti</a> <span style="color:var(--green)">[abc191_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc197/tasks/abc197_c" target="_blank">ORXOR</a> <span style="color:var(--green)">[abc197_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc218/tasks/abc218_c" target="_blank">Shapes</a> <span style="color:var(--green)">[abc218_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc271/tasks/abc271_c" target="_blank">Manga</a> <span style="color:var(--green)">[abc271_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc319/tasks/abc319_c" target="_blank">False Hope</a> <span style="color:var(--green)">[abc319_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc320/tasks/abc320_c" target="_blank">Slot Strategy 2 (Easy)</a> <span style="color:var(--green)">[abc320_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc371/tasks/abc371_c" target="_blank">Make Isomorphic</a> <span style="color:var(--green)">[abc371_c]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc379/tasks/abc379_c" target="_blank">Sowing Stones</a> <span style="color:var(--green)">[abc379_c]</span></li>
+          </ul>
+          <a href="../index.html" class="back-link">&larr; Back to main page</a>
+        </div>
+      </div>
     </div>
-</body>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <svg
+        class="sun-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        />
+      </svg>
+      <svg
+        class="moon-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+        />
+      </svg>
+    </div>
+    <div class="color-theme-toggle" onclick="cycleThemeColor()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+        ></path>
+      </svg>
+    </div>
+    <script src="../script.js"></script>
+  </body>
 </html>

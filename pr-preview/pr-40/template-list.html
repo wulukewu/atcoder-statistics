@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Problems for 525.0 - green</title>
+    <title>Problems for {point} - {color}</title>
     <link rel="icon" href="../favicon.svg" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -20,7 +20,7 @@
       <div class="container header-content">
         <h1>AtCoder Statistics</h1>
         <h2>
-          Problems for 525.0 - <span class="color-green">green</span>
+          Problems for {point} - <span class="color-{color}">{color}</span>
         </h2>
       </div>
     </header>
@@ -28,12 +28,12 @@
       <div class="card">
         <div class="card-header">
           <div class="card-title">
-            Problems for 525.0 - <span class="color-green">green</span>
+            Problems for {point} - <span class="color-{color}">{color}</span>
           </div>
         </div>
         <div class="tab-content active" id="list-content">
           <ul class="problem-list">
-            <li><a href="https://atcoder.jp/contests/abc339/tasks/abc339_e" target="_blank">Smooth Subsequence</a> <span style="color:var(--green)">[abc339_e]</span></li>
+            {problem_list}
           </ul>
           <a href="../index.html" class="back-link">&larr; Back to main page</a>
         </div>

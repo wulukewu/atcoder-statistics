@@ -1,45 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Problems for 450.0 - cyan</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
+    <link rel="icon" href="../favicon.svg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-bg">
+        <div class="header-bg-circle circle-1"></div>
+        <div class="header-bg-circle circle-2"></div>
+      </div>
+      <div class="container header-content">
+        <h1>AtCoder Statistics</h1>
+        <h2>
+          Problems for 450.0 - <span class="color-cyan">cyan</span>
+        </h2>
+      </div>
+    </header>
     <div class="container">
-        <h2>Problems for 450.0 - <span class="color-cyan">cyan</span></h2>
-        <ul>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Problems for 450.0 - <span class="color-cyan">cyan</span>
+          </div>
+        </div>
+        <div class="tab-content active" id="list-content">
+          <ul class="problem-list">
             <li><a href="https://atcoder.jp/contests/abc310/tasks/abc310_e" target="_blank">NAND repeatedly</a> <span style="color:var(--cyan)">[abc310_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc319/tasks/abc319_e" target="_blank">Bus Stops</a> <span style="color:var(--cyan)">[abc319_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc323/tasks/abc323_e" target="_blank">Playlist</a> <span style="color:var(--cyan)">[abc323_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc325/tasks/abc325_d" target="_blank">Printing Machine</a> <span style="color:var(--cyan)">[abc325_d]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc326/tasks/abc326_d" target="_blank">ABC Puzzle</a> <span style="color:var(--cyan)">[abc326_d]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc326/tasks/abc326_e" target="_blank">Revenge of "The Salary of AtCoder Inc."</a> <span style="color:var(--cyan)">[abc326_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc331/tasks/abc331_d" target="_blank">Tile Pattern</a> <span style="color:var(--cyan)">[abc331_d]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc341/tasks/abc341_e" target="_blank">Alternating String</a> <span style="color:var(--cyan)">[abc341_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc342/tasks/abc342_e" target="_blank">Last Train</a> <span style="color:var(--cyan)">[abc342_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc345/tasks/abc345_d" target="_blank">Tiling</a> <span style="color:var(--cyan)">[abc345_d]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc349/tasks/abc349_e" target="_blank">Weighted Tic-Tac-Toe</a> <span style="color:var(--cyan)">[abc349_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc350/tasks/abc350_e" target="_blank">Toward 0</a> <span style="color:var(--cyan)">[abc350_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc354/tasks/abc354_d" target="_blank">AtCoder Wallpaper</a> <span style="color:var(--cyan)">[abc354_d]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc357/tasks/abc357_e" target="_blank">Reachability in Functional Graph</a> <span style="color:var(--cyan)">[abc357_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc359/tasks/abc359_d" target="_blank">Avoid K Palindrome</a> <span style="color:var(--cyan)">[abc359_d]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc360/tasks/abc360_e" target="_blank">Random Swaps of Balls</a> <span style="color:var(--cyan)">[abc360_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc363/tasks/abc363_e" target="_blank">Sinking Land</a> <span style="color:var(--cyan)">[abc363_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc367/tasks/abc367_e" target="_blank">Permute K times</a> <span style="color:var(--cyan)">[abc367_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc369/tasks/abc369_e" target="_blank">Sightseeing Tour </a> <span style="color:var(--cyan)">[abc369_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc375/tasks/abc375_e" target="_blank">3 Team Division</a> <span style="color:var(--cyan)">[abc375_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc380/tasks/abc380_e" target="_blank">1D Bucket Tool</a> <span style="color:var(--cyan)">[abc380_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc385/tasks/abc385_e" target="_blank">Snowflake Tree</a> <span style="color:var(--cyan)">[abc385_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc390/tasks/abc390_e" target="_blank">Vitamin Balance</a> <span style="color:var(--cyan)">[abc390_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc392/tasks/abc392_e" target="_blank">Cables and Servers</a> <span style="color:var(--cyan)">[abc392_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc394/tasks/abc394_e" target="_blank">Palindromic Shortest Path</a> <span style="color:var(--cyan)">[abc394_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc396/tasks/abc396_e" target="_blank">Min of Restricted Sum</a> <span style="color:var(--cyan)">[abc396_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc401/tasks/abc401_e" target="_blank">Reachable Set</a> <span style="color:var(--cyan)">[abc401_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc402/tasks/abc402_e" target="_blank">Payment Required</a> <span style="color:var(--cyan)">[abc402_e]</span></li>
-        </ul>
-        <a href="../index.html">&larr; Back to main page</a>
+                    <li><a href="https://atcoder.jp/contests/abc319/tasks/abc319_e" target="_blank">Bus Stops</a> <span style="color:var(--cyan)">[abc319_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc323/tasks/abc323_e" target="_blank">Playlist</a> <span style="color:var(--cyan)">[abc323_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc325/tasks/abc325_d" target="_blank">Printing Machine</a> <span style="color:var(--cyan)">[abc325_d]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc326/tasks/abc326_d" target="_blank">ABC Puzzle</a> <span style="color:var(--cyan)">[abc326_d]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc326/tasks/abc326_e" target="_blank">Revenge of "The Salary of AtCoder Inc."</a> <span style="color:var(--cyan)">[abc326_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc331/tasks/abc331_d" target="_blank">Tile Pattern</a> <span style="color:var(--cyan)">[abc331_d]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc341/tasks/abc341_e" target="_blank">Alternating String</a> <span style="color:var(--cyan)">[abc341_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc342/tasks/abc342_e" target="_blank">Last Train</a> <span style="color:var(--cyan)">[abc342_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc345/tasks/abc345_d" target="_blank">Tiling</a> <span style="color:var(--cyan)">[abc345_d]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc349/tasks/abc349_e" target="_blank">Weighted Tic-Tac-Toe</a> <span style="color:var(--cyan)">[abc349_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc350/tasks/abc350_e" target="_blank">Toward 0</a> <span style="color:var(--cyan)">[abc350_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc354/tasks/abc354_d" target="_blank">AtCoder Wallpaper</a> <span style="color:var(--cyan)">[abc354_d]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc357/tasks/abc357_e" target="_blank">Reachability in Functional Graph</a> <span style="color:var(--cyan)">[abc357_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc359/tasks/abc359_d" target="_blank">Avoid K Palindrome</a> <span style="color:var(--cyan)">[abc359_d]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc360/tasks/abc360_e" target="_blank">Random Swaps of Balls</a> <span style="color:var(--cyan)">[abc360_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc363/tasks/abc363_e" target="_blank">Sinking Land</a> <span style="color:var(--cyan)">[abc363_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc367/tasks/abc367_e" target="_blank">Permute K times</a> <span style="color:var(--cyan)">[abc367_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc369/tasks/abc369_e" target="_blank">Sightseeing Tour </a> <span style="color:var(--cyan)">[abc369_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc375/tasks/abc375_e" target="_blank">3 Team Division</a> <span style="color:var(--cyan)">[abc375_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc380/tasks/abc380_e" target="_blank">1D Bucket Tool</a> <span style="color:var(--cyan)">[abc380_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc385/tasks/abc385_e" target="_blank">Snowflake Tree</a> <span style="color:var(--cyan)">[abc385_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc390/tasks/abc390_e" target="_blank">Vitamin Balance</a> <span style="color:var(--cyan)">[abc390_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc392/tasks/abc392_e" target="_blank">Cables and Servers</a> <span style="color:var(--cyan)">[abc392_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc394/tasks/abc394_e" target="_blank">Palindromic Shortest Path</a> <span style="color:var(--cyan)">[abc394_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc396/tasks/abc396_e" target="_blank">Min of Restricted Sum</a> <span style="color:var(--cyan)">[abc396_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc401/tasks/abc401_e" target="_blank">Reachable Set</a> <span style="color:var(--cyan)">[abc401_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc402/tasks/abc402_e" target="_blank">Payment Required</a> <span style="color:var(--cyan)">[abc402_e]</span></li>
+          </ul>
+          <a href="../index.html" class="back-link">&larr; Back to main page</a>
+        </div>
+      </div>
     </div>
-</body>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <svg
+        class="sun-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        />
+      </svg>
+      <svg
+        class="moon-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+        />
+      </svg>
+    </div>
+    <div class="color-theme-toggle" onclick="cycleThemeColor()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+        ></path>
+      </svg>
+    </div>
+    <script src="../script.js"></script>
+  </body>
 </html>

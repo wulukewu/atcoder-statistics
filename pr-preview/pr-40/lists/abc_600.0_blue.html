@@ -1,51 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Problems for 600.0 - blue</title>
-    <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
+    <link rel="icon" href="../favicon.svg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-bg">
+        <div class="header-bg-circle circle-1"></div>
+        <div class="header-bg-circle circle-2"></div>
+      </div>
+      <div class="container header-content">
+        <h1>AtCoder Statistics</h1>
+        <h2>
+          Problems for 600.0 - <span class="color-blue">blue</span>
+        </h2>
+      </div>
+    </header>
     <div class="container">
-        <h2>Problems for 600.0 - <span class="color-blue">blue</span></h2>
-        <ul>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Problems for 600.0 - <span class="color-blue">blue</span>
+          </div>
+        </div>
+        <div class="tab-content active" id="list-content">
+          <ul class="problem-list">
             <li><a href="https://atcoder.jp/contests/abc066/tasks/arc077_b" target="_blank">11</a> <span style="color:var(--blue)">[arc077_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc102/tasks/arc100_b" target="_blank">Equal Cut</a> <span style="color:var(--blue)">[arc100_b]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc126/tasks/abc126_f" target="_blank">XOR Matching</a> <span style="color:var(--blue)">[abc126_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc131/tasks/abc131_f" target="_blank">Must Be Rectangular!</a> <span style="color:var(--blue)">[abc131_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc142/tasks/abc142_f" target="_blank">Pure</a> <span style="color:var(--blue)">[abc142_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc151/tasks/abc151_f" target="_blank">Enclose All</a> <span style="color:var(--blue)">[abc151_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc152/tasks/abc152_f" target="_blank">Tree and Constraints</a> <span style="color:var(--blue)">[abc152_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc154/tasks/abc154_f" target="_blank">Many Many Paths</a> <span style="color:var(--blue)">[abc154_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc159/tasks/abc159_f" target="_blank">Knapsack for All Segments</a> <span style="color:var(--blue)">[abc159_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc162/tasks/abc162_f" target="_blank">Select Half</a> <span style="color:var(--blue)">[abc162_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc165/tasks/abc165_f" target="_blank">LIS on Tree</a> <span style="color:var(--blue)">[abc165_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc166/tasks/abc166_f" target="_blank">Three Variables Game</a> <span style="color:var(--blue)">[abc166_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc167/tasks/abc167_f" target="_blank">Bracket Sequencing</a> <span style="color:var(--blue)">[abc167_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc169/tasks/abc169_f" target="_blank">Knapsack for All Subsets</a> <span style="color:var(--blue)">[abc169_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc170/tasks/abc170_f" target="_blank">Pond Skater</a> <span style="color:var(--blue)">[abc170_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc171/tasks/abc171_f" target="_blank">Strivore</a> <span style="color:var(--blue)">[abc171_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc173/tasks/abc173_f" target="_blank">Intervals on Tree</a> <span style="color:var(--blue)">[abc173_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc178/tasks/abc178_f" target="_blank">Contrast</a> <span style="color:var(--blue)">[abc178_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc179/tasks/abc179_f" target="_blank">Simplified Reversi</a> <span style="color:var(--blue)">[abc179_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc186/tasks/abc186_f" target="_blank">Rook on Grid</a> <span style="color:var(--blue)">[abc186_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc187/tasks/abc187_f" target="_blank">Close Group</a> <span style="color:var(--blue)">[abc187_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc188/tasks/abc188_f" target="_blank">+1-1x2</a> <span style="color:var(--blue)">[abc188_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc192/tasks/abc192_f" target="_blank">Potion</a> <span style="color:var(--blue)">[abc192_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc197/tasks/abc197_f" target="_blank">Construct a Palindrome</a> <span style="color:var(--blue)">[abc197_f]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc216/tasks/abc216_g" target="_blank">01Sequence</a> <span style="color:var(--blue)">[abc216_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc242/tasks/abc242_g" target="_blank">Range Pairing Query</a> <span style="color:var(--blue)">[abc242_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc258/tasks/abc258_g" target="_blank">Triangle</a> <span style="color:var(--blue)">[abc258_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc293/tasks/abc293_g" target="_blank">Triple Index</a> <span style="color:var(--blue)">[abc293_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc294/tasks/abc294_g" target="_blank">Distance Queries on a Tree</a> <span style="color:var(--blue)">[abc294_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc297/tasks/abc297_g" target="_blank">Constrained Nim 2</a> <span style="color:var(--blue)">[abc297_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc313/tasks/abc313_e" target="_blank">Duplicate</a> <span style="color:var(--blue)">[abc313_e]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc339/tasks/abc339_g" target="_blank">Smaller Sum</a> <span style="color:var(--blue)">[abc339_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc392/tasks/abc392_g" target="_blank">Fine Triplets</a> <span style="color:var(--blue)">[abc392_g]</span></li>
-            <li><a href="https://atcoder.jp/contests/abc404/tasks/abc404_g" target="_blank">Specified Range Sums</a> <span style="color:var(--blue)">[abc404_g]</span></li>
-        </ul>
-        <a href="../index.html">&larr; Back to main page</a>
+                    <li><a href="https://atcoder.jp/contests/abc102/tasks/arc100_b" target="_blank">Equal Cut</a> <span style="color:var(--blue)">[arc100_b]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc126/tasks/abc126_f" target="_blank">XOR Matching</a> <span style="color:var(--blue)">[abc126_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc131/tasks/abc131_f" target="_blank">Must Be Rectangular!</a> <span style="color:var(--blue)">[abc131_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc142/tasks/abc142_f" target="_blank">Pure</a> <span style="color:var(--blue)">[abc142_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc151/tasks/abc151_f" target="_blank">Enclose All</a> <span style="color:var(--blue)">[abc151_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc152/tasks/abc152_f" target="_blank">Tree and Constraints</a> <span style="color:var(--blue)">[abc152_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc154/tasks/abc154_f" target="_blank">Many Many Paths</a> <span style="color:var(--blue)">[abc154_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc159/tasks/abc159_f" target="_blank">Knapsack for All Segments</a> <span style="color:var(--blue)">[abc159_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc162/tasks/abc162_f" target="_blank">Select Half</a> <span style="color:var(--blue)">[abc162_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc165/tasks/abc165_f" target="_blank">LIS on Tree</a> <span style="color:var(--blue)">[abc165_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc166/tasks/abc166_f" target="_blank">Three Variables Game</a> <span style="color:var(--blue)">[abc166_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc167/tasks/abc167_f" target="_blank">Bracket Sequencing</a> <span style="color:var(--blue)">[abc167_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc169/tasks/abc169_f" target="_blank">Knapsack for All Subsets</a> <span style="color:var(--blue)">[abc169_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc170/tasks/abc170_f" target="_blank">Pond Skater</a> <span style="color:var(--blue)">[abc170_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc171/tasks/abc171_f" target="_blank">Strivore</a> <span style="color:var(--blue)">[abc171_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc173/tasks/abc173_f" target="_blank">Intervals on Tree</a> <span style="color:var(--blue)">[abc173_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc178/tasks/abc178_f" target="_blank">Contrast</a> <span style="color:var(--blue)">[abc178_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc179/tasks/abc179_f" target="_blank">Simplified Reversi</a> <span style="color:var(--blue)">[abc179_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc186/tasks/abc186_f" target="_blank">Rook on Grid</a> <span style="color:var(--blue)">[abc186_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc187/tasks/abc187_f" target="_blank">Close Group</a> <span style="color:var(--blue)">[abc187_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc188/tasks/abc188_f" target="_blank">+1-1x2</a> <span style="color:var(--blue)">[abc188_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc192/tasks/abc192_f" target="_blank">Potion</a> <span style="color:var(--blue)">[abc192_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc197/tasks/abc197_f" target="_blank">Construct a Palindrome</a> <span style="color:var(--blue)">[abc197_f]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc216/tasks/abc216_g" target="_blank">01Sequence</a> <span style="color:var(--blue)">[abc216_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc242/tasks/abc242_g" target="_blank">Range Pairing Query</a> <span style="color:var(--blue)">[abc242_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc258/tasks/abc258_g" target="_blank">Triangle</a> <span style="color:var(--blue)">[abc258_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc293/tasks/abc293_g" target="_blank">Triple Index</a> <span style="color:var(--blue)">[abc293_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc294/tasks/abc294_g" target="_blank">Distance Queries on a Tree</a> <span style="color:var(--blue)">[abc294_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc297/tasks/abc297_g" target="_blank">Constrained Nim 2</a> <span style="color:var(--blue)">[abc297_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc313/tasks/abc313_e" target="_blank">Duplicate</a> <span style="color:var(--blue)">[abc313_e]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc339/tasks/abc339_g" target="_blank">Smaller Sum</a> <span style="color:var(--blue)">[abc339_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc392/tasks/abc392_g" target="_blank">Fine Triplets</a> <span style="color:var(--blue)">[abc392_g]</span></li>
+                    <li><a href="https://atcoder.jp/contests/abc404/tasks/abc404_g" target="_blank">Specified Range Sums</a> <span style="color:var(--blue)">[abc404_g]</span></li>
+          </ul>
+          <a href="../index.html" class="back-link">&larr; Back to main page</a>
+        </div>
+      </div>
     </div>
-</body>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <svg
+        class="sun-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+        />
+      </svg>
+      <svg
+        class="moon-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+        />
+      </svg>
+    </div>
+    <div class="color-theme-toggle" onclick="cycleThemeColor()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+        ></path>
+      </svg>
+    </div>
+    <script src="../script.js"></script>
+  </body>
 </html>
