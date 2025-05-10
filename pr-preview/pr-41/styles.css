@@ -756,10 +756,10 @@ header {
   background: linear-gradient(
     to right,
     var(--gold),
-    var(--bronze-gold),
+    var(--gold-light),
     var(--gold)
   );
-  border-color: var(--bronze);
+  border-color: var(--gold);
 }
 
 .bg-purple {
