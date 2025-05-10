@@ -520,3 +520,15 @@ header {
   border: 1px solid var(--primary, #0f9d58);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+:root[data-mode="dark"] .back-link {
+  background: #222e36;
+  color: var(--primary-light, #b7e4c7);
+  border: 1px solid var(--primary-dark, #0b7d46);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+:root[data-mode="dark"] .back-link:hover {
+  background: var(--primary, #0f9d58);
+  color: #fff;
+  border: 1px solid var(--primary, #0f9d58);
+}
