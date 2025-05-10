@@ -186,45 +186,121 @@ h2 {
   padding: 24px 32px 32px 32px;
 }
 
+/* Modern card-based problem list layout */
 .problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   list-style: none;
   padding: 0;
   margin: 0 0 24px 0;
 }
 
-.problem-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 1.1rem;
+.problem-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 18px 20px;
+  transition: box-shadow 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
 }
-
-.problem-list li:last-child {
-  border-bottom: none;
+.problem-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: var(--hover-bg);
 }
-
+.problem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.problem-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--title-color);
+}
+.problem-badge {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #fff;
+  margin-left: 10px;
+  text-transform: capitalize;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
 .color-grey {
-  color: #868e96;
+  background: #868e96;
 }
 .color-brown {
-  color: #a87950;
+  background: #a87950;
 }
 .color-green {
-  color: #4caf50;
+  background: #4caf50;
 }
 .color-cyan {
-  color: #00bcd4;
+  background: #00bcd4;
 }
 .color-blue {
-  color: #1976d2;
+  background: #1976d2;
 }
 .color-yellow {
-  color: #ffd600;
+  background: #ffd600;
+  color: #222;
 }
 .color-orange {
-  color: #ff9800;
+  background: #ff9800;
 }
 .color-red {
-  color: #e53935;
+  background: #e53935;
+}
+
+.problem-meta {
+  margin-top: 8px;
+  font-size: 0.97em;
+  color: var(--difficulty-color);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.problem-id,
+.contest-id {
+  background: var(--header-bg);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.93em;
+  color: var(--difficulty-color);
+}
+.external-link {
+  margin-left: auto;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.external-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+.external-link svg {
+  margin-left: 4px;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .problem-card {
+    padding: 12px 8px;
+  }
+  .problem-title {
+    font-size: 1rem;
+  }
+  .problem-meta {
+    font-size: 0.92em;
+  }
 }
 
 .back-link {
