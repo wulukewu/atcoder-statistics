@@ -1,62 +1,65 @@
 import json
 import os
 
-# Load chart data from chart.json
+# Load chart and stats data from JSON files
 with open('web-page/json/chart.json', 'r', encoding='utf-8') as f:
     chart = json.load(f)
 with open('web-page/json/stats.json', 'r', encoding='utf-8') as f:
     stats = json.load(f)
 
-# Initialize variables to store contest statistics
-latest_contest_abc = None
-colors = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
+# Define color order for table columns
+COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red']
 
-# Process ABC contest statistics specifically
-abc_statics = {}
+# Aggregate ABC contest statistics by point and color
+abc_stats = {}
 for point, color_counts in chart['abc'].items():
-    total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
+    if point not in abc_stats:
+        abc_stats[point] = {color: 0 for color in COLOR_ORDER}
     for color, count in color_counts.items():
-        if point not in abc_statics:
-            abc_statics[point] = {}
-        if color not in abc_statics[point]:
-            abc_statics[point][color] = 0
-        abc_statics[point][color] += count
+        abc_stats[point][color] += count
 
-# Generate HTML table rows for the statistics
-table_rows = ""
-for point, color_counts in sorted(abc_statics.items()):
-    total_count = sum(color_counts.values()) if sum(color_counts.values()) > 0 else 1
-    table_rows += f"            <tr>\n"
-    table_rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
-    for color in colors:
-        count = color_counts.get(color, 0)
-        percentage = round((count / total_count) * 100, 2)
-        circle_color_class = f"color-{color}" if count > 0 else "empty-color"
-        bg_color_class = f"bg-{color}" if count > 0 else ""
-        table_rows += f"                <td>\n"
-        table_rows += f"                    <div class='stats-container'>\n"
-        table_rows += f"                        <div class='circle-container'>\n"
-        table_rows += f"                            <div class='progress-circle {circle_color_class}' data-color='var(--{color})' data-percent='{percentage}'>\n"
-        table_rows += f"                                <span class='progress-circle-inner {bg_color_class}'></span>\n"
-        table_rows += f"                            </div>\n"
-        table_rows += f"                            <span class='count {circle_color_class}'>{count}</span>\n"
-        table_rows += "                        </div>\n"
-        table_rows += f"                        <span class='percentage {circle_color_class}'>({percentage}%)</span>\n"
-        table_rows += "                    </div>\n"
-        table_rows += "                </td>\n"
-    table_rows += "            </tr>\n"
+def render_table_rows(stats_by_point):
+    """Generate HTML table rows for ABC statistics."""
+    rows = ""
+    for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
+        total = sum(color_counts.values()) or 1
+        rows += f"            <tr>\n"
+        rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
+        for color in COLOR_ORDER:
+            count = color_counts.get(color, 0)
+            percent = round((count / total) * 100, 2)
+            circle_class = f"color-{color}" if count > 0 else "empty-color"
+            bg_class = f"bg-{color}" if count > 0 else ""
+            rows += (
+                f"                <td>\n"
+                f"                    <div class='stats-container'>\n"
+                f"                        <div class='circle-container'>\n"
+                f"                            <div class='progress-circle {circle_class}' data-color='var(--{color})' data-percent='{percent}'>\n"
+                f"                                <span class='progress-circle-inner {bg_class}'></span>\n"
+                f"                            </div>\n"
+                f"                            <span class='count {circle_class}'>{count}</span>\n"
+                f"                        </div>\n"
+                f"                        <span class='percentage {circle_class}'>({percent}%)</span>\n"
+                f"                    </div>\n"
+                f"                </td>\n"
+            )
+        rows += "            </tr>\n"
+    return rows
+
+table_rows = render_table_rows(abc_stats)
 
 # Read the HTML template
 with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
-# Generate final HTML by replacing placeholders
+# Find the latest ABC contest with at least one colored problem
 latest_contest_abc = "N/A"
 for contest_id in reversed(stats['abc']):
     if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
         latest_contest_abc = contest_id
         break
 
+# Fill the template with generated content
 html_content = template.format(
     latest_contest_abc=latest_contest_abc.upper(),
     table_rows=table_rows

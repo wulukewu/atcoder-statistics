@@ -2,73 +2,100 @@ import time
 import requests
 import json
 import os
+
 # Fetch contest data from AtCoder API
 problem_models = requests.get('https://kenkoooo.com/atcoder/resources/problem-models.json').json()
-# print('problem_models', problem_models)
 merged_problems = requests.get('https://kenkoooo.com/atcoder/resources/merged-problems.json').json()
-# print('merged_problems', merged_problems)
-stats={
-    "abc":{},
-    "arc":{},
-    "agc":{},
-    "others":{}
-}
-chart={
-    "abc":{},
-    "arc":{},
-    "agc":{},
-    "others":{}
-}
-for stat in merged_problems:
-    y="others"
-    if "abc" in stat["contest_id"]: y="abc"
-    elif "arc" in stat["contest_id"]: y="arc"
-    elif "agc" in stat["contest_id"]: y="agc"
-    else: y="others"
-    x="contest_id"
-    if stat[x] not in stats[y] :stats[y][stat[x]] = {}
-    stats[y][stat[x]][stat["id"]]={}
-    stats[y][stat[x]][stat["id"]]["name"]        =stat["name"]
-    stats[y][stat[x]][stat["id"]]["point"]       =stat["point"]
-    stats[y][stat[x]][stat["id"]]["solver_count"]=stat["solver_count"]
-    if stat["id"] in problem_models:
-        if "is_experimental" in problem_models[stat["id"]]:
-            stats[y][stat[x]][stat["id"]]["is_experimental"]= problem_models[stat["id"]]["is_experimental"]
-        if "variance" in problem_models[stat["id"]]:
-            stats[y][stat[x]][stat["id"]]["variance"]   = problem_models[stat["id"]]["variance"]
-        if "difficulty" in problem_models[stat["id"]]:
-            stats[y][stat[x]][stat["id"]]["difficulty"] = problem_models[stat["id"]]["difficulty"]
-            z=problem_models[stat["id"]]["difficulty"]
-            if z == None: continue
-            if z<400: color="grey"
-            elif z<800: color="brown"
-            elif z<1200: color="green"
-            elif z<1600: color="cyan"
-            elif z<2000: color="blue"
-            elif z<2400: color="yellow"
-            elif z<2800: color="orange"
-            elif z<3200: color="red"
-            else: color="red"
-            stats[y][stat[x]][stat["id"]]["color"] = color
-    # if stat["point"]==100: print(stats[y][stat[x]][stat["id"]])
 
-for x in stats:
-    for stat in stats[x]:
-        # print(stat)
-        for i in stats[x][stat].values():
-            if ("color" not in i) or ("point" not in i): continue
-            if i["point"]==None: continue
-            if i["point"] not in chart[x]:chart[x][i["point"]]={}
-            if i["color"] in chart[x][i["point"]]:
-                chart[x][i["point"]][i["color"]]+=1
+# Initialize data structures for statistics and chart data
+stats = {
+    "abc": {},
+    "arc": {},
+    "agc": {},
+    "others": {}
+}
+chart = {
+    "abc": {},
+    "arc": {},
+    "agc": {},
+    "others": {}
+}
+
+# Helper function to determine color from difficulty
+COLOR_THRESHOLDS = [
+    (400, "grey"),
+    (800, "brown"),
+    (1200, "green"),
+    (1600, "cyan"),
+    (2000, "blue"),
+    (2400, "yellow"),
+    (2800, "orange"),
+    (3200, "red"),
+]
+def get_color(difficulty):
+    if difficulty is None:
+        return None
+    for threshold, color in COLOR_THRESHOLDS:
+        if difficulty < threshold:
+            return color
+    return "red"
+
+# Process each problem and organize by contest type
+for problem in merged_problems:
+    # Determine contest type
+    if "abc" in problem["contest_id"]:
+        contest_type = "abc"
+    elif "arc" in problem["contest_id"]:
+        contest_type = "arc"
+    elif "agc" in problem["contest_id"]:
+        contest_type = "agc"
+    else:
+        contest_type = "others"
+    contest_id = problem["contest_id"]
+    problem_id = problem["id"]
+
+    # Initialize contest entry if needed
+    if contest_id not in stats[contest_type]:
+        stats[contest_type][contest_id] = {}
+    stats[contest_type][contest_id][problem_id] = {
+        "name": problem["name"],
+        "point": problem["point"],
+        "solver_count": problem["solver_count"]
+    }
+
+    # Add problem model data if available
+    if problem_id in problem_models:
+        model = problem_models[problem_id]
+        if "is_experimental" in model:
+            stats[contest_type][contest_id][problem_id]["is_experimental"] = model["is_experimental"]
+        if "variance" in model:
+            stats[contest_type][contest_id][problem_id]["variance"] = model["variance"]
+        if "difficulty" in model:
+            stats[contest_type][contest_id][problem_id]["difficulty"] = model["difficulty"]
+            color = get_color(model["difficulty"])
+            if color:
+                stats[contest_type][contest_id][problem_id]["color"] = color
+
+# Build chart data: count problems by point and color
+for contest_type in stats:
+    for contest_id in stats[contest_type]:
+        for problem in stats[contest_type][contest_id].values():
+            if "color" not in problem or "point" not in problem or problem["point"] is None:
+                continue
+            point = problem["point"]
+            color = problem["color"]
+            if point not in chart[contest_type]:
+                chart[contest_type][point] = {}
+            if color in chart[contest_type][point]:
+                chart[contest_type][point][color] += 1
             else:
-                chart[x][i["point"]][i["color"]]=1
+                chart[contest_type][point][color] = 1
 
+# Ensure output directory exists
 os.makedirs('web-page/json', exist_ok=True)
-# Save the stats dictionary to a JSON file
+
+# Save the stats and chart dictionaries to JSON files
 with open('web-page/json/stats.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=2)
-# print(stats)
 with open('web-page/json/chart.json', 'w', encoding='utf-8') as f:
     json.dump(chart, f, ensure_ascii=False, indent=2)
-# print(chart)
