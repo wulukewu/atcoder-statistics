@@ -642,13 +642,9 @@ header {
     var(--silver-light),
     var(--silver)
   );
-  border-color: var(--bronze);
+  border-color: var(--silver);
 }
 
-.color-gold {
-  color: var(--gold);
-  border-color: var(--gold);
-}
 .color-gold {
   color: var(--gold);
   border-color: var(--gold);
@@ -712,54 +708,6 @@ header {
 
 .bg-red {
   background-color: var(--red);
-}
-
-.bg-bronze {
-  background-color: var(--bronze);
-}
-
-.bg-bronze,
-.difficulty-circle.color-bronze,
-.difficulty-circle.bronze {
-  background: linear-gradient(
-    to right,
-    var(--bronze),
-    var(--bronze-light),
-    var(--bronze)
-  );
-  border-color: var(--bronze);
-}
-
-.bg-silver {
-  background-color: var(--silver);
-}
-
-.bg-silver,
-.difficulty-circle.color-silver,
-.difficulty-circle.silver {
-  background: linear-gradient(
-    to right,
-    var(--silver),
-    var(--silver-light),
-    var(--silver)
-  );
-  border-color: var(--bronze);
-}
-
-.bg-gold {
-  background-color: var(--gold);
-}
-
-.bg-gold,
-.difficulty-circle.color-gold,
-.difficulty-circle.gold {
-  background: linear-gradient(
-    to right,
-    var(--gold),
-    var(--gold-light),
-    var(--gold)
-  );
-  border-color: var(--gold);
 }
 
 .bg-purple {
