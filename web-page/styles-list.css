@@ -1,6 +1,5 @@
-/* styles-list.css: Custom styles for problem list pages. Synchronized with styles.css for theme consistency. */
+/* List page CSS: only base, header, card, button, and problem-list/card styles. */
 
-/* Base Variables */
 :root {
   --primary: #0f9d58;
   --primary-dark: #0b7d46;
@@ -60,96 +59,100 @@
   --empty-border-color: var(--gray-600);
 }
 
-:root[data-color="green"] {
-  --primary: #0f9d58;
-  --primary-dark: #0b7d46;
-}
-:root[data-color="blue"] {
-  --primary: #1976d2;
-  --primary-dark: #0d47a1;
-}
-:root[data-color="purple"] {
-  --primary: #6a1b9a;
-  --primary-dark: #4a148c;
-}
-:root[data-color="orange"] {
-  --primary: #ff9800;
-  --primary-dark: #e65100;
-}
-:root[data-color="pink"] {
-  --primary: #e91e63;
-  --primary-dark: #ad1457;
-}
-
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  margin: 0;
+  line-height: 1.5;
   padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 1.5rem 0;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+:root[data-mode="dark"] header {
+  background: linear-gradient(135deg, #22313a 0%, var(--primary-dark) 100%);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .header-bg {
   position: absolute;
-  width: 100vw;
-  height: 300px;
-  left: 0;
   top: 0;
-  z-index: 0;
-  overflow: hidden;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.1;
 }
 
 .header-bg-circle {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.15;
+  background: white;
+  animation: float 6s ease-in-out infinite;
 }
 
-.header-bg-circle.circle-1 {
-  width: 600px;
-  height: 600px;
-  left: -200px;
-  top: -200px;
-  background: var(--primary, #4f8cff);
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -100px;
+  animation-delay: 0s;
 }
 
-.header-bg-circle.circle-2 {
-  width: 400px;
-  height: 400px;
-  right: -100px;
-  top: 50px;
-  background: var(--secondary, #ffb74d);
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  right: -50px;
+  animation-delay: 2s;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 16px 0 16px;
-  position: relative;
-  z-index: 1;
-}
-
-.header-content {
-  position: relative;
-  z-index: 2;
-  padding-top: 32px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.5rem;
+.header-content h1 {
+  font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 8px 0;
+  margin-bottom: 0.5rem;
+  /* animation: fadeInDown 0.8s ease-out; */
+  /* opacity: 0; */
+  /* animation-fill-mode: forwards; */
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin: 0 0 24px 0;
+.header-content h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  /* opacity: 0; */
+  /* animation: fadeInUp 0.8s ease-out 0.3s; */
+  /* animation-fill-mode: forwards; */
 }
 
-/* Card Styles */
 .card {
   background-color: var(--card-bg);
   border-radius: 0.75rem;
@@ -182,11 +185,105 @@ h2 {
   transition: color 0.3s ease;
 }
 
-.tab-content {
-  padding: 24px 32px 32px 32px;
+.floating-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 50;
 }
 
-/* Modern card-based problem list layout */
+.floating-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: var(--primary-dark);
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow);
+  background-color: var(--primary-dark);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+:root[data-mode="dark"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+:root[data-mode="dark"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+.color-theme-toggle {
+  position: fixed;
+  bottom: 8.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.color-theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow);
+  background-color: var(--primary-dark);
+}
+
+.color-theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+}
+
+/* Modern card-based problem list layout for lists only */
 .problem-list {
   display: flex;
   flex-direction: column;
@@ -263,8 +360,7 @@ h2 {
   align-items: center;
   gap: 16px;
 }
-.problem-id,
-.contest-id {
+.problem-id {
   background: var(--header-bg);
   border-radius: 6px;
   padding: 2px 8px;
@@ -303,59 +399,43 @@ h2 {
   }
 }
 
-.back-link {
-  display: inline-block;
-  margin-top: 16px;
-  color: var(--primary, #4f8cff);
-  text-decoration: none;
-  font-weight: 500;
+:root[data-color="green"] {
+  --primary: #0f9d58;
+  --primary-dark: #0b7d46;
+  --primary-light: #b7e4c7;
+  --primary-lightest-bg: #f8fdfa;
+  --primary-darkest-bg: #0a1f14;
+  --tab-hover-bg: rgba(15, 157, 88, 0.08);
 }
-
-.back-link:hover {
-  text-decoration: underline;
+:root[data-color="blue"] {
+  --primary: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --primary-light: #bfdbfe;
+  --primary-lightest-bg: #f8fbff;
+  --primary-darkest-bg: #0a1428;
+  --tab-hover-bg: rgba(59, 130, 246, 0.08);
 }
-
-.theme-toggle {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-  margin-left: 8px;
-  transition: background 0.3s;
+:root[data-color="purple"] {
+  --primary: #7c3aed;
+  --primary-dark: #5b21b6;
+  --primary-light: #ddd6fe;
+  --primary-lightest-bg: #faf9ff;
+  --primary-darkest-bg: #1a0f2e;
+  --tab-hover-bg: rgba(124, 58, 237, 0.08);
 }
-
-.theme-toggle:hover {
-  background: var(--primary-light);
+:root[data-color="orange"] {
+  --primary: #f97316;
+  --primary-dark: #c2410c;
+  --primary-light: #fed7aa;
+  --primary-lightest-bg: #fffbf7;
+  --primary-darkest-bg: #2a1508;
+  --tab-hover-bg: rgba(249, 115, 22, 0.08);
 }
-
-.theme-toggle svg {
-  width: 24px;
-  height: 24px;
-}
-
-.theme-toggle .moon-icon {
-  display: none;
-}
-
-:root[data-mode="dark"] .theme-toggle {
-  background: var(--gray-800);
-}
-:root[data-mode="dark"] .theme-toggle .sun-icon {
-  display: none;
-}
-:root[data-mode="dark"] .theme-toggle .moon-icon {
-  display: block;
-}
-
-.color-theme-toggle {
-  right: 92px;
+:root[data-color="pink"] {
+  --primary: #ec4899;
+  --primary-dark: #be185d;
+  --primary-light: #fbcfe8;
+  --primary-lightest-bg: #fff9fc;
+  --primary-darkest-bg: #2a0a1a;
+  --tab-hover-bg: rgba(236, 72, 153, 0.08);
 }
