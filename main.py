@@ -42,6 +42,8 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                         name = problems[pid].get('name', pid)
                         break
                 # Format problem tag as 'ABC400A' (contest id upper + problem suffix upper)
+                # Expected format of 'pid': A string containing an underscore (e.g., 'abc_400a').
+                # If 'pid' does not contain an underscore, the fallback logic will use the entire 'pid' in uppercase.
                 if contest_id and '_' in pid:
                     contest_tag = contest_id.upper() + pid.split('_')[-1].upper()
                 else:
