@@ -373,6 +373,20 @@ header {
   background: #e53935;
 }
 
+.color-bronze {
+  background: #cd7f32;
+}
+
+.color-silver {
+  background: #c0c0c0;
+  color: #222;
+}
+
+.color-gold {
+  background: #ffd700;
+  color: #222;
+}
+
 .problem-meta {
   margin-top: 8px;
   font-size: 0.97em;
