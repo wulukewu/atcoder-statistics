@@ -26,28 +26,85 @@
                 <div class="card-title">AtCoder Problems</div>
             </div>
             <div class="tabs">
-                <div class="tab active" data-tab="table">AtCoder Beginner Contest</div>
+                <div class="tab active" data-tab="table-abc" onclick="showTab('table-abc')">AtCoder Beginner Contest</div>
+                <div class="tab" data-tab="table-arc" onclick="showTab('table-arc')">AtCoder Regular Contest</div>
+                <div class="tab" data-tab="table-agc" onclick="showTab('table-agc')">AtCoder Grand Contest</div>
             </div>
-            <div class="tab-content active" id="table-content">
-                <div class="table-responsive">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Score</th>
-                                <th>Grey</th>
-                                <th>Brown</th>
-                                <th>Green</th>
-                                <th>Cyan</th>
-                                <th>Blue</th>
-                                <th>Yellow</th>
-                                <th>Orange</th>
-                                <th>Red</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {table_rows}
-                        </tbody>
-                    </table>
+            <div class="tables">
+                <div class="tab-content active" id="table-abc">
+                    <div class="table-responsive">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Score</th>
+                                    <th>Grey</th>
+                                    <th>Brown</th>
+                                    <th>Green</th>
+                                    <th>Cyan</th>
+                                    <th>Blue</th>
+                                    <th>Yellow</th>
+                                    <th>Orange</th>
+                                    <th>Red</th>
+                                    <th>bronze</th>
+                                    <th>silver</th>
+                                    <th>gold</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table_rows_abc}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-content" id="table-arc">
+                    <div class="table-responsive">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Score</th>
+                                    <th>Grey</th>
+                                    <th>Brown</th>
+                                    <th>Green</th>
+                                    <th>Cyan</th>
+                                    <th>Blue</th>
+                                    <th>Yellow</th>
+                                    <th>Orange</th>
+                                    <th>Red</th>
+                                    <th>bronze</th>
+                                    <th>silver</th>
+                                    <th>gold</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table_rows_arc}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-content" id="table-agc">
+                    <div class="table-responsive">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Score</th>
+                                    <th>Grey</th>
+                                    <th>Brown</th>
+                                    <th>Green</th>
+                                    <th>Cyan</th>
+                                    <th>Blue</th>
+                                    <th>Yellow</th>
+                                    <th>Orange</th>
+                                    <th>Red</th>
+                                    <th>bronze</th>
+                                    <th>silver</th>
+                                    <th>gold</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table_rows_agc}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,5 +129,4 @@
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
