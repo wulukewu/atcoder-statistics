@@ -92,7 +92,12 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                         </div>
                         ''')
                 problem_list = '\n'.join(items)
-                html = template.format(point=point_int, color=color, problem_list=problem_list)
+                html = template.format(
+                    contest_type=contest_type.upper(),
+                    point=point_int,
+                    color=color,
+                    problem_list=problem_list
+                )
                 folder_path = f'{output_dir}/lists/{contest_type}/{point_int}/{color}'
                 os.makedirs(folder_path, exist_ok=True)
                 filename = f'{folder_path}/index.html'
