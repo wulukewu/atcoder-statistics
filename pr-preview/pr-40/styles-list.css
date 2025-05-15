@@ -450,6 +450,28 @@ header {
   .card-body {
     padding: 1rem;
   }
+  /* Problem list adjustments for tablets */
+  .problem-list {
+    gap: 14px;
+  }
+  .problem-card {
+    padding: 16px 18px;
+  }
+  .problem-title {
+    font-size: 1.1rem;
+  }
+  .problem-badge {
+    padding: 2px 8px;
+    font-size: 0.9em;
+  }
+  .problem-meta {
+    font-size: 0.95em;
+    gap: 12px;
+  }
+  .problem-id {
+    padding: 2px 6px;
+    font-size: 0.9em;
+  }
   /* Adjust floating buttons for tablets */
   .floating-button,
   .theme-toggle,
@@ -490,6 +512,40 @@ header {
   }
   .card-body {
     padding: 0.75rem;
+  }
+  /* Problem list adjustments for mobile */
+  .problem-list {
+    gap: 12px;
+  }
+  .problem-card {
+    padding: 14px 16px;
+  }
+  .problem-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .problem-title {
+    font-size: 1rem;
+    width: 100%;
+  }
+  .problem-badge {
+    padding: 2px 6px;
+    font-size: 0.85em;
+    margin-left: 0;
+  }
+  .problem-meta {
+    font-size: 0.9em;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .problem-id {
+    padding: 2px 4px;
+    font-size: 0.85em;
+  }
+  .external-link {
+    margin-left: 0;
+    margin-top: 4px;
   }
   /* Adjust floating buttons for mobile */
   .floating-button,
