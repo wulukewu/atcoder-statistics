@@ -39,6 +39,9 @@ COLOR_THRESHOLDS = [
     (2400, "yellow"),
     (2800, "orange"),
     (3200, "red"),
+    (3600, "bronze"),
+    (4000, "silver"),
+    (4400, "gold")
 ]
 def get_color(difficulty):
     if difficulty is None:

@@ -23,6 +23,12 @@
   --blue: rgb(54, 54, 255);
   --purple: #6a1b9a;
   --brown: rgb(170, 100, 0);
+  --bronze: rgb(160, 92, 64);
+  --bronze-light: rgb(255, 218, 189);
+  --silver: rgb(127, 127, 127);
+  --silver-light: rgb(224, 224, 224);
+  --gold: rgb(245, 200, 0);  
+  --gold-light: rgb(235, 228, 200);
   color-scheme: light dark;
 }
 
@@ -606,6 +612,65 @@ header {
 .color-red {
   color: var(--red);
   border-color: var(--red);
+}
+
+.color-bronze {
+  color: var(--bronze);
+  border-color: var(--bronze);
+}
+.bg-bronze,
+.difficulty-circle.color-bronze,
+.difficulty-circle.bronze {
+  background: linear-gradient(
+    to right,
+    var(--bronze),
+    var(--bronze-light),
+    var(--bronze)
+  );
+  border-color: var(--bronze);
+}
+.color-silver {
+  color: var(--silver);
+  border-color: var(--silver);
+}
+.bg-silver,
+.difficulty-circle.color-silver,
+.difficulty-circle.silver {
+  background: linear-gradient(
+    to right,
+    var(--silver),
+    var(--silver-light),
+    var(--silver)
+  );
+  border-color: var(--silver);
+}
+
+.color-gold {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.bg-gold,
+.difficulty-circle.color-gold,
+.difficulty-circle.gold {
+  background: linear-gradient(
+    to right,
+    var(--gold),
+    var(--gold-light),
+    var(--gold)
+  );
+  border-color: var(--gold);
+}
+
+.bg-bronze {
+  background-color: var(--bronze);
+}
+
+.bg-silver {
+  background-color: var(--silver);
+}
+
+.bg-gold {
+  background-color: var(--gold);
 }
 
 .color-purple {

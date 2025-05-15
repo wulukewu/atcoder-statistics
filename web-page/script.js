@@ -10,10 +10,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize progress circles
     initializeProgressCircles();
-    
-    // Set dynamic animation delays for table rows
-    setTableRowAnimations();
-    
+    // Set animation for the default active tab
+    const activeTab = document.querySelector('.tab.active');
+    if (activeTab) {
+        const tabId = activeTab.getAttribute('data-tab');
+        setTableRowAnimations(tabId);
+    }
     // Initialize theme icon
     const mode = document.documentElement.getAttribute('data-mode');
     updateThemeIcon(mode);
@@ -30,8 +32,9 @@ function initializeProgressCircles() {
     });
 }
 
-function setTableRowAnimations() {
-    const rows = document.querySelectorAll('.stats-table tbody tr');
+function setTableRowAnimations(tabId) {
+    // Only select rows from the active tab's table
+    const rows = document.querySelectorAll(`#${tabId} .stats-table tbody tr`);
     rows.forEach((row, index) => {
         row.style.animationDelay = `${(index + 1) * 0.1}s`;
     });
@@ -76,6 +79,16 @@ function cycleThemeColor() {
     const newColorTheme = colorThemes[currentColorIndex];
     document.documentElement.setAttribute('data-color', newColorTheme);
     localStorage.setItem('color-theme', newColorTheme);
+}
+function showTab(tabId) {
+    // Hide all tab contents and remove active class from tabs
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    // Show the selected tab content and set tab as active
+    document.getElementById(tabId).classList.add('active');
+    document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+    // Set animation only for visible rows
+    setTableRowAnimations(tabId);
 }
 
 // Initialize color theme
