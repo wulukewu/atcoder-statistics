@@ -160,9 +160,9 @@ def render_table_rows(stats_by_point, contest_type='abc'):
 
 print("\nGenerating table rows for each contest type...")
 # Generate table rows for each contest type
-table_row_abc = render_table_rows(abc_stats, 'abc')
-table_row_arc = render_table_rows(arc_stats, 'arc')
-table_row_agc = render_table_rows(agc_stats, 'agc')
+table_rows_abc = render_table_rows(abc_stats, 'abc')
+table_rows_arc = render_table_rows(arc_stats, 'arc')
+table_rows_agc = render_table_rows(agc_stats, 'agc')
 print("✓ Table rows generated")
 
 # Read the HTML template
@@ -171,20 +171,20 @@ with open('web-page/template.html', 'r') as template_file:
 
 # Find the latest ABC contest with at least one colored problem
 print("\nFinding latest ABC contest with colored problems...")
-Latest_contest_abc = "N/A"
+latest_contest_abc = "N/A"
 for contest_id in reversed(stats['abc']):
     if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
-        Latest_contest_abc = contest_id
+        latest_contest_abc = contest_id
         break
-print(f"✓ Latest contest: {Latest_contest_abc.upper()}")
+print(f"✓ Latest contest: {latest_contest_abc.upper()}")
 
 # Fill the template with generated content
 print("\nGenerating main page...")
 html_content = template.format(
-    latest_contest_abc=Latest_contest_abc.upper(),
-    table_rows_abc=table_row_abc,
-    table_rows_arc=table_row_arc,
-    table_rows_agc=table_row_agc
+    latest_contest_abc=latest_contest_abc.upper(),
+    table_rows_abc=table_rows_abc,
+    table_rows_arc=table_rows_arc,
+    table_rows_agc=table_rows_agc
 )
 
 # Write the final HTML file
