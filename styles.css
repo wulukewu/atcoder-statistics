@@ -978,3 +978,11 @@ header {
 .progress-circle.empty-color {
   animation: none !important;
 }
+
+/* Remove underline from box links in main table */
+.box-link {
+  text-decoration: none;
+}
+.box-link:hover {
+  text-decoration: none;
+}
