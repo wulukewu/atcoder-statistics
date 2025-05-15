@@ -450,6 +450,22 @@ header {
   .card-body {
     padding: 1rem;
   }
+  /* Adjust floating buttons for tablets */
+  .floating-button,
+  .theme-toggle,
+  .color-theme-toggle,
+  .home-button {
+    width: 2.75rem;
+    height: 2.75rem;
+    right: 1rem;
+  }
+  .floating-button svg,
+  .theme-toggle svg,
+  .color-theme-toggle svg,
+  .home-button svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -474,6 +490,22 @@ header {
   }
   .card-body {
     padding: 0.75rem;
+  }
+  /* Adjust floating buttons for mobile */
+  .floating-button,
+  .theme-toggle,
+  .color-theme-toggle,
+  .home-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    right: 0.75rem;
+  }
+  .floating-button svg,
+  .theme-toggle svg,
+  .color-theme-toggle svg,
+  .home-button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
