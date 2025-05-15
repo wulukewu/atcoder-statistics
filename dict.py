@@ -3,11 +3,14 @@ import requests
 import json
 import os
 
+print("\n=== AtCoder Statistics Data Collection ===")
+print("Fetching data from AtCoder API...")
+
 # Fetch contest data from AtCoder API
 problem_models = requests.get('https://kenkoooo.com/atcoder/resources/problem-models.json').json()
-print(f"Loaded {len(problem_models)} problem models")
+print(f"✓ Loaded {len(problem_models)} problem models")
 merged_problems = requests.get('https://kenkoooo.com/atcoder/resources/merged-problems.json').json()
-print(f"Loaded {len(merged_problems)} merged problems")
+print(f"✓ Loaded {len(merged_problems)} merged problems")
 
 # Initialize data structures for statistics and chart data
 stats = {
@@ -51,11 +54,12 @@ def get_color(difficulty):
             return color
     return "red"
 
+print("\nProcessing problems and organizing by contest type...")
+contest_counts = {"abc": 0, "arc": 0, "agc": 0, "others": 0}
+problem_counts = {"abc": 0, "arc": 0, "agc": 0, "others": 0}
+
 # Process each problem and organize by contest type
 for idx, problem in enumerate(merged_problems):
-    # Print first 5 problems for debugging
-    if idx < 5:
-        print(f"Processing problem: {problem['id']} in contest {problem['contest_id']}")
     # Determine contest type
     if "abc" in problem["contest_id"]:
         contest_type = "abc"
@@ -71,11 +75,13 @@ for idx, problem in enumerate(merged_problems):
     # Initialize contest entry if needed
     if contest_id not in stats[contest_type]:
         stats[contest_type][contest_id] = {}
+        contest_counts[contest_type] += 1
     stats[contest_type][contest_id][problem_id] = {
         "name": problem["name"],
         "point": problem["point"],
         "solver_count": problem["solver_count"]
     }
+    problem_counts[contest_type] += 1
 
     # Add problem model data if available
     if problem_id in problem_models:
@@ -89,10 +95,12 @@ for idx, problem in enumerate(merged_problems):
             color = get_color(model["difficulty"])
             if color:
                 stats[contest_type][contest_id][problem_id]["color"] = color
-                # Print color assignment for first 5 problems
-                if idx < 5:
-                    print(f"Problem {problem_id} difficulty: {model['difficulty']}, assigned color: {color}")
 
+print("\nContest Statistics:")
+for contest_type in ["abc", "arc", "agc", "others"]:
+    print(f"  {contest_type.upper()}: {contest_counts[contest_type]} contests, {problem_counts[contest_type]} problems")
+
+print("\nBuilding chart data and problem dictionary...")
 # Build chart data: count problems by point and color
 for contest_type in stats:
     for contest_id in stats[contest_type]:
@@ -120,11 +128,18 @@ for contest_type in stats:
 # Ensure output directory exists
 os.makedirs('web-page/json', exist_ok=True)
 
-print("Saving stats and chart data to JSON files...")
+print("\nSaving data to JSON files...")
 # Save the stats and chart dictionaries to JSON files
 with open('web-page/json/stats.json', 'w', encoding='utf-8') as f:
     json.dump(stats, f, ensure_ascii=False, indent=2)
+print("✓ Saved stats.json")
+
 with open('web-page/json/chart.json', 'w', encoding='utf-8') as f:
     json.dump(chart, f, ensure_ascii=False, indent=2)
+print("✓ Saved chart.json")
+
 with open('web-page/json/problem_dict.json', 'w', encoding='utf-8') as f:
     json.dump(problem_dict, f, ensure_ascii=False, indent=2)
+print("✓ Saved problem_dict.json")
+
+print("\n=== Data Collection Complete ===")

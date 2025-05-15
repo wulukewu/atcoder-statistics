@@ -1,20 +1,32 @@
 import json
 import os
 
+print("\n=== AtCoder Statistics Web Page Generation ===")
+print("Loading data from JSON files...")
+
 # Load chart and stats data from JSON files
 with open('web-page/json/chart.json', 'r', encoding='utf-8') as f:
     chart = json.load(f)
-print(f"Loaded chart with {len(chart['abc'])} ABC point entries")
+print(f"✓ Loaded chart data:")
+for contest_type in ['abc', 'arc', 'agc']:
+    print(f"  - {contest_type.upper()}: {len(chart[contest_type])} point entries")
+
 with open('web-page/json/stats.json', 'r', encoding='utf-8') as f:
     stats = json.load(f)
-print(f"Loaded stats for {len(stats['abc'])} ABC contests")
+print(f"✓ Loaded contest statistics:")
+for contest_type in ['abc', 'arc', 'agc']:
+    print(f"  - {contest_type.upper()}: {len(stats[contest_type])} contests")
+
 with open('web-page/json/problem_dict.json', 'r', encoding='utf-8') as f:
     problem_dict = json.load(f)
-print(f"Loaded problem_dict with {len(problem_dict['abc'])} ABC point entries")
+print(f"✓ Loaded problem dictionary:")
+for contest_type in ['abc', 'arc', 'agc']:
+    print(f"  - {contest_type.upper()}: {len(problem_dict[contest_type])} point entries")
 
 # Define color order for table columns
 COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red','bronze', 'silver', 'gold']
 
+print("\nAggregating contest statistics...")
 # Aggregate ABC contest statistics by point and color
 abc_stats = {}
 for point, color_counts in chart['abc'].items():
@@ -22,6 +34,7 @@ for point, color_counts in chart['abc'].items():
         abc_stats[point] = {color: 0 for color in COLOR_ORDER}
     for color, count in color_counts.items():
         abc_stats[point][color] += count
+
 arc_stats = {}
 for point, color_counts in chart['arc'].items():
     if point not in arc_stats:
@@ -36,14 +49,18 @@ for point, color_counts in chart['agc'].items():
     for color, count in color_counts.items():
         agc_stats[point][color] += count
 
+print("✓ Statistics aggregated for all contest types")
+
 def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
     """Generate a separate HTML page for each (point, color) box listing the problems."""
-    # No need to create 'lists' folder here, will create subfolders per page
+    print("\nGenerating problem list pages...")
     with open(f'{output_dir}/template-list.html', 'r', encoding='utf-8') as f:
         template = f.read()
     
     # Process each contest type (ABC, ARC, AGC)
     for contest_type in ['abc', 'arc', 'agc']:
+        print(f"\nProcessing {contest_type.upper()} problems...")
+        page_count = 0
         for point, color_dict in problem_dict[contest_type].items():
             point_int = int(float(point))
             for color, problem_ids in color_dict.items():
@@ -103,7 +120,8 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                 filename = f'{folder_path}/index.html'
                 with open(filename, 'w', encoding='utf-8') as f:
                     f.write(html)
-    print('[INFO] Problem list pages generated for ABC, ARC, and AGC.')
+                page_count += 1
+        print(f"✓ Generated {page_count} pages for {contest_type.upper()}")
 
 def render_table_rows(stats_by_point, contest_type='abc'):
     """Generate HTML table rows for contest statistics, with links to problem lists."""
@@ -140,26 +158,28 @@ def render_table_rows(stats_by_point, contest_type='abc'):
         rows += "            </tr>\n"
     return rows
 
-# Fill the template with generated content
+print("\nGenerating table rows for each contest type...")
 # Generate table rows for each contest type
 table_row_abc = render_table_rows(abc_stats, 'abc')
 table_row_arc = render_table_rows(arc_stats, 'arc')
 table_row_agc = render_table_rows(agc_stats, 'agc')
-
+print("✓ Table rows generated")
 
 # Read the HTML template
 with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
 # Find the latest ABC contest with at least one colored problem
-print("Searching for latest ABC contest with colored problems...")
+print("\nFinding latest ABC contest with colored problems...")
 Latest_contest_abc = "N/A"
 for contest_id in reversed(stats['abc']):
     if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
         Latest_contest_abc = contest_id
         break
+print(f"✓ Latest contest: {Latest_contest_abc.upper()}")
 
 # Fill the template with generated content
+print("\nGenerating main page...")
 html_content = template.format(
     latest_contest_abc=Latest_contest_abc.upper(),
     table_rows_abc=table_row_abc,
@@ -170,8 +190,9 @@ html_content = template.format(
 # Write the final HTML file
 with open('web-page/index.html', 'w') as file:
     file.write(html_content)
-
-print('[INFO] Successfully generated web page')
+print("✓ Main page generated")
 
 generate_problem_list_pages(problem_dict, stats)
+
+print("\n=== Web Page Generation Complete ===")
 
