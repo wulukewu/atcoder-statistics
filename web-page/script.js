@@ -89,6 +89,16 @@ function showTab(tabId) {
     document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
     // Set animation only for visible rows
     setTableRowAnimations(tabId);
+
+    // Update latest contest label
+    const label = document.getElementById('latest-contest-label');
+    if (label) {
+        let contestType = 'abc';
+        if (tabId === 'table-arc') contestType = 'arc';
+        else if (tabId === 'table-agc') contestType = 'agc';
+        const latest = label.getAttribute(`data-latest-${contestType}`);
+        label.textContent = `Latest Contest: ${latest}`;
+    }
 }
 
 // Initialize color theme
