@@ -172,16 +172,30 @@ with open('web-page/template.html', 'r') as template_file:
 # Find the latest ABC contest with at least one colored problem
 print("\nFinding latest ABC contest with colored problems...")
 latest_contest_abc = "N/A"
+latest_contest_arc = "N/A"
+latest_contest_agc = "N/A"
 for contest_id in reversed(stats['abc']):
     if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
         latest_contest_abc = contest_id
         break
+for contest_id in reversed(stats['arc']):
+    if any(problem.get("color") and problem.get("point") for problem in stats['arc'][contest_id].values()):
+        latest_contest_arc = contest_id
+        break
+for contest_id in reversed(stats['agc']):
+    if any(problem.get("color") and problem.get("point") for problem in stats['agc'][contest_id].values()):
+        latest_contest_agc = contest_id
+        break
 print(f"✓ Latest contest: {latest_contest_abc.upper()}")
+print(f"✓ Latest contest: {latest_contest_arc.upper()}")
+print(f"✓ Latest contest: {latest_contest_agc.upper()}")
 
 # Fill the template with generated content
 print("\nGenerating main page...")
 html_content = template.format(
     latest_contest_abc=latest_contest_abc.upper(),
+    latest_contest_arc=latest_contest_arc.upper(),
+    latest_contest_agc=latest_contest_agc.upper(),
     table_rows_abc=table_rows_abc,
     table_rows_arc=table_rows_arc,
     table_rows_agc=table_rows_agc
