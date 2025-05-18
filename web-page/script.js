@@ -80,6 +80,7 @@ function cycleThemeColor() {
     document.documentElement.setAttribute('data-color', newColorTheme);
     localStorage.setItem('color-theme', newColorTheme);
 }
+
 function showTab(tabId) {
     // Hide all tab contents and remove active class from tabs
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -87,17 +88,23 @@ function showTab(tabId) {
     // Show the selected tab content and set tab as active
     document.getElementById(tabId).classList.add('active');
     document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
-    // Set animation only for visible rows
     setTableRowAnimations(tabId);
 
-    // Update latest contest label
-    const label = document.getElementById('latest-contest-label');
-    if (label) {
+    // Animate the latest contest label by replacing the element
+    const oldLabel = document.getElementById('latest-contest-label');
+    if (oldLabel) {
         let contestType = 'abc';
         if (tabId === 'table-arc') contestType = 'arc';
         else if (tabId === 'table-agc') contestType = 'agc';
-        const latest = label.getAttribute(`data-latest-${contestType}`);
-        label.textContent = `Latest Contest: ${latest}`;
+        const latest = oldLabel.getAttribute(`data-latest-${contestType}`);
+
+        // Create a new label element
+        const newLabel = oldLabel.cloneNode(false);
+        newLabel.textContent = `Latest Contest: ${latest}`;
+        newLabel.style.opacity = '0';
+        newLabel.style.animation = 'labelFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards';
+        // Replace the old label with the new one
+        oldLabel.parentNode.replaceChild(newLabel, oldLabel);
     }
 }
 
