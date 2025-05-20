@@ -169,23 +169,17 @@ print("✓ Table rows generated")
 with open('web-page/template.html', 'r') as template_file:
     template = template_file.read()
 
-# Find the latest ABC contest with at least one colored problem
-print("\nFinding latest ABC contest with colored problems...")
-latest_contest_abc = "N/A"
-latest_contest_arc = "N/A"
-latest_contest_agc = "N/A"
-for contest_id in reversed(stats['abc']):
-    if any(problem.get("color") and problem.get("point") for problem in stats['abc'][contest_id].values()):
-        latest_contest_abc = contest_id
-        break
-for contest_id in reversed(stats['arc']):
-    if any(problem.get("color") and problem.get("point") for problem in stats['arc'][contest_id].values()):
-        latest_contest_arc = contest_id
-        break
-for contest_id in reversed(stats['agc']):
-    if any(problem.get("color") and problem.get("point") for problem in stats['agc'][contest_id].values()):
-        latest_contest_agc = contest_id
-        break
+# Find the latest contest with at least one colored problem
+print("\nFinding latest contests with colored problems...")
+def find_latest_contest_with_colored_problems(contest_type, stats):
+    for contest_id in reversed(stats[contest_type]):
+        if any(problem.get("color") and problem.get("point") for problem in stats[contest_type][contest_id].values()):
+            return contest_id
+    return "N/A"
+
+latest_contest_abc = find_latest_contest_with_colored_problems('abc', stats)
+latest_contest_arc = find_latest_contest_with_colored_problems('arc', stats)
+latest_contest_agc = find_latest_contest_with_colored_problems('agc', stats)
 print(f"✓ Latest contest: {latest_contest_abc.upper()}")
 print(f"✓ Latest contest: {latest_contest_arc.upper()}")
 print(f"✓ Latest contest: {latest_contest_agc.upper()}")
