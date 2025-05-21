@@ -472,6 +472,11 @@ header {
 .tab-content {
   position: relative;
   overflow: hidden;
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 .stats-container {
@@ -758,14 +763,6 @@ header {
   border-bottom-color: var(--primary);
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -824,6 +821,16 @@ header {
   animation: fadeIn 0.5s ease-out;
   opacity: 0;
   animation-fill-mode: forwards;
+}
+@keyframes labelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse {
