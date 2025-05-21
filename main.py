@@ -180,9 +180,9 @@ def find_latest_contest_with_colored_problems(contest_type, stats):
 latest_contest_abc = find_latest_contest_with_colored_problems('abc', stats)
 latest_contest_arc = find_latest_contest_with_colored_problems('arc', stats)
 latest_contest_agc = find_latest_contest_with_colored_problems('agc', stats)
-print(f"✓ Latest contest: {latest_contest_abc.upper()}")
-print(f"✓ Latest contest: {latest_contest_arc.upper()}")
-print(f"✓ Latest contest: {latest_contest_agc.upper()}")
+print(f"✓ Latest ABC contest: {latest_contest_abc.upper()}")
+print(f"✓ Latest ARC contest: {latest_contest_arc.upper()}")
+print(f"✓ Latest AGC contest: {latest_contest_agc.upper()}")
 
 # Fill the template with generated content
 print("\nGenerating main page...")
