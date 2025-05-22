@@ -1,127 +1,120 @@
-# AtCoder Statistics
+# AtCoder Statistics Tracker
 
-This project fetches difficulty statistics for AtCoder Beginner Contest (ABC) problems from the [AtCoder Problems API](https://kenkoooo.com/atcoder/#/api) and generates a simple HTML page visualizing the distribution of problems by difficulty and color rating.
+This project fetches problem data from the [AtCoder Problems API](https://kenkoooo.com/atcoder/#/api) and provides a web interface to visualize statistics about AtCoder problems, such as distribution by difficulty and color rating.
+
+## Architecture
+
+The project is now a full-stack application:
+
+-   **Backend:** A Node.js application using Express.js to serve a REST API. It fetches data from the AtCoder Problems API, processes it, and exposes it through various endpoints.
+-   **Frontend:** A Vue.js 3 application (built with Vite) that consumes the backend API to display problem statistics in a user-friendly interface.
 
 ## Features
 
-- **API Integration:** Uses direct API calls to fetch problem statistics from the AtCoder Problems API.
-- **Visualizes Data:** Generates an HTML table with color-coded progress circles to represent the percentage of problems at each difficulty level for each color rating (Grey, Brown, Green, Cyan, Blue, Yellow, Orange, Red).
-- **Responsive Design:** The generated HTML table is responsive and adapts to different screen sizes.
-- **Dynamic Progress Circles:** Uses JavaScript to dynamically generate progress circles based on problem statistics.
-- **PR Previews:** Automatically generates preview deployments for pull requests.
+-   **Backend API:**
+    -   Fetches and processes problem data from AtCoder Problems API.
+    -   Provides endpoints for statistics (`/api/stats`), difficulty charts (`/api/chart`), and detailed problem information (`/api/problem_dict`).
+-   **Frontend UI:**
+    -   Displays contest statistics in tables.
+    -   Shows lists of problems with details.
+    -   Includes theme (light/dark) and color scheme (normal/difficulty) toggles.
+    -   Tabbed interface for different views (planned).
 
-## Requirements
+## Setup and Usage
 
-- Python 3.6+
-- requests
+### Backend
 
-Install the necessary Python packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-## Usage
-
-1.  Clone the repository:
-
+1.  **Navigate to the backend directory:**
     ```bash
-    git clone git@github.com:wulukewu/atcoder-statistics.git
-    cd atcoder-statistics
+    cd backend
     ```
 
-2.  Run the `main.py` script:
-
+2.  **Install dependencies:**
     ```bash
-    python main.py
+    npm install
     ```
 
-    This script will:
+3.  **Run the server:**
+    ```bash
+    node server.js
+    ```
+    The backend server will start, typically at `http://localhost:3000`.
+    You will see a log message like:
+    ```
+    Server listening at http://localhost:3000
+    Fetching data...
+    Processing data...
+    Data fetched and processed successfully.
+    ```
 
-    - Fetch data from the AtCoder Problems API
-    - Process the problem statistics
-    - Generate an `index.html` file in the `web-page/` directory.
+4.  **Available API Endpoints** (base URL: `http://localhost:3000`):
+    -   `GET /api/stats`: Retrieves general statistics.
+    -   `GET /api/chart`: Retrieves data for difficulty charts.
+    -   `GET /api/problem_dict`: Retrieves a dictionary of all problems with their details.
+    -   `GET /api/all_data`: Retrieves all the above data in a single response.
 
-3.  Open the `web-page/index.html` file in your browser to view the visualized data.
+### Frontend
+
+1.  **Navigate to the frontend directory:**
+    ```bash
+    cd frontend
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+    The frontend development server will start, typically at `http://localhost:5173` (the exact port might vary if 5173 is in use; check the console output).
+
+4.  Open your browser and navigate to the frontend URL displayed in the console to view the application.
 
 ## File Structure
 
 ```
-atcoder-statistics/
-├── main.py            # Python script to fetch data and generate HTML
-├── web-page/          # Directory for web page files
-│   ├── index.html       # Generated HTML file with the table and visualization
-│   ├── template.html    # HTML template for generating the final page
-│   └── style.css        # CSS file for styling the HTML page
-├── requirements.txt   # List of Python dependencies
-└── README.md          # This file
+atcoder-statistics-tracker/
+├── backend/
+│   ├── node_modules/      # Backend dependencies (ignored by git)
+│   ├── server.js          # Main backend Express server file
+│   ├── package.json       # Backend npm package configuration
+│   ├── package-lock.json
+│   └── .gitignore         # Specifies intentionally untracked files for backend
+├── frontend/
+│   ├── node_modules/      # Frontend dependencies (ignored by git)
+│   ├── public/
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── assets/        # Static assets (CSS, images)
+│   │   │   └── main.css
+│   │   ├── components/    # Vue components (Header, ContestTable, etc.)
+│   │   ├── router/        # Vue Router configuration
+│   │   │   └── index.js
+│   │   ├── views/         # Vue views (HomeView, etc.)
+│   │   │   └── HomeView.vue
+│   │   ├── App.vue        # Main Vue application component
+│   │   └── main.js        # Frontend entry point
+│   ├── index.html         # Main HTML file for the frontend
+│   ├── package.json       # Frontend npm package configuration
+│   ├── package-lock.json
+│   ├── vite.config.js     # Vite configuration file
+│   └── .gitignore         # Specifies intentionally untracked files for frontend
+├── README.md              # This file
+└── LICENSE                # Project license (if applicable)
 ```
-
-## Example Output
-
-The generated HTML page displays a table similar to this:
-
-| Score      | Grey       | Brown  | Green  | Cyan   | Blue   | Yellow | Orange | Red    |
-| :--------- | :--------- | :----- | :----- | :----- | :----- | :----- | :----- | :----- |
-| 100        | 331 (100%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
-| 150        | 20 (100%)  | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) | 0 (0%) |
-| ...        | ...        | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
-
-Each cell in the table contains a progress circle visually representing the percentage, along with the raw count and percentage value.
 
 ## Contributing
 
 We welcome contributions! Here's how you can help:
 
-1. **Fork the Repository:**
-
-   - Click the "Fork" button on the top right of this repository
-   - Clone your fork to your local machine
-
-2. **Create a Branch:**
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-3. **Make Changes:**
-
-   - Make your changes
-   - Test your changes locally
-   - Commit your changes with clear commit messages
-
-4. **Create a Pull Request:**
-
-   - Push your branch to your fork
-   - Create a Pull Request (PR) to the main repository
-   - For work in progress, create a Draft PR:
-     - Click "Create Pull Request"
-     - Click the dropdown arrow next to "Create Pull Request"
-     - Select "Create Draft Pull Request"
-   - Once ready for review, click "Ready for review" on your Draft PR
-
-5. **PR Preview:**
-
-   - Each PR automatically gets a preview deployment
-   - The preview URL will be posted as a comment on your PR
-   - Preview URL format: `https://<username>.github.io/atcoder-statistics/pr-preview/pr-<number>/`
-   - Use the preview to verify your changes before requesting review
-
-6. **Code Review:**
-   - Address any feedback from reviewers
-   - Make additional commits if needed
-   - Once approved, your PR will be merged
-
-## Customization
-
-- **Styling:** Modify the `web-page/style.css` file to customize the appearance of the HTML page.
-- **Data Source:** The script currently fetches data from the AtCoder Problems API. You can modify the API endpoints in `main.py` if needed.
-- **Colors:** The colors for each difficulty are defined in the `color_codes` dictionary within the `main.py` file. Modify these values to use different colors.
-
-## Troubleshooting
-
-- **API Issues:** If you encounter issues with the API, check if the endpoints are still valid and accessible.
-- **Data Processing:** If the data structure from the API changes, you may need to update the data processing logic in `main.py`.
+1.  **Fork the Repository.**
+2.  **Create a Branch** (`git checkout -b feature/your-feature-name`).
+3.  **Make Changes** and test them locally.
+4.  **Commit your changes** with clear commit messages.
+5.  **Create a Pull Request (PR)** to the main repository.
 
 ## License
 

@@ -1,0 +1,202 @@
+/* Global styles from styles.css and styles-list.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+:root {
+    --text-color: #333;
+    --background-color: #fff;
+    --header-bg: #f0f0f0;
+    --table-border: #ddd;
+    --table-header-bg: #f8f8f8;
+    --link-color: #007bff;
+    --button-bg: #007bff;
+    --button-text: #fff;
+    --problem-card-bg: #f9f9f9;
+    --problem-card-border: #eee;
+}
+
+[data-theme="dark"] {
+    --text-color: #eee;
+    --background-color: #333;
+    --header-bg: #222;
+    --table-border: #555;
+    --table-header-bg: #444;
+    --link-color: #60a5fa;
+    --button-bg: #60a5fa;
+    --button-text: #333;
+    --problem-card-bg: #444;
+    --problem-card-border: #555;
+}
+
+[data-color-scheme="difficulty"] body {
+    /* Specific styles for difficulty color scheme can be added here if needed */
+    /* For now, colors are applied directly to cells based on difficulty */
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--table-border);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 0.5rem;
+}
+
+.theme-toggle button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.5em 1em;
+    margin-left: 0.5em;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--table-border);
+}
+
+.tabs button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+  color: var(--text-color);
+  border-bottom: 3px solid transparent;
+}
+
+.tabs button.active {
+  border-bottom: 3px solid var(--link-color);
+  font-weight: bold;
+}
+
+.contest-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: var(--background-color);
+}
+
+.contest-table th, .contest-table td {
+  border: 1px solid var(--table-border);
+  padding: 10px;
+  text-align: center;
+  cursor: default; /* Default cursor for cells */
+}
+
+.contest-table th {
+  background-color: var(--table-header-bg);
+}
+
+.contest-table td.clickable {
+    cursor: pointer;
+}
+.contest-table td.clickable:hover {
+    opacity: 0.7;
+}
+
+
+/* Problem List Specific Styles */
+.problem-list {
+  margin-top: 20px;
+}
+
+.problem-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.problem-card {
+  background-color: var(--problem-card-bg);
+  border: 1px solid var(--problem-card-border);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.problem-card h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+
+.problem-card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+.problem-card a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.problem-card a:hover {
+  text-decoration: underline;
+}
+
+/* Difficulty Colors */
+.grey { background-color: #808080; color: white; }
+.brown { background-color: #804000; color: white; }
+.green { background-color: #008000; color: white; }
+.cyan { background-color: #00C0C0; color: black; }
+.blue { background-color: #0000FF; color: white; }
+.yellow { background-color: #C0C000; color: black; }
+.orange { background-color: #FF8000; color: black; }
+.red { background-color: #FF0000; color: white; }
+.black { background-color: #000000; color: white; }
+
+[data-theme="dark"] .grey { background-color: #555555; }
+[data-theme="dark"] .brown { background-color: #6a3805; }
+[data-theme="dark"] .green { background-color: #006400; }
+[data-theme="dark"] .cyan { background-color: #00a0a0; }
+[data-theme="dark"] .blue { background-color: #0000cc; }
+[data-theme="dark"] .yellow { background-color: #a0a000; }
+[data-theme="dark"] .orange { background-color: #cc6600; }
+[data-theme="dark"] .red { background-color: #cc0000; }
+[data-theme="dark"] .black { background-color: #1e1e1e; }
+
+/* Ensure text is readable on colored backgrounds */
+[data-color-scheme="difficulty"] .grey,
+[data-color-scheme="difficulty"] .brown,
+[data-color-scheme="difficulty"] .green,
+[data-color-scheme="difficulty"] .blue,
+[data-color-scheme="difficulty"] .red,
+[data-color-scheme="difficulty"] .black {
+    color: white !important;
+}
+
+[data-color-scheme="difficulty"] .cyan,
+[data-color-scheme="difficulty"] .yellow,
+[data-color-scheme="difficulty"] .orange {
+    color: black !important;
+}
+/* Add more styles as needed */
