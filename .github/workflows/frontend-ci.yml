@@ -1,0 +1,32 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'frontend/**' ]
+  pull_request:
+    branches: [ main ]
+    paths: [ 'frontend/**' ]
+
+jobs:
+  lint-build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+      - name: Run linters
+        working-directory: ./frontend
+        run: npm run lint
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+      # Optional: Add a step for running unit tests if they are set up
+      # - name: Run unit tests
+      #   working-directory: ./frontend
+      #   run: npm run test:unit # or your specific test script

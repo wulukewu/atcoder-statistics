@@ -3,7 +3,8 @@ const axios = require('axios');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+// Vercel will set the PORT environment variable.
+// No need to define a default port for app.listen, as Vercel handles this.
 
 app.use(cors());
 app.use(express.json());
@@ -29,7 +30,7 @@ const get_color = (difficulty) => {
 
 const fetchData = async () => {
     try {
-        console.log('Fetching data...');
+        console.log('Fetching data for Vercel serverless function...');
         const [problemModelsResponse, mergedProblemsResponse] = await Promise.all([
             axios.get(PROBLEM_MODELS_URL),
             axios.get(MERGED_PROBLEMS_URL)
@@ -38,7 +39,7 @@ const fetchData = async () => {
         const problemModels = problemModelsResponse.data;
         const mergedProblems = mergedProblemsResponse.data;
 
-        console.log('Processing data...');
+        console.log('Processing data for Vercel serverless function...');
         // Initialize stats
         stats = {
             count: 0,
@@ -80,27 +81,22 @@ const fetchData = async () => {
                 ...problem,
                 difficulty: difficulty,
                 color: color,
-                // Assuming 'status' and 'epoch_second' are properties of problem if it's solved
-                // These would typically come from user submission data, not merged-problems.json
-                // For now, let's simulate this based on some criteria or leave as placeholders
                 status: null, 
                 epoch_second: null 
             };
         });
         
-        // The following parts from dict.py (user submissions) are not directly applicable here
-        // as we don't have user submission data.
-        // We are mainly focused on creating the problem_dict with difficulties and colors.
-        // stats calculation related to user ACs will be different or removed.
-
-        console.log('Data fetched and processed successfully.');
+        console.log('Data fetched and processed successfully for Vercel.');
 
     } catch (error) {
-        console.error('Error fetching or processing data:', error.message);
-        // Consider more robust error handling or retry mechanisms
+        console.error('Error fetching or processing data for Vercel:', error.message);
+        // In a serverless environment, this error might cause the function to fail on cold start.
+        // Consider fallback strategies or error reporting.
     }
 };
 
+// Fetch data when the module is loaded (serverless function initializes)
+fetchData();
 
 // API Endpoints
 app.get('/api/stats', (req, res) => {
@@ -123,8 +119,5 @@ app.get('/api/all_data', (req, res) => {
     });
 });
 
-// Start server and fetch data
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-    fetchData(); // Fetch data when server starts
-});
+// Export the app for Vercel
+module.exports = app;
