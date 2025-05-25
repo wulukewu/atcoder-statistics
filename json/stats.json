@@ -22938,111 +22938,195 @@
       "abc405_a": {
         "name": "Is it rated?",
         "point": 100.0,
-        "solver_count": 14088
+        "solver_count": 14088,
+        "is_experimental": false,
+        "variance": 0.7657598300381456,
+        "difficulty": -1085,
+        "color": "grey"
       },
       "abc405_b": {
         "name": "Not All",
         "point": 200.0,
-        "solver_count": 12486
+        "solver_count": 12486,
+        "is_experimental": false,
+        "variance": 0.4606238940870135,
+        "difficulty": -430,
+        "color": "grey"
       },
       "abc405_c": {
         "name": "Sum of Product",
         "point": 300.0,
-        "solver_count": 12104
+        "solver_count": 12104,
+        "is_experimental": false,
+        "variance": 0.626372308374204,
+        "difficulty": -146,
+        "color": "grey"
       },
       "abc405_d": {
         "name": "Escape Route",
         "point": 400.0,
-        "solver_count": 8398
+        "solver_count": 8398,
+        "is_experimental": false,
+        "variance": 0.379901147588264,
+        "difficulty": 471,
+        "color": "brown"
       },
       "abc405_e": {
         "name": "Fruit Lineup",
         "point": 475.0,
-        "solver_count": 4065
+        "solver_count": 4065,
+        "is_experimental": false,
+        "variance": 0.3082609061397074,
+        "difficulty": 1259,
+        "color": "cyan"
       },
       "abc405_f": {
         "name": "Chord Crossing",
         "point": 525.0,
-        "solver_count": 2067
+        "solver_count": 2067,
+        "is_experimental": false,
+        "variance": 0.2925773388544568,
+        "difficulty": 1588,
+        "color": "cyan"
       },
       "abc405_g": {
         "name": "Range Shuffle Query",
         "point": 625.0,
-        "solver_count": 720
+        "solver_count": 720,
+        "is_experimental": false,
+        "variance": 0.2866616951589053,
+        "difficulty": 2354,
+        "color": "yellow"
       }
     },
     "abc406": {
       "abc406_a": {
         "name": "Not Acceptable",
         "point": 100.0,
-        "solver_count": 13111
+        "solver_count": 13111,
+        "is_experimental": false,
+        "variance": 0.847891467694046,
+        "difficulty": -1020,
+        "color": "grey"
       },
       "abc406_b": {
         "name": "Product Calculator",
         "point": 200.0,
-        "solver_count": 10297
+        "solver_count": 10297,
+        "is_experimental": false,
+        "variance": 1.0775245990108921,
+        "difficulty": 75,
+        "color": "grey"
       },
       "abc406_c": {
         "name": "~",
         "point": 350.0,
-        "solver_count": 6003
+        "solver_count": 6003,
+        "is_experimental": false,
+        "variance": 0.3509640940343558,
+        "difficulty": 862,
+        "color": "green"
       },
       "abc406_d": {
         "name": "Garbage Removal",
         "point": 400.0,
-        "solver_count": 6419
+        "solver_count": 6419,
+        "is_experimental": false,
+        "variance": 0.5084530881643639,
+        "difficulty": 694,
+        "color": "brown"
       },
       "abc406_e": {
         "name": "Popcount Sum 3",
         "point": 450.0,
-        "solver_count": 2864
+        "solver_count": 2864,
+        "is_experimental": false,
+        "variance": 0.46504167418809494,
+        "difficulty": 1365,
+        "color": "cyan"
       },
       "abc406_f": {
         "name": "Compare Tree Weights",
         "point": 500.0,
-        "solver_count": 2290
+        "solver_count": 2290,
+        "is_experimental": false,
+        "variance": 0.365246162547516,
+        "difficulty": 1470,
+        "color": "cyan"
       },
       "abc406_g": {
         "name": "Travelling Salesman Problem",
         "point": 625.0,
-        "solver_count": 61
+        "solver_count": 61,
+        "is_experimental": false,
+        "variance": 0.09907409209225218,
+        "difficulty": 3197,
+        "color": "red"
       }
     },
     "abc407": {
       "abc407_a": {
         "name": "Approximation",
         "point": 150.0,
-        "solver_count": 11429
+        "solver_count": 11429,
+        "is_experimental": false,
+        "variance": 0.7710045341269551,
+        "difficulty": -698,
+        "color": "grey"
       },
       "abc407_b": {
         "name": "P(X or Y)",
         "point": 250.0,
-        "solver_count": 10702
+        "solver_count": 10702,
+        "is_experimental": false,
+        "variance": 0.5146858638424625,
+        "difficulty": -397,
+        "color": "grey"
       },
       "abc407_c": {
         "name": "Security 2",
         "point": 300.0,
-        "solver_count": 8230
+        "solver_count": 8230,
+        "is_experimental": false,
+        "variance": 0.44074902429626156,
+        "difficulty": 278,
+        "color": "grey"
       },
       "abc407_d": {
         "name": "Domino Covering XOR",
         "point": 425.0,
-        "solver_count": 4212
+        "solver_count": 4212,
+        "is_experimental": false,
+        "variance": 0.4550123120976136,
+        "difficulty": 930,
+        "color": "green"
       },
       "abc407_e": {
         "name": "Most Valuable Parentheses",
         "point": 450.0,
-        "solver_count": 2115
+        "solver_count": 2115,
+        "is_experimental": false,
+        "variance": 0.6111999996096611,
+        "difficulty": 1531,
+        "color": "cyan"
       },
       "abc407_f": {
         "name": "Sums of Sliding Window Maximum",
         "point": 550.0,
-        "solver_count": 1169
+        "solver_count": 1169,
+        "is_experimental": false,
+        "variance": 0.4716808374510022,
+        "difficulty": 1740,
+        "color": "blue"
       },
       "abc407_g": {
         "name": "Domino Covering SUM",
         "point": 600.0,
-        "solver_count": 433
+        "solver_count": 433,
+        "is_experimental": false,
+        "variance": 0.4852297507100646,
+        "difficulty": 2190,
+        "color": "yellow"
       }
     }
   },
@@ -36116,7 +36200,11 @@
       "ahc047_a": {
         "name": "Lovely Language Model",
         "point": 7392390.0,
-        "solver_count": 1074
+        "solver_count": 1074,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3814,
+        "color": "silver"
       }
     },
     "aising2019": {
