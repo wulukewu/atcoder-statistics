@@ -51,82 +51,34 @@ for point, color_counts in chart['agc'].items():
 
 print("✓ Statistics aggregated for all contest types")
 
-def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
-    """Generate a separate HTML page for each (point, color) box listing the problems."""
+def generate_problem_list_pages(problem_dict, stats):
+    """Generate HTML pages for each point/color combination with problem lists."""
     print("\nGenerating problem list pages...")
-    with open(f'{output_dir}/template-list.html', 'r', encoding='utf-8') as f:
-        template = f.read()
-    
-    # Process each contest type (ABC, ARC, AGC)
-    for contest_type in ['abc', 'arc', 'agc']:
-        print(f"\nProcessing {contest_type.upper()} problems...")
-        page_count = 0
-        for point, color_dict in problem_dict[contest_type].items():
-            point_int = int(float(point))
-            for color, problem_ids in color_dict.items():
-                items = []
-                for pid in problem_ids:
-                    # Find contest_id for this problem_id
-                    contest_id = None
-                    name = pid
-                    for cid, problems in stats[contest_type].items():
-                        if pid in problems:
-                            contest_id = cid
-                            name = problems[pid].get('name', pid)
-                            break
-                    # Format problem tag as 'ABC400A' (contest id upper + problem suffix upper)
-                    if contest_id and '_' in pid:
-                        contest_tag = contest_id.upper() + pid.split('_')[-1].upper()
-                    else:
-                        contest_tag = pid.upper()
-                    if contest_id:
-                        url = f"https://atcoder.jp/contests/{contest_id}/tasks/{pid}"
-                        # Card layout for each problem
-                        items.append(f'''
-                        <div class="problem-card">
-                            <div class="problem-header">
-                                <span class="problem-title">{name}</span>
-                                <span class="problem-badge color-{color}">{color}</span>
-                            </div>
-                            <div class="problem-meta">
-                                <span class="problem-id">{contest_tag}</span>
-                                <a href="{url}" target="_blank" class="external-link">Open
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14m-4 0h4v4"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                        ''')
-                    else:
-                        items.append(f'''
-                        <div class="problem-card">
-                            <div class="problem-header">
-                                <span class="problem-title">{name}</span>
-                                <span class="problem-badge color-{color}">{color}</span>
-                            </div>
-                            <div class="problem-meta">
-                                <span class="problem-id">{contest_tag}</span>
-                            </div>
-                        </div>
-                        ''')
-                problem_list = '\n'.join(items)
-                html = template.format(
-                    contest_type=contest_type.upper(),
-                    point=point_int,
-                    color=color,
-                    problem_list=problem_list
-                )
-                folder_path = f'{output_dir}/lists/{contest_type}/{point_int}/{color}'
-                os.makedirs(folder_path, exist_ok=True)
-                filename = f'{folder_path}/index.html'
-                with open(filename, 'w', encoding='utf-8') as f:
-                    f.write(html)
-                page_count += 1
-        print(f"✓ Generated {page_count} pages for {contest_type.upper()}")
+    os.makedirs('web-page/lists', exist_ok=True)
+
+    for contest_type in problem_dict:
+        for point in problem_dict[contest_type]:
+            for color in problem_dict[contest_type][point]:
+                # Sort problem IDs in descending order
+                problem_ids = sorted(problem_dict[contest_type][point][color], reverse=True)
+
+                # Create directory structure
+                dir_path = f'web-page/lists/{contest_type}/{int(float(point))}/{color}'
+                os.makedirs(dir_path, exist_ok=True)
+
+                # Generate the HTML content for this list
+                html_content = generate_problem_list_html(problem_ids, stats, contest_type, point, color)
+
+                # Write the HTML file
+                with open(f'{dir_path}/index.html', 'w') as file:
+                    file.write(html_content)
+
+    print(f"✓ Problem list pages generated")
 
 def render_table_rows(stats_by_point, contest_type='abc'):
     """Generate HTML table rows for contest statistics, with links to problem lists."""
     rows = ""
-    for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0]), reverse=True):
+    for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
         total = sum(color_counts.values()) or 1
         rows += f"            <tr>\n"
         rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
