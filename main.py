@@ -126,7 +126,7 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
 def render_table_rows(stats_by_point, contest_type='abc'):
     """Generate HTML table rows for contest statistics, with links to problem lists."""
     rows = ""
-    for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
+    for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0]), reverse=True):
         total = sum(color_counts.values()) or 1
         rows += f"            <tr>\n"
         rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
@@ -203,4 +203,3 @@ print("✓ Main page generated")
 generate_problem_list_pages(problem_dict, stats)
 
 print("\n=== Web Page Generation Complete ===")
-
