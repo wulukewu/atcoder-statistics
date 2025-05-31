@@ -23128,6 +23128,43 @@
         "difficulty": 2190,
         "color": "yellow"
       }
+    },
+    "abc408": {
+      "abc408_a": {
+        "name": "Timeout",
+        "point": null,
+        "solver_count": null
+      },
+      "abc408_b": {
+        "name": "Compression",
+        "point": null,
+        "solver_count": null
+      },
+      "abc408_c": {
+        "name": "Not All Covered",
+        "point": null,
+        "solver_count": null
+      },
+      "abc408_d": {
+        "name": "Flip to Gather",
+        "point": null,
+        "solver_count": null
+      },
+      "abc408_e": {
+        "name": "Minimum OR Path",
+        "point": null,
+        "solver_count": null
+      },
+      "abc408_f": {
+        "name": "Athletic",
+        "point": null,
+        "solver_count": null
+      },
+      "abc408_g": {
+        "name": "A/B < p/q < C/D",
+        "point": null,
+        "solver_count": null
+      }
     }
   },
   "arc": {
