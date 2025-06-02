@@ -31474,22 +31474,38 @@
       "arc199_a": {
         "name": "Flip Row or Col 2",
         "point": 800.0,
-        "solver_count": 279
+        "solver_count": 279,
+        "is_experimental": false,
+        "variance": 0.2656981724381524,
+        "difficulty": 2285,
+        "color": "yellow"
       },
       "arc199_b": {
         "name": "Adjacent Replace",
         "point": 800.0,
-        "solver_count": 235
+        "solver_count": 235,
+        "is_experimental": false,
+        "variance": 0.1188054964734036,
+        "difficulty": 2212,
+        "color": "yellow"
       },
       "arc199_c": {
         "name": "Circular Tree Embedding",
         "point": 900.0,
-        "solver_count": 52
+        "solver_count": 52,
+        "is_experimental": false,
+        "variance": 0.11830146326597073,
+        "difficulty": 3111,
+        "color": "red"
       },
       "arc199_d": {
         "name": "Limestone",
         "point": 1000.0,
-        "solver_count": 43
+        "solver_count": 43,
+        "is_experimental": false,
+        "variance": 0.04399034834305609,
+        "difficulty": 3243,
+        "color": "bronze"
       }
     }
   },
