@@ -65,6 +65,7 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
             point_int = int(float(point))
             for color, problem_ids in color_dict.items():
                 items = []
+                problem_ids.sort(reverse=True)
                 for pid in problem_ids:
                     # Find contest_id for this problem_id
                     contest_id = None
