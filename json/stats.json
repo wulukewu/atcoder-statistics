@@ -23198,37 +23198,65 @@
       "abc409_a": {
         "name": "Conflict",
         "point": 100.0,
-        "solver_count": 1077
+        "solver_count": 1077,
+        "is_experimental": false,
+        "variance": 0.9396837677864076,
+        "difficulty": -756,
+        "color": "grey"
       },
       "abc409_b": {
         "name": "Citation",
         "point": 200.0,
-        "solver_count": 2584
+        "solver_count": 2584,
+        "is_experimental": false,
+        "variance": 0.8049227438136893,
+        "difficulty": -61,
+        "color": "grey"
       },
       "abc409_c": {
         "name": "Equilateral Triangle",
         "point": 300.0,
-        "solver_count": 3053
+        "solver_count": 3053,
+        "is_experimental": false,
+        "variance": 0.3665140297787581,
+        "difficulty": 421,
+        "color": "brown"
       },
       "abc409_d": {
         "name": "String Rotation",
         "point": 400.0,
-        "solver_count": 3235
+        "solver_count": 3235,
+        "is_experimental": false,
+        "variance": 0.376564949819654,
+        "difficulty": 772,
+        "color": "brown"
       },
       "abc409_e": {
         "name": "Pair Annihilation",
         "point": 425.0,
-        "solver_count": 2814
+        "solver_count": 2814,
+        "is_experimental": false,
+        "variance": 0.4116067647958139,
+        "difficulty": 973,
+        "color": "green"
       },
       "abc409_f": {
         "name": "Connecting Points",
         "point": 500.0,
-        "solver_count": 1449
+        "solver_count": 1449,
+        "is_experimental": false,
+        "variance": 0.2977854550886151,
+        "difficulty": 1580,
+        "color": "cyan"
       },
       "abc409_g": {
         "name": "Accumulation of Wealth",
         "point": 625.0,
-        "solver_count": 125
+        "solver_count": 125,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 2616,
+        "color": "orange"
       }
     }
   },
