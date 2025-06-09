@@ -1,5 +1,6 @@
 import json
 import os
+from bs4 import BeautifulSoup
 
 print("\n=== AtCoder Statistics Web Page Generation ===")
 print("Loading data from JSON files...")
@@ -205,3 +206,14 @@ generate_problem_list_pages(problem_dict, stats)
 
 print("\n=== Web Page Generation Complete ===")
 
+# Format the HTML with better indentation
+with open('web-page/index.html', 'r') as file:
+    soup = BeautifulSoup(file.read(), 'html5lib')
+    # Set indentation to 2 spaces
+    soup.prettify(formatter=lambda s: s.replace('\t', '  '))
+    formatted_html = soup.prettify()
+
+with open('web-page/index.html', 'w') as file:
+    file.write(formatted_html)
+
+print('[INFO] Successfully generated web page')
