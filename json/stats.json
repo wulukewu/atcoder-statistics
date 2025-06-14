@@ -23263,37 +23263,65 @@
       "abc410_a": {
         "name": "G1",
         "point": 100.0,
-        "solver_count": 10634
+        "solver_count": 10634,
+        "is_experimental": false,
+        "variance": 0.8267669524227759,
+        "difficulty": -992,
+        "color": "grey"
       },
       "abc410_b": {
         "name": "Reverse Proxy",
         "point": 200.0,
-        "solver_count": 9748
+        "solver_count": 9748,
+        "is_experimental": false,
+        "variance": 0.3820219611703226,
+        "difficulty": -380,
+        "color": "grey"
       },
       "abc410_c": {
         "name": "Rotatable Array",
         "point": 300.0,
-        "solver_count": 8020
+        "solver_count": 8020,
+        "is_experimental": false,
+        "variance": 0.5021553714569797,
+        "difficulty": 178,
+        "color": "grey"
       },
       "abc410_d": {
         "name": "XOR Shortest Walk",
         "point": 400.0,
-        "solver_count": 3209
+        "solver_count": 3209,
+        "is_experimental": false,
+        "variance": 0.4989444117552371,
+        "difficulty": 1048,
+        "color": "green"
       },
       "abc410_e": {
         "name": "Battles in a Row",
         "point": 450.0,
-        "solver_count": 3088
+        "solver_count": 3088,
+        "is_experimental": false,
+        "variance": 0.4604713771643479,
+        "difficulty": 1077,
+        "color": "green"
       },
       "abc410_f": {
         "name": "Balanced Rectangles",
         "point": 525.0,
-        "solver_count": 1025
+        "solver_count": 1025,
+        "is_experimental": false,
+        "variance": 0.3287712156457742,
+        "difficulty": 1732,
+        "color": "blue"
       },
       "abc410_g": {
         "name": "Longest Chord Chain",
         "point": 575.0,
-        "solver_count": 269
+        "solver_count": 269,
+        "is_experimental": false,
+        "variance": 0.3291661581518003,
+        "difficulty": 2242,
+        "color": "yellow"
       }
     }
   },
