@@ -31637,6 +31637,33 @@
         "difficulty": 3243,
         "color": "bronze"
       }
+    },
+    "arc200": {
+      "arc200_a": {
+        "name": "Dot Product",
+        "point": null,
+        "solver_count": null
+      },
+      "arc200_b": {
+        "name": "LCM",
+        "point": null,
+        "solver_count": null
+      },
+      "arc200_c": {
+        "name": "Movie Theater",
+        "point": null,
+        "solver_count": null
+      },
+      "arc200_d": {
+        "name": "|A + A|",
+        "point": null,
+        "solver_count": null
+      },
+      "arc200_e": {
+        "name": "popcount <= 2",
+        "point": null,
+        "solver_count": null
+      }
     }
   },
   "agc": {
