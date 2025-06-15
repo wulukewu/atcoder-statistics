@@ -31642,27 +31642,47 @@
       "arc200_a": {
         "name": "Dot Product",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.44068115465783564,
+        "difficulty": 1821,
+        "color": "blue"
       },
       "arc200_b": {
         "name": "LCM",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.368681115172541,
+        "difficulty": 1543,
+        "color": "cyan"
       },
       "arc200_c": {
         "name": "Movie Theater",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.2831716811660463,
+        "difficulty": 2237,
+        "color": "yellow"
       },
       "arc200_d": {
         "name": "|A + A|",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.18807505264828173,
+        "difficulty": 2474,
+        "color": "orange"
       },
       "arc200_e": {
         "name": "popcount <= 2",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.2075581290972651,
+        "difficulty": 2852,
+        "color": "red"
       }
     }
   },
