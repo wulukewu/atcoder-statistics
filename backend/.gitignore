@@ -1,7 +1,2 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-venv/
-.env
-json/*.json 
+node_modules/
+json/ 
