@@ -1,7 +1,7 @@
 {
   "name": "atcoder-statistics-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for AtCoder statistics. Can be used as Express server or Netlify Functions.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
