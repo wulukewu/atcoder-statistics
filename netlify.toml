@@ -1,2 +1,7 @@
 [build]
-  functions = "backend/netlify" 
+  functions = "backend/netlify"
+  publish = "frontend/build"
+
+[dev]
+  functions = "backend/netlify"
+  publish = "frontend/build"
