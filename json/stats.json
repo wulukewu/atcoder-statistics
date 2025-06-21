@@ -36545,7 +36545,11 @@
       "ahc049_a": {
         "name": "Durability-Constrained Transport",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3860,
+        "color": "silver"
       }
     },
     "aising2019": {
