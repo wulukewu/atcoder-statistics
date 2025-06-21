@@ -23328,37 +23328,65 @@
       "abc411_a": {
         "name": "Required Length",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 1.0659602110012985,
+        "difficulty": -1028,
+        "color": "grey"
       },
       "abc411_b": {
         "name": "Distance Table",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3931295230670483,
+        "difficulty": -606,
+        "color": "grey"
       },
       "abc411_c": {
         "name": "Black Intervals",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4798227566987251,
+        "difficulty": 185,
+        "color": "grey"
       },
       "abc411_d": {
         "name": "Conflict 2",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.40034744332777894,
+        "difficulty": 1018,
+        "color": "green"
       },
       "abc411_e": {
         "name": "E [max]",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.35894624150469573,
+        "difficulty": 1400,
+        "color": "cyan"
       },
       "abc411_f": {
         "name": "Contraction",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.37022613822851286,
+        "difficulty": 1898,
+        "color": "blue"
       },
       "abc411_g": {
         "name": "Count Cycles",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.42233130985875333,
+        "difficulty": 2093,
+        "color": "yellow"
       }
     }
   },
