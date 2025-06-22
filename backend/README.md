@@ -45,11 +45,11 @@ Generated JSON files are saved in the `json/` directory:
 
 - Trigger data collection:
   ```bash
-  curl -X POST http://localhost:3000/collect
+  curl -X POST http://localhost:8000/collect
   ```
 - Fetch a JSON file (e.g., stats.json):
   ```bash
-  curl http://localhost:3000/json/stats.json
+  curl http://localhost:8000/json/stats.json
   ```
 
 ### For Netlify Functions (deployed)
