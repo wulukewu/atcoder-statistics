@@ -24,9 +24,6 @@ app.get("/json/:filename", (req, res) => {
   res.type("json").send(data);
 });
 
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-// ...existing code...
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   // Auto-trigger data collection on server start
