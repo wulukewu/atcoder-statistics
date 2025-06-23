@@ -24,4 +24,26 @@ app.get("/json/:filename", (req, res) => {
   res.type("json").send(data);
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ...existing code...
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  // Auto-trigger data collection on server start
+  const http = require("http");
+  http.request(
+    {
+      hostname: "localhost",
+      port: PORT,
+      path: "/collect",
+      method: "POST",
+    },
+    (res) => {
+      console.log(`Auto-collect status: ${res.statusCode}`);
+    }
+  )
+  .on("error", (err) => {
+    console.error("Auto-collect error:", err.message);
+  })
+  .end();
+});

@@ -74,39 +74,39 @@ function App() {
                                 return (
                                   <td key={color}>
                                     <div className={`stats-container${amount === 0 ? ' zero-amount' : ''}`}>
-                                      <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 16 16"
-                                        className={`progress-cup color-${color}${amount === 0 ? ' zero-amount' : ''}`}
-                                        style={{ marginBottom: 2 }}
-                                      >
-                                        <defs>
-                                          <clipPath id={clipId}>
-                                            <circle cx="8" cy="8" r="7" />
-                                          </clipPath>
-                                        </defs>
-                                        {/* Hollow circle border */}
-                                        <circle
-                                          cx="8"
-                                          cy="8"
-                                          r="7"
-                                          fill="none"
-                                          stroke="#e5e7eb"
-                                          strokeWidth="2"
-                                        />
-                                        {/* Filled part, from bottom up */}
-                                        <rect
-                                          x="1"
-                                          y={16 - 14 * (amount / (total || 1))}
-                                          width="14"
-                                          height={14 * (amount / (total || 1))}
-                                          fill={amount === 0 ? "#f3f4f6" : "currentColor"}
-                                          clipPath={`url(#${clipId})`}
-                                          style={{ transition: 'y 0.5s, height 0.5s' }}
-                                        />
-                                      </svg>
-                                      <span className={`count color-${color}${amount === 0 ? ' zero-amount' : ''}`}>{amount}</span>
+                                      <div className="stats-main">
+                                        <svg
+                                          width="16"
+                                          height="16"
+                                          viewBox="0 0 16 16"
+                                          className={`progress-cup color-${color}${amount === 0 ? ' zero-amount' : ''}`}
+                                          style={{ marginBottom: 2 }}
+                                        >
+                                          <defs>
+                                            <clipPath id={clipId}>
+                                              <circle cx="8" cy="8" r="7" />
+                                            </clipPath>
+                                          </defs>
+                                          <circle
+                                            cx="8"
+                                            cy="8"
+                                            r="7"
+                                            fill="none"
+                                            stroke="#e5e7eb"
+                                            strokeWidth="2"
+                                          />
+                                          <rect
+                                            x="1"
+                                            y={16 - 14 * (amount / (total || 1))}
+                                            width="14"
+                                            height={14 * (amount / (total || 1))}
+                                            fill={amount === 0 ? "#f3f4f6" : "currentColor"}
+                                            clipPath={`url(#${clipId})`}
+                                            style={{ transition: 'y 0.5s, height 0.5s' }}
+                                          />
+                                        </svg>
+                                        <span className={`count color-${color}${amount === 0 ? ' zero-amount' : ''}`}>{amount}</span>
+                                      </div>
                                       <span className={`percentage color-${color}${amount === 0 ? ' zero-amount' : ''}`}>({percent}%)</span>
                                     </div>
                                   </td>

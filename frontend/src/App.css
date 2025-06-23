@@ -1,7 +1,18 @@
-.card{
-  width: 90%;
-  margin: auto;
-  margin-top: 20px;
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.card {
+  width: 85%;
+  /* max-width: 1100px; */
+  margin: 40px auto 0 auto;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15), 0 1.5px 8px rgba(0,0,0,0.06);
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
 }
 
 .card-header {
@@ -22,27 +33,33 @@
 
 .tabs {
   display: flex;
-  gap: 0;
   border-bottom: 2px solid #e0e7ff;
   background: #f1f5f9;
+  position: relative;
+  z-index: 1;
 }
 
 .tab {
   flex: 1;
-  padding: 16px 0;
+  padding: 18px 0 14px 0;
   text-align: center;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   color: #6366f1;
   background: #f1f5f9;
   border-bottom: 2px solid transparent;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
   transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+  position: relative;
 }
 
 .tab.active {
   background: #fff;
   color: #1e293b;
-  border-bottom: 2px solid #6366f1;
+  border-bottom: 3px solid #6366f1;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.07);
 }
 
 .tables {
@@ -66,28 +83,48 @@
 
 .stats-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   background: #fff;
   margin-bottom: 32px;
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
 }
 
 .stats-table th, .stats-table td {
   border: 1px solid #e5e7eb;
-  padding: 8px 12px;
+  padding: 10px 14px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  transition: background 0.2s;
+}
+
+.stats-table tr:hover td {
+  background: #f0fdfa;
 }
 
 .stats-table th {
   background: #f1f5f9;
-  color:black;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: 1px;
+  border-top: none;
+  border-bottom: 2px solid #e0e7ff;
 }
 
 .score-label {
-  font-weight: 600;
+  font-weight: 700;
   color: #6366f1;
+  background: #f8fafc;
+  border-left: none;
+  border-right: 2px solid #e0e7ff;
+  font-size: 1.08rem;
+}
+
+.stats-table th:not(:first-child),
+.stats-table td:not(:first-child) {
+  border-left: none !important;
 }
 
 .count {
@@ -104,7 +141,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 0;
+}
+
+.stats-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
 }
 
 .progress-ring {
@@ -115,6 +159,38 @@
 .progress-cup {
   display: block;
   margin-bottom: 2px;
+}
+
+.percentage {
+  font-size: 0.95em;
+  color: #888;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1px 7px;
+  margin-top: 2px;
+  box-shadow: 0 1px 2px rgba(99,102,241,0.04);
+}
+
+.tab:hover:not(.active) {
+  background: #e0e7ff;
+  color: #06b6d4;
+}
+
+.card {
+  animation: fadeInCard 0.7s cubic-bezier(.4,2,.6,1);
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(32px);}
+  to { opacity: 1; transform: none;}
+}
+
+.count, .progress-cup {
+  filter: drop-shadow(0 1px 2px rgba(99,102,241,0.08));
+}
+
+.progress-cup rect {
+  transition: y 0.5s cubic-bezier(.4,2,.6,1), height 0.5s cubic-bezier(.4,2,.6,1);
 }
 
 .zero-amount {
