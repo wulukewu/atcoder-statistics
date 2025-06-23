@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+
+const API_BASE = process.env.REACT_APP_API_BASE || "/.netlify/functions";
 
 function App() {
   const [chart, setChart] = useState(null);
-  const [activeTab, setActiveTab] = useState('abc');
+  const [activeTab, setActiveTab] = useState("abc");
 
   useEffect(() => {
-    fetch('http://localhost:8000/json/chart.json')
-      .then(res => res.json())
-      .then(data => setChart(data));
+    fetch(`${API_BASE}/json/chart.json`)
+      .then((res) => res.json())
+      .then((data) => setChart(data));
   }, []);
 
   const getAllColors = (scores) => {
     const colorSet = new Set();
-    Object.values(scores).forEach(colors =>
-      Object.keys(colors).forEach(color => colorSet.add(color))
+    Object.values(scores).forEach((colors) =>
+      Object.keys(colors).forEach((color) => colorSet.add(color))
     );
     return Array.from(colorSet);
   };
 
   const tabList = [
-    { key: 'abc', label: 'AtCoder Beginner Contest' },
-    { key: 'arc', label: 'AtCoder Regular Contest' },
-    { key: 'agc', label: 'AtCoder Grand Contest' }
+    { key: "abc", label: "AtCoder Beginner Contest" },
+    { key: "arc", label: "AtCoder Regular Contest" },
+    { key: "agc", label: "AtCoder Grand Contest" },
   ];
 
   return (
@@ -32,10 +34,10 @@ function App() {
           <div className="card-title">AtCoder Problems</div>
         </div>
         <div className="tabs">
-          {tabList.map(tab => (
+          {tabList.map((tab) => (
             <div
               key={tab.key}
-              className={`tab${activeTab === tab.key ? ' active' : ''}`}
+              className={`tab${activeTab === tab.key ? " active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}
@@ -43,11 +45,11 @@ function App() {
           ))}
         </div>
         <div className="tables">
-          {tabList.map(tab => (
+          {tabList.map((tab) => (
             <div
               key={tab.key}
-              className={`tab-content${activeTab === tab.key ? ' active' : ''}`}
-              style={{ display: activeTab === tab.key ? 'block' : 'none' }}
+              className={`tab-content${activeTab === tab.key ? " active" : ""}`}
+              style={{ display: activeTab === tab.key ? "block" : "none" }}
             >
               <div className="table-responsive">
                 {chart && chart[tab.key] ? (
@@ -55,31 +57,45 @@ function App() {
                     <thead>
                       <tr>
                         <th>Score</th>
-                        {getAllColors(chart[tab.key]).map(color => (
-                          <th key={color}>{color.charAt(0).toUpperCase() + color.slice(1)}</th>
+                        {getAllColors(chart[tab.key]).map((color) => (
+                          <th key={color}>
+                            {color.charAt(0).toUpperCase() + color.slice(1)}
+                          </th>
                         ))}
                       </tr>
                     </thead>
-                      <tbody>
-                        {Object.entries(chart[tab.key]).map(([score, colors], rowIdx) => {
-                          const total = Object.values(colors).reduce((a, b) => a + b, 0);
+                    <tbody>
+                      {Object.entries(chart[tab.key]).map(
+                        ([score, colors], rowIdx) => {
+                          const total = Object.values(colors).reduce(
+                            (a, b) => a + b,
+                            0
+                          );
                           return (
                             <tr key={score}>
                               <td className="score-label">{score}</td>
-                              {getAllColors(chart[tab.key]).map(color => {
+                              {getAllColors(chart[tab.key]).map((color) => {
                                 const amount = colors[color] || 0;
-                                const percent = total ? ((amount / total) * 100).toFixed(2) : "0.00";
+                                const percent = total
+                                  ? ((amount / total) * 100).toFixed(2)
+                                  : "0.00";
                                 // Make clipPath id unique
                                 const clipId = `clip-${tab.key}-${score}-${color}-${rowIdx}`;
                                 return (
                                   <td key={color}>
-                                    <div className={`stats-container${amount === 0 ? ' zero-amount' : ''}`}>
+                                    <div
+                                      className={`stats-container${
+                                        amount === 0 ? " zero-amount" : ""
+                                      }`}
+                                    >
                                       <div className="stats-main">
                                         <svg
                                           width="16"
                                           height="16"
                                           viewBox="0 0 16 16"
-                                          className={`progress-cup color-${color}${amount === 0 ? ' zero-amount' : ''}`}
+                                          className={`progress-cup color-${color}${
+                                            amount === 0 ? " zero-amount" : ""
+                                          }`}
                                           style={{ marginBottom: 2 }}
                                         >
                                           <defs>
@@ -97,25 +113,48 @@ function App() {
                                           />
                                           <rect
                                             x="1"
-                                            y={16 - 14 * (amount / (total || 1))}
+                                            y={
+                                              16 - 14 * (amount / (total || 1))
+                                            }
                                             width="14"
-                                            height={14 * (amount / (total || 1))}
-                                            fill={amount === 0 ? "#f3f4f6" : "currentColor"}
+                                            height={
+                                              14 * (amount / (total || 1))
+                                            }
+                                            fill={
+                                              amount === 0
+                                                ? "#f3f4f6"
+                                                : "currentColor"
+                                            }
                                             clipPath={`url(#${clipId})`}
-                                            style={{ transition: 'y 0.5s, height 0.5s' }}
+                                            style={{
+                                              transition: "y 0.5s, height 0.5s",
+                                            }}
                                           />
                                         </svg>
-                                        <span className={`count color-${color}${amount === 0 ? ' zero-amount' : ''}`}>{amount}</span>
+                                        <span
+                                          className={`count color-${color}${
+                                            amount === 0 ? " zero-amount" : ""
+                                          }`}
+                                        >
+                                          {amount}
+                                        </span>
                                       </div>
-                                      <span className={`percentage color-${color}${amount === 0 ? ' zero-amount' : ''}`}>({percent}%)</span>
+                                      <span
+                                        className={`percentage color-${color}${
+                                          amount === 0 ? " zero-amount" : ""
+                                        }`}
+                                      >
+                                        ({percent}%)
+                                      </span>
                                     </div>
                                   </td>
                                 );
                               })}
                             </tr>
                           );
-                        })}
-                      </tbody>
+                        }
+                      )}
+                    </tbody>
                   </table>
                 ) : (
                   <div>Loading...</div>
