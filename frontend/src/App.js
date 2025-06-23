@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "/.netlify/functions";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8000";
 
 function App() {
   const [chart, setChart] = useState(null);

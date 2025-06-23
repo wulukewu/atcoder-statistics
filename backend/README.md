@@ -104,6 +104,9 @@ Netlify will use the functions in `backend/netlify/` as serverless endpoints. Ma
    - `SUPABASE_URL` = your Project URL
    - `SUPABASE_SERVICE_ROLE_KEY` = your service_role key
    - `SUPABASE_BUCKET` = your bucket name (e.g., `atcoder-json`)
+   - **If you are deploying the frontend to Netlify, also set:**
+     - `REACT_APP_API_BASE=/.netlify/functions`
+     - (This tells your React frontend to use the Netlify Functions as the backend API)
 5. **Deploy your site to Netlify.**
 
 ---
