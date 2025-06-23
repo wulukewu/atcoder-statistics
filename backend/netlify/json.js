@@ -1,4 +1,10 @@
-const { readJsonFile } = require("../atcoder");
+const { createClient } = require("@supabase/supabase-js");
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+const BUCKET = process.env.SUPABASE_BUCKET;
 
 exports.handler = async function (event, context) {
   // Support both ?filename=chart.json and /json/chart.json
@@ -15,15 +21,21 @@ exports.handler = async function (event, context) {
     console.error("[Netlify][ERROR] Missing filename parameter");
     return { statusCode: 400, body: "Missing filename parameter" };
   }
-  const data = readJsonFile("/tmp", filename);
-  if (!data) {
-    console.error(`[Netlify][ERROR] File not found: ${filename} in /tmp`);
+  // Download file from Supabase Storage
+  const { data, error } = await supabase.storage
+    .from(BUCKET)
+    .download(filename);
+  if (error || !data) {
+    console.error(`[Supabase][ERROR] Downloading ${filename}:`, error);
     return { statusCode: 404, body: "File not found" };
   }
-  console.log(`[Netlify] Serving file: ${filename} from /tmp`);
+  // Read the stream into a string
+  const buffer = await data.arrayBuffer();
+  const json = Buffer.from(buffer).toString("utf-8");
+  console.log(`[Supabase] Served file: ${filename} from bucket ${BUCKET}`);
   return {
     statusCode: 200,
     headers: { "Content-Type": "application/json" },
-    body: data,
+    body: json,
   };
 };
