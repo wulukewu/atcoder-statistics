@@ -31,19 +31,24 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   // Auto-trigger data collection on server start
   const http = require("http");
-  http.request(
-    {
-      hostname: "localhost",
-      port: PORT,
-      path: "/collect",
-      method: "POST",
-    },
-    (res) => {
-      console.log(`Auto-collect status: ${res.statusCode}`);
-    }
-  )
-  .on("error", (err) => {
-    console.error("Auto-collect error:", err.message);
-  })
-  .end();
+  function triggerCollect() {
+    http
+      .request(
+        {
+          hostname: "localhost",
+          port: PORT,
+          path: "/collect",
+          method: "POST",
+        },
+        (res) => {
+          console.log(`Auto-collect status: ${res.statusCode}`);
+        }
+      )
+      .on("error", (err) => {
+        console.error("Auto-collect error:", err.message);
+      })
+      .end();
+  }
+  triggerCollect(); // Initial collect on start
+  setInterval(triggerCollect, 3 * 60 * 60 * 1000); // Every 3 hours
 });
