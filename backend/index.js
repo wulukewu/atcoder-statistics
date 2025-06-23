@@ -1,11 +1,12 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors"); // <-- add this
 const { collectData, readJsonFile } = require("./atcoder");
-
 const app = express();
 const PORT = process.env.PORT || 8000;
 const DATA_DIR = path.join(__dirname, "json");
 
+app.use(cors()); // <-- add this, needs npm install cors
 app.use(express.json());
 
 app.post("/collect", async (req, res) => {
