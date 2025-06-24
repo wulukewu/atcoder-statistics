@@ -156,8 +156,6 @@ function App() {
                                 const percent = total
                                   ? ((amount / total) * 100).toFixed(2)
                                   : "0.00";
-                                // Make clipPath id unique
-                                const clipId = `clip-${tab.key}-${score}-${color}`;
                                 return (
                                   <td key={color}>
                                     <div
