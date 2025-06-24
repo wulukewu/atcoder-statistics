@@ -40,7 +40,7 @@ const TAB_LIST = [
 function App() {
   const [chart, setChart] = useState(null);
   const [activeTab, setActiveTab] = useState("abc");
-  const [latest, setLatest] = useState({ abc: "-", arc: "-", agc: "-" });
+  const [latest, setLatest] = useState(null);
 
   useEffect(() => {
     fetch(`${API_BASE}/json/chart.json`)
@@ -94,15 +94,17 @@ function App() {
         </div>
         <div className="container header-content">
           <h1>AtCoder Statistics</h1>
-          <h2
-            id="latest-contest-label"
-            data-latest-abc={latest.abc}
-            data-latest-arc={latest.arc}
-            data-latest-agc={latest.agc}
-            aria-live="polite"
-          >
-            Latest Contest: {latest[activeTab]}
-          </h2>
+          {/* Latest Contest Line: only show if data is loaded and valid */}
+          {latest &&
+            latest[activeTab] &&
+            latest[activeTab] !== "N/A" &&
+            latest[activeTab] !== "-" && (
+              <AnimatedLatestContest
+                key={activeTab + latest[activeTab]}
+                latest={latest}
+                activeTab={activeTab}
+              />
+            )}
         </div>
       </header>
       <div className="container">
@@ -311,6 +313,27 @@ function App() {
         </svg>
       </div>
     </>
+  );
+}
+
+function AnimatedLatestContest({ latest, activeTab }) {
+  return (
+    <h2
+      id="latest-contest-label"
+      data-latest-abc={latest.abc}
+      data-latest-arc={latest.arc}
+      data-latest-agc={latest.agc}
+      aria-live="polite"
+      style={{
+        fontSize: "1.25rem",
+        fontWeight: 500,
+        opacity: 0,
+        animation: "fadeInUp 0.8s ease-out 0.3s",
+        animationFillMode: "forwards",
+      }}
+    >
+      Latest Contest: {latest[activeTab]}
+    </h2>
   );
 }
 
