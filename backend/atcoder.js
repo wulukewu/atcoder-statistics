@@ -135,10 +135,33 @@ async function collectData(saveDir) {
     JSON.stringify(problemDict, null, 2)
   );
 
+  // Find latest contest with at least one colored problem for each type
+  function findLatestContestWithColoredProblems(contestType) {
+    const contestIds = Object.keys(stats[contestType]).sort();
+    for (let i = contestIds.length - 1; i >= 0; i--) {
+      const contestId = contestIds[i];
+      const problems = stats[contestType][contestId];
+      if (Object.values(problems).some((p) => p.color && p.point)) {
+        return contestId.toUpperCase();
+      }
+    }
+    return "N/A";
+  }
+  const latest = {
+    abc: findLatestContestWithColoredProblems("abc"),
+    arc: findLatestContestWithColoredProblems("arc"),
+    agc: findLatestContestWithColoredProblems("agc"),
+  };
+  fs.writeFileSync(
+    path.join(saveDir, "latest.json"),
+    JSON.stringify(latest, null, 2)
+  );
+
   return {
     stats: path.join(saveDir, "stats.json"),
     chart: path.join(saveDir, "chart.json"),
     problem_dict: path.join(saveDir, "problem_dict.json"),
+    latest: path.join(saveDir, "latest.json"),
   };
 }
 
