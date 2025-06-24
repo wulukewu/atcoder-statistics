@@ -94,17 +94,44 @@ function App() {
         </div>
         <div className="container header-content">
           <h1>AtCoder Statistics</h1>
-          {/* Latest Contest Line: only show if data is loaded and valid */}
           {latest &&
             latest[activeTab] &&
             latest[activeTab] !== "N/A" &&
             latest[activeTab] !== "-" && (
-              <AnimatedLatestContest
+              <h2
                 key={activeTab + latest[activeTab]}
-                latest={latest}
-                activeTab={activeTab}
-              />
+                id="latest-contest-label"
+                data-latest-abc={latest.abc}
+                data-latest-arc={latest.arc}
+                data-latest-agc={latest.agc}
+                aria-live="polite"
+                style={{
+                  fontSize: "1.25rem",
+                  fontWeight: 500,
+                  opacity: 0,
+                  animation: "fadeInUp 0.8s ease-out 0.3s",
+                  animationFillMode: "forwards",
+                  minHeight: "1.7em",
+                }}
+              >
+                Latest Contest: {latest[activeTab]}
+              </h2>
             )}
+          {(!latest ||
+            !latest[activeTab] ||
+            latest[activeTab] === "N/A" ||
+            latest[activeTab] === "-") && (
+            <h2
+              style={{
+                fontSize: "1.25rem",
+                fontWeight: 500,
+                minHeight: "1.7em",
+                visibility: "hidden",
+              }}
+            >
+              &nbsp;
+            </h2>
+          )}
         </div>
       </header>
       <div className="container">
@@ -313,27 +340,6 @@ function App() {
         </svg>
       </div>
     </>
-  );
-}
-
-function AnimatedLatestContest({ latest, activeTab }) {
-  return (
-    <h2
-      id="latest-contest-label"
-      data-latest-abc={latest.abc}
-      data-latest-arc={latest.arc}
-      data-latest-agc={latest.agc}
-      aria-live="polite"
-      style={{
-        fontSize: "1.25rem",
-        fontWeight: 500,
-        opacity: 0,
-        animation: "fadeInUp 0.8s ease-out 0.3s",
-        animationFillMode: "forwards",
-      }}
-    >
-      Latest Contest: {latest[activeTab]}
-    </h2>
   );
 }
 
