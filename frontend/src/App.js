@@ -163,7 +163,11 @@ function App() {
                                           width="16"
                                           height="16"
                                           viewBox="0 0 16 16"
-                                          className={`progress-cup color-${color}${
+                                          className={`progress-cup${
+                                            amount === 0
+                                              ? " color-grey empty-color"
+                                              : ` progress-circle color-${color}`
+                                          }${
                                             amount === 0 ? " zero-amount" : ""
                                           }`}
                                           style={{ marginBottom: 2 }}
@@ -178,8 +182,8 @@ function App() {
                                             cy="8"
                                             r="7"
                                             fill="none"
-                                            stroke="#e5e7eb"
-                                            strokeWidth="2"
+                                            stroke="currentColor"
+                                            strokeWidth="1"
                                           />
                                           <rect
                                             x="1"
@@ -202,7 +206,11 @@ function App() {
                                           />
                                         </svg>
                                         <span
-                                          className={`count color-${color}${
+                                          className={`count${
+                                            amount === 0
+                                              ? " color-grey empty-color"
+                                              : ` color-${color}`
+                                          }${
                                             amount === 0 ? " zero-amount" : ""
                                           }`}
                                         >
@@ -210,9 +218,11 @@ function App() {
                                         </span>
                                       </div>
                                       <span
-                                        className={`percentage color-${color}${
-                                          amount === 0 ? " zero-amount" : ""
-                                        }`}
+                                        className={`percentage${
+                                          amount === 0
+                                            ? " color-grey empty-color"
+                                            : ` color-${color}`
+                                        }${amount === 0 ? " zero-amount" : ""}`}
                                       >
                                         ({percent}%)
                                       </span>
