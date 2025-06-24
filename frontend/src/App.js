@@ -137,8 +137,15 @@ function App() {
                     <tbody>
                       {chart && chart[tab.key] ? (
                         Object.entries(chart[tab.key]).map(
-                          ([score, colors]) => (
-                            <tr key={score}>
+                          ([score, colors], rowIndex) => (
+                            <tr
+                              key={score}
+                              style={{
+                                animation: "fadeInUp 0.5s ease forwards",
+                                animationDelay: `${rowIndex * 0.1}s`,
+                                opacity: 0,
+                              }}
+                            >
                               <td className="score-label">{score}</td>
                               {COLOR_ORDER.map((color) => {
                                 const amount = colors[color] || 0;
