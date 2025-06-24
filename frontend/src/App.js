@@ -53,11 +53,17 @@ function App() {
 
   // Theme and color toggling
   useEffect(() => {
-    // Set default theme
-    if (!document.documentElement.getAttribute("data-mode")) {
+    // Read from localStorage first
+    const savedMode = localStorage.getItem("theme-mode");
+    const savedColor = localStorage.getItem("theme-color");
+    if (savedMode) {
+      document.documentElement.setAttribute("data-mode", savedMode);
+    } else if (!document.documentElement.getAttribute("data-mode")) {
       document.documentElement.setAttribute("data-mode", "light");
     }
-    if (!document.documentElement.getAttribute("data-color")) {
+    if (savedColor) {
+      document.documentElement.setAttribute("data-color", savedColor);
+    } else if (!document.documentElement.getAttribute("data-color")) {
       document.documentElement.setAttribute("data-color", "green");
     }
   }, []);
@@ -66,6 +72,7 @@ function App() {
     const root = document.documentElement;
     const mode = root.getAttribute("data-mode") === "dark" ? "light" : "dark";
     root.setAttribute("data-mode", mode);
+    localStorage.setItem("theme-mode", mode);
   };
 
   const COLOR_THEMES = ["green", "blue", "purple", "orange", "pink"];
@@ -75,6 +82,7 @@ function App() {
     const idx = COLOR_THEMES.indexOf(current);
     const next = COLOR_THEMES[(idx + 1) % COLOR_THEMES.length];
     root.setAttribute("data-color", next);
+    localStorage.setItem("theme-color", next);
   };
 
   return (
