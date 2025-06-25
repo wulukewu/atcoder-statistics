@@ -35,12 +35,17 @@ const TAB_LIST = [
   { key: "abc", label: "AtCoder Beginner Contest" },
   { key: "arc", label: "AtCoder Regular Contest" },
   { key: "agc", label: "AtCoder Grand Contest" },
+  { key: "profile", label: "Profile" },
 ];
 
 function App() {
   const [chart, setChart] = useState(null);
   const [activeTab, setActiveTab] = useState("abc");
   const [latest, setLatest] = useState(null);
+  const [userName, setUserName] = useState("");
+  const [profile, setProfile] = useState(null);
+  const [profileLoading, setProfileLoading] = useState(false);
+  const [profileError, setProfileError] = useState(null);
 
   useEffect(() => {
     fetch(`${API_BASE}/json/chart.json`)
@@ -51,9 +56,38 @@ function App() {
       .then((data) => setLatest(data));
   }, []);
 
+  // Fetch profile when userName changes
+  useEffect(() => {
+    if (!userName) {
+      setProfile(null);
+      setProfileError(null);
+      return;
+    }
+    setProfileLoading(true);
+    setProfileError(null);
+
+    const handler = setTimeout(() => {
+      fetch(`${API_BASE}/atcoder/profile/${encodeURIComponent(userName)}`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Profile not found");
+          return res.json();
+        })
+        .then((data) => {
+          setProfile(data);
+          setProfileLoading(false);
+        })
+        .catch((err) => {
+          setProfile(null);
+          setProfileError(err.message);
+          setProfileLoading(false);
+        });
+    }, 500); // 500ms debounce
+
+    return () => clearTimeout(handler);
+  }, [userName]);
+
   // Theme and color toggling
   useEffect(() => {
-    // Read from localStorage first
     const savedMode = localStorage.getItem("theme-mode");
     const savedColor = localStorage.getItem("theme-color");
     if (savedMode) {
@@ -138,6 +172,16 @@ function App() {
         <div className="card">
           <div className="card-header">
             <div className="card-title">AtCoder Problems</div>
+            <div className="user-name-box">
+              <input
+                type="text"
+                className="user-name-input"
+                placeholder="Enter username"
+                value={userName}
+                onChange={e => setUserName(e.target.value)}
+                style={{ padding: "0.25rem 0.5rem", borderRadius: "4px", border: "1px solid #ccc" }}
+              />
+            </div>
           </div>
           <div className="tabs">
             {TAB_LIST.map((tab) => (
@@ -155,104 +199,161 @@ function App() {
             {TAB_LIST.map((tab) => (
               <div
                 key={tab.key}
-                className={`tab-content${
-                  activeTab === tab.key ? " active" : ""
-                }`}
+                className={`tab-content${activeTab === tab.key ? " active" : ""}`}
                 id={`table-${tab.key}`}
                 style={{ display: activeTab === tab.key ? "block" : "none" }}
               >
-                <div className="table-responsive">
-                  <table className="stats-table">
-                    <thead>
-                      <tr>
-                        <th>Score</th>
-                        {COLOR_ORDER.map((color) => (
-                          <th key={color}>{COLOR_LABELS[color]}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {chart && chart[tab.key] ? (
-                        Object.entries(chart[tab.key]).map(
-                          ([score, colors], rowIndex) => (
-                            <tr
-                              key={score}
-                              style={{
-                                animation: "fadeInUp 0.5s ease forwards",
-                                animationDelay: `${rowIndex * 0.1}s`,
-                                opacity: 0,
-                              }}
-                            >
-                              <td className="score-label">{score}</td>
-                              {COLOR_ORDER.map((color) => {
-                                const amount = colors[color] || 0;
-                                const total = Object.values(colors).reduce(
-                                  (a, b) => a + b,
-                                  0
-                                );
-                                const percent = total
-                                  ? ((amount / total) * 100).toFixed(2)
-                                  : "0.00";
-                                return (
-                                  <td key={color}>
-                                    <div
-                                      className={`stats-container${
-                                        amount === 0 ? " zero-amount" : ""
-                                      }`}
-                                    >
-                                      <div className="stats-main">
-                                        <div
-                                          className={`progress-circle${
-                                            amount === 0
-                                              ? " color-grey empty-color"
-                                              : ` color-${color}`
-                                          }${
-                                            amount === 0 ? " zero-amount" : ""
-                                          }`}
-                                          data-color={`var(--${color})`}
-                                          data-percent={percent}
-                                        >
-                                          <span
-                                            className={`progress-circle-inner bg-${color}`}
-                                            style={{ height: `${percent}%` }}
-                                          ></span>
-                                        </div>
-                                        <span
-                                          className={`count${
-                                            amount === 0
-                                              ? " color-grey empty-color"
-                                              : ` color-${color}`
-                                          }${
-                                            amount === 0 ? " zero-amount" : ""
-                                          }`}
-                                        >
-                                          {amount}
-                                        </span>
-                                      </div>
-                                      <span
-                                        className={`percentage${
-                                          amount === 0
-                                            ? " color-grey empty-color"
-                                            : ` color-${color}`
-                                        }${amount === 0 ? " zero-amount" : ""}`}
-                                      >
-                                        ({percent}%)
-                                      </span>
-                                    </div>
-                                  </td>
-                                );
-                              })}
-                            </tr>
-                          )
-                        )
-                      ) : (
-                        <tr>
-                          <td colSpan={COLOR_ORDER.length + 1}>Loading...</td>
-                        </tr>
+                {tab.key === "profile" ? (
+                  <div style={{ padding: "2rem", display: "flex", justifyContent: "center" }}>
+                    <div
+                      style={{
+                        background: "var(--card-bg)",
+                        borderRadius: "12px",
+                        boxShadow: "var(--card-shadow)",
+                        padding: "2rem",
+                        minWidth: "320px",
+                        maxWidth: "400px",
+                        width: "100%",
+                        textAlign: "left",
+                        border: "1px solid var(--border-color)",
+                        color: "var(--text-color)",
+                      }}
+                    >
+                      <div style={{ fontWeight: 700, fontSize: "1.25rem", marginBottom: "1rem", textAlign: "center" }}>
+                        <span role="img" aria-label="profile" style={{ marginRight: 8 }}>👤</span>
+                        AtCoder Profile
+                      </div>
+                      {!userName && <div style={{ color: "var(--empty-color)", textAlign: "center" }}>Enter a username to view profile.</div>}
+                      {profileLoading && <div style={{ color: "var(--primary)", textAlign: "center" }}>Loading profile...</div>}
+                      {profileError && !profileLoading && (
+                        <div style={{ color: "red", textAlign: "center" }}>{profileError}</div>
                       )}
-                    </tbody>
-                  </table>
-                </div>
+                      {profile && (
+                        <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}>
+                          <tbody>
+                            <tr>
+                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>User ID</td>
+                              <td style={{ padding: "0.5rem 0" }}>{profile.user_id}</td>
+                            </tr>
+                            <tr>
+                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Accepted Count</td>
+                              <td style={{ padding: "0.5rem 0" }}>{profile.accepted_count}</td>
+                            </tr>
+                            <tr>
+                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>AC Rank</td>
+                              <td style={{ padding: "0.5rem 0" }}>{profile.ac_rank}</td>
+                            </tr>
+                            <tr>
+                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Rated Point Sum</td>
+                              <td style={{ padding: "0.5rem 0" }}>
+                                {profile.rated_point_sum != null ? profile.rated_point_sum : "N/A"}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Rated Point Rank</td>
+                              <td style={{ padding: "0.5rem 0" }}>{profile.rated_point_sum_rank}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="table-responsive">
+                    <table className="stats-table">
+                      <thead>
+                        <tr>
+                          <th>Score</th>
+                          {COLOR_ORDER.map((color) => (
+                            <th key={color}>{COLOR_LABELS[color]}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {chart && chart[tab.key] ? (
+                          Object.entries(chart[tab.key]).map(
+                            ([score, colors], rowIndex) => {
+                              const total = Object.values(colors).reduce(
+                                (a, b) => a + b,
+                                0
+                              );
+                              return (
+                                <tr
+                                  key={score}
+                                  style={{
+                                    animation: "fadeInUp 0.5s ease forwards",
+                                    animationDelay: `${rowIndex * 0.1}s`,
+                                    opacity: 0,
+                                  }}
+                                >
+                                  <td className="score-label">{score}</td>
+                                  {COLOR_ORDER.map((color) => {
+                                    const amount = colors[color] || 0;
+                                    const percent = total
+                                      ? ((amount / total) * 100).toFixed(2)
+                                      : "0.00";
+                                    return (
+                                      <td key={color}>
+                                        <div
+                                          className={`stats-container${
+                                            amount === 0 ? " zero-amount" : ""
+                                          }`}
+                                        >
+                                          <div className="stats-main">
+                                            <div
+                                              className={`progress-circle${
+                                                amount === 0
+                                                  ? " color-grey empty-color"
+                                                  : ` color-${color}`
+                                              }${
+                                                amount === 0 ? " zero-amount" : ""
+                                              }`}
+                                              data-color={`var(--${color})`}
+                                              data-percent={percent}
+                                            >
+                                              <span
+                                                className={`progress-circle-inner bg-${color}`}
+                                                style={{ height: `${percent}%` }}
+                                              ></span>
+                                            </div>
+                                            <span
+                                              className={`count${
+                                                amount === 0
+                                                  ? " color-grey empty-color"
+                                                  : ` color-${color}`
+                                              }${
+                                                amount === 0 ? " zero-amount" : ""
+                                              }`}
+                                            >
+                                              {amount}
+                                            </span>
+                                          </div>
+                                          <span
+                                            className={`percentage${
+                                              amount === 0
+                                                ? " color-grey empty-color"
+                                                : ` color-${color}`
+                                            }${amount === 0 ? " zero-amount" : ""}`}
+                                          >
+                                            ({percent}%)
+                                          </span>
+                                        </div>
+                                      </td>
+                                    );
+                                  })}
+                                </tr>
+                              );
+                            }
+                          )
+                        ) : (
+                          <tr>
+                            <td colSpan={COLOR_ORDER.length + 1}>Loading...</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             ))}
           </div>
