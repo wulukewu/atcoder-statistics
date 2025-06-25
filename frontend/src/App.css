@@ -27,7 +27,7 @@
   --bronze-light: rgb(255, 218, 189);
   --silver: rgb(127, 127, 127);
   --silver-light: rgb(224, 224, 224);
-  --gold: rgb(245, 200, 0);  
+  --gold: rgb(245, 200, 0);
   --gold-light: rgb(235, 228, 200);
   color-scheme: light dark;
 }
@@ -992,4 +992,11 @@ header {
 }
 .box-link:hover {
   text-decoration: none;
+}
+
+.stats-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
 }
