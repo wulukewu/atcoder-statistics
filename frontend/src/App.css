@@ -1057,3 +1057,51 @@ header {
   align-items: center;
   gap: 4px;
 }
+
+.profile-container {
+  width: 100%;
+}
+
+.profile-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--title-color);
+}
+
+.profile-emoji {
+  margin-right: 8px;
+}
+
+.profile-empty {
+  color: var(--empty-color);
+  text-align: center;
+}
+
+.profile-loading {
+  color: var(--primary);
+  text-align: center;
+}
+
+.profile-error {
+  color: red;
+  text-align: center;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.profile-label {
+  font-weight: 600;
+  padding: 0.5rem 0;
+  color: var(--difficulty-color);
+}
+
+.profile-value {
+  padding: 0.5rem 0;
+  color: var(--text-color);
+}

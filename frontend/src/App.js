@@ -40,6 +40,74 @@ const TAB_LIST = [
   { key: "profile", label: "Profile" },
 ];
 
+const profilePlaceholder = {
+  user_id: "Enter username",
+  accepted_count: 0,
+  ac_rank: "N/A",
+  rated_point_sum: "N/A",
+  rated_point_sum_rank: "N/A",
+};
+
+function Header({activeTab}) {
+  const [latest, setLatest] = useState(null);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/json/latest.json`)
+      .then((res) => res.json())
+      .then((data) => setLatest(data));
+  }, []);
+
+  return(
+    <header>
+        <div className="header-bg">
+          <div className="header-bg-circle circle-1"></div>
+          <div className="header-bg-circle circle-2"></div>
+        </div>
+        <div className="container header-content">
+          <h1>AtCoder Statistics</h1>
+          {latest &&
+            latest[activeTab] &&
+            latest[activeTab] !== "N/A" &&
+            latest[activeTab] !== "-" && (
+              <h2
+                key={activeTab + latest[activeTab]}
+                id="latest-contest-label"
+                data-latest-abc={latest.abc}
+                data-latest-arc={latest.arc}
+                data-latest-agc={latest.agc}
+                aria-live="polite"
+                style={{
+                  fontSize: "1.25rem",
+                  fontWeight: 500,
+                  opacity: 0,
+                  animation: "fadeInUp 0.8s ease-out 0.3s",
+                  animationFillMode: "forwards",
+                  minHeight: "1.7em",
+                }}
+              >
+                Latest Contest: {latest[activeTab]}
+              </h2>
+            )}
+          {(!latest ||
+            !latest[activeTab] ||
+            latest[activeTab] === "N/A" ||
+            latest[activeTab] === "-") && (
+            <h2
+              style={{
+                fontSize: "1.25rem",
+                fontWeight: 500,
+                minHeight: "1.7em",
+                visibility: "hidden",
+              }}
+            >
+              &nbsp;
+            </h2>
+          )}
+        </div>
+      </header>
+  );
+}
+
 function CardHeader({title, userName, setUserName}) {
   return (
     <div className="card-header">
@@ -81,56 +149,41 @@ function Tabs({activeTab, setActiveTab}){
 
 function Profile({ userName, profile, profileLoading, profileError }) {
   return (
-    <div>
-      <div style={{
-        fontWeight: 700,
-        fontSize: "1.25rem",
-        marginBottom: "1rem",
-        textAlign: "center"
-      }}>
-        <span role="img" aria-label="profile" style={{ marginRight: 8 }}>👤</span>
+    <div className="profile-container">
+      <div className="profile-title">
+        <span role="img" aria-label="profile" className="profile-emoji">👤</span>
         AtCoder Profile
       </div>
       {!userName ? (
-        <div style={{ color: "var(--empty-color)", textAlign: "center" }}>
-          Enter a username to view profile.
-        </div>
+        <div className="profile-empty">Enter a username to view profile.</div>
       ) : profileLoading ? (
-        <div style={{ color: "var(--primary)", textAlign: "center" }}>
-          Loading profile...
-        </div>
+        <div className="profile-loading">Loading profile...</div>
       ) : profileError ? (
-        <div style={{ color: "red", textAlign: "center" }}>
-          {profileError}
-        </div>
+        <div className="profile-error">{profileError}</div>
       ) : profile ? (
-        <table style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          marginTop: "1rem"
-        }}>
+        <table className="profile-table">
           <tbody>
             <tr>
-              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>User ID</td>
-              <td style={{ padding: "0.5rem 0" }}>{profile.user_id}</td>
+              <td className="profile-label">User ID</td>
+              <td className="profile-value">{profile.user_id}</td>
             </tr>
             <tr>
-              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Accepted Count</td>
-              <td style={{ padding: "0.5rem 0" }}>{profile.accepted_count}</td>
+              <td className="profile-label">Accepted Count</td>
+              <td className="profile-value">{profile.accepted_count}</td>
             </tr>
             <tr>
-              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>AC Rank</td>
-              <td style={{ padding: "0.5rem 0" }}>{profile.ac_rank}</td>
+              <td className="profile-label">AC Rank</td>
+              <td className="profile-value">{profile.ac_rank}</td>
             </tr>
             <tr>
-              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Rated Point Sum</td>
-              <td style={{ padding: "0.5rem 0" }}>
+              <td className="profile-label">Rated Point Sum</td>
+              <td className="profile-value">
                 {profile.rated_point_sum != null ? profile.rated_point_sum : "N/A"}
               </td>
             </tr>
             <tr>
-              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Rated Point Rank</td>
-              <td style={{ padding: "0.5rem 0" }}>{profile.rated_point_sum_rank}</td>
+              <td className="profile-label">Rated Point Rank</td>
+              <td className="profile-value">{profile.rated_point_sum_rank}</td>
             </tr>
           </tbody>
         </table>
@@ -204,6 +257,51 @@ function UpperStat({ color, amount, percent }) {
   );
 }
 
+function UserInput({ userName, profile, profileLoading, profileError, setProfile, setProfileLoading, setProfileError }) {
+  // Fetch profile when userName changes
+  useEffect(() => {
+    if (!userName) {
+      setProfile(profilePlaceholder);
+      setProfileError(null);
+      return;
+    }
+    setProfileLoading(true);
+    setProfileError(null);
+
+    const handler = setTimeout(() => {
+      fetch(`${API_BASE}/profile/${encodeURIComponent(userName)}`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Profile not found");
+          return res.json();
+        })
+        .then((data) => {
+          setProfile(data);
+          setProfileLoading(false);
+        })
+        .catch((err) => {
+          setProfile(null);
+          setProfileError(err.message);
+          setProfileLoading(false);
+        });
+    }, 500); // 500ms debounce
+
+    return () => clearTimeout(handler);
+  }, [userName, setProfile, setProfileError, setProfileLoading]);
+  
+  return(
+    <div className='user-input-outer'>
+      <div className="user-input-inner">
+        <Profile
+          userName={userName}
+          profile={profile}
+          profileLoading={profileLoading}
+          profileError={profileError}
+        />
+      </div>
+    </div>
+  );
+}
+
 function renderAnimatedRows(chart, tab) {
   if (!chart || !chart[tab.key]) return null;
   return Object.entries(chart[tab.key]).map(([score, colors], rowIndex) => {
@@ -269,111 +367,6 @@ function Table({ tab, chart }) {
   );
 }
 
-function UserInput({ userName, setUserName , profile, profileLoading, profileError, setProfile, setProfileLoading, setProfileError }) {
-  // Fetch profile when userName changes
-  useEffect(() => {
-    if (!userName) {
-      setProfile(null);
-      setProfileError(null);
-      return;
-    }
-    setProfileLoading(true);
-    setProfileError(null);
-
-    const handler = setTimeout(() => {
-      fetch(`${API_BASE}/profile/${encodeURIComponent(userName)}`)
-        .then((res) => {
-          if (!res.ok) throw new Error("Profile not found");
-          return res.json();
-        })
-        .then((data) => {
-          setProfile(data);
-          setProfileLoading(false);
-        })
-        .catch((err) => {
-          setProfile(null);
-          setProfileError(err.message);
-          setProfileLoading(false);
-        });
-    }, 500); // 500ms debounce
-
-    return () => clearTimeout(handler);
-  }, [userName, setProfile, setProfileError, setProfileLoading]);
-  
-  return(
-    <div className='user-input-outer'>
-      <div className="user-input-inner">
-        <Profile
-          userName={userName}
-          profile={profile}
-          profileLoading={profileLoading}
-          profileError={profileError}
-        />
-      </div>
-    </div>
-  );
-}
-
-function Header({activeTab}) {
-  const [latest, setLatest] = useState(null);
-
-  useEffect(() => {
-    fetch(`${API_BASE}/json/latest.json`)
-      .then((res) => res.json())
-      .then((data) => setLatest(data));
-  }, []);
-
-  return(
-    <header>
-        <div className="header-bg">
-          <div className="header-bg-circle circle-1"></div>
-          <div className="header-bg-circle circle-2"></div>
-        </div>
-        <div className="container header-content">
-          <h1>AtCoder Statistics</h1>
-          {latest &&
-            latest[activeTab] &&
-            latest[activeTab] !== "N/A" &&
-            latest[activeTab] !== "-" && (
-              <h2
-                key={activeTab + latest[activeTab]}
-                id="latest-contest-label"
-                data-latest-abc={latest.abc}
-                data-latest-arc={latest.arc}
-                data-latest-agc={latest.agc}
-                aria-live="polite"
-                style={{
-                  fontSize: "1.25rem",
-                  fontWeight: 500,
-                  opacity: 0,
-                  animation: "fadeInUp 0.8s ease-out 0.3s",
-                  animationFillMode: "forwards",
-                  minHeight: "1.7em",
-                }}
-              >
-                Latest Contest: {latest[activeTab]}
-              </h2>
-            )}
-          {(!latest ||
-            !latest[activeTab] ||
-            latest[activeTab] === "N/A" ||
-            latest[activeTab] === "-") && (
-            <h2
-              style={{
-                fontSize: "1.25rem",
-                fontWeight: 500,
-                minHeight: "1.7em",
-                visibility: "hidden",
-              }}
-            >
-              &nbsp;
-            </h2>
-          )}
-        </div>
-      </header>
-  );
-}
-
 function Body({
   activeTab, setActiveTab, userName, setUserName,
   profile, setProfile, profileLoading, setProfileLoading, profileError, setProfileError
@@ -395,7 +388,6 @@ function Body({
             {activeTab === "profile" ? (
               <UserInput
                 userName={userName}
-                setUserName={setUserName}
                 profile={profile}
                 profileLoading={profileLoading}
                 profileError={profileError}
@@ -550,7 +542,7 @@ function Buttons() {
 function App() {
   const [userName, setUserName] = useState("")
   const [activeTab, setActiveTab] = useState("abc");
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState(profilePlaceholder);
   const [profileLoading, setProfileLoading] = useState(false);
   const [profileError, setProfileError] = useState(null); 
 
