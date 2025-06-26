@@ -16,6 +16,48 @@ const COLOR_THRESHOLDS = [
   [4400, "gold"],
 ];
 
+async function createProfileJson(saveDir, user) {
+  const acRankUrl = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${encodeURIComponent(user)}`;
+  const ratedPointUrl = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/rated_point_sum_rank?user=${encodeURIComponent(user)}`;
+  try {
+    const [acRankRes, ratedPointRes] = await Promise.all([
+      fetch(acRankUrl),
+      fetch(ratedPointUrl)
+    ]);
+    if (!acRankRes.ok || !ratedPointRes.ok) throw new Error("Failed to fetch AtCoder profile data");
+    const acRank = await acRankRes.json();
+    const ratedPoint = await ratedPointRes.json();
+
+    const profile = {
+      user_id: user,
+      ac_rank: acRank.rank,
+      accepted_count: acRank.count,
+      rated_point_sum_rank: ratedPoint.rank,
+      rated_point_sum: ratedPoint.count != null ? ratedPoint.count : null // Use 'count' here!
+    };
+
+    // Ensure profile directory exists
+    const profileDir = path.join(saveDir, "profiles");
+    if (!fs.existsSync(profileDir)) fs.mkdirSync(profileDir, { recursive: true });
+
+    // Delete all other profile files except the current one
+    const files = fs.readdirSync(profileDir);
+    for (const file of files) {
+      if (file !== `${user}.json` && file.endsWith(".json")) {
+        fs.unlinkSync(path.join(profileDir, file));
+      }
+    }
+
+    // Save new profile
+    const profilePath = path.join(profileDir, `${user}.json`);
+    fs.writeFileSync(profilePath, JSON.stringify(profile, null, 2));
+
+    return profile;
+  } catch (err) {
+    throw err;
+  }
+}
+
 function getColor(difficulty) {
   if (difficulty === undefined || difficulty === null) return null;
   for (const [threshold, color] of COLOR_THRESHOLDS) {
@@ -171,4 +213,4 @@ function readJsonFile(dir, filename) {
   return fs.readFileSync(filePath, "utf-8");
 }
 
-module.exports = { collectData, readJsonFile };
+module.exports = { collectData, readJsonFile, createProfileJson };
