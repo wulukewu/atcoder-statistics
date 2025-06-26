@@ -67,7 +67,7 @@ function App() {
     setProfileError(null);
 
     const handler = setTimeout(() => {
-      fetch(`${API_BASE}/atcoder/profile/${encodeURIComponent(userName)}`)
+      fetch(`${API_BASE}/profile/${encodeURIComponent(userName)}`)
         .then((res) => {
           if (!res.ok) throw new Error("Profile not found");
           return res.json();
@@ -178,8 +178,12 @@ function App() {
                 className="user-name-input"
                 placeholder="Enter username"
                 value={userName}
-                onChange={e => setUserName(e.target.value)}
-                style={{ padding: "0.25rem 0.5rem", borderRadius: "4px", border: "1px solid #ccc" }}
+                onChange={(e) => setUserName(e.target.value)}
+                style={{
+                  padding: "0.25rem 0.5rem",
+                  borderRadius: "4px",
+                  border: "1px solid #ccc",
+                }}
               />
             </div>
           </div>
@@ -199,12 +203,20 @@ function App() {
             {TAB_LIST.map((tab) => (
               <div
                 key={tab.key}
-                className={`tab-content${activeTab === tab.key ? " active" : ""}`}
+                className={`tab-content${
+                  activeTab === tab.key ? " active" : ""
+                }`}
                 id={`table-${tab.key}`}
                 style={{ display: activeTab === tab.key ? "block" : "none" }}
               >
                 {tab.key === "profile" ? (
-                  <div style={{ padding: "2rem", display: "flex", justifyContent: "center" }}>
+                  <div
+                    style={{
+                      padding: "2rem",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
                     <div
                       style={{
                         background: "var(--card-bg)",
@@ -219,39 +231,108 @@ function App() {
                         color: "var(--text-color)",
                       }}
                     >
-                      <div style={{ fontWeight: 700, fontSize: "1.25rem", marginBottom: "1rem", textAlign: "center" }}>
-                        <span role="img" aria-label="profile" style={{ marginRight: 8 }}>👤</span>
+                      <div
+                        style={{
+                          fontWeight: 700,
+                          fontSize: "1.25rem",
+                          marginBottom: "1rem",
+                          textAlign: "center",
+                        }}
+                      >
+                        <span
+                          role="img"
+                          aria-label="profile"
+                          style={{ marginRight: 8 }}
+                        >
+                          👤
+                        </span>
                         AtCoder Profile
                       </div>
-                      {!userName && <div style={{ color: "var(--empty-color)", textAlign: "center" }}>Enter a username to view profile.</div>}
-                      {profileLoading && <div style={{ color: "var(--primary)", textAlign: "center" }}>Loading profile...</div>}
+                      {!userName && (
+                        <div
+                          style={{
+                            color: "var(--empty-color)",
+                            textAlign: "center",
+                          }}
+                        >
+                          Enter a username to view profile.
+                        </div>
+                      )}
+                      {profileLoading && (
+                        <div
+                          style={{
+                            color: "var(--primary)",
+                            textAlign: "center",
+                          }}
+                        >
+                          Loading profile...
+                        </div>
+                      )}
                       {profileError && !profileLoading && (
-                        <div style={{ color: "red", textAlign: "center" }}>{profileError}</div>
+                        <div style={{ color: "red", textAlign: "center" }}>
+                          {profileError}
+                        </div>
                       )}
                       {profile && (
-                        <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}>
+                        <table
+                          style={{
+                            width: "100%",
+                            borderCollapse: "collapse",
+                            marginTop: "1rem",
+                          }}
+                        >
                           <tbody>
                             <tr>
-                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>User ID</td>
-                              <td style={{ padding: "0.5rem 0" }}>{profile.user_id}</td>
-                            </tr>
-                            <tr>
-                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Accepted Count</td>
-                              <td style={{ padding: "0.5rem 0" }}>{profile.accepted_count}</td>
-                            </tr>
-                            <tr>
-                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>AC Rank</td>
-                              <td style={{ padding: "0.5rem 0" }}>{profile.ac_rank}</td>
-                            </tr>
-                            <tr>
-                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Rated Point Sum</td>
+                              <td
+                                style={{ fontWeight: 600, padding: "0.5rem 0" }}
+                              >
+                                User ID
+                              </td>
                               <td style={{ padding: "0.5rem 0" }}>
-                                {profile.rated_point_sum != null ? profile.rated_point_sum : "N/A"}
+                                {profile.user_id}
                               </td>
                             </tr>
                             <tr>
-                              <td style={{ fontWeight: 600, padding: "0.5rem 0" }}>Rated Point Rank</td>
-                              <td style={{ padding: "0.5rem 0" }}>{profile.rated_point_sum_rank}</td>
+                              <td
+                                style={{ fontWeight: 600, padding: "0.5rem 0" }}
+                              >
+                                Accepted Count
+                              </td>
+                              <td style={{ padding: "0.5rem 0" }}>
+                                {profile.accepted_count}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{ fontWeight: 600, padding: "0.5rem 0" }}
+                              >
+                                AC Rank
+                              </td>
+                              <td style={{ padding: "0.5rem 0" }}>
+                                {profile.ac_rank}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{ fontWeight: 600, padding: "0.5rem 0" }}
+                              >
+                                Rated Point Sum
+                              </td>
+                              <td style={{ padding: "0.5rem 0" }}>
+                                {profile.rated_point_sum != null
+                                  ? profile.rated_point_sum
+                                  : "N/A"}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td
+                                style={{ fontWeight: 600, padding: "0.5rem 0" }}
+                              >
+                                Rated Point Rank
+                              </td>
+                              <td style={{ padding: "0.5rem 0" }}>
+                                {profile.rated_point_sum_rank}
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -306,14 +387,18 @@ function App() {
                                                   ? " color-grey empty-color"
                                                   : ` color-${color}`
                                               }${
-                                                amount === 0 ? " zero-amount" : ""
+                                                amount === 0
+                                                  ? " zero-amount"
+                                                  : ""
                                               }`}
                                               data-color={`var(--${color})`}
                                               data-percent={percent}
                                             >
                                               <span
                                                 className={`progress-circle-inner bg-${color}`}
-                                                style={{ height: `${percent}%` }}
+                                                style={{
+                                                  height: `${percent}%`,
+                                                }}
                                               ></span>
                                             </div>
                                             <span
@@ -322,7 +407,9 @@ function App() {
                                                   ? " color-grey empty-color"
                                                   : ` color-${color}`
                                               }${
-                                                amount === 0 ? " zero-amount" : ""
+                                                amount === 0
+                                                  ? " zero-amount"
+                                                  : ""
                                               }`}
                                             >
                                               {amount}
@@ -333,7 +420,9 @@ function App() {
                                               amount === 0
                                                 ? " color-grey empty-color"
                                                 : ` color-${color}`
-                                            }${amount === 0 ? " zero-amount" : ""}`}
+                                            }${
+                                              amount === 0 ? " zero-amount" : ""
+                                            }`}
                                           >
                                             ({percent}%)
                                           </span>

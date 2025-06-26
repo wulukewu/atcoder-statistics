@@ -1,15 +1,15 @@
 const express = require("express");
 const path = require("path");
-const cors = require("cors"); 
+const cors = require("cors");
 const { collectData, readJsonFile, createProfileJson } = require("./atcoder");
 const app = express();
 const PORT = process.env.PORT || 8000;
 const DATA_DIR = path.join(__dirname, "json");
-const fetch = require("node-fetch"); 
+const fetch = require("node-fetch");
 
 console.log("[INFO] DATA_DIR is:", DATA_DIR);
 
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
 
 app.post("/collect", async (req, res) => {
@@ -34,11 +34,12 @@ app.get("/json/:filename", (req, res) => {
   res.type("json").send(data);
 });
 
-
 // Proxy for AtCoder user ac_rank
 app.get("/atcoder/user/ac_rank/:user", async (req, res) => {
   const user = req.params.user;
-  const url = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${encodeURIComponent(user)}`;
+  const url = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=${encodeURIComponent(
+    user
+  )}`;
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to fetch ac_rank");
@@ -52,7 +53,9 @@ app.get("/atcoder/user/ac_rank/:user", async (req, res) => {
 // Proxy for AtCoder user rated_point_sum_rank
 app.get("/atcoder/user/rated_point_sum_rank/:user", async (req, res) => {
   const user = req.params.user;
-  const url = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/rated_point_sum_rank?user=${encodeURIComponent(user)}`;
+  const url = `https://kenkoooo.com/atcoder/atcoder-api/v3/user/rated_point_sum_rank?user=${encodeURIComponent(
+    user
+  )}`;
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to fetch rated_point_sum_rank");
@@ -63,7 +66,7 @@ app.get("/atcoder/user/rated_point_sum_rank/:user", async (req, res) => {
   }
 });
 
-app.get("/atcoder/profile/:user", async (req, res) => {
+app.get("/profile/:user", async (req, res) => {
   const user = req.params.user;
   try {
     const profile = await createProfileJson(DATA_DIR, user);
