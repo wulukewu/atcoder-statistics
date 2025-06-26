@@ -1,34 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Table from "./Table";
 
 const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8000";
-
-const COLOR_ORDER = [
-  "grey",
-  "brown",
-  "green",
-  "cyan",
-  "blue",
-  "yellow",
-  "orange",
-  "red",
-  "bronze",
-  "silver",
-  "gold",
-];
-
-const COLOR_LABELS = {
-  grey: "Grey",
-  brown: "Brown",
-  green: "Green",
-  cyan: "Cyan",
-  blue: "Blue",
-  yellow: "Yellow",
-  orange: "Orange",
-  red: "Red",
-  bronze: "bronze",
-  silver: "silver",
-  gold: "gold",
-};
 
 const TAB_LIST = [
   { key: "abc", label: "AtCoder Beginner Contest" },
@@ -121,71 +94,6 @@ function Profile({ userName, profile, profileLoading, profileError }) {
   );
 }
 
-function Amount({color, amount}) {
-  return(
-    <span
-      className={`count${
-        amount === 0
-          ? " color-grey empty-color"
-          : ` color-${color}`
-      }${
-        amount === 0
-          ? " zero-amount"
-          : ""
-      }`}
-    >
-      {amount}
-    </span>
-  );
-}
-
-function Percent({ percent , amount, color }) {
-  return(
-    <span
-      className={`percentage${
-        amount === 0
-          ? " color-grey empty-color"
-          : ` color-${color}`
-      }${
-        amount === 0 ? " zero-amount" : ""
-      }`}
-    >
-      ({percent}%)
-    </span>
-  );
-}
-
-function UpperStat({ color, amount, percent }) {
-  return(
-    <div className="stats-main">
-      <div
-        className={`progress-circle${
-          amount === 0
-            ? " color-grey empty-color"
-            : ` color-${color}`
-        }${
-          amount === 0
-            ? " zero-amount"
-            : ""
-        }`}
-        data-color={`var(--${color})`}
-        data-percent={percent}
-      >
-        <span
-          className={`progress-circle-inner bg-${color}`}
-          style={{
-            height: `${percent}%`,
-          }}
-        ></span>
-      </div>
-      <Amount
-        color={color}
-        amount={amount}
-      />
-    </div>
-  );
-}
-
 function UserInput({ userName, profileState }) {
   const { profile, setProfile, profileLoading, setProfileLoading, profileError, setProfileError } = profileState;
   // Fetch profile when userName changes
@@ -228,71 +136,6 @@ function UserInput({ userName, profileState }) {
           profileError={profileError}
         />
       </div>
-    </div>
-  );
-}
-
-function renderAnimatedRows(chart, tab) {
-  if (!chart || !chart[tab.key]) return null;
-  return Object.entries(chart[tab.key]).map(([score, colors], rowIndex) => {
-    const total = Object.values(colors).reduce((a, b) => a + b, 0);
-    return (
-      <tr key={score}>
-        <td colSpan={COLOR_ORDER.length + 1} style={{ padding: 0, border: "none", background: "none" }}>
-          <div
-            className="fade-row"
-            style={{
-              animation: "fadeInUp 0.5s ease forwards",
-              animationDelay: `${rowIndex * 0.1}s`,
-              opacity: 0,
-              display: "flex",
-              alignItems: "center",
-              height: '4.8rem',
-            }}
-          >
-            <span className="score-label" style={{ minWidth: 60, textAlign: "center" }}>{score}</span>
-            {COLOR_ORDER.map((color) => {
-              const amount = colors[color] || 0;
-              const percent = total ? ((amount / total) * 100).toFixed(2) : "0.00";
-              return (
-                <div key={color} style={{ flex: 1, textAlign: "center" }}>
-                  <div className={`stats-container${amount === 0 ? " zero-amount" : ""}`}>
-                    <UpperStat color={color} amount={amount} percent={percent} />
-                    <Percent percent={percent} amount={amount} color={color} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </td>
-      </tr>
-    );
-  });
-}
-
-function Table({ tab, chart }) {
-  return (
-    <div className="table-responsive">
-      <table className="stats-table">
-        <thead>
-          <tr>
-            <th>Score</th>
-            {COLOR_ORDER.map((color) => (
-              <th key={color}>{COLOR_LABELS[color]}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody key={tab.key}>
-          {chart && chart[tab.key]
-            ? renderAnimatedRows(chart, tab)
-            : (
-              <tr>
-                <td colSpan={COLOR_ORDER.length + 1}>Loading...</td>
-              </tr>
-            )
-          }
-        </tbody>
-      </table>
     </div>
   );
 }
