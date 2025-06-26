@@ -1,0 +1,22 @@
+name: Trigger Netlify Collect Function
+
+on:
+  schedule:
+    - cron: "0 */3 * * *" # Every 3 hours
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    env:
+      NETLIFY_SITE: ${{ secrets.NETLIFY_SITE }}
+    steps:
+      - name: Call Netlify Function
+        run: |
+          curl -X POST "https://${NETLIFY_SITE}/.netlify/functions/collect"

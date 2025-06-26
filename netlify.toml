@@ -5,3 +5,6 @@
 [dev]
   functions = "backend/netlify"
   publish = "frontend/build"
+
+[functions."collect"]
+  schedule = "0 */3 * * *"
