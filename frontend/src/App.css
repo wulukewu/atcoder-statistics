@@ -419,6 +419,50 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* User input container styles (already present, but ensure variables are used) */
+.user-input-outer {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.user-input-inner {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+/* Username input box */
+.user-name-input {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Dark mode overrides (optional, but ensures clarity) */
+:root[data-mode="dark"] .user-input-inner {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+:root[data-mode="dark"] .user-name-input {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
 .score-label {
   font-weight: 600;
   color: var(--difficulty-color);
