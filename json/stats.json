@@ -23393,37 +23393,65 @@
       "abc412_a": {
         "name": "Task Failed Successfully",
         "point": 100.0,
-        "solver_count": 9594
+        "solver_count": 9594,
+        "is_experimental": false,
+        "variance": 0.8809130857054531,
+        "difficulty": -1084,
+        "color": "grey"
       },
       "abc412_b": {
         "name": "Precondition",
         "point": 200.0,
-        "solver_count": 8993
+        "solver_count": 8993,
+        "is_experimental": false,
+        "variance": 0.4634265236632256,
+        "difficulty": -508,
+        "color": "grey"
       },
       "abc412_c": {
         "name": "Giant Domino",
         "point": 300.0,
-        "solver_count": 5043
+        "solver_count": 5043,
+        "is_experimental": false,
+        "variance": 0.45348789741639184,
+        "difficulty": 607,
+        "color": "brown"
       },
       "abc412_d": {
         "name": "Make 2-Regular Graph",
         "point": 425.0,
-        "solver_count": 2378
+        "solver_count": 2378,
+        "is_experimental": false,
+        "variance": 0.3689832310829021,
+        "difficulty": 1186,
+        "color": "green"
       },
       "abc412_e": {
         "name": "LCM Sequence",
         "point": 500.0,
-        "solver_count": 1440
+        "solver_count": 1440,
+        "is_experimental": false,
+        "variance": 0.35253597444137325,
+        "difficulty": 1496,
+        "color": "cyan"
       },
       "abc412_f": {
         "name": "Socks 4",
         "point": 525.0,
-        "solver_count": 491
+        "solver_count": 491,
+        "is_experimental": false,
+        "variance": 0.2219104451390664,
+        "difficulty": 2038,
+        "color": "yellow"
       },
       "abc412_g": {
         "name": "Degree Harmony",
         "point": 650.0,
-        "solver_count": 6
+        "solver_count": 6,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3402,
+        "color": "bronze"
       }
     }
   },
