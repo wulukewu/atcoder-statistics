@@ -36783,7 +36783,11 @@
       "ahc050_a": {
         "name": "Gamble on Ice",
         "point": null,
-        "solver_count": 1095
+        "solver_count": 1095,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3882,
+        "color": "silver"
       }
     },
     "aising2019": {
