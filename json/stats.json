@@ -23523,37 +23523,65 @@
       "abc414_a": {
         "name": "Streamer Takahashi",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.8481100094842228,
+        "difficulty": -1044,
+        "color": "grey"
       },
       "abc414_b": {
         "name": "String Too Long ",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.5839504533318257,
+        "difficulty": -553,
+        "color": "grey"
       },
       "abc414_c": {
         "name": "Palindromic in Both Bases",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.408896835621375,
+        "difficulty": 709,
+        "color": "brown"
       },
       "abc414_d": {
         "name": "Transmission Mission",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.47657205499378286,
+        "difficulty": 841,
+        "color": "green"
       },
       "abc414_e": {
         "name": "Count A%B=C",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4206754884505948,
+        "difficulty": 1296,
+        "color": "cyan"
       },
       "abc414_f": {
         "name": "Jump Traveling",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.24145008609874788,
+        "difficulty": 2357,
+        "color": "yellow"
       },
       "abc414_g": {
         "name": "AtCoder Express 4",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.13934589859757054,
+        "difficulty": 3020,
+        "color": "red"
       }
     }
   },
