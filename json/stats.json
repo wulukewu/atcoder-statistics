@@ -32335,22 +32335,38 @@
       "arc204_a": {
         "name": "Use Udon Coupon",
         "point": 700.0,
-        "solver_count": 375
+        "solver_count": 375,
+        "is_experimental": false,
+        "variance": 0.40643857033714376,
+        "difficulty": 1923,
+        "color": "blue"
       },
       "arc204_b": {
         "name": "Sort Permutation",
         "point": 800.0,
-        "solver_count": 261
+        "solver_count": 261,
+        "is_experimental": false,
+        "variance": 0.28909812158826836,
+        "difficulty": 2210,
+        "color": "yellow"
       },
       "arc204_c": {
         "name": "Maximize Sum of Mex",
         "point": 900.0,
-        "solver_count": 50
+        "solver_count": 50,
+        "is_experimental": false,
+        "variance": 0.10786155480464402,
+        "difficulty": 3004,
+        "color": "red"
       },
       "arc204_d": {
         "name": "Favorite Interval",
         "point": 1000.0,
-        "solver_count": 24
+        "solver_count": 24,
+        "is_experimental": false,
+        "variance": 0.3443723820666759,
+        "difficulty": 3290,
+        "color": "bronze"
       }
     }
   },
