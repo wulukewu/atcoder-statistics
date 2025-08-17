@@ -23653,37 +23653,65 @@
       "abc416_a": {
         "name": "Vacation Validation",
         "point": 100.0,
-        "solver_count": 13181
+        "solver_count": 13181,
+        "is_experimental": false,
+        "variance": 0.8429334508858278,
+        "difficulty": -1079,
+        "color": "grey"
       },
       "abc416_b": {
         "name": "1D Akari",
         "point": 250.0,
-        "solver_count": 11530
+        "solver_count": 11530,
+        "is_experimental": false,
+        "variance": 0.5037118226839333,
+        "difficulty": -390,
+        "color": "grey"
       },
       "abc416_c": {
         "name": "Concat (X-th)",
         "point": 300.0,
-        "solver_count": 9158
+        "solver_count": 9158,
+        "is_experimental": false,
+        "variance": 0.49198526286963046,
+        "difficulty": 282,
+        "color": "grey"
       },
       "abc416_d": {
         "name": "Match, Mod, Minimize 2",
         "point": 400.0,
-        "solver_count": 6816
+        "solver_count": 6816,
+        "is_experimental": false,
+        "variance": 0.48729849758425964,
+        "difficulty": 682,
+        "color": "brown"
       },
       "abc416_e": {
         "name": "Development",
         "point": 450.0,
-        "solver_count": 3327
+        "solver_count": 3327,
+        "is_experimental": false,
+        "variance": 0.33318086057635493,
+        "difficulty": 1428,
+        "color": "cyan"
       },
       "abc416_f": {
         "name": "Paint Tree 2",
         "point": 525.0,
-        "solver_count": 945
+        "solver_count": 945,
+        "is_experimental": false,
+        "variance": 0.2264038584695008,
+        "difficulty": 2115,
+        "color": "yellow"
       },
       "abc416_g": {
         "name": "Concat (1st)",
         "point": 625.0,
-        "solver_count": 386
+        "solver_count": 386,
+        "is_experimental": false,
+        "variance": 0.28618681480814634,
+        "difficulty": 2542,
+        "color": "orange"
       }
     },
     "abc417": {
@@ -23820,37 +23848,65 @@
       "abc419_a": {
         "name": "AtCoder Language",
         "point": 100.0,
-        "solver_count": 12029
+        "solver_count": 12029,
+        "is_experimental": false,
+        "variance": 0.8815190377916664,
+        "difficulty": -888,
+        "color": "grey"
       },
       "abc419_b": {
         "name": "Get Min",
         "point": 200.0,
-        "solver_count": 11478
+        "solver_count": 11478,
+        "is_experimental": false,
+        "variance": 0.5237618268401727,
+        "difficulty": -624,
+        "color": "grey"
       },
       "abc419_c": {
         "name": "King's Summit",
         "point": 300.0,
-        "solver_count": 8986
+        "solver_count": 8986,
+        "is_experimental": false,
+        "variance": 0.5111413002811076,
+        "difficulty": 226,
+        "color": "grey"
       },
       "abc419_d": {
         "name": "Substr Swap",
         "point": 400.0,
-        "solver_count": 8946
+        "solver_count": 8946,
+        "is_experimental": false,
+        "variance": 0.5581408626446032,
+        "difficulty": 214,
+        "color": "grey"
       },
       "abc419_e": {
         "name": "Subarray Sum Divisibility",
         "point": 475.0,
-        "solver_count": 3136
+        "solver_count": 3136,
+        "is_experimental": false,
+        "variance": 0.4062349029795899,
+        "difficulty": 1298,
+        "color": "cyan"
       },
       "abc419_f": {
         "name": "All Included",
         "point": 550.0,
-        "solver_count": 1199
+        "solver_count": 1199,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 1726,
+        "color": "blue"
       },
       "abc419_g": {
         "name": "Count Simple Paths 2",
         "point": 600.0,
-        "solver_count": 203
+        "solver_count": 203,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 2677,
+        "color": "orange"
       }
     }
   },
