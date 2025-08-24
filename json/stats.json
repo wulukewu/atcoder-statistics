@@ -23913,37 +23913,65 @@
       "abc420_a": {
         "name": "What month is it?",
         "point": 100.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.9451043030955618,
+        "difficulty": -1065,
+        "color": "grey"
       },
       "abc420_b": {
         "name": "Most Minority",
         "point": 200.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.32273013143595264,
+        "difficulty": -273,
+        "color": "grey"
       },
       "abc420_c": {
         "name": "Sum of Min Query",
         "point": 300.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.44873045541574214,
+        "difficulty": 56,
+        "color": "grey"
       },
       "abc420_d": {
         "name": "Toggle Maze",
         "point": 400.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3605876212806421,
+        "difficulty": 699,
+        "color": "brown"
       },
       "abc420_e": {
         "name": "Reachability Query",
         "point": 450.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.46431484097426234,
+        "difficulty": 790,
+        "color": "brown"
       },
       "abc420_f": {
         "name": "kirinuki",
         "point": 550.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 2420,
+        "color": "orange"
       },
       "abc420_g": {
         "name": "sqrt(n²+n+X)",
         "point": 575.0,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 1427,
+        "color": "cyan"
       }
     }
   },
