@@ -32559,27 +32559,47 @@
       "arc205_a": {
         "name": "2x2 Erasing",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3637544791774766,
+        "difficulty": 262,
+        "color": "grey"
       },
       "arc205_b": {
         "name": "Triangle Toggle",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.5628457591304653,
+        "difficulty": 1361,
+        "color": "cyan"
       },
       "arc205_c": {
         "name": "No Collision Moves",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3878816529639636,
+        "difficulty": 1381,
+        "color": "cyan"
       },
       "arc205_d": {
         "name": "Non-Ancestor Matching",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.35364078101114566,
+        "difficulty": 1853,
+        "color": "blue"
       },
       "arc205_e": {
         "name": "Subset Product Problem",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4882478062625588,
+        "difficulty": 2102,
+        "color": "yellow"
       }
     }
   },
