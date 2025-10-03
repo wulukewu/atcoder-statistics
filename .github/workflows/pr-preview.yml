@@ -18,44 +18,38 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.x"
+          node-version: "20"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: npm ci
 
-      - name: Run dict.py
-        run: python dict.py
-        continue-on-error: true
-
-      - name: Run main.py
-        run: python main.py
+      - name: Build application
+        run: npm run build
         continue-on-error: true
 
       - name: Verify generated files
         if: success()
         run: |
-          if [ ! -d "web-page" ]; then
-            echo "Error: web-page directory not found"
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory not found"
             exit 1
           fi
-          if [ ! -f "web-page/index.html" ]; then
-            echo "Error: index.html not found"
+          if [ ! -f "dist/index.html" ]; then
+            echo "Error: index.html not found in dist"
             exit 1
           fi
           echo "Generated files verified successfully"
 
-      - name: Debug web-page contents
+      - name: Debug dist contents
         if: success()
         run: |
-          echo "Contents of web-page directory:"
-          ls -la web-page/
+          echo "Contents of dist directory:"
+          ls -la dist/
           echo "First few lines of index.html:"
-          head -n 5 web-page/index.html
+          head -n 5 dist/index.html
 
       - name: Checkout gh-pages branch
         if: success()
@@ -74,7 +68,10 @@ jobs:
       - name: Copy files to preview directory
         if: success()
         run: |
-          cp -r web-page/* gh-pages/pr-preview/pr-${{ github.event.pull_request.number }}/
+          cp -r dist/* gh-pages/pr-preview/pr-${{ github.event.pull_request.number }}/
+          # Copy static assets
+          mkdir -p gh-pages/pr-preview/pr-${{ github.event.pull_request.number }}/web-page
+          cp -r web-page/styles.css web-page/styles-list.css web-page/atcoder-problems-logo.png web-page/favicon.svg gh-pages/pr-preview/pr-${{ github.event.pull_request.number }}/web-page/ 2>/dev/null || true
           echo "Contents of preview directory:"
           ls -la gh-pages/pr-preview/pr-${{ github.event.pull_request.number }}/
 
