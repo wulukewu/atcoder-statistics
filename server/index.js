@@ -141,8 +141,11 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
-// Serve React app for all other routes
-app.get('*', (req, res) => {
+// Serve React app for all other routes (excluding API and static assets)
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.startsWith('/assets') || req.path.startsWith('/web-page')) {
+    return next();
+  }
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 

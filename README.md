@@ -191,6 +191,34 @@ The frontend application uses:
 - **API Issues:** If you encounter issues with the API, check if the endpoints are still valid and accessible.
 - **Data Processing:** If the data structure from the API changes, you may need to update the data processing logic in `main.py`.
 
+## Migration from Python to React/Node.js
+
+This project has been refactored from a Python-based static site generator to a modern React and Node.js application. The key changes include:
+
+### What Changed
+
+- **Backend**: Python scripts (`dict.py`, `main.py`) → Node.js/Express API server
+- **Frontend**: Static HTML templates → React components with client-side routing
+- **Build Process**: Python template rendering → Vite build system
+- **Data Flow**: Pre-generated static pages → Dynamic API-driven SPA
+
+### Legacy Files
+
+The following Python files are kept for reference but are no longer used:
+- `dict.py` - Legacy data collection script
+- `main.py` - Legacy HTML generation script
+- `requirements.txt` - Python dependencies (no longer needed)
+- `web-page/template.html` and `web-page/template-list.html` - Legacy HTML templates
+
+### Benefits of the New Architecture
+
+1. **Real-time Data**: Fetches latest data from AtCoder API on demand
+2. **Better Performance**: Client-side routing eliminates page reloads
+3. **Modern Stack**: Uses industry-standard tools (React, Vite, Express)
+4. **Easier Development**: Hot module replacement during development
+5. **Better Maintainability**: Component-based architecture
+6. **Enhanced UX**: Smooth transitions and better interactivity
+
 ## License
 
 This project is licensed under the terms of the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
