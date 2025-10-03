@@ -172,3 +172,11 @@ cython_debug/
 
 # macOS
 .DS_Store
+
+# Node.js
+node_modules/
+dist/
+package-lock.json
+
+# Vite
+.vite/
