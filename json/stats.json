@@ -24312,37 +24312,65 @@
       "abc428_a": {
         "name": "Grandma's Footsteps",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.5308180496129141,
+        "difficulty": -744,
+        "color": "grey"
       },
       "abc428_b": {
         "name": "Most Frequent Substrings",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4599416415749819,
+        "difficulty": -89,
+        "color": "grey"
       },
       "abc428_c": {
         "name": "Brackets Stack Query",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4793769595564275,
+        "difficulty": 483,
+        "color": "brown"
       },
       "abc428_d": {
         "name": "183184",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.40459233395395394,
+        "difficulty": 1239,
+        "color": "cyan"
       },
       "abc428_e": {
         "name": "Farthest Vertex",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.43284221420239455,
+        "difficulty": 1167,
+        "color": "green"
       },
       "abc428_f": {
         "name": "Pyramid Alignment",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.18987624302384293,
+        "difficulty": 2073,
+        "color": "yellow"
       },
       "abc428_g": {
         "name": "Necklace",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 2472,
+        "color": "orange"
       }
     }
   },
