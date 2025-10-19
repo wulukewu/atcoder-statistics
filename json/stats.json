@@ -38097,7 +38097,11 @@
       "ahc055_a": {
         "name": "Weakpoint",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3884,
+        "color": "silver"
       }
     },
     "aising2019": {
