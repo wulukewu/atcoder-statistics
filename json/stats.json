@@ -24377,37 +24377,65 @@
       "abc429_a": {
         "name": "Too Many Requests",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.9797340369208206,
+        "difficulty": -1091,
+        "color": "grey"
       },
       "abc429_b": {
         "name": "N - 1",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.5379862592564244,
+        "difficulty": -725,
+        "color": "grey"
       },
       "abc429_c": {
         "name": "Odd One Subsequence",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.6958395924869047,
+        "difficulty": 125,
+        "color": "grey"
       },
       "abc429_d": {
         "name": "On AtCoder Conference",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.30131492504101437,
+        "difficulty": 903,
+        "color": "green"
       },
       "abc429_e": {
         "name": "Hit and Away",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3489502044593419,
+        "difficulty": 1313,
+        "color": "cyan"
       },
       "abc429_f": {
         "name": "Shortest Path Query",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.2972298221983692,
+        "difficulty": 1859,
+        "color": "blue"
       },
       "abc429_g": {
         "name": "Sum of Pow of Mod of Linear",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.0430584032752249,
+        "difficulty": 3295,
+        "color": "bronze"
       }
     }
   },
