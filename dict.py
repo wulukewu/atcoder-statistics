@@ -59,6 +59,7 @@ contest_counts = {"abc": 0, "arc": 0, "agc": 0, "others": 0}
 problem_counts = {"abc": 0, "arc": 0, "agc": 0, "others": 0}
 
 # Process each problem and organize by contest type
+# Build stats, chart, and problem_dict in a single pass for efficiency
 for idx, problem in enumerate(merged_problems):
     # Determine contest type
     if "abc" in problem["contest_id"]:
@@ -76,54 +77,46 @@ for idx, problem in enumerate(merged_problems):
     if contest_id not in stats[contest_type]:
         stats[contest_type][contest_id] = {}
         contest_counts[contest_type] += 1
-    stats[contest_type][contest_id][problem_id] = {
+    
+    # Build problem entry with basic info
+    problem_entry = {
         "name": problem["name"],
         "point": problem["point"],
         "solver_count": problem["solver_count"]
     }
-    problem_counts[contest_type] += 1
-
+    
     # Add problem model data if available
-    if problem_id in problem_models:
-        model = problem_models[problem_id]
+    model = problem_models.get(problem_id)
+    if model:
         if "is_experimental" in model:
-            stats[contest_type][contest_id][problem_id]["is_experimental"] = model["is_experimental"]
+            problem_entry["is_experimental"] = model["is_experimental"]
         if "variance" in model:
-            stats[contest_type][contest_id][problem_id]["variance"] = model["variance"]
+            problem_entry["variance"] = model["variance"]
         if "difficulty" in model:
-            stats[contest_type][contest_id][problem_id]["difficulty"] = model["difficulty"]
+            problem_entry["difficulty"] = model["difficulty"]
             color = get_color(model["difficulty"])
             if color:
-                stats[contest_type][contest_id][problem_id]["color"] = color
+                problem_entry["color"] = color
+    
+    stats[contest_type][contest_id][problem_id] = problem_entry
+    problem_counts[contest_type] += 1
+    
+    # Build chart and problem_dict in the same pass if problem has color and point
+    if "color" in problem_entry and "point" in problem_entry and problem_entry["point"] is not None:
+        point = problem_entry["point"]
+        color = problem_entry["color"]
+        
+        # Update chart data
+        if point not in chart[contest_type]:
+            chart[contest_type][point] = {}
+        chart[contest_type][point][color] = chart[contest_type][point].get(color, 0) + 1
+        
+        # Update problem dictionary
+        problem_dict[contest_type].setdefault(point, {}).setdefault(color, []).append(problem_id)
 
 print("\nContest Statistics:")
 for contest_type in ["abc", "arc", "agc", "others"]:
     print(f"  {contest_type.upper()}: {contest_counts[contest_type]} contests, {problem_counts[contest_type]} problems")
-
-print("\nBuilding chart data and problem dictionary...")
-# Build chart data: count problems by point and color
-for contest_type in stats:
-    for contest_id in stats[contest_type]:
-        for problem in stats[contest_type][contest_id].values():
-            if "color" not in problem or "point" not in problem or problem["point"] is None:
-                continue
-            point = problem["point"]
-            color = problem["color"]
-            if point not in chart[contest_type]:
-                chart[contest_type][point] = {}
-            if color in chart[contest_type][point]:
-                chart[contest_type][point][color] += 1
-            else:
-                chart[contest_type][point][color] = 1
-
-for contest_type in stats:
-    for contest_id in stats[contest_type]:
-        for problem_id in stats[contest_type][contest_id]:
-            if "color" not in stats[contest_type][contest_id][problem_id] or "point" not in stats[contest_type][contest_id][problem_id] or stats[contest_type][contest_id][problem_id]["point"] is None:
-                continue
-            point = stats[contest_type][contest_id][problem_id]["point"]
-            color = stats[contest_type][contest_id][problem_id]["color"]
-            problem_dict[contest_type].setdefault(point, {}).setdefault(color, []).append(problem_id)
 
 # Ensure output directory exists
 os.makedirs('web-page/json', exist_ok=True)
