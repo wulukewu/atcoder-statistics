@@ -33,7 +33,7 @@ for contest_type in ['abc', 'arc', 'agc']:
 print(f"✓ Built index for {len(problem_to_contest)} problems")
 
 # Define color order for table columns
-COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red','bronze', 'silver', 'gold']
+COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red', 'bronze', 'silver', 'gold']
 
 print("\nAggregating contest statistics...")
 # Aggregate contest statistics by point and color for all contest types
