@@ -24442,37 +24442,65 @@
       "abc430_a": {
         "name": "Candy Cookie Law",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.8776449999585665,
+        "difficulty": -834,
+        "color": "grey"
       },
       "abc430_b": {
         "name": "Count Subgrid",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4784323976350943,
+        "difficulty": -16,
+        "color": "grey"
       },
       "abc430_c": {
         "name": "Truck Driver",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4640074934589343,
+        "difficulty": 750,
+        "color": "brown"
       },
       "abc430_d": {
         "name": "Neighbor Distance",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.31894474233020226,
+        "difficulty": 982,
+        "color": "green"
       },
       "abc430_e": {
         "name": "Shift String",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.5469584413726016,
+        "difficulty": 1109,
+        "color": "green"
       },
       "abc430_f": {
         "name": "Back and Forth Filling ",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.1970257969038492,
+        "difficulty": 1615,
+        "color": "blue"
       },
       "abc430_g": {
         "name": "Range Set Modifying Query",
         "point": null,
-        "solver_count": null
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.32432135140318413,
+        "difficulty": 2371,
+        "color": "yellow"
       }
     }
   },
