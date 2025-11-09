@@ -33294,6 +33294,52 @@
         "variance": null,
         "difficulty": null
       }
+    },
+    "arc209": {
+      "arc209_a": {
+        "name": "Bracket Game",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3499551407050544,
+        "difficulty": 1284,
+        "color": "cyan"
+      },
+      "arc209_b": {
+        "name": "Minimize Even Palindrome",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.20636963471197745,
+        "difficulty": 1787,
+        "color": "blue"
+      },
+      "arc209_c": {
+        "name": "Adjusting a Rectangle",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.11419836682357912,
+        "difficulty": 2869,
+        "color": "red"
+      },
+      "arc209_d": {
+        "name": "A_A_i",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.11548662036795501,
+        "difficulty": 2583,
+        "color": "orange"
+      },
+      "arc209_e": {
+        "name": "I hate ABC",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": null
+      }
     }
   },
   "agc": {
