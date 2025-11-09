@@ -24502,6 +24502,71 @@
         "difficulty": 2371,
         "color": "yellow"
       }
+    },
+    "abc431": {
+      "abc431_a": {
+        "name": "Robot Balance",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 1.032720110138515,
+        "difficulty": -1080,
+        "color": "grey"
+      },
+      "abc431_b": {
+        "name": "Robot Weight",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.37955983566731527,
+        "difficulty": -558,
+        "color": "grey"
+      },
+      "abc431_c": {
+        "name": "Robot Factory",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.5076844653140281,
+        "difficulty": 63,
+        "color": "grey"
+      },
+      "abc431_d": {
+        "name": "Robot Customize",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.4287929951238869,
+        "difficulty": 693,
+        "color": "brown"
+      },
+      "abc431_e": {
+        "name": "Reflection on Grid",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.24116330859149668,
+        "difficulty": 1424,
+        "color": "cyan"
+      },
+      "abc431_f": {
+        "name": "Almost Sorted 2",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.3859283694555099,
+        "difficulty": 1613,
+        "color": "blue"
+      },
+      "abc431_g": {
+        "name": "One Time Swap 2",
+        "point": null,
+        "solver_count": null,
+        "is_experimental": false,
+        "variance": 0.19938933214365626,
+        "difficulty": 2490,
+        "color": "orange"
+      }
     }
   },
   "arc": {
@@ -43166,6 +43231,33 @@
         "color": "orange"
       }
     },
+    "highrate2025-parallel": {
+      "highrate2025_a": {
+        "name": "全完しないと出られない部屋",
+        "point": null,
+        "solver_count": null
+      },
+      "highrate2025_b": {
+        "name": "三乗根",
+        "point": null,
+        "solver_count": null
+      },
+      "highrate2025_c": {
+        "name": "陣法魔",
+        "point": null,
+        "solver_count": null
+      },
+      "highrate2025_d": {
+        "name": "みかんの取り合い",
+        "point": null,
+        "solver_count": null
+      },
+      "highrate2025_e": {
+        "name": "ブースの配置",
+        "point": null,
+        "solver_count": null
+      }
+    },
     "hokudai-hitachi2017-1": {
       "hitachi2017_1_a": {
         "name": "Problem 1",
@@ -55004,6 +55096,125 @@
         "name": "Patrolling",
         "point": null,
         "solver_count": 138
+      }
+    },
+    "stpc2025_1": {
+      "stpc2025_1_a": {
+        "name": "Depth of Interval",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_b": {
+        "name": "Increasing Swaps",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_d": {
+        "name": "Grid Path Tree",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_e": {
+        "name": "Max Twice Subsequences",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_g": {
+        "name": "Don't make zero",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_j": {
+        "name": "Divide Polygon",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_l": {
+        "name": "Colorful Quadrilateral",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_m": {
+        "name": "Many Approaches",
+        "point": null,
+        "solver_count": null
+      }
+    },
+    "stpc2025_2": {
+      "stpc2025_1_c": {
+        "name": "Sum of Three Inversions",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_f": {
+        "name": "Decimal Pyramid",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_h": {
+        "name": "Akari Counting",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_i": {
+        "name": "Subgrid Connected Components",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_1_k": {
+        "name": "Two-Way Communication",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_a": {
+        "name": "Various Roots",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_b": {
+        "name": "Heavy Rotation",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_d": {
+        "name": "Boomerang",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_e": {
+        "name": "Max Twice Subsequences (Easy)",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_g": {
+        "name": "Team Division",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_j": {
+        "name": "KinGin's Summit",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_l": {
+        "name": "Avoid Multiple",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_m": {
+        "name": "Take K",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_n": {
+        "name": "Fair Flags",
+        "point": null,
+        "solver_count": null
+      },
+      "stpc2025_2_o": {
+        "name": "Next STPC",
+        "point": null,
+        "solver_count": null
       }
     },
     "sumitrust2019": {
