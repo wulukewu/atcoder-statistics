@@ -38225,42 +38225,65 @@
       "ahc002_a": {
         "name": "Walking on Tiles",
         "point": null,
-        "solver_count": 1658
+        "solver_count": 1658,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": null
       }
     },
     "ahc003": {
       "ahc003_a": {
         "name": "Shortest Path Queries",
         "point": null,
-        "solver_count": 1026
+        "solver_count": 1026,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 2812,
+        "color": "red"
       }
     },
     "ahc004": {
       "ahc004_a": {
         "name": "Alien's Genome Assembly",
         "point": null,
-        "solver_count": 813
+        "solver_count": 813,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3097,
+        "color": "red"
       }
     },
     "ahc005": {
       "ahc005_a": {
         "name": "Patrolling",
         "point": null,
-        "solver_count": 759
+        "solver_count": 759,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3173,
+        "color": "red"
       }
     },
     "ahc006": {
       "ahc006_a": {
         "name": "Food Delivery",
         "point": null,
-        "solver_count": 852
+        "solver_count": 852,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3261,
+        "color": "bronze"
       }
     },
     "ahc007": {
       "ahc007_a": {
         "name": "Online MST",
         "point": null,
-        "solver_count": 800
+        "solver_count": 800,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3403,
+        "color": "bronze"
       }
     },
     "ahc008": {
@@ -43448,7 +43471,11 @@
       "future_contest_2022_qual_a": {
         "name": "Project Leader",
         "point": null,
-        "solver_count": 825
+        "solver_count": 825,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3283,
+        "color": "bronze"
       }
     },
     "future-contest-2023-final-open": {
@@ -54897,7 +54924,11 @@
       "rcl_contest_2021_long_a": {
         "name": "Farm King X",
         "point": null,
-        "solver_count": 514
+        "solver_count": 514,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3195,
+        "color": "red"
       }
     },
     "rco-contest-2017-final": {
