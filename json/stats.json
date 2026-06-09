@@ -41474,7 +41474,11 @@
       "ahc066_a": {
         "name": "Macro Controller",
         "point": null,
-        "solver_count": 1197
+        "solver_count": 1197,
+        "is_experimental": false,
+        "variance": null,
+        "difficulty": 3868,
+        "color": "silver"
       }
     },
     "aising2019": {
