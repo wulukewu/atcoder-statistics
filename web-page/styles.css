@@ -119,6 +119,31 @@ header {
   z-index: 2;
 }
 
+/* GitHub Link */
+.github-link {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-link:hover {
+  color: white;
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.github-link svg {
+  width: 24px;
+  height: 24px;
+}
+
 .header-bg {
   position: absolute;
   top: 0;
