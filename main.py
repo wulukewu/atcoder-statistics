@@ -23,35 +23,35 @@ print(f"✓ Loaded problem dictionary:")
 for contest_type in ['abc', 'arc', 'agc']:
     print(f"  - {contest_type.upper()}: {len(problem_dict[contest_type])} point entries")
 
+print("\nBuilding reverse lookup index for problems...")
+# Create reverse lookup: problem_id -> (contest_id, contest_type) for O(1) lookup
+problem_to_contest = {}
+for contest_type in ['abc', 'arc', 'agc']:
+    for contest_id, problems in stats[contest_type].items():
+        for problem_id in problems:
+            problem_to_contest[problem_id] = (contest_id, contest_type)
+print(f"✓ Built index for {len(problem_to_contest)} problems")
+
 # Define color order for table columns
-COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red','bronze', 'silver', 'gold']
+COLOR_ORDER = ['grey', 'brown', 'green', 'cyan', 'blue', 'yellow', 'orange', 'red', 'bronze', 'silver', 'gold']
 
 print("\nAggregating contest statistics...")
-# Aggregate ABC contest statistics by point and color
-abc_stats = {}
-for point, color_counts in chart['abc'].items():
-    if point not in abc_stats:
-        abc_stats[point] = {color: 0 for color in COLOR_ORDER}
-    for color, count in color_counts.items():
-        abc_stats[point][color] += count
+# Aggregate contest statistics by point and color for all contest types
+def aggregate_stats(chart_data):
+    """Aggregate statistics from chart data, initializing all colors for each point."""
+    stats = {}
+    for point, color_counts in chart_data.items():
+        stats[point] = {color: 0 for color in COLOR_ORDER}
+        for color, count in color_counts.items():
+            stats[point][color] += count
+    return stats
 
-arc_stats = {}
-for point, color_counts in chart['arc'].items():
-    if point not in arc_stats:
-        arc_stats[point] = {color: 0 for color in COLOR_ORDER}
-    for color, count in color_counts.items():
-        arc_stats[point][color] += count
-
-agc_stats = {}
-for point, color_counts in chart['agc'].items():
-    if point not in agc_stats:
-        agc_stats[point] = {color: 0 for color in COLOR_ORDER}
-    for color, count in color_counts.items():
-        agc_stats[point][color] += count
-
+abc_stats = aggregate_stats(chart['abc'])
+arc_stats = aggregate_stats(chart['arc'])
+agc_stats = aggregate_stats(chart['agc'])
 print("✓ Statistics aggregated for all contest types")
 
-def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
+def generate_problem_list_pages(problem_dict, stats, problem_to_contest, output_dir='web-page'):
     """Generate a separate HTML page for each (point, color) box listing the problems."""
     print("\nGenerating problem list pages...")
     with open(f'{output_dir}/template-list.html', 'r', encoding='utf-8') as f:
@@ -67,14 +67,15 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
                 items = []
                 problem_ids.sort(reverse=True)
                 for pid in problem_ids:
-                    # Find contest_id for this problem_id
-                    contest_id = None
-                    name = pid
-                    for cid, problems in stats[contest_type].items():
-                        if pid in problems:
-                            contest_id = cid
-                            name = problems[pid].get('name', pid)
-                            break
+                    # Use O(1) lookup instead of O(n) iteration
+                    lookup_result = problem_to_contest.get(pid)
+                    if lookup_result:
+                        contest_id, _ = lookup_result
+                        name = stats[contest_type][contest_id][pid].get('name', pid)
+                    else:
+                        contest_id = None
+                        name = pid
+                    
                     # Format problem tag as 'ABC400A' (contest id upper + problem suffix upper)
                     if contest_id and '_' in pid:
                         contest_tag = contest_id.upper() + pid.split('_')[-1].upper()
@@ -126,11 +127,11 @@ def generate_problem_list_pages(problem_dict, stats, output_dir='web-page'):
 
 def render_table_rows(stats_by_point, contest_type='abc'):
     """Generate HTML table rows for contest statistics, with links to problem lists."""
-    rows = ""
+    rows = []  # Use list for efficient concatenation
     for point, color_counts in sorted(stats_by_point.items(), key=lambda x: float(x[0])):
         total = sum(color_counts.values()) or 1
-        rows += f"            <tr>\n"
-        rows += f"                <td class='score-label'>{int(float(point))}</td>\n"
+        rows.append("            <tr>\n")
+        rows.append(f"                <td class='score-label'>{int(float(point))}</td>\n")
         for color in COLOR_ORDER:
             count = color_counts.get(color, 0)
             percent = round((count / total) * 100, 2)
@@ -143,7 +144,7 @@ def render_table_rows(stats_by_point, contest_type='abc'):
             else:
                 link = ""
                 link_end = ""
-            rows += (
+            rows.append(
                 f"                <td>\n"
                 f"                    {link}<div class='stats-container'>\n"
                 f"                        <div class='circle-container'>\n"
@@ -156,8 +157,8 @@ def render_table_rows(stats_by_point, contest_type='abc'):
                 f"                    </div>{link_end}\n"
                 f"                </td>\n"
             )
-        rows += "            </tr>\n"
-    return rows
+        rows.append("            </tr>\n")
+    return ''.join(rows)  # Join once at the end
 
 print("\nGenerating table rows for each contest type...")
 # Generate table rows for each contest type
@@ -173,7 +174,9 @@ with open('web-page/template.html', 'r') as template_file:
 # Find the latest contest with at least one colored problem
 print("\nFinding latest contests with colored problems...")
 def find_latest_contest_with_colored_problems(contest_type, stats):
-    for contest_id in reversed(stats[contest_type]):
+    # Iterate in reverse and use early exit for better performance
+    for contest_id in reversed(list(stats[contest_type].keys())):
+        # Check if any problem has both color and point using any() for short-circuit evaluation
         if any(problem.get("color") and problem.get("point") for problem in stats[contest_type][contest_id].values()):
             return contest_id
     return "N/A"
@@ -201,7 +204,7 @@ with open('web-page/index.html', 'w') as file:
     file.write(html_content)
 print("✓ Main page generated")
 
-generate_problem_list_pages(problem_dict, stats)
+generate_problem_list_pages(problem_dict, stats, problem_to_contest)
 
 print("\n=== Web Page Generation Complete ===")
 
