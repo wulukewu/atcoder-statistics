@@ -19,21 +19,16 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.x"
+          node-version: "20"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: npm ci
 
-      - name: Run dict.py
-        run: python dict.py
-
-      - name: Run main.py
-        run: python main.py
+      - name: Build application
+        run: npm run build
 
       - name: Check if gh-pages branch exists
         id: check-branch
@@ -73,13 +68,15 @@ jobs:
 
       - name: Copy files to gh-pages branch
         run: |
-          # Only remove files that are in web-page directory
-          for file in $(ls web-page/); do
-            if [ -e "gh-pages/$file" ]; then
-              rm -rf "gh-pages/$file"
-            fi
+          # Remove old files
+          for file in $(ls gh-pages/ | grep -v pr-preview | grep -v .git); do
+            rm -rf "gh-pages/$file"
           done
-          cp -r web-page/* gh-pages/
+          # Copy built React app
+          cp -r dist/* gh-pages/
+          # Copy static assets
+          mkdir -p gh-pages/web-page
+          cp -r web-page/styles.css web-page/styles-list.css web-page/atcoder-problems-logo.png web-page/favicon.svg gh-pages/web-page/ 2>/dev/null || true
 
       - name: Restore pr-preview directory
         run: |

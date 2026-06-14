@@ -13,29 +13,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.x"
+          node-version: "20"
 
       - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Zip dist folder
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          zip -r dist.zip dist
+          ls -lh dist.zip # List the zip file to verify
 
-      - name: Run dict.py
-        run: python dict.py
-
-      - name: Run main.py
-        run: python main.py
-
-      - name: Zip web-page folder
-        run: |
-          zip -r web-page.zip web-page
-          ls -lh web-page.zip # List the zip file to verify
-
-      - name: Upload web-page artifact
+      - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
-          name: web-page
-          path: web-page.zip
+          name: dist
+          path: dist.zip
