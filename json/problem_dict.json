@@ -468,7 +468,6 @@
         "abc201_c",
         "abc204_c",
         "abc211_c",
-        "abc440_c",
         "abc459_c"
       ],
       "grey": [
@@ -3013,7 +3012,6 @@
         "abc396_a",
         "abc413_a",
         "abc242_a",
-        "abc233_a",
         "abc300_a",
         "abc228_a",
         "abc287_a",
@@ -3066,6 +3064,8 @@
         "abc269_a",
         "abc231_a",
         "abc295_a",
+        "abc233_a",
+        "abc412_a",
         "abc235_a",
         "abc291_a",
         "abc250_a",
@@ -3173,7 +3173,6 @@
         "abc399_a",
         "abc400_a",
         "abc401_a",
-        "abc412_a",
         "abc402_a",
         "abc403_a",
         "abc404_a",
@@ -3767,6 +3766,7 @@
         "abc287_c",
         "abc238_c",
         "abc270_c",
+        "abc440_c",
         "abc252_c",
         "abc293_c",
         "abc254_c",
@@ -3871,6 +3871,7 @@
         "abc283_c",
         "abc289_c",
         "abc299_c",
+        "abc393_c",
         "abc310_c",
         "abc336_c",
         "abc328_c",
@@ -3896,7 +3897,6 @@
         "abc390_c",
         "abc391_c",
         "abc392_c",
-        "abc393_c",
         "abc394_c",
         "abc395_c",
         "abc396_c",
@@ -3956,56 +3956,6 @@
         "acl1_a",
         "aising2019_c",
         "soundhound2018_summer_qual_c"
-      ]
-    },
-    "600.0": {
-      "blue": [
-        "abc309_f",
-        "abc313_e",
-        "acl1_b",
-        "acl1_c",
-        "apc001_d",
-        "diverta2019_2_d",
-        "dwacon5th_prelims_c",
-        "dwacon6th_prelims_b",
-        "jsc2019_qual_d",
-        "jsc2021_f",
-        "nikkei2019_2_qual_d",
-        "yahoo_procon2019_qual_d"
-      ],
-      "grey": [
-        "abc309_c"
-      ],
-      "brown": [
-        "abc309_d"
-      ],
-      "orange": [
-        "abl_f",
-        "aising2019_e",
-        "aising2020_f",
-        "hhkb2020_f",
-        "jsc2021_g",
-        "keyence2019_e"
-      ],
-      "yellow": [
-        "exawizards2019_d",
-        "hitachi2020_c",
-        "m_solutions2019_e",
-        "m_solutions2020_f",
-        "nikkei2019_2_qual_c",
-        "soundhound2018_summer_qual_e",
-        "tenka1_2019_d",
-        "zone2021_f"
-      ],
-      "bronze": [
-        "jsc2021_h"
-      ],
-      "cyan": [
-        "nomura2020_c",
-        "sumitb2019_f"
-      ],
-      "red": [
-        "panasonic2020_f"
       ]
     },
     "200.0": {
@@ -4086,6 +4036,7 @@
         "abc271_b",
         "abc272_b",
         "abc266_b",
+        "abc426_b",
         "abc280_b",
         "abc235_b",
         "abc333_b",
@@ -4200,7 +4151,6 @@
         "abc440_b",
         "abc425_b",
         "abc445_b",
-        "abc426_b",
         "abc427_b",
         "abc428_b",
         "abc429_b",
@@ -4519,6 +4469,7 @@
         "abc445_d"
       ],
       "brown": [
+        "abc439_d",
         "abc328_d",
         "abc340_d",
         "abc352_d",
@@ -4527,8 +4478,7 @@
         "abc382_d",
         "abc393_d",
         "abc398_d",
-        "abc435_d",
-        "abc439_d"
+        "abc435_d"
       ],
       "cyan": [
         "abc338_d",
@@ -4602,6 +4552,56 @@
       ],
       "cyan": [
         "abc429_e"
+      ]
+    },
+    "600.0": {
+      "grey": [
+        "abc309_c"
+      ],
+      "blue": [
+        "abc313_e",
+        "abc309_f",
+        "acl1_b",
+        "acl1_c",
+        "apc001_d",
+        "diverta2019_2_d",
+        "dwacon5th_prelims_c",
+        "dwacon6th_prelims_b",
+        "jsc2019_qual_d",
+        "jsc2021_f",
+        "nikkei2019_2_qual_d",
+        "yahoo_procon2019_qual_d"
+      ],
+      "brown": [
+        "abc309_d"
+      ],
+      "orange": [
+        "abl_f",
+        "aising2019_e",
+        "aising2020_f",
+        "hhkb2020_f",
+        "jsc2021_g",
+        "keyence2019_e"
+      ],
+      "yellow": [
+        "exawizards2019_d",
+        "hitachi2020_c",
+        "m_solutions2019_e",
+        "m_solutions2020_f",
+        "nikkei2019_2_qual_c",
+        "soundhound2018_summer_qual_e",
+        "tenka1_2019_d",
+        "zone2021_f"
+      ],
+      "bronze": [
+        "jsc2021_h"
+      ],
+      "cyan": [
+        "nomura2020_c",
+        "sumitb2019_f"
+      ],
+      "red": [
+        "panasonic2020_f"
       ]
     },
     "350.0": {
