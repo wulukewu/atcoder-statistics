@@ -4,7 +4,7 @@
       "abc001_1": {
         "name": "積雪深差",
         "point": null,
-        "solver_count": 22186,
+        "solver_count": 22188,
         "is_experimental": true,
         "variance": 1.9830810089379265,
         "difficulty": -305,
@@ -250,7 +250,7 @@
       "abc007_4": {
         "name": "禁止された数字",
         "point": null,
-        "solver_count": 3138,
+        "solver_count": 3140,
         "is_experimental": true,
         "variance": 0.3469119994799393,
         "difficulty": 1718,
@@ -346,7 +346,7 @@
       "abc010_2": {
         "name": "花占い",
         "point": null,
-        "solver_count": 6599,
+        "solver_count": 6600,
         "is_experimental": true,
         "variance": 0.2731247387112415,
         "difficulty": 229,
@@ -393,7 +393,7 @@
       "abc011_3": {
         "name": "123引き算",
         "point": null,
-        "solver_count": 5597,
+        "solver_count": 5598,
         "is_experimental": true,
         "variance": 0.3478280153623139,
         "difficulty": 810,
@@ -460,7 +460,7 @@
       "abc013_2": {
         "name": "錠",
         "point": null,
-        "solver_count": 6709,
+        "solver_count": 6710,
         "is_experimental": true,
         "variance": 0.5785349247997191,
         "difficulty": 276,
@@ -650,7 +650,7 @@
       "abc018_2": {
         "name": "文字列の反転",
         "point": null,
-        "solver_count": 6270,
+        "solver_count": 6271,
         "is_experimental": true,
         "variance": 0.4790896260171138,
         "difficulty": 469,
@@ -697,7 +697,7 @@
       "abc019_3": {
         "name": "高橋くんと魔法の箱",
         "point": null,
-        "solver_count": 4471,
+        "solver_count": 4472,
         "is_experimental": true,
         "variance": 0.8150417589975065,
         "difficulty": 1129,
@@ -1047,7 +1047,7 @@
       "abc028_d": {
         "name": "乱数生成",
         "point": null,
-        "solver_count": 4380,
+        "solver_count": 4390,
         "is_experimental": true,
         "variance": 0.41822075110897866,
         "difficulty": 920,
@@ -1248,7 +1248,7 @@
       "abc034_a": {
         "name": "テスト",
         "point": null,
-        "solver_count": 7870,
+        "solver_count": 7871,
         "is_experimental": true,
         "variance": 1.5739387861430671,
         "difficulty": -227,
@@ -1313,7 +1313,7 @@
       "abc035_d": {
         "name": "トレジャーハント",
         "point": null,
-        "solver_count": 3230,
+        "solver_count": 3231,
         "is_experimental": true,
         "variance": 0.3211585426929256,
         "difficulty": 1591,
@@ -1715,7 +1715,7 @@
       "abc047_b": {
         "name": "Snuke's Coloring 2 (ABC Edit)",
         "point": 200.0,
-        "solver_count": 11115,
+        "solver_count": 11116,
         "is_experimental": false,
         "variance": 0.3301222882779298,
         "difficulty": 726,
@@ -1724,7 +1724,7 @@
       "arc063_a": {
         "name": "1D Reversi",
         "point": 300.0,
-        "solver_count": 9878,
+        "solver_count": 9880,
         "is_experimental": false,
         "variance": 0.6905841267419421,
         "difficulty": 755,
@@ -2207,7 +2207,7 @@
       "abc060_b": {
         "name": "Choose Integers",
         "point": 200.0,
-        "solver_count": 13292,
+        "solver_count": 13294,
         "is_experimental": false,
         "variance": 0.4496434985510739,
         "difficulty": 503,
@@ -2216,7 +2216,7 @@
       "arc073_a": {
         "name": "Sentou",
         "point": 300.0,
-        "solver_count": 11152,
+        "solver_count": 11153,
         "is_experimental": false,
         "variance": 0.512051561936334,
         "difficulty": 512,
@@ -2312,7 +2312,7 @@
       "abc063_a": {
         "name": "Restricted",
         "point": 100.0,
-        "solver_count": 12574,
+        "solver_count": 12575,
         "is_experimental": false,
         "variance": 1.3237466044757469,
         "difficulty": -762,
@@ -2368,7 +2368,7 @@
       "abc064_c": {
         "name": "Colorful Leaderboard",
         "point": 300.0,
-        "solver_count": 11219,
+        "solver_count": 11220,
         "is_experimental": false,
         "variance": 0.38105537538883993,
         "difficulty": 559,
@@ -2397,7 +2397,7 @@
       "abc065_b": {
         "name": "Trained?",
         "point": 200.0,
-        "solver_count": 18289,
+        "solver_count": 18290,
         "is_experimental": false,
         "variance": 0.41712722021978077,
         "difficulty": 459,
@@ -2473,7 +2473,7 @@
       "abc067_b": {
         "name": "Snake Toy",
         "point": 200.0,
-        "solver_count": 13087,
+        "solver_count": 13088,
         "is_experimental": false,
         "variance": 0.5202574959206941,
         "difficulty": -158,
@@ -2491,7 +2491,7 @@
       "arc078_b": {
         "name": "Fennec VS. Snuke",
         "point": 400.0,
-        "solver_count": 5297,
+        "solver_count": 5298,
         "is_experimental": false,
         "variance": 0.3434721900466968,
         "difficulty": 1431,
@@ -2567,7 +2567,7 @@
       "arc080_b": {
         "name": "Grid Coloring",
         "point": 400.0,
-        "solver_count": 7993,
+        "solver_count": 7994,
         "is_experimental": false,
         "variance": 0.3425092349032982,
         "difficulty": 852,
@@ -2672,7 +2672,7 @@
       "arc082_a": {
         "name": "Together",
         "point": 300.0,
-        "solver_count": 13054,
+        "solver_count": 13055,
         "is_experimental": false,
         "variance": 0.6142593778811187,
         "difficulty": 407,
@@ -2806,7 +2806,7 @@
       "abc076_a": {
         "name": "Rating Goal",
         "point": 100.0,
-        "solver_count": 29972,
+        "solver_count": 29973,
         "is_experimental": false,
         "variance": 1.1558978556421518,
         "difficulty": -452,
@@ -2815,7 +2815,7 @@
       "abc076_b": {
         "name": "Addition and Multiplication",
         "point": 200.0,
-        "solver_count": 15894,
+        "solver_count": 15895,
         "is_experimental": false,
         "variance": 0.46896457155647686,
         "difficulty": -137,
@@ -2871,7 +2871,7 @@
       "arc084_b": {
         "name": "Small Multiple",
         "point": 700.0,
-        "solver_count": 6735,
+        "solver_count": 6736,
         "is_experimental": false,
         "variance": 0.8280694222602424,
         "difficulty": 2457,
@@ -2996,7 +2996,7 @@
       "abc081_a": {
         "name": "Placing Marbles",
         "point": 100.0,
-        "solver_count": 101298,
+        "solver_count": 101300,
         "is_experimental": false,
         "variance": 1.0991792571945418,
         "difficulty": -418,
@@ -3005,7 +3005,7 @@
       "abc081_b": {
         "name": "Shift only",
         "point": 200.0,
-        "solver_count": 83502,
+        "solver_count": 83503,
         "is_experimental": false,
         "variance": 0.4051235429205029,
         "difficulty": -12,
@@ -3014,7 +3014,7 @@
       "arc086_a": {
         "name": "Not so Diverse",
         "point": 300.0,
-        "solver_count": 13307,
+        "solver_count": 13308,
         "is_experimental": false,
         "variance": 0.5207469002492873,
         "difficulty": 430,
@@ -3148,7 +3148,7 @@
       "abc085_a": {
         "name": "Already 2018",
         "point": 100.0,
-        "solver_count": 16125,
+        "solver_count": 16126,
         "is_experimental": false,
         "variance": 1.2812321286367325,
         "difficulty": -465,
@@ -3157,7 +3157,7 @@
       "abc085_b": {
         "name": "Kagami Mochi",
         "point": 200.0,
-        "solver_count": 61472,
+        "solver_count": 61476,
         "is_experimental": false,
         "variance": 0.4014181658100438,
         "difficulty": -106,
@@ -3166,7 +3166,7 @@
       "abc085_c": {
         "name": "Otoshidama",
         "point": 300.0,
-        "solver_count": 55001,
+        "solver_count": 55002,
         "is_experimental": false,
         "variance": 0.5353243454559119,
         "difficulty": 584,
@@ -3347,7 +3347,7 @@
       "abc090_b": {
         "name": "Palindromic Numbers",
         "point": 200.0,
-        "solver_count": 19785,
+        "solver_count": 19786,
         "is_experimental": false,
         "variance": 0.6121694184467811,
         "difficulty": 8,
@@ -3432,7 +3432,7 @@
       "arc093_a": {
         "name": "Traveling Plan",
         "point": 300.0,
-        "solver_count": 9562,
+        "solver_count": 9563,
         "is_experimental": false,
         "variance": 0.38255515555603165,
         "difficulty": 577,
@@ -3441,7 +3441,7 @@
       "arc093_b": {
         "name": "Grid Components",
         "point": 500.0,
-        "solver_count": 4210,
+        "solver_count": 4211,
         "is_experimental": false,
         "variance": 0.30104403545358815,
         "difficulty": 1445,
@@ -3669,7 +3669,7 @@
       "arc098_b": {
         "name": "Xor Sum 2",
         "point": 500.0,
-        "solver_count": 7240,
+        "solver_count": 7249,
         "is_experimental": false,
         "variance": 0.47578028988922005,
         "difficulty": 1404,
@@ -3698,7 +3698,7 @@
       "abc099_c": {
         "name": "Strange Bank",
         "point": 300.0,
-        "solver_count": 9096,
+        "solver_count": 9098,
         "is_experimental": false,
         "variance": 0.5403238340312744,
         "difficulty": 1101,
@@ -3989,7 +3989,7 @@
       "abc107_b": {
         "name": "Grid Compression",
         "point": 200.0,
-        "solver_count": 14667,
+        "solver_count": 14671,
         "is_experimental": false,
         "variance": 0.36918312367530604,
         "difficulty": 448,
@@ -4065,7 +4065,7 @@
       "abc109_b": {
         "name": "Shiritori",
         "point": 200.0,
-        "solver_count": 13103,
+        "solver_count": 13104,
         "is_experimental": false,
         "variance": 0.4149194315305993,
         "difficulty": 93,
@@ -4074,7 +4074,7 @@
       "abc109_c": {
         "name": "Skip",
         "point": 300.0,
-        "solver_count": 11771,
+        "solver_count": 11772,
         "is_experimental": false,
         "variance": 0.5268137416016326,
         "difficulty": 542,
@@ -4108,7 +4108,7 @@
       "abc110_c": {
         "name": "String Transformation",
         "point": 300.0,
-        "solver_count": 8433,
+        "solver_count": 8434,
         "is_experimental": false,
         "variance": 0.5852988586383062,
         "difficulty": 949,
@@ -4184,7 +4184,7 @@
       "abc112_c": {
         "name": "Pyramid",
         "point": 300.0,
-        "solver_count": 8550,
+        "solver_count": 8551,
         "is_experimental": false,
         "variance": 0.37221888096812955,
         "difficulty": 1147,
@@ -4222,7 +4222,7 @@
       "abc113_c": {
         "name": "ID",
         "point": 300.0,
-        "solver_count": 10040,
+        "solver_count": 10041,
         "is_experimental": false,
         "variance": 0.3487888732655213,
         "difficulty": 878,
@@ -4260,7 +4260,7 @@
       "abc114_c": {
         "name": "755",
         "point": 300.0,
-        "solver_count": 10835,
+        "solver_count": 10836,
         "is_experimental": false,
         "variance": 0.4354761327130836,
         "difficulty": 1045,
@@ -4327,7 +4327,7 @@
       "abc116_b": {
         "name": "Collatz Problem",
         "point": 200.0,
-        "solver_count": 13497,
+        "solver_count": 13501,
         "is_experimental": false,
         "variance": 0.3668700009722542,
         "difficulty": -55,
@@ -4383,7 +4383,7 @@
       "abc117_d": {
         "name": "XXOR",
         "point": 400.0,
-        "solver_count": 5562,
+        "solver_count": 5563,
         "is_experimental": false,
         "variance": 0.38803127881367006,
         "difficulty": 1423,
@@ -4649,7 +4649,7 @@
       "abc124_d": {
         "name": "Handstand",
         "point": 400.0,
-        "solver_count": 7089,
+        "solver_count": 7090,
         "is_experimental": false,
         "variance": 0.24619648677607692,
         "difficulty": 1138,
@@ -4750,7 +4750,7 @@
       "abc127_a": {
         "name": "Ferris Wheel",
         "point": 100.0,
-        "solver_count": 19409,
+        "solver_count": 19410,
         "is_experimental": false,
         "variance": 0.7245836324948068,
         "difficulty": -912,
@@ -4806,7 +4806,7 @@
       "abc128_a": {
         "name": "Apple Pie",
         "point": 100.0,
-        "solver_count": 19676,
+        "solver_count": 19677,
         "is_experimental": false,
         "variance": 0.7646177705383496,
         "difficulty": -1004,
@@ -4815,7 +4815,7 @@
       "abc128_b": {
         "name": "Guidebook",
         "point": 200.0,
-        "solver_count": 17032,
+        "solver_count": 17033,
         "is_experimental": false,
         "variance": 0.4965779585418592,
         "difficulty": 347,
@@ -4842,7 +4842,7 @@
       "abc128_e": {
         "name": "Roadwork",
         "point": 500.0,
-        "solver_count": 3601,
+        "solver_count": 3602,
         "is_experimental": false,
         "variance": 0.27805121365114166,
         "difficulty": 1840,
@@ -5001,7 +5001,7 @@
       "abc131_d": {
         "name": "Megalomania",
         "point": 400.0,
-        "solver_count": 14135,
+        "solver_count": 14136,
         "is_experimental": false,
         "variance": 0.4484633140384196,
         "difficulty": 588,
@@ -5616,7 +5616,7 @@
       "abc142_d": {
         "name": "Disjoint Set of Common Divisors",
         "point": 400.0,
-        "solver_count": 11506,
+        "solver_count": 11507,
         "is_experimental": false,
         "variance": 0.6487912381320988,
         "difficulty": 827,
@@ -5831,7 +5831,7 @@
       "abc146_c": {
         "name": "Buy an Integer",
         "point": 300.0,
-        "solver_count": 14112,
+        "solver_count": 14113,
         "is_experimental": false,
         "variance": 0.5615574043069557,
         "difficulty": 741,
@@ -5896,7 +5896,7 @@
       "abc147_d": {
         "name": "Xor Sum 4",
         "point": 400.0,
-        "solver_count": 8525,
+        "solver_count": 8536,
         "is_experimental": false,
         "variance": 0.48576456192780754,
         "difficulty": 1205,
@@ -6085,7 +6085,7 @@
       "abc151_a": {
         "name": "Next Alphabet",
         "point": 100.0,
-        "solver_count": 17919,
+        "solver_count": 17921,
         "is_experimental": false,
         "variance": 0.9585284377408154,
         "difficulty": -966,
@@ -6141,7 +6141,7 @@
       "abc152_a": {
         "name": "AC or WA",
         "point": 100.0,
-        "solver_count": 21829,
+        "solver_count": 21830,
         "is_experimental": false,
         "variance": 1.1197316989883876,
         "difficulty": -1089,
@@ -6336,7 +6336,7 @@
       "abc155_d": {
         "name": "Pairs",
         "point": 400.0,
-        "solver_count": 3911,
+        "solver_count": 3912,
         "is_experimental": false,
         "variance": 0.29503083576138206,
         "difficulty": 1845,
@@ -6578,7 +6578,7 @@
       "abc159_f": {
         "name": "Knapsack for All Segments",
         "point": 600.0,
-        "solver_count": 3557,
+        "solver_count": 3558,
         "is_experimental": false,
         "variance": 0.3162697507487108,
         "difficulty": 1876,
@@ -7022,7 +7022,7 @@
       "abc167_f": {
         "name": "Bracket Sequencing",
         "point": 600.0,
-        "solver_count": 2885,
+        "solver_count": 2886,
         "is_experimental": false,
         "variance": 0.2878498433594192,
         "difficulty": 1961,
@@ -7098,7 +7098,7 @@
       "abc169_b": {
         "name": "Multiplication 2",
         "point": 200.0,
-        "solver_count": 18907,
+        "solver_count": 18908,
         "is_experimental": false,
         "variance": 0.8177062219695032,
         "difficulty": 349,
@@ -7134,7 +7134,7 @@
       "abc169_f": {
         "name": "Knapsack for All Subsets",
         "point": 600.0,
-        "solver_count": 4016,
+        "solver_count": 4017,
         "is_experimental": false,
         "variance": 0.41263473865176514,
         "difficulty": 1698,
@@ -7266,7 +7266,7 @@
       "abc172_b": {
         "name": "Minor Change",
         "point": 200.0,
-        "solver_count": 22157,
+        "solver_count": 22158,
         "is_experimental": false,
         "variance": 0.4294549076649856,
         "difficulty": -779,
@@ -7293,7 +7293,7 @@
       "abc172_e": {
         "name": "NEQ",
         "point": 500.0,
-        "solver_count": 3315,
+        "solver_count": 3316,
         "is_experimental": false,
         "variance": 0.38868673870748305,
         "difficulty": 1880,
@@ -7546,7 +7546,7 @@
       "abc177_b": {
         "name": "Substring",
         "point": 200.0,
-        "solver_count": 17220,
+        "solver_count": 17221,
         "is_experimental": false,
         "variance": 0.5016986993720832,
         "difficulty": 108,
@@ -7564,7 +7564,7 @@
       "abc177_d": {
         "name": "Friends",
         "point": 400.0,
-        "solver_count": 12386,
+        "solver_count": 12388,
         "is_experimental": false,
         "variance": 0.5459826483375895,
         "difficulty": 732,
@@ -7582,7 +7582,7 @@
       "abc177_f": {
         "name": "I hate Shortest Path Problem",
         "point": 600.0,
-        "solver_count": 1425,
+        "solver_count": 1426,
         "is_experimental": false,
         "variance": 0.17571334628057372,
         "difficulty": 2291,
@@ -8077,7 +8077,7 @@
       "abc186_e": {
         "name": "Throne",
         "point": 500.0,
-        "solver_count": 4453,
+        "solver_count": 4454,
         "is_experimental": false,
         "variance": 0.3752026444110931,
         "difficulty": 1461,
@@ -8086,7 +8086,7 @@
       "abc186_f": {
         "name": "Rook on Grid",
         "point": 600.0,
-        "solver_count": 2461,
+        "solver_count": 2462,
         "is_experimental": false,
         "variance": 0.2360045878975472,
         "difficulty": 1833,
@@ -8106,7 +8106,7 @@
       "abc187_b": {
         "name": "Gentle Pairs",
         "point": 200.0,
-        "solver_count": 14227,
+        "solver_count": 14228,
         "is_experimental": false,
         "variance": 0.348458097142957,
         "difficulty": -311,
@@ -8124,7 +8124,7 @@
       "abc187_d": {
         "name": "Choose Me",
         "point": 400.0,
-        "solver_count": 10994,
+        "solver_count": 10995,
         "is_experimental": false,
         "variance": 0.44023607371135715,
         "difficulty": 650,
@@ -8142,7 +8142,7 @@
       "abc187_f": {
         "name": "Close Group",
         "point": 600.0,
-        "solver_count": 3611,
+        "solver_count": 3612,
         "is_experimental": false,
         "variance": 0.43203432891529747,
         "difficulty": 1895,
@@ -8162,7 +8162,7 @@
       "abc188_b": {
         "name": "Orthogonality",
         "point": 200.0,
-        "solver_count": 18749,
+        "solver_count": 18750,
         "is_experimental": false,
         "variance": 0.37821493997092265,
         "difficulty": -913,
@@ -8180,7 +8180,7 @@
       "abc188_d": {
         "name": "Snuke Prime",
         "point": 400.0,
-        "solver_count": 8873,
+        "solver_count": 8874,
         "is_experimental": false,
         "variance": 0.30166154561079983,
         "difficulty": 933,
@@ -8198,7 +8198,7 @@
       "abc188_f": {
         "name": "+1-1x2",
         "point": 600.0,
-        "solver_count": 3246,
+        "solver_count": 3247,
         "is_experimental": false,
         "variance": 0.44897288861250584,
         "difficulty": 1865,
@@ -8236,7 +8236,7 @@
       "abc189_d": {
         "name": "Logical Expression",
         "point": 400.0,
-        "solver_count": 8656,
+        "solver_count": 8658,
         "is_experimental": false,
         "variance": 0.40934998524921073,
         "difficulty": 769,
@@ -8610,7 +8610,7 @@
       "abc196_b": {
         "name": "Round Down",
         "point": 200.0,
-        "solver_count": 16601,
+        "solver_count": 16602,
         "is_experimental": false,
         "variance": 0.7318535137544364,
         "difficulty": -530,
@@ -8619,7 +8619,7 @@
       "abc196_c": {
         "name": "Doubled",
         "point": 300.0,
-        "solver_count": 14181,
+        "solver_count": 14182,
         "is_experimental": false,
         "variance": 0.6800837555446527,
         "difficulty": 202,
@@ -8693,7 +8693,7 @@
       "abc197_e": {
         "name": "Traveler",
         "point": 500.0,
-        "solver_count": 4315,
+        "solver_count": 4316,
         "is_experimental": false,
         "variance": 0.21191992403253251,
         "difficulty": 1379,
@@ -8842,7 +8842,7 @@
       "abc200_c": {
         "name": "Ringo's Favorite Numbers 2",
         "point": 300.0,
-        "solver_count": 14620,
+        "solver_count": 14621,
         "is_experimental": false,
         "variance": 0.6600251778624772,
         "difficulty": 138,
@@ -8860,7 +8860,7 @@
       "abc200_e": {
         "name": "Patisserie ABC 2",
         "point": 500.0,
-        "solver_count": 2352,
+        "solver_count": 2353,
         "is_experimental": false,
         "variance": 0.20583472668680225,
         "difficulty": 1955,
@@ -9533,7 +9533,7 @@
       "abc214_g": {
         "name": "Three Permutations",
         "point": 600.0,
-        "solver_count": 739,
+        "solver_count": 740,
         "is_experimental": false,
         "variance": 0.24814099757923816,
         "difficulty": 2893,
@@ -9592,7 +9592,7 @@
       "abc217_g": {
         "name": "Groups",
         "point": 600.0,
-        "solver_count": 1981,
+        "solver_count": 1982,
         "is_experimental": false,
         "variance": 0.36092068044629905,
         "difficulty": 2047,
@@ -9680,7 +9680,7 @@
       "abc221_h": {
         "name": "Count Multiset",
         "point": 600.0,
-        "solver_count": 1024,
+        "solver_count": 1025,
         "is_experimental": false,
         "variance": 0.2622878682950371,
         "difficulty": 2793,
@@ -10716,7 +10716,7 @@
       "abc274_g": {
         "name": "Security Camera 3",
         "point": 600.0,
-        "solver_count": 951,
+        "solver_count": 952,
         "is_experimental": false,
         "variance": 0.3792746629144371,
         "difficulty": 2340,
@@ -10874,7 +10874,7 @@
       "abc282_g": {
         "name": "Similar Permutation",
         "point": 600.0,
-        "solver_count": 1012,
+        "solver_count": 1014,
         "is_experimental": false,
         "variance": 0.21181666332577045,
         "difficulty": 2412,
@@ -11060,7 +11060,7 @@
       "abc291_h": {
         "name": "Balanced Tree",
         "point": 600.0,
-        "solver_count": 1064,
+        "solver_count": 1065,
         "is_experimental": false,
         "variance": 0.48304712369270514,
         "difficulty": 2097,
@@ -12805,7 +12805,7 @@
       "abc427_e": {
         "name": "Wind Cleaning",
         "point": 500.0,
-        "solver_count": 2057,
+        "solver_count": 2058,
         "is_experimental": false,
         "difficulty": 1734,
         "color": "blue"
@@ -12884,7 +12884,7 @@
       "abc432_f": {
         "name": "Candy Redistribution",
         "point": 525.0,
-        "solver_count": 825,
+        "solver_count": 826,
         "is_experimental": false,
         "variance": 0.3564437691182122,
         "difficulty": 2273,
@@ -12974,7 +12974,7 @@
       "abc438_f": {
         "name": "Sum of Mex",
         "point": 525.0,
-        "solver_count": 1572,
+        "solver_count": 1573,
         "is_experimental": false,
         "variance": 0.3176731613648588,
         "difficulty": 1852,
@@ -13082,7 +13082,7 @@
       "abc443_c": {
         "name": "Chokutter Addiction",
         "point": 300.0,
-        "solver_count": 11147,
+        "solver_count": 11148,
         "is_experimental": false,
         "variance": 0.42591085968497033,
         "difficulty": 8,
@@ -13091,7 +13091,7 @@
       "abc443_d": {
         "name": "Pawn Line",
         "point": 400.0,
-        "solver_count": 7014,
+        "solver_count": 7015,
         "is_experimental": false,
         "variance": 0.49579088156055556,
         "difficulty": 738,
@@ -13284,7 +13284,7 @@
       "abc452_d": {
         "name": "No-Subsequence Substring",
         "point": 400.0,
-        "solver_count": 6249,
+        "solver_count": 6251,
         "is_experimental": false,
         "variance": 0.4812881907898421,
         "difficulty": 903,
@@ -13370,7 +13370,7 @@
       "abc455_d": {
         "name": "Card Pile Query",
         "point": 400.0,
-        "solver_count": 6699,
+        "solver_count": 6701,
         "is_experimental": false,
         "variance": 0.3853554487577409,
         "difficulty": 796,
@@ -13389,7 +13389,7 @@
       "abc456_d": {
         "name": "Not Adjacent 2",
         "point": 400.0,
-        "solver_count": 8057,
+        "solver_count": 8060,
         "is_experimental": false,
         "variance": 0.5799181472886666,
         "difficulty": 586,
@@ -13398,7 +13398,7 @@
       "abc456_e": {
         "name": "Endless Holidays",
         "point": 450.0,
-        "solver_count": 4306,
+        "solver_count": 4308,
         "is_experimental": false,
         "variance": 0.3655648994150317,
         "difficulty": 1214,
@@ -13407,7 +13407,7 @@
       "abc456_f": {
         "name": "Plan Holidays",
         "point": 525.0,
-        "solver_count": 1438,
+        "solver_count": 1439,
         "is_experimental": false,
         "variance": 0.28577275922261164,
         "difficulty": 1888,
@@ -13621,7 +13621,7 @@
       "abc462_a": {
         "name": "Secret Numbers",
         "point": 100.0,
-        "solver_count": 13152,
+        "solver_count": 13153,
         "is_experimental": false,
         "variance": 0.9791006575943464,
         "difficulty": -973,
@@ -13630,7 +13630,7 @@
       "abc462_b": {
         "name": "Gift",
         "point": 200.0,
-        "solver_count": 11656,
+        "solver_count": 11657,
         "is_experimental": false,
         "variance": 0.41809268677605965,
         "difficulty": -297,
@@ -13740,7 +13740,7 @@
       "abc464_a": {
         "name": "Decisive Battle",
         "point": 100.0,
-        "solver_count": 11505,
+        "solver_count": 11506,
         "is_experimental": false,
         "variance": 0.8449733638150863,
         "difficulty": -979,
@@ -13749,7 +13749,7 @@
       "abc464_b": {
         "name": "Crop",
         "point": 200.0,
-        "solver_count": 9930,
+        "solver_count": 9931,
         "is_experimental": false,
         "variance": 0.42793100455474326,
         "difficulty": -142,
@@ -13758,7 +13758,7 @@
       "abc464_d": {
         "name": "Celester",
         "point": 400.0,
-        "solver_count": 6315,
+        "solver_count": 6317,
         "is_experimental": false,
         "variance": 0.3164365481247646,
         "difficulty": 752,
@@ -13784,7 +13784,7 @@
       "abc464_g": {
         "name": "Celester 2",
         "point": 625.0,
-        "solver_count": 302,
+        "solver_count": 303,
         "is_experimental": false,
         "variance": 0.35227446162857357,
         "difficulty": 2592,
@@ -13795,7 +13795,7 @@
       "abc465_a": {
         "name": "Supermajority",
         "point": 100.0,
-        "solver_count": 12882,
+        "solver_count": 12884,
         "is_experimental": false,
         "variance": 1.2435587894078763,
         "difficulty": -995,
@@ -13804,7 +13804,7 @@
       "abc465_b": {
         "name": "Parking 2",
         "point": 200.0,
-        "solver_count": 11576,
+        "solver_count": 11578,
         "is_experimental": false,
         "variance": 0.6799084595893169,
         "difficulty": -389,
@@ -13813,7 +13813,7 @@
       "abc465_c": {
         "name": "Reverse Permutation",
         "point": 300.0,
-        "solver_count": 8712,
+        "solver_count": 8714,
         "is_experimental": false,
         "variance": 0.45018127126825735,
         "difficulty": 443,
@@ -13822,7 +13822,7 @@
       "abc465_d": {
         "name": "X to Y",
         "point": 400.0,
-        "solver_count": 6377,
+        "solver_count": 6379,
         "is_experimental": false,
         "variance": 0.5870513580449739,
         "difficulty": 839,
@@ -13831,7 +13831,7 @@
       "abc465_e": {
         "name": "Digit Circus",
         "point": 450.0,
-        "solver_count": 3171,
+        "solver_count": 3172,
         "is_experimental": false,
         "variance": 0.33984938615083776,
         "difficulty": 1417,
@@ -13987,7 +13987,7 @@
       "abc468_a": {
         "name": "Maximal Value",
         "point": 100.0,
-        "solver_count": 12856,
+        "solver_count": 12873,
         "is_experimental": false,
         "variance": 0.9224426801310501,
         "difficulty": -868,
@@ -13996,7 +13996,7 @@
       "abc468_b": {
         "name": "Corridor Watch",
         "point": 200.0,
-        "solver_count": 11742,
+        "solver_count": 11748,
         "is_experimental": false,
         "variance": 0.44501122384731306,
         "difficulty": -388,
@@ -14005,7 +14005,7 @@
       "abc468_c": {
         "name": "Between P and Q",
         "point": 300.0,
-        "solver_count": 9629,
+        "solver_count": 9636,
         "is_experimental": false,
         "variance": 0.6073007330110565,
         "difficulty": 282,
@@ -14014,7 +14014,7 @@
       "abc468_d": {
         "name": "Pre-Palindrome",
         "point": 400.0,
-        "solver_count": 7377,
+        "solver_count": 7389,
         "is_experimental": false,
         "variance": 0.49670854041386625,
         "difficulty": 683,
@@ -14023,7 +14023,7 @@
       "abc468_e": {
         "name": "Sum of Average",
         "point": 450.0,
-        "solver_count": 4870,
+        "solver_count": 4876,
         "is_experimental": false,
         "variance": 0.42442313113667596,
         "difficulty": 1038,
@@ -14032,7 +14032,7 @@
       "abc468_f": {
         "name": "Chmax",
         "point": 500.0,
-        "solver_count": 2123,
+        "solver_count": 2124,
         "is_experimental": false,
         "variance": 0.41343295645473244,
         "difficulty": 1693,
@@ -14052,7 +14052,7 @@
       "abc469_a": {
         "name": "Train Car",
         "point": 100.0,
-        "solver_count": 12096,
+        "solver_count": 12157,
         "is_experimental": false,
         "variance": 1.277632420474151,
         "difficulty": -1026,
@@ -14061,7 +14061,7 @@
       "abc469_b": {
         "name": "Isolated Seats",
         "point": 200.0,
-        "solver_count": 11313,
+        "solver_count": 11367,
         "is_experimental": false,
         "variance": 0.5218826542136271,
         "difficulty": -576,
@@ -14070,7 +14070,7 @@
       "abc469_c": {
         "name": "Cantrip",
         "point": 300.0,
-        "solver_count": 7930,
+        "solver_count": 7953,
         "is_experimental": false,
         "variance": 0.5608089644050295,
         "difficulty": 475,
@@ -14079,7 +14079,7 @@
       "abc469_d": {
         "name": "The Big Two",
         "point": 400.0,
-        "solver_count": 4460,
+        "solver_count": 4483,
         "is_experimental": false,
         "variance": 0.38303801126254255,
         "difficulty": 1102,
@@ -14088,7 +14088,7 @@
       "abc469_e": {
         "name": "Pro Exam Eligibility",
         "point": 475.0,
-        "solver_count": 2212,
+        "solver_count": 2236,
         "is_experimental": false,
         "variance": 0.3989668611881256,
         "difficulty": 1566,
@@ -14097,7 +14097,7 @@
       "abc469_f": {
         "name": "GCD Maximum Spanning Tree",
         "point": 500.0,
-        "solver_count": 2009,
+        "solver_count": 2028,
         "is_experimental": false,
         "variance": 0.6031924149501994,
         "difficulty": 1567,
@@ -14106,7 +14106,7 @@
       "abc469_g": {
         "name": "K-nacci Operations",
         "point": 575.0,
-        "solver_count": 162,
+        "solver_count": 163,
         "is_experimental": false,
         "difficulty": 2804,
         "color": "red"
@@ -15768,7 +15768,7 @@
       "arc045_c": {
         "name": "エックスオア多橋君",
         "point": null,
-        "solver_count": 881,
+        "solver_count": 882,
         "is_experimental": true,
         "variance": 0.2562175914832362,
         "difficulty": 2022,
@@ -16450,7 +16450,7 @@
       "arc067_d": {
         "name": "Yakiniku Restaurants",
         "point": 1000.0,
-        "solver_count": 1509,
+        "solver_count": 1510,
         "is_experimental": false,
         "difficulty": 2729,
         "color": "orange"
@@ -16597,7 +16597,7 @@
       "arc075_c": {
         "name": "Meaningful Mean",
         "point": 600.0,
-        "solver_count": 2985,
+        "solver_count": 2988,
         "is_experimental": false,
         "variance": 0.43298036210624397,
         "difficulty": 1979,
@@ -17061,7 +17061,7 @@
       "arc098_d": {
         "name": "Donation",
         "point": 1000.0,
-        "solver_count": 969,
+        "solver_count": 970,
         "is_experimental": false,
         "variance": 0.11215208098090786,
         "difficulty": 3189,
@@ -17111,7 +17111,7 @@
       "arc101_c": {
         "name": "Ribbons on Tree",
         "point": 900.0,
-        "solver_count": 1839,
+        "solver_count": 1840,
         "is_experimental": false,
         "variance": 0.24186443718026063,
         "difficulty": 2913,
@@ -17150,7 +17150,7 @@
       "arc103_c": {
         "name": "Tr/ee",
         "point": 700.0,
-        "solver_count": 2609,
+        "solver_count": 2610,
         "is_experimental": false,
         "variance": 0.2520497009937731,
         "difficulty": 1722,
@@ -17402,7 +17402,7 @@
       "arc108_b": {
         "name": "Abbreviate Fox",
         "point": 400.0,
-        "solver_count": 6510,
+        "solver_count": 6511,
         "is_experimental": false,
         "variance": 0.7581910530841227,
         "difficulty": 681,
@@ -17411,7 +17411,7 @@
       "arc108_c": {
         "name": "Keep Graph Connected",
         "point": 500.0,
-        "solver_count": 3123,
+        "solver_count": 3124,
         "is_experimental": false,
         "variance": 0.316403183050153,
         "difficulty": 1460,
@@ -17449,7 +17449,7 @@
       "arc109_a": {
         "name": "Hands",
         "point": 300.0,
-        "solver_count": 6684,
+        "solver_count": 6685,
         "is_experimental": false,
         "variance": 0.43053603443995486,
         "difficulty": -86,
@@ -17505,7 +17505,7 @@
       "arc110_a": {
         "name": "Redundant Redundancy",
         "point": 300.0,
-        "solver_count": 7097,
+        "solver_count": 7098,
         "is_experimental": false,
         "variance": 0.7875890971059794,
         "difficulty": -81,
@@ -17514,7 +17514,7 @@
       "arc110_b": {
         "name": "Many 110",
         "point": 400.0,
-        "solver_count": 4852,
+        "solver_count": 4853,
         "is_experimental": false,
         "variance": 0.3158874809793433,
         "difficulty": 655,
@@ -17523,7 +17523,7 @@
       "arc110_c": {
         "name": "Exoswap",
         "point": 500.0,
-        "solver_count": 3822,
+        "solver_count": 3823,
         "is_experimental": false,
         "variance": 0.3129806999235806,
         "difficulty": 1100,
@@ -17532,7 +17532,7 @@
       "arc110_d": {
         "name": "Binomial Coefficient is Fun",
         "point": 600.0,
-        "solver_count": 1985,
+        "solver_count": 1986,
         "is_experimental": false,
         "variance": 0.28363484164111913,
         "difficulty": 2078,
@@ -18057,7 +18057,7 @@
       "arc120_a": {
         "name": "Max Add",
         "point": 400.0,
-        "solver_count": 4489,
+        "solver_count": 4490,
         "is_experimental": false,
         "variance": 0.4017226334060124,
         "difficulty": 183,
@@ -18066,7 +18066,7 @@
       "arc120_b": {
         "name": "Uniformly Distributed",
         "point": 400.0,
-        "solver_count": 3547,
+        "solver_count": 3548,
         "is_experimental": false,
         "variance": 0.38168096764835624,
         "difficulty": 835,
@@ -18329,7 +18329,7 @@
       "arc124_f": {
         "name": "Chance Meeting",
         "point": 900.0,
-        "solver_count": 249,
+        "solver_count": 250,
         "is_experimental": false,
         "variance": 0.2179202831184166,
         "difficulty": 3246,
@@ -18367,7 +18367,7 @@
       "arc125_d": {
         "name": "Unique Subsequence",
         "point": 700.0,
-        "solver_count": 1403,
+        "solver_count": 1404,
         "is_experimental": false,
         "variance": 0.3077931508196307,
         "difficulty": 2187,
@@ -18376,7 +18376,7 @@
       "arc125_e": {
         "name": "Snack",
         "point": 800.0,
-        "solver_count": 931,
+        "solver_count": 932,
         "is_experimental": false,
         "variance": 0.2899066794088723,
         "difficulty": 2874,
@@ -18385,7 +18385,7 @@
       "arc125_f": {
         "name": "Tree Degree Subset Sum",
         "point": 900.0,
-        "solver_count": 514,
+        "solver_count": 515,
         "is_experimental": false,
         "variance": 0.08281147991030353,
         "difficulty": 3541,
@@ -18495,7 +18495,7 @@
       "arc127_f": {
         "name": "±AB",
         "point": 1000.0,
-        "solver_count": 170,
+        "solver_count": 171,
         "is_experimental": false,
         "difficulty": 3723,
         "color": "silver"
@@ -18578,7 +18578,7 @@
       "arc129_c": {
         "name": "Multiple of 7",
         "point": 500.0,
-        "solver_count": 1495,
+        "solver_count": 1496,
         "is_experimental": false,
         "variance": 0.29516070244922765,
         "difficulty": 1687,
@@ -18999,7 +18999,7 @@
       "arc137_a": {
         "name": "Coprime Pair",
         "point": 300.0,
-        "solver_count": 5032,
+        "solver_count": 5033,
         "is_experimental": false,
         "variance": 0.5720481089201717,
         "difficulty": 480,
@@ -19008,7 +19008,7 @@
       "arc137_b": {
         "name": "Count 1's",
         "point": 400.0,
-        "solver_count": 3908,
+        "solver_count": 3909,
         "is_experimental": false,
         "variance": 0.4429188965255785,
         "difficulty": 883,
@@ -19190,7 +19190,7 @@
       "arc140_d": {
         "name": "One to One",
         "point": 700.0,
-        "solver_count": 905,
+        "solver_count": 906,
         "is_experimental": false,
         "variance": 0.2871396368593756,
         "difficulty": 2443,
@@ -20156,7 +20156,7 @@
       "arc158_b": {
         "name": "Sum-Product Ratio",
         "point": 500.0,
-        "solver_count": 2142,
+        "solver_count": 2143,
         "is_experimental": false,
         "variance": 0.4113649465047913,
         "difficulty": 1446,
@@ -20561,7 +20561,7 @@
       "arc165_d": {
         "name": "Substring Comparison",
         "point": 700.0,
-        "solver_count": 763,
+        "solver_count": 764,
         "is_experimental": false,
         "variance": 0.2472142417471077,
         "difficulty": 2589,
@@ -21473,7 +21473,7 @@
       "arc182_c": {
         "name": "Sum of Number of Divisors of Product",
         "point": 600.0,
-        "solver_count": 757,
+        "solver_count": 758,
         "is_experimental": false,
         "variance": 0.27077401049632577,
         "difficulty": 2408,
@@ -21537,7 +21537,7 @@
       "arc183_d": {
         "name": "Keep Perfectly Matched",
         "point": 800.0,
-        "solver_count": 364,
+        "solver_count": 365,
         "is_experimental": false,
         "variance": 0.1388580591225641,
         "difficulty": 2880,
@@ -21954,7 +21954,7 @@
       "arc192_c": {
         "name": "Range Sums 2",
         "point": 600.0,
-        "solver_count": 906,
+        "solver_count": 907,
         "is_experimental": false,
         "variance": 0.18550280686715356,
         "difficulty": 2158,
@@ -22056,7 +22056,7 @@
       "arc194_e": {
         "name": "Swap 0^X and 1^Y",
         "point": 900.0,
-        "solver_count": 312,
+        "solver_count": 313,
         "is_experimental": false,
         "variance": 0.26635472420998285,
         "difficulty": 2765,
@@ -22331,7 +22331,7 @@
       "arc201_a": {
         "name": "CatCoder Double Contest",
         "point": 500.0,
-        "solver_count": 1754,
+        "solver_count": 1755,
         "is_experimental": false,
         "variance": 0.3671043333108655,
         "difficulty": 797,
@@ -22340,7 +22340,7 @@
       "arc201_b": {
         "name": "Binary Knapsack",
         "point": 500.0,
-        "solver_count": 1526,
+        "solver_count": 1527,
         "is_experimental": false,
         "variance": 0.4485470527857328,
         "difficulty": 1808,
@@ -22358,7 +22358,7 @@
       "arc201_d": {
         "name": "Match, Mod, Minimize",
         "point": 700.0,
-        "solver_count": 646,
+        "solver_count": 647,
         "is_experimental": false,
         "variance": 0.287707903037106,
         "difficulty": 2389,
@@ -22367,7 +22367,7 @@
       "arc201_e": {
         "name": "Total Area of Bounding Boxes",
         "point": 800.0,
-        "solver_count": 448,
+        "solver_count": 450,
         "is_experimental": false,
         "variance": 0.15443016024963235,
         "difficulty": 2635,
@@ -22404,7 +22404,7 @@
       "arc202_c": {
         "name": "Repunits",
         "point": 900.0,
-        "solver_count": 502,
+        "solver_count": 503,
         "is_experimental": false,
         "variance": 0.33938164824367445,
         "difficulty": 2274,
@@ -22692,7 +22692,7 @@
       "arc209_a": {
         "name": "Bracket Game",
         "point": 700.0,
-        "solver_count": 1003,
+        "solver_count": 1004,
         "is_experimental": false,
         "variance": 0.3499551407050544,
         "difficulty": 1284,
@@ -22701,7 +22701,7 @@
       "arc209_b": {
         "name": "Minimize Even Palindrome",
         "point": 700.0,
-        "solver_count": 696,
+        "solver_count": 697,
         "is_experimental": false,
         "variance": 0.20636963471197745,
         "difficulty": 1787,
@@ -22710,7 +22710,7 @@
       "arc209_c": {
         "name": "Adjusting a Rectangle",
         "point": 900.0,
-        "solver_count": 154,
+        "solver_count": 155,
         "is_experimental": false,
         "variance": 0.11419836682357912,
         "difficulty": 2869,
@@ -22728,7 +22728,7 @@
       "arc209_e": {
         "name": "I hate ABC",
         "point": 1100.0,
-        "solver_count": 23,
+        "solver_count": 24,
         "is_experimental": false
       }
     },
@@ -23010,7 +23010,7 @@
       "arc215_d": {
         "name": "cresc.",
         "point": 600.0,
-        "solver_count": 823,
+        "solver_count": 825,
         "is_experimental": false,
         "variance": 0.4064482703212115,
         "difficulty": 1975,
@@ -23082,7 +23082,7 @@
       "arc217_a": {
         "name": "Min of Sum of XOR",
         "point": 500.0,
-        "solver_count": 1657,
+        "solver_count": 1658,
         "is_experimental": false,
         "variance": 0.4119149249075769,
         "difficulty": 779,
@@ -23302,7 +23302,7 @@
       "arc221_a": {
         "name": "Two Arithmetic Progressions",
         "point": 600.0,
-        "solver_count": 688,
+        "solver_count": 689,
         "is_experimental": false,
         "variance": 0.313709586357901,
         "difficulty": 1686,
@@ -23320,7 +23320,7 @@
       "arc221_c": {
         "name": "Two Deques Sorting",
         "point": 800.0,
-        "solver_count": 155,
+        "solver_count": 156,
         "is_experimental": false,
         "variance": 0.19678225656289794,
         "difficulty": 2899,
@@ -24143,7 +24143,7 @@
       "agc012_a": {
         "name": "AtCoder Group Contest",
         "point": 300.0,
-        "solver_count": 8866,
+        "solver_count": 8867,
         "is_experimental": false,
         "variance": 0.5497470166266946,
         "difficulty": 474,
@@ -24360,7 +24360,7 @@
       "agc016_a": {
         "name": "Shrinking",
         "point": 300.0,
-        "solver_count": 5706,
+        "solver_count": 5707,
         "is_experimental": false,
         "variance": 0.37358101713641595,
         "difficulty": 951,
@@ -24634,7 +24634,7 @@
       "agc021_a": {
         "name": "Digit Sum 2",
         "point": 300.0,
-        "solver_count": 6958,
+        "solver_count": 6959,
         "is_experimental": false,
         "variance": 0.5304742340344482,
         "difficulty": 396,
@@ -24890,7 +24890,7 @@
       "agc025_e": {
         "name": "Walking on a Tree",
         "point": 1500.0,
-        "solver_count": 619,
+        "solver_count": 620,
         "is_experimental": false,
         "variance": 0.20548512850588435,
         "difficulty": 3584,
@@ -25182,7 +25182,7 @@
       "agc030_f": {
         "name": "Permutation and Minimum",
         "point": 1600.0,
-        "solver_count": 873,
+        "solver_count": 874,
         "is_experimental": false,
         "difficulty": 3474,
         "color": "bronze"
@@ -25302,7 +25302,7 @@
       "agc033_a": {
         "name": "Darker and Darker",
         "point": 300.0,
-        "solver_count": 6984,
+        "solver_count": 6985,
         "is_experimental": false,
         "variance": 0.606309377184569,
         "difficulty": 1159,
@@ -25616,7 +25616,7 @@
       "agc038_e": {
         "name": "Gachapon",
         "point": 1600.0,
-        "solver_count": 825,
+        "solver_count": 826,
         "is_experimental": false,
         "difficulty": 3831,
         "color": "silver"
@@ -25624,7 +25624,7 @@
       "agc038_f": {
         "name": "Two Permutations",
         "point": 1600.0,
-        "solver_count": 830,
+        "solver_count": 831,
         "is_experimental": false,
         "variance": 0.23726234807823135,
         "difficulty": 3283,
@@ -26175,7 +26175,7 @@
       "agc050_a": {
         "name": "AtCoder Jumper",
         "point": 500.0,
-        "solver_count": 1998,
+        "solver_count": 1999,
         "is_experimental": false,
         "variance": 0.6087505325109179,
         "difficulty": 1973,
@@ -26352,7 +26352,7 @@
       "agc053_c": {
         "name": "Random Card Game",
         "point": 900.0,
-        "solver_count": 356,
+        "solver_count": 357,
         "is_experimental": false,
         "variance": 0.12920579853626243,
         "difficulty": 2878,
@@ -26774,7 +26774,7 @@
       "agc061_c": {
         "name": "First Come First Serve",
         "point": 800.0,
-        "solver_count": 873,
+        "solver_count": 874,
         "is_experimental": false,
         "variance": 0.2181965109297974,
         "difficulty": 2697,
@@ -27021,7 +27021,7 @@
       "agc066_a": {
         "name": "Adjacent Difference",
         "point": 600.0,
-        "solver_count": 1144,
+        "solver_count": 1146,
         "is_experimental": false,
         "variance": 0.4530427365747474,
         "difficulty": 2086,
@@ -27039,7 +27039,7 @@
       "agc066_c": {
         "name": "Delete AAB or BAA",
         "point": 800.0,
-        "solver_count": 394,
+        "solver_count": 395,
         "is_experimental": false,
         "variance": 0.2877869224273228,
         "difficulty": 3036,
@@ -27101,7 +27101,7 @@
       "agc067_d": {
         "name": "Unique Matching",
         "point": 1500.0,
-        "solver_count": 270,
+        "solver_count": 271,
         "is_experimental": false,
         "variance": 0.12330452045414932,
         "difficulty": 3345,
@@ -27322,7 +27322,7 @@
       "agc072_d": {
         "name": "Magician",
         "point": 1400.0,
-        "solver_count": 56,
+        "solver_count": 59,
         "is_experimental": false,
         "difficulty": 4043,
         "color": "gold"
@@ -28183,7 +28183,7 @@
       "abc007_3": {
         "name": "幅優先探索",
         "point": null,
-        "solver_count": 15053,
+        "solver_count": 15054,
         "is_experimental": true,
         "variance": 0.3554527863561391,
         "difficulty": 1024,
@@ -28280,7 +28280,7 @@
       "abc218_b": {
         "name": "qwerty",
         "point": 200.0,
-        "solver_count": 20488,
+        "solver_count": 20490,
         "is_experimental": false,
         "variance": 0.4522192220770561,
         "difficulty": -929,
@@ -28434,7 +28434,7 @@
       "abc213_b": {
         "name": "Booby Prize",
         "point": 200.0,
-        "solver_count": 17585,
+        "solver_count": 17586,
         "is_experimental": false,
         "variance": 0.48518966128546714,
         "difficulty": -692,
@@ -28470,7 +28470,7 @@
       "abc456_a": {
         "name": "Dice",
         "point": 100.0,
-        "solver_count": 13312,
+        "solver_count": 13313,
         "is_experimental": false,
         "variance": 1.1034473052823541,
         "difficulty": -945,
@@ -28557,7 +28557,7 @@
       "abc213_e": {
         "name": "Stronger Takahashi",
         "point": 500.0,
-        "solver_count": 5388,
+        "solver_count": 5389,
         "is_experimental": false,
         "variance": 0.28950061707275887,
         "difficulty": 1423,
@@ -28606,7 +28606,7 @@
       "abc214_a": {
         "name": "New Generation ABC",
         "point": 100.0,
-        "solver_count": 20385,
+        "solver_count": 20387,
         "is_experimental": false,
         "variance": 0.8211042166978682,
         "difficulty": -1424,
@@ -28758,7 +28758,7 @@
       "abc214_e": {
         "name": "Packing Under Range Regulations",
         "point": 500.0,
-        "solver_count": 4282,
+        "solver_count": 4287,
         "is_experimental": false,
         "variance": 0.3548077901240887,
         "difficulty": 1835,
@@ -28785,7 +28785,7 @@
       "abc304_c": {
         "name": "Virus",
         "point": 300.0,
-        "solver_count": 9772,
+        "solver_count": 9773,
         "is_experimental": false,
         "variance": 0.3968447245614706,
         "difficulty": 365,
@@ -28872,7 +28872,7 @@
       "abc381_c": {
         "name": "11/22 Substring",
         "point": 300.0,
-        "solver_count": 9490,
+        "solver_count": 9491,
         "is_experimental": false,
         "variance": 0.6096726601245172,
         "difficulty": 140,
@@ -28890,7 +28890,7 @@
       "abc428_d": {
         "name": "183184",
         "point": 400.0,
-        "solver_count": 4337,
+        "solver_count": 4338,
         "is_experimental": false,
         "variance": 0.40459233395395394,
         "difficulty": 1239,
@@ -28937,7 +28937,7 @@
       "abc303_e": {
         "name": "A Gift From the Stars",
         "point": 475.0,
-        "solver_count": 5020,
+        "solver_count": 5021,
         "is_experimental": false,
         "variance": 0.3022646070378141,
         "difficulty": 1113,
@@ -28977,7 +28977,7 @@
       "abc256_f": {
         "name": "Cumulative Cumulative Cumulative Sum",
         "point": 500.0,
-        "solver_count": 2099,
+        "solver_count": 2100,
         "is_experimental": false,
         "variance": 0.25966215099155726,
         "difficulty": 2067,
@@ -29089,7 +29089,7 @@
       "abc452_a": {
         "name": "Gothec",
         "point": 100.0,
-        "solver_count": 14169,
+        "solver_count": 14171,
         "is_experimental": false,
         "variance": 0.8414682936688658,
         "difficulty": -987,
@@ -29205,7 +29205,7 @@
       "abc259_c": {
         "name": "XX to XXX",
         "point": 300.0,
-        "solver_count": 10084,
+        "solver_count": 10085,
         "is_experimental": false,
         "variance": 0.372388350251006,
         "difficulty": 451,
@@ -29234,7 +29234,7 @@
       "abc263_e": {
         "name": "Sugoroku 3",
         "point": 500.0,
-        "solver_count": 3319,
+        "solver_count": 3320,
         "is_experimental": false,
         "variance": 0.4064960298077502,
         "difficulty": 1659,
@@ -29292,7 +29292,7 @@
       "abc217_d": {
         "name": "Cutting Woods",
         "point": 400.0,
-        "solver_count": 10593,
+        "solver_count": 10594,
         "is_experimental": false,
         "variance": 0.5380778560800508,
         "difficulty": 802,
@@ -29312,7 +29312,7 @@
       "abc347_c": {
         "name": "Ideal Holidays",
         "point": 350.0,
-        "solver_count": 8846,
+        "solver_count": 8847,
         "is_experimental": false,
         "variance": 0.45742686986180175,
         "difficulty": 926,
@@ -29341,7 +29341,7 @@
       "abc217_f": {
         "name": "Make Pair",
         "point": 500.0,
-        "solver_count": 2913,
+        "solver_count": 2917,
         "is_experimental": false,
         "variance": 0.2731822797460108,
         "difficulty": 1954,
@@ -29379,7 +29379,7 @@
       "abc218_a": {
         "name": "Weather Forecast",
         "point": 100.0,
-        "solver_count": 19321,
+        "solver_count": 19324,
         "is_experimental": false,
         "variance": 0.8223494177732438,
         "difficulty": -1219,
@@ -29408,7 +29408,7 @@
       "abc218_c": {
         "name": "Shapes",
         "point": 300.0,
-        "solver_count": 7605,
+        "solver_count": 7606,
         "is_experimental": false,
         "variance": 0.26308254633058953,
         "difficulty": 1012,
@@ -29578,7 +29578,7 @@
       "abc219_a": {
         "name": "AtCoder Quiz 2",
         "point": 100.0,
-        "solver_count": 18752,
+        "solver_count": 18753,
         "is_experimental": false,
         "variance": 0.6610225593019196,
         "difficulty": -1257,
@@ -29860,7 +29860,7 @@
       "abc452_c": {
         "name": "Fishbones",
         "point": 300.0,
-        "solver_count": 9123,
+        "solver_count": 9125,
         "is_experimental": false,
         "variance": 0.39863083485628165,
         "difficulty": 435,
@@ -29965,7 +29965,7 @@
       "abc454_d": {
         "name": "(xx)",
         "point": 425.0,
-        "solver_count": 7509,
+        "solver_count": 7512,
         "is_experimental": false,
         "variance": 0.45165458865432334,
         "difficulty": 706,
@@ -30003,7 +30003,7 @@
       "abc417_a": {
         "name": "A Substring",
         "point": 100.0,
-        "solver_count": 15130,
+        "solver_count": 15135,
         "is_experimental": false,
         "variance": 0.8718681640335455,
         "difficulty": -918,
@@ -30023,7 +30023,7 @@
       "abc221_b": {
         "name": "typo",
         "point": 200.0,
-        "solver_count": 15720,
+        "solver_count": 15721,
         "is_experimental": false,
         "variance": 0.6562609239873708,
         "difficulty": -371,
@@ -30117,7 +30117,7 @@
       "abc221_d": {
         "name": "Online games",
         "point": 400.0,
-        "solver_count": 8569,
+        "solver_count": 8570,
         "is_experimental": false,
         "variance": 0.3378253066916342,
         "difficulty": 832,
@@ -30242,7 +30242,7 @@
       "abc340_b": {
         "name": "Append",
         "point": 200.0,
-        "solver_count": 14269,
+        "solver_count": 14270,
         "is_experimental": false,
         "variance": 0.38653610297989194,
         "difficulty": -494,
@@ -30302,7 +30302,7 @@
       "abc268_a": {
         "name": "Five Integers",
         "point": 100.0,
-        "solver_count": 14098,
+        "solver_count": 14099,
         "is_experimental": false,
         "variance": 1.0385813092983178,
         "difficulty": -876,
@@ -30331,7 +30331,7 @@
       "abc291_d": {
         "name": "Flip Cards",
         "point": 400.0,
-        "solver_count": 8363,
+        "solver_count": 8364,
         "is_experimental": false,
         "variance": 0.446136560288524,
         "difficulty": 720,
@@ -30369,7 +30369,7 @@
       "abc233_b": {
         "name": "A Reverse",
         "point": 200.0,
-        "solver_count": 14870,
+        "solver_count": 14871,
         "is_experimental": false,
         "variance": 0.5499714343099007,
         "difficulty": -748,
@@ -30472,7 +30472,7 @@
       "abc282_f": {
         "name": "Union of Two Sets",
         "point": 500.0,
-        "solver_count": 2368,
+        "solver_count": 2369,
         "is_experimental": false,
         "variance": 0.37056885216965535,
         "difficulty": 1734,
@@ -30566,7 +30566,7 @@
       "abc448_a": {
         "name": "chmin",
         "point": 100.0,
-        "solver_count": 14229,
+        "solver_count": 14230,
         "is_experimental": false,
         "variance": 0.8705076507717951,
         "difficulty": -963,
@@ -30602,32 +30602,50 @@
         "color": "brown"
       }
     },
-    "adt_medium_20231227_1": {
+    "adt_easy_20260806_2": {
       "abc224_c": {
         "name": "Triangle?",
         "point": 300.0,
-        "solver_count": 10483,
+        "solver_count": 10499,
         "is_experimental": false,
         "variance": 0.5130736047462168,
         "difficulty": 286,
         "color": "grey"
       },
-      "abc228_d": {
-        "name": "Linear Probing",
-        "point": 400.0,
-        "solver_count": 5904,
-        "is_experimental": false,
-        "variance": 0.40130661394473827,
-        "difficulty": 1035,
-        "color": "green"
-      },
-      "abc314_b": {
-        "name": "Roulette",
+      "abc312_b": {
+        "name": "TaK Code",
         "point": 200.0,
-        "solver_count": 12415,
+        "solver_count": 10630,
         "is_experimental": false,
-        "variance": 0.3624830455544839,
-        "difficulty": -34,
+        "variance": 0.2533141167899109,
+        "difficulty": 153,
+        "color": "grey"
+      },
+      "abc330_a": {
+        "name": "Counting Passes",
+        "point": 100.0,
+        "solver_count": 16378,
+        "is_experimental": false,
+        "variance": 0.9163730774490656,
+        "difficulty": -1185,
+        "color": "grey"
+      },
+      "abc363_b": {
+        "name": "Japanese Cursed Doll",
+        "point": 200.0,
+        "solver_count": 15784,
+        "is_experimental": false,
+        "variance": 0.3756963673866256,
+        "difficulty": -616,
+        "color": "grey"
+      },
+      "abc400_a": {
+        "name": "ABC400 Party",
+        "point": 100.0,
+        "solver_count": 18180,
+        "is_experimental": false,
+        "variance": 0.9922299937452738,
+        "difficulty": -1201,
         "color": "grey"
       }
     },
@@ -30787,7 +30805,7 @@
       "abc225_c": {
         "name": "Calendar Validator",
         "point": 300.0,
-        "solver_count": 9285,
+        "solver_count": 9286,
         "is_experimental": false,
         "variance": 0.33614250306714516,
         "difficulty": 318,
@@ -30814,7 +30832,7 @@
       "abc427_b": {
         "name": "Sum of Digits Sequence",
         "point": 200.0,
-        "solver_count": 11658,
+        "solver_count": 11659,
         "is_experimental": false,
         "variance": 0.4919480961198376,
         "difficulty": -404,
@@ -30823,7 +30841,7 @@
       "abc428_a": {
         "name": "Grandma's Footsteps",
         "point": 150.0,
-        "solver_count": 13736,
+        "solver_count": 13737,
         "is_experimental": false,
         "variance": 0.5308180496129141,
         "difficulty": -744,
@@ -31008,7 +31026,7 @@
       "abc307_c": {
         "name": "Ideal Sheet",
         "point": 300.0,
-        "solver_count": 4249,
+        "solver_count": 4250,
         "is_experimental": false,
         "variance": 0.2609979430117152,
         "difficulty": 1307,
@@ -31033,15 +31051,6 @@
         "variance": 0.3506425828547451,
         "difficulty": 1327,
         "color": "cyan"
-      },
-      "abc230_f": {
-        "name": "Predilection",
-        "point": 500.0,
-        "solver_count": 1692,
-        "is_experimental": false,
-        "variance": 0.34839127124541885,
-        "difficulty": 2113,
-        "color": "yellow"
       }
     },
     "adt_all_20260702_1": {
@@ -31200,7 +31209,7 @@
       "abc227_d": {
         "name": "Project Planning",
         "point": 400.0,
-        "solver_count": 4815,
+        "solver_count": 4816,
         "is_experimental": false,
         "variance": 0.40469682715696487,
         "difficulty": 1643,
@@ -31332,7 +31341,7 @@
       "abc449_a": {
         "name": "π",
         "point": 100.0,
-        "solver_count": 14065,
+        "solver_count": 14066,
         "is_experimental": false,
         "variance": 0.9420655585229889,
         "difficulty": -640,
@@ -31370,11 +31379,31 @@
       "abc410_d": {
         "name": "XOR Shortest Walk",
         "point": 400.0,
-        "solver_count": 6487,
+        "solver_count": 6488,
         "is_experimental": false,
         "variance": 0.4989444117552371,
         "difficulty": 1048,
         "color": "green"
+      }
+    },
+    "adt_medium_20231227_1": {
+      "abc228_d": {
+        "name": "Linear Probing",
+        "point": 400.0,
+        "solver_count": 5904,
+        "is_experimental": false,
+        "variance": 0.40130661394473827,
+        "difficulty": 1035,
+        "color": "green"
+      },
+      "abc314_b": {
+        "name": "Roulette",
+        "point": 200.0,
+        "solver_count": 12415,
+        "is_experimental": false,
+        "variance": 0.3624830455544839,
+        "difficulty": -34,
+        "color": "grey"
       }
     },
     "adt_all_20260727_2": {
@@ -31399,7 +31428,7 @@
       "abc302_c": {
         "name": "Almost Equal",
         "point": 250.0,
-        "solver_count": 9675,
+        "solver_count": 9676,
         "is_experimental": false,
         "variance": 0.5258305909056179,
         "difficulty": 469,
@@ -31408,7 +31437,7 @@
       "abc369_d": {
         "name": "Bonus EXP",
         "point": 400.0,
-        "solver_count": 10249,
+        "solver_count": 10250,
         "is_experimental": false,
         "variance": 0.47013020805331657,
         "difficulty": 621,
@@ -31561,15 +31590,6 @@
         "difficulty": -550,
         "color": "grey"
       },
-      "abc330_a": {
-        "name": "Counting Passes",
-        "point": 100.0,
-        "solver_count": 16362,
-        "is_experimental": false,
-        "variance": 0.9163730774490656,
-        "difficulty": -1185,
-        "color": "grey"
-      },
       "abc353_a": {
         "name": "Buildings",
         "point": 100.0,
@@ -31591,7 +31611,7 @@
       "abc452_b": {
         "name": "Draw Frame",
         "point": 200.0,
-        "solver_count": 13396,
+        "solver_count": 13400,
         "is_experimental": false,
         "variance": 0.45761347300557076,
         "difficulty": -713,
@@ -31634,6 +31654,44 @@
         "variance": 0.4387373188245956,
         "difficulty": 638,
         "color": "brown"
+      }
+    },
+    "adt_all_20260806_2": {
+      "abc230_f": {
+        "name": "Predilection",
+        "point": 500.0,
+        "solver_count": 1693,
+        "is_experimental": false,
+        "variance": 0.34839127124541885,
+        "difficulty": 2113,
+        "color": "yellow"
+      },
+      "abc298_d": {
+        "name": "Writing a Numeral",
+        "point": 400.0,
+        "solver_count": 6822,
+        "is_experimental": false,
+        "variance": 0.4673813993564531,
+        "difficulty": 882,
+        "color": "green"
+      },
+      "abc308_e": {
+        "name": "MEX",
+        "point": 475.0,
+        "solver_count": 6096,
+        "is_experimental": false,
+        "variance": 0.27364464304541236,
+        "difficulty": 1042,
+        "color": "green"
+      },
+      "abc332_c": {
+        "name": "T-shirts",
+        "point": 300.0,
+        "solver_count": 11791,
+        "is_experimental": false,
+        "variance": 0.38365915865292666,
+        "difficulty": 36,
+        "color": "grey"
       }
     },
     "adt_easy_20231206_1": {
@@ -31901,7 +31959,7 @@
       "abc438_e": {
         "name": "Heavy Buckets",
         "point": 475.0,
-        "solver_count": 4069,
+        "solver_count": 4071,
         "is_experimental": false,
         "variance": 0.44230123875686456,
         "difficulty": 1226,
@@ -31999,7 +32057,7 @@
       "abc427_c": {
         "name": "Bipartize",
         "point": 350.0,
-        "solver_count": 7724,
+        "solver_count": 7725,
         "is_experimental": false,
         "variance": 0.551209490183015,
         "difficulty": 629,
@@ -32111,7 +32169,7 @@
       "abc455_f": {
         "name": "Merge Slimes 2",
         "point": 525.0,
-        "solver_count": 2383,
+        "solver_count": 2385,
         "is_experimental": false,
         "variance": 0.3279949651484637,
         "difficulty": 1549,
@@ -32131,7 +32189,7 @@
       "abc291_e": {
         "name": "Find Permutation",
         "point": 500.0,
-        "solver_count": 6299,
+        "solver_count": 6300,
         "is_experimental": false,
         "variance": 0.493102394579207,
         "difficulty": 1069,
@@ -32178,7 +32236,7 @@
       "abc404_b": {
         "name": "Grid Rotation",
         "point": 250.0,
-        "solver_count": 11303,
+        "solver_count": 11304,
         "is_experimental": false,
         "variance": 0.40714796508920786,
         "difficulty": 83,
@@ -32218,7 +32276,7 @@
       "abc305_a": {
         "name": "Water Station",
         "point": 100.0,
-        "solver_count": 15900,
+        "solver_count": 15901,
         "is_experimental": false,
         "variance": 0.6224311737512443,
         "difficulty": -1093,
@@ -32419,7 +32477,7 @@
       "abc236_d": {
         "name": "Dance",
         "point": 400.0,
-        "solver_count": 6790,
+        "solver_count": 6791,
         "is_experimental": false,
         "variance": 0.451949241987446,
         "difficulty": 1190,
@@ -32446,7 +32504,7 @@
       "abc417_c": {
         "name": "Distance Indicators",
         "point": 300.0,
-        "solver_count": 11639,
+        "solver_count": 11644,
         "is_experimental": false,
         "variance": 0.7532728876477928,
         "difficulty": 206,
@@ -32526,7 +32584,7 @@
       "abc273_b": {
         "name": "Broken Rounding",
         "point": 200.0,
-        "solver_count": 10216,
+        "solver_count": 10217,
         "is_experimental": false,
         "variance": 0.4520005644317056,
         "difficulty": 77,
@@ -32535,7 +32593,7 @@
       "abc377_a": {
         "name": "Rearranging ABC",
         "point": 100.0,
-        "solver_count": 13830,
+        "solver_count": 13833,
         "is_experimental": false,
         "variance": 0.8633984625037529,
         "difficulty": -1012,
@@ -32544,7 +32602,7 @@
       "abc453_a": {
         "name": "Trimo",
         "point": 100.0,
-        "solver_count": 14352,
+        "solver_count": 14353,
         "is_experimental": false,
         "variance": 0.9172899382372894,
         "difficulty": -661,
@@ -32729,7 +32787,7 @@
       "abc254_e": {
         "name": "Small d and k",
         "point": 500.0,
-        "solver_count": 5836,
+        "solver_count": 5837,
         "is_experimental": false,
         "variance": 0.4233337934884632,
         "difficulty": 1202,
@@ -32975,7 +33033,7 @@
       "abc414_e": {
         "name": "Count A%B=C",
         "point": 475.0,
-        "solver_count": 4406,
+        "solver_count": 4407,
         "is_experimental": false,
         "variance": 0.4206754884505948,
         "difficulty": 1296,
@@ -33015,7 +33073,7 @@
       "abc260_c": {
         "name": "Changing Jewels",
         "point": 300.0,
-        "solver_count": 10449,
+        "solver_count": 10450,
         "is_experimental": false,
         "variance": 0.3457216641440466,
         "difficulty": 413,
@@ -33475,7 +33533,7 @@
       "abc244_d": {
         "name": "Swap Hats",
         "point": 400.0,
-        "solver_count": 9857,
+        "solver_count": 9858,
         "is_experimental": false,
         "variance": 0.394316536227202,
         "difficulty": 47,
@@ -33542,7 +33600,7 @@
       "abc306_c": {
         "name": "Centers",
         "point": 250.0,
-        "solver_count": 11954,
+        "solver_count": 11955,
         "is_experimental": false,
         "variance": 0.44520336283107875,
         "difficulty": 31,
@@ -33835,7 +33893,7 @@
       "abc456_b": {
         "name": "456",
         "point": 200.0,
-        "solver_count": 11136,
+        "solver_count": 11138,
         "is_experimental": false,
         "variance": 0.43924467555857494,
         "difficulty": -171,
@@ -33940,7 +33998,7 @@
       "abc432_a": {
         "name": "Permute to Maximize",
         "point": 100.0,
-        "solver_count": 12375,
+        "solver_count": 12377,
         "is_experimental": false,
         "variance": 0.9654065496119771,
         "difficulty": -999,
@@ -34120,7 +34178,7 @@
       "abc253_c": {
         "name": "Max - Min Query",
         "point": 300.0,
-        "solver_count": 10333,
+        "solver_count": 10334,
         "is_experimental": false,
         "variance": 0.62643258554603,
         "difficulty": 518,
@@ -34301,7 +34359,7 @@
       "abc255_a": {
         "name": "You should output ARC, though this is ABC.",
         "point": 100.0,
-        "solver_count": 15029,
+        "solver_count": 15030,
         "is_experimental": false,
         "variance": 0.5042503430791475,
         "difficulty": -983,
@@ -34310,7 +34368,7 @@
       "abc303_b": {
         "name": "Discord",
         "point": 200.0,
-        "solver_count": 12363,
+        "solver_count": 12364,
         "is_experimental": false,
         "variance": 0.3517056579048686,
         "difficulty": -110,
@@ -34319,7 +34377,7 @@
       "abc326_b": {
         "name": "326-like Numbers",
         "point": 200.0,
-        "solver_count": 15538,
+        "solver_count": 15539,
         "is_experimental": false,
         "variance": 0.4972070681378736,
         "difficulty": -503,
@@ -34328,7 +34386,7 @@
       "abc392_a": {
         "name": "Shuffled Equation",
         "point": 100.0,
-        "solver_count": 15745,
+        "solver_count": 15746,
         "is_experimental": false,
         "variance": 0.920087465898972,
         "difficulty": -1041,
@@ -34417,7 +34475,7 @@
       "abc402_b": {
         "name": "Restaurant Queue",
         "point": 200.0,
-        "solver_count": 14144,
+        "solver_count": 14147,
         "is_experimental": false,
         "variance": 0.4421866787884581,
         "difficulty": -680,
@@ -34437,7 +34495,7 @@
       "abc318_d": {
         "name": "General Weighted Max Matching",
         "point": 400.0,
-        "solver_count": 7326,
+        "solver_count": 7327,
         "is_experimental": false,
         "variance": 0.46834226304798665,
         "difficulty": 1017,
@@ -34459,7 +34517,7 @@
       "abc256_e": {
         "name": "Takahashi's Anguish",
         "point": 500.0,
-        "solver_count": 4901,
+        "solver_count": 4904,
         "is_experimental": false,
         "variance": 0.30122297620253535,
         "difficulty": 1224,
@@ -34628,7 +34686,7 @@
       "abc398_a": {
         "name": "Doors in the Center",
         "point": 100.0,
-        "solver_count": 15657,
+        "solver_count": 15660,
         "is_experimental": false,
         "variance": 0.6996077040445151,
         "difficulty": -1093,
@@ -34719,7 +34777,7 @@
       "abc280_e": {
         "name": "Critical Hit",
         "point": 500.0,
-        "solver_count": 4856,
+        "solver_count": 4857,
         "is_experimental": false,
         "variance": 0.6237011219526853,
         "difficulty": 1251,
@@ -34891,7 +34949,7 @@
       "abc398_c": {
         "name": "Uniqueness",
         "point": 300.0,
-        "solver_count": 13027,
+        "solver_count": 13028,
         "is_experimental": false,
         "variance": 0.5680028882597014,
         "difficulty": -70,
@@ -34911,7 +34969,7 @@
       "abc306_e": {
         "name": "Best Performances",
         "point": 475.0,
-        "solver_count": 4805,
+        "solver_count": 4806,
         "is_experimental": false,
         "variance": 0.33793288875327865,
         "difficulty": 1268,
@@ -34978,7 +35036,7 @@
       "abc413_a": {
         "name": "Content Too Large",
         "point": 100.0,
-        "solver_count": 14966,
+        "solver_count": 14967,
         "is_experimental": false,
         "variance": 0.9324645542364997,
         "difficulty": -1081,
@@ -35121,7 +35179,7 @@
       "abc276_d": {
         "name": "Divide by 2 or 3",
         "point": 400.0,
-        "solver_count": 9002,
+        "solver_count": 9003,
         "is_experimental": false,
         "variance": 0.5238753709048506,
         "difficulty": 645,
@@ -35310,7 +35368,7 @@
       "abc268_c": {
         "name": "Chinese Restaurant",
         "point": 300.0,
-        "solver_count": 8217,
+        "solver_count": 8218,
         "is_experimental": false,
         "variance": 0.4467986025189738,
         "difficulty": 676,
@@ -35383,7 +35441,7 @@
       "abc269_e": {
         "name": "Last Rook",
         "point": 500.0,
-        "solver_count": 5063,
+        "solver_count": 5064,
         "is_experimental": false,
         "variance": 0.3623039980458878,
         "difficulty": 1030,
@@ -35472,7 +35530,7 @@
       "abc271_d": {
         "name": "Flip and Adjust",
         "point": 400.0,
-        "solver_count": 7797,
+        "solver_count": 7798,
         "is_experimental": false,
         "variance": 0.40771842768865535,
         "difficulty": 886,
@@ -35604,7 +35662,7 @@
       "abc438_d": {
         "name": "Tail of Snake ",
         "point": 400.0,
-        "solver_count": 7526,
+        "solver_count": 7527,
         "is_experimental": false,
         "variance": 0.4688821623500532,
         "difficulty": 652,
@@ -35699,7 +35757,7 @@
       "abc276_b": {
         "name": "Adjacency List",
         "point": 200.0,
-        "solver_count": 11859,
+        "solver_count": 11860,
         "is_experimental": false,
         "variance": 0.4739029440874473,
         "difficulty": -11,
@@ -35728,19 +35786,10 @@
       "abc276_c": {
         "name": "Previous Permutation",
         "point": 300.0,
-        "solver_count": 9800,
+        "solver_count": 9801,
         "is_experimental": false,
         "variance": 0.91998851254795,
         "difficulty": 389,
-        "color": "grey"
-      },
-      "abc312_b": {
-        "name": "TaK Code",
-        "point": 200.0,
-        "solver_count": 10621,
-        "is_experimental": false,
-        "variance": 0.2533141167899109,
-        "difficulty": 153,
         "color": "grey"
       }
     },
@@ -35759,7 +35808,7 @@
       "abc276_f": {
         "name": "Double Chance",
         "point": 500.0,
-        "solver_count": 3023,
+        "solver_count": 3024,
         "is_experimental": false,
         "variance": 0.23969571474263737,
         "difficulty": 1562,
@@ -35797,7 +35846,7 @@
       "abc384_c": {
         "name": "Perfect Standings",
         "point": 300.0,
-        "solver_count": 11062,
+        "solver_count": 11063,
         "is_experimental": false,
         "variance": 0.4049622982797622,
         "difficulty": 95,
@@ -35888,7 +35937,7 @@
       "abc446_b": {
         "name": "Greedy Draft",
         "point": 200.0,
-        "solver_count": 10761,
+        "solver_count": 10763,
         "is_experimental": false,
         "variance": 0.3741665817301549,
         "difficulty": -366,
@@ -36057,7 +36106,7 @@
       "abc283_d": {
         "name": "Scope",
         "point": 400.0,
-        "solver_count": 9086,
+        "solver_count": 9087,
         "is_experimental": false,
         "variance": 0.4228037851124065,
         "difficulty": 453,
@@ -36095,7 +36144,7 @@
       "abc446_c": {
         "name": "Omelette Restaurant",
         "point": 300.0,
-        "solver_count": 8681,
+        "solver_count": 8682,
         "is_experimental": false,
         "variance": 0.39401650488340245,
         "difficulty": 384,
@@ -36182,7 +36231,7 @@
       "abc399_e": {
         "name": "Replace",
         "point": 500.0,
-        "solver_count": 1911,
+        "solver_count": 1912,
         "is_experimental": false,
         "variance": 0.26885385030001197,
         "difficulty": 2045,
@@ -36222,7 +36271,7 @@
       "abc285_e": {
         "name": "Work or Rest",
         "point": 500.0,
-        "solver_count": 3628,
+        "solver_count": 3629,
         "is_experimental": false,
         "variance": 0.3094436288469566,
         "difficulty": 1466,
@@ -36347,7 +36396,7 @@
       "abc402_a": {
         "name": "CBC",
         "point": 100.0,
-        "solver_count": 15135,
+        "solver_count": 15137,
         "is_experimental": false,
         "variance": 0.9994918767270271,
         "difficulty": -1084,
@@ -36451,7 +36500,7 @@
       "abc325_e": {
         "name": "Our clients, please wait a moment",
         "point": 450.0,
-        "solver_count": 5220,
+        "solver_count": 5221,
         "is_experimental": false,
         "variance": 0.3454744470856037,
         "difficulty": 1093,
@@ -36623,7 +36672,7 @@
       "abc381_b": {
         "name": "1122 String",
         "point": 150.0,
-        "solver_count": 11209,
+        "solver_count": 11210,
         "is_experimental": false,
         "variance": 0.4489658129568775,
         "difficulty": -417,
@@ -36654,7 +36703,7 @@
       "abc294_e": {
         "name": "2xN Grid",
         "point": 500.0,
-        "solver_count": 6136,
+        "solver_count": 6137,
         "is_experimental": false,
         "variance": 0.25800981857647576,
         "difficulty": 792,
@@ -36672,7 +36721,7 @@
       "abc354_d": {
         "name": "AtCoder Wallpaper",
         "point": 450.0,
-        "solver_count": 4896,
+        "solver_count": 4897,
         "is_experimental": false,
         "variance": 0.2248233961854812,
         "difficulty": 1259,
@@ -36681,7 +36730,7 @@
       "abc394_f": {
         "name": "Alkane",
         "point": 500.0,
-        "solver_count": 3409,
+        "solver_count": 3410,
         "is_experimental": false,
         "variance": 0.3728069845764715,
         "difficulty": 1549,
@@ -36752,31 +36801,11 @@
         "color": "green"
       }
     },
-    "adt_all_20240404_1": {
-      "abc298_d": {
-        "name": "Writing a Numeral",
-        "point": 400.0,
-        "solver_count": 6818,
-        "is_experimental": false,
-        "variance": 0.4673813993564531,
-        "difficulty": 882,
-        "color": "green"
-      },
-      "abc342_e": {
-        "name": "Last Train",
-        "point": 450.0,
-        "solver_count": 3602,
-        "is_experimental": false,
-        "variance": 0.1876168891986938,
-        "difficulty": 1476,
-        "color": "cyan"
-      }
-    },
     "adt_hard_20240424_2": {
       "abc298_e": {
         "name": "Unfair Sugoroku",
         "point": 500.0,
-        "solver_count": 4112,
+        "solver_count": 4113,
         "is_experimental": false,
         "variance": 0.28499453979962097,
         "difficulty": 1300,
@@ -36814,7 +36843,7 @@
       "abc340_d": {
         "name": "Super Takahashi Bros.",
         "point": 425.0,
-        "solver_count": 8175,
+        "solver_count": 8177,
         "is_experimental": false,
         "variance": 0.47897309079361305,
         "difficulty": 784,
@@ -36998,7 +37027,7 @@
       "abc306_f": {
         "name": "Merge Sets",
         "point": 525.0,
-        "solver_count": 2981,
+        "solver_count": 2982,
         "is_experimental": false,
         "variance": 0.2532329916933923,
         "difficulty": 1557,
@@ -37085,7 +37114,7 @@
       "abc438_c": {
         "name": "1D puyopuyo",
         "point": 300.0,
-        "solver_count": 9649,
+        "solver_count": 9651,
         "is_experimental": false,
         "variance": 0.6069571479703431,
         "difficulty": 367,
@@ -37110,17 +37139,6 @@
         "variance": 0.6018166691588078,
         "difficulty": -88,
         "color": "grey"
-      }
-    },
-    "adt_hard_20240221_2": {
-      "abc308_e": {
-        "name": "MEX",
-        "point": 475.0,
-        "solver_count": 6094,
-        "is_experimental": false,
-        "variance": 0.27364464304541236,
-        "difficulty": 1042,
-        "color": "green"
       }
     },
     "adt_easy_20260714_1": {
@@ -37154,7 +37172,7 @@
       "abc402_c": {
         "name": "Dislike Foods",
         "point": 300.0,
-        "solver_count": 10158,
+        "solver_count": 10159,
         "is_experimental": false,
         "variance": 0.44539775179420615,
         "difficulty": 331,
@@ -37524,7 +37542,7 @@
       "abc375_d": {
         "name": "ABA",
         "point": 400.0,
-        "solver_count": 9234,
+        "solver_count": 9235,
         "is_experimental": false,
         "variance": 0.532902120689813,
         "difficulty": 658,
@@ -37575,7 +37593,7 @@
       "abc318_e": {
         "name": "Sandwiches",
         "point": 450.0,
-        "solver_count": 6632,
+        "solver_count": 6633,
         "is_experimental": false,
         "variance": 0.46979854445967717,
         "difficulty": 1004,
@@ -37799,7 +37817,7 @@
       "abc404_a": {
         "name": "Not Found",
         "point": 100.0,
-        "solver_count": 14883,
+        "solver_count": 14885,
         "is_experimental": false,
         "variance": 0.8674874765009911,
         "difficulty": -724,
@@ -38034,17 +38052,6 @@
         "color": "grey"
       }
     },
-    "adt_easy_20240123_2": {
-      "abc332_c": {
-        "name": "T-shirts",
-        "point": 300.0,
-        "solver_count": 11784,
-        "is_experimental": false,
-        "variance": 0.38365915865292666,
-        "difficulty": 36,
-        "color": "grey"
-      }
-    },
     "adt_medium_20240409_3": {
       "abc332_d": {
         "name": "Swapping Puzzle",
@@ -38206,7 +38213,7 @@
       "abc336_a": {
         "name": "Long Loong",
         "point": 100.0,
-        "solver_count": 17415,
+        "solver_count": 17416,
         "is_experimental": false,
         "variance": 0.8627240523850896,
         "difficulty": -1289,
@@ -38323,7 +38330,7 @@
       "abc448_c": {
         "name": "Except and Min",
         "point": 300.0,
-        "solver_count": 10292,
+        "solver_count": 10293,
         "is_experimental": false,
         "variance": 0.47243564782445857,
         "difficulty": 231,
@@ -38332,7 +38339,7 @@
       "abc454_a": {
         "name": "Closed interval",
         "point": 100.0,
-        "solver_count": 13482,
+        "solver_count": 13483,
         "is_experimental": false,
         "variance": 1.5072419369276668,
         "difficulty": -912,
@@ -38352,7 +38359,7 @@
       "abc338_d": {
         "name": "Island Tour",
         "point": 425.0,
-        "solver_count": 5009,
+        "solver_count": 5010,
         "is_experimental": false,
         "variance": 0.255024834119487,
         "difficulty": 1234,
@@ -38396,7 +38403,7 @@
       "abc340_e": {
         "name": "Mancala 2",
         "point": 475.0,
-        "solver_count": 4878,
+        "solver_count": 4879,
         "is_experimental": false,
         "variance": 0.23875448556868786,
         "difficulty": 1157,
@@ -38449,7 +38456,7 @@
       "abc342_a": {
         "name": "Yay!",
         "point": 150.0,
-        "solver_count": 15604,
+        "solver_count": 15605,
         "is_experimental": false,
         "variance": 0.6566615726985501,
         "difficulty": -623,
@@ -38476,6 +38483,17 @@
         "variance": 0.4143930942662581,
         "difficulty": 944,
         "color": "green"
+      }
+    },
+    "adt_all_20240404_1": {
+      "abc342_e": {
+        "name": "Last Train",
+        "point": 450.0,
+        "solver_count": 3602,
+        "is_experimental": false,
+        "variance": 0.1876168891986938,
+        "difficulty": 1476,
+        "color": "cyan"
       }
     },
     "adt_medium_20240523_3": {
@@ -38668,7 +38686,7 @@
       "abc347_e": {
         "name": "Set Add Query",
         "point": 500.0,
-        "solver_count": 5655,
+        "solver_count": 5656,
         "is_experimental": false,
         "variance": 0.3593938518453782,
         "difficulty": 1166,
@@ -38743,7 +38761,7 @@
       "abc368_d": {
         "name": "Minimum Steiner Tree",
         "point": 425.0,
-        "solver_count": 8241,
+        "solver_count": 8242,
         "is_experimental": false,
         "variance": 0.47935948915523674,
         "difficulty": 816,
@@ -39055,7 +39073,7 @@
       "abc450_a": {
         "name": "3,2,1,GO",
         "point": 100.0,
-        "solver_count": 14867,
+        "solver_count": 14868,
         "is_experimental": false,
         "variance": 1.0741875007658859,
         "difficulty": -929,
@@ -39415,17 +39433,6 @@
         "color": "yellow"
       }
     },
-    "adt_easy_20240903_1": {
-      "abc363_b": {
-        "name": "Japanese Cursed Doll",
-        "point": 200.0,
-        "solver_count": 15765,
-        "is_experimental": false,
-        "variance": 0.3756963673866256,
-        "difficulty": -616,
-        "color": "grey"
-      }
-    },
     "adt_medium_20241231_3": {
       "abc363_d": {
         "name": "Palindromic Number",
@@ -39463,7 +39470,7 @@
       "abc364_d": {
         "name": "K-th Nearest",
         "point": 425.0,
-        "solver_count": 6934,
+        "solver_count": 6935,
         "is_experimental": false,
         "variance": 0.48447694667700436,
         "difficulty": 1136,
@@ -39611,7 +39618,7 @@
       "abc368_c": {
         "name": "Triple Attack",
         "point": 300.0,
-        "solver_count": 11559,
+        "solver_count": 11561,
         "is_experimental": false,
         "variance": 0.45125647875123737,
         "difficulty": 367,
@@ -40008,7 +40015,7 @@
       "abc376_c": {
         "name": "Prepare Another Box",
         "point": 350.0,
-        "solver_count": 10680,
+        "solver_count": 10683,
         "is_experimental": false,
         "variance": 0.4010668304278266,
         "difficulty": 364,
@@ -40200,7 +40207,7 @@
       "abc421_c": {
         "name": "Alternated",
         "point": 350.0,
-        "solver_count": 10295,
+        "solver_count": 10296,
         "is_experimental": false,
         "variance": 0.6447861804711388,
         "difficulty": 377,
@@ -40209,7 +40216,7 @@
       "abc446_e": {
         "name": "Multiple-Free Sequences",
         "point": 450.0,
-        "solver_count": 4031,
+        "solver_count": 4033,
         "is_experimental": false,
         "variance": 0.42981985190627336,
         "difficulty": 1209,
@@ -40286,7 +40293,7 @@
       "abc381_f": {
         "name": "1122 Subsequence",
         "point": 525.0,
-        "solver_count": 2274,
+        "solver_count": 2275,
         "is_experimental": false,
         "variance": 0.44960077310852303,
         "difficulty": 1739,
@@ -40308,7 +40315,7 @@
       "abc382_c": {
         "name": "Kaiten Sushi",
         "point": 350.0,
-        "solver_count": 9487,
+        "solver_count": 9488,
         "is_experimental": false,
         "variance": 0.4024318153099612,
         "difficulty": 476,
@@ -40319,7 +40326,7 @@
       "abc382_d": {
         "name": "Keep Distance",
         "point": 425.0,
-        "solver_count": 7193,
+        "solver_count": 7195,
         "is_experimental": false,
         "variance": 0.3704440915375052,
         "difficulty": 685,
@@ -40330,7 +40337,7 @@
       "abc382_e": {
         "name": "Expansion Packs",
         "point": 475.0,
-        "solver_count": 2547,
+        "solver_count": 2548,
         "is_experimental": false,
         "variance": 0.34692883604040764,
         "difficulty": 1671,
@@ -40548,7 +40555,7 @@
       "abc388_b": {
         "name": "Heavy Snake",
         "point": 200.0,
-        "solver_count": 13981,
+        "solver_count": 13984,
         "is_experimental": false,
         "variance": 0.32659251288415964,
         "difficulty": -633,
@@ -40757,7 +40764,7 @@
       "abc393_e": {
         "name": "GCD of Subset",
         "point": 475.0,
-        "solver_count": 5642,
+        "solver_count": 5643,
         "is_experimental": false,
         "variance": 0.6019067531472739,
         "difficulty": 1253,
@@ -40933,7 +40940,7 @@
       "abc398_b": {
         "name": "Full House 3",
         "point": 250.0,
-        "solver_count": 13941,
+        "solver_count": 13942,
         "is_experimental": false,
         "variance": 0.5928554147105536,
         "difficulty": -461,
@@ -40955,7 +40962,7 @@
       "abc398_f": {
         "name": "ABCBA",
         "point": 500.0,
-        "solver_count": 5311,
+        "solver_count": 5312,
         "is_experimental": false,
         "variance": 0.49831275569707256,
         "difficulty": 1033,
@@ -40966,7 +40973,7 @@
       "abc399_a": {
         "name": "Hamming Distance",
         "point": 100.0,
-        "solver_count": 16896,
+        "solver_count": 16898,
         "is_experimental": false,
         "variance": 0.918445232153571,
         "difficulty": -1129,
@@ -40977,7 +40984,7 @@
       "abc399_b": {
         "name": "Ranking with Ties",
         "point": 200.0,
-        "solver_count": 14519,
+        "solver_count": 14520,
         "is_experimental": false,
         "variance": 0.3964072606547237,
         "difficulty": -512,
@@ -41006,22 +41013,11 @@
         "color": "cyan"
       }
     },
-    "adt_easy_20250610_1": {
-      "abc400_a": {
-        "name": "ABC400 Party",
-        "point": 100.0,
-        "solver_count": 18164,
-        "is_experimental": false,
-        "variance": 0.9922299937452738,
-        "difficulty": -1201,
-        "color": "grey"
-      }
-    },
     "adt_medium_20250625_3": {
       "abc400_b": {
         "name": "Sum of Geometric Series",
         "point": 200.0,
-        "solver_count": 15890,
+        "solver_count": 15891,
         "is_experimental": false,
         "variance": 0.6602034646398599,
         "difficulty": -600,
@@ -41030,7 +41026,7 @@
       "abc404_d": {
         "name": "Goin' to the Zoo",
         "point": 400.0,
-        "solver_count": 7329,
+        "solver_count": 7330,
         "is_experimental": false,
         "variance": 0.3412094204521802,
         "difficulty": 803,
@@ -41050,7 +41046,7 @@
       "abc413_c": {
         "name": "Large Queue",
         "point": 300.0,
-        "solver_count": 11148,
+        "solver_count": 11149,
         "is_experimental": false,
         "variance": 0.4755625765112293,
         "difficulty": 177,
@@ -41127,7 +41123,7 @@
       "abc402_d": {
         "name": "Line Crossing",
         "point": 400.0,
-        "solver_count": 7136,
+        "solver_count": 7137,
         "is_experimental": false,
         "variance": 0.4928035504083615,
         "difficulty": 827,
@@ -41138,7 +41134,7 @@
       "abc402_e": {
         "name": "Payment Required",
         "point": 450.0,
-        "solver_count": 3652,
+        "solver_count": 3655,
         "is_experimental": false,
         "variance": 0.4168762682844885,
         "difficulty": 1409,
@@ -41149,7 +41145,7 @@
       "abc402_f": {
         "name": "Path to Integer",
         "point": 525.0,
-        "solver_count": 2389,
+        "solver_count": 2392,
         "is_experimental": false,
         "variance": 0.3199592290092194,
         "difficulty": 1645,
@@ -41180,7 +41176,7 @@
       "abc429_c": {
         "name": "Odd One Subsequence",
         "point": 300.0,
-        "solver_count": 11044,
+        "solver_count": 11045,
         "is_experimental": false,
         "variance": 0.6958395924869047,
         "difficulty": 125,
@@ -41229,7 +41225,7 @@
       "abc458_e": {
         "name": "Count 123",
         "point": 450.0,
-        "solver_count": 3997,
+        "solver_count": 3998,
         "is_experimental": false,
         "variance": 0.38405210404006696,
         "difficulty": 1309,
@@ -41335,7 +41331,7 @@
       "abc408_d": {
         "name": "Flip to Gather",
         "point": 400.0,
-        "solver_count": 6637,
+        "solver_count": 6638,
         "is_experimental": false,
         "variance": 0.48013070442287176,
         "difficulty": 950,
@@ -41441,7 +41437,7 @@
       "abc431_c": {
         "name": "Robot Factory",
         "point": 300.0,
-        "solver_count": 10889,
+        "solver_count": 10891,
         "is_experimental": false,
         "variance": 0.5076844653140281,
         "difficulty": 63,
@@ -41483,7 +41479,7 @@
       "abc418_c": {
         "name": "Flush",
         "point": 350.0,
-        "solver_count": 9786,
+        "solver_count": 9787,
         "is_experimental": false,
         "variance": 0.35661903965982816,
         "difficulty": 401,
@@ -41549,7 +41545,7 @@
       "abc414_d": {
         "name": "Transmission Mission",
         "point": 400.0,
-        "solver_count": 7116,
+        "solver_count": 7117,
         "is_experimental": false,
         "variance": 0.47657205499378286,
         "difficulty": 841,
@@ -41644,7 +41640,7 @@
       "abc417_b": {
         "name": "Search and Delete",
         "point": 200.0,
-        "solver_count": 13891,
+        "solver_count": 13896,
         "is_experimental": false,
         "variance": 0.48740051016957797,
         "difficulty": -507,
@@ -41655,7 +41651,7 @@
       "abc417_d": {
         "name": "Takahashi's Expectation",
         "point": 425.0,
-        "solver_count": 4986,
+        "solver_count": 4991,
         "is_experimental": false,
         "variance": 0.31029373841301444,
         "difficulty": 1230,
@@ -41666,7 +41662,7 @@
       "abc417_e": {
         "name": "A Path in A Dictionary",
         "point": 475.0,
-        "solver_count": 5394,
+        "solver_count": 5399,
         "is_experimental": false,
         "variance": 0.38647405032946636,
         "difficulty": 1111,
@@ -41677,7 +41673,7 @@
       "abc417_f": {
         "name": "Random Gathering",
         "point": 500.0,
-        "solver_count": 3097,
+        "solver_count": 3099,
         "is_experimental": false,
         "variance": 0.365358591025883,
         "difficulty": 1414,
@@ -41688,7 +41684,7 @@
       "abc418_a": {
         "name": "I'm a teapot",
         "point": 100.0,
-        "solver_count": 15812,
+        "solver_count": 15813,
         "is_experimental": false,
         "variance": 0.8674775684168877,
         "difficulty": -994,
@@ -41699,7 +41695,7 @@
       "abc418_e": {
         "name": "Trapezium",
         "point": 475.0,
-        "solver_count": 4260,
+        "solver_count": 4261,
         "is_experimental": false,
         "variance": 0.36384679483668786,
         "difficulty": 1282,
@@ -41739,7 +41735,7 @@
       "abc419_a": {
         "name": "AtCoder Language",
         "point": 100.0,
-        "solver_count": 16282,
+        "solver_count": 16283,
         "is_experimental": false,
         "variance": 0.8815190377916664,
         "difficulty": -888,
@@ -41750,7 +41746,7 @@
       "abc419_d": {
         "name": "Substr Swap",
         "point": 400.0,
-        "solver_count": 11563,
+        "solver_count": 11565,
         "is_experimental": false,
         "variance": 0.5581408626446032,
         "difficulty": 214,
@@ -41792,7 +41788,7 @@
       "abc421_a": {
         "name": "Misdelivery",
         "point": 100.0,
-        "solver_count": 15180,
+        "solver_count": 15181,
         "is_experimental": false,
         "variance": 0.8795263237176622,
         "difficulty": -930,
@@ -41812,7 +41808,7 @@
       "abc421_b": {
         "name": "Fibonacci Reversed",
         "point": 200.0,
-        "solver_count": 13416,
+        "solver_count": 13417,
         "is_experimental": false,
         "variance": 0.4573276122547895,
         "difficulty": -391,
@@ -41994,7 +41990,7 @@
       "abc428_e": {
         "name": "Farthest Vertex",
         "point": 475.0,
-        "solver_count": 4325,
+        "solver_count": 4331,
         "is_experimental": false,
         "variance": 0.43284221420239455,
         "difficulty": 1167,
@@ -42027,7 +42023,7 @@
       "abc429_b": {
         "name": "N - 1",
         "point": 200.0,
-        "solver_count": 13405,
+        "solver_count": 13406,
         "is_experimental": false,
         "variance": 0.5379862592564244,
         "difficulty": -725,
@@ -42093,7 +42089,7 @@
       "abc431_a": {
         "name": "Robot Balance",
         "point": 100.0,
-        "solver_count": 13980,
+        "solver_count": 13981,
         "is_experimental": false,
         "variance": 1.032720110138515,
         "difficulty": -1080,
@@ -42305,7 +42301,7 @@
       "abc456_c": {
         "name": "Not Adjacent",
         "point": 300.0,
-        "solver_count": 10291,
+        "solver_count": 10293,
         "is_experimental": false,
         "variance": 0.5376111233195876,
         "difficulty": 183,
@@ -42349,7 +42345,7 @@
       "abc438_b": {
         "name": "Substring 2",
         "point": 200.0,
-        "solver_count": 11084,
+        "solver_count": 11085,
         "is_experimental": false,
         "variance": 0.3984783458060148,
         "difficulty": -188,
@@ -42503,7 +42499,7 @@
       "abc446_a": {
         "name": "Handmaid",
         "point": 100.0,
-        "solver_count": 12244,
+        "solver_count": 12245,
         "is_experimental": false,
         "variance": 0.9438206590493597,
         "difficulty": -935,
@@ -42514,7 +42510,7 @@
       "abc446_d": {
         "name": "Max Straight",
         "point": 400.0,
-        "solver_count": 7870,
+        "solver_count": 7871,
         "is_experimental": false,
         "variance": 0.7311026931330846,
         "difficulty": 550,
@@ -42631,7 +42627,7 @@
       "abl_c": {
         "name": "Connect Cities",
         "point": 300.0,
-        "solver_count": 7040,
+        "solver_count": 7041,
         "is_experimental": false,
         "variance": 0.646695800190611,
         "difficulty": 435,
@@ -42724,7 +42720,7 @@
       "ahc001_a": {
         "name": "AtCoder Ad",
         "point": null,
-        "solver_count": 2068
+        "solver_count": 2069
       }
     },
     "ahc002": {
@@ -44447,7 +44443,7 @@
       "awc0023_c": {
         "name": "Factory Tour",
         "point": null,
-        "solver_count": 352
+        "solver_count": 353
       },
       "awc0023_d": {
         "name": "Package Delivery",
@@ -44518,7 +44514,7 @@
       "awc0026_a": {
         "name": "Announcement of Winning Numbers",
         "point": null,
-        "solver_count": 389
+        "solver_count": 390
       },
       "awc0026_b": {
         "name": "Distribution of Jewels",
@@ -45760,27 +45756,27 @@
       "awc0072_a": {
         "name": "Matching of Notes",
         "point": null,
-        "solver_count": 292
+        "solver_count": 293
       },
       "awc0072_b": {
         "name": "Tending the Flower Bed",
         "point": null,
-        "solver_count": 232
+        "solver_count": 233
       },
       "awc0072_c": {
         "name": "Battery Remaining",
         "point": null,
-        "solver_count": 243
+        "solver_count": 244
       },
       "awc0072_d": {
         "name": "Mountain Traverse",
         "point": null,
-        "solver_count": 195
+        "solver_count": 196
       },
       "awc0072_e": {
         "name": "Checking Seats and Lunches",
         "point": null,
-        "solver_count": 205
+        "solver_count": 206
       }
     },
     "awc0073": {
@@ -46153,7 +46149,7 @@
       "awc0086_d": {
         "name": "Shortest Delivery Route",
         "point": null,
-        "solver_count": 182
+        "solver_count": 183
       },
       "awc0086_e": {
         "name": "Dance Synchronization",
@@ -46305,12 +46301,12 @@
       "awc0092_b": {
         "name": "Robot Going Back and Forth in a Hallway",
         "point": null,
-        "solver_count": 197
+        "solver_count": 198
       },
       "awc0092_c": {
         "name": "Spread of Rumors",
         "point": null,
-        "solver_count": 190
+        "solver_count": 191
       },
       "awc0092_d": {
         "name": "Presentation Order",
@@ -46381,7 +46377,7 @@
       "awc0095_a": {
         "name": "Settling Travel Expenses",
         "point": null,
-        "solver_count": 231
+        "solver_count": 232
       },
       "awc0095_b": {
         "name": "Balloon Popping Game",
@@ -46408,7 +46404,7 @@
       "awc0096_a": {
         "name": "Closing Time of the Reception Window",
         "point": null,
-        "solver_count": 229
+        "solver_count": 230
       },
       "awc0096_b": {
         "name": "Adventurer's Staircase",
@@ -47295,44 +47291,44 @@
       "awc0127_a": {
         "name": "Fruit Sorting",
         "point": null,
-        "solver_count": 192
+        "solver_count": 193
       },
       "awc0127_b": {
         "name": "Updating the Electronic Message Board",
         "point": null,
-        "solver_count": 168
+        "solver_count": 170
       },
       "awc0127_c": {
         "name": "Cargo Delivery Truck",
         "point": null,
-        "solver_count": 147
+        "solver_count": 149
       },
       "awc0127_d": {
         "name": "Construction of a Communication Network",
         "point": null,
-        "solver_count": 131
+        "solver_count": 133
       },
       "awc0127_e": {
         "name": "Joining of DNA Sequences",
         "point": null,
-        "solver_count": 109
+        "solver_count": 110
       }
     },
     "awc0128": {
       "awc0128_a": {
         "name": "Multiple Check",
         "point": null,
-        "solver_count": 214
+        "solver_count": 215
       },
       "awc0128_b": {
         "name": "Fruit Harvest Season",
         "point": null,
-        "solver_count": 202
+        "solver_count": 203
       },
       "awc0128_c": {
         "name": "Assortment of Sweets",
         "point": null,
-        "solver_count": 180
+        "solver_count": 181
       },
       "awc0128_d": {
         "name": "Watering the Flower Bed",
@@ -47519,7 +47515,7 @@
       "birthday0410_a": {
         "name": "A + B",
         "point": null,
-        "solver_count": 488
+        "solver_count": 489
       },
       "birthday0410_b": {
         "name": "ライスゲーム",
@@ -49475,7 +49471,7 @@
       "codefestival_2016_qualB_a": {
         "name": "Signboard",
         "point": 100.0,
-        "solver_count": 4084,
+        "solver_count": 4085,
         "is_experimental": false,
         "variance": 0.9539045385950563,
         "difficulty": -103,
@@ -49484,7 +49480,7 @@
       "codefestival_2016_qualB_b": {
         "name": "Qualification simulator",
         "point": 200.0,
-        "solver_count": 11018,
+        "solver_count": 11020,
         "is_experimental": false,
         "variance": 0.3396346933640197,
         "difficulty": 309,
@@ -49697,42 +49693,42 @@
       "codequeen2026_a": {
         "name": "ドレス選び",
         "point": null,
-        "solver_count": 116
+        "solver_count": 119
       },
       "codequeen2026_b": {
         "name": "バレエの練習",
         "point": null,
-        "solver_count": 91
+        "solver_count": 93
       },
       "codequeen2026_c": {
         "name": "王冠づくり",
         "point": null,
-        "solver_count": 85
+        "solver_count": 87
       },
       "codequeen2026_d": {
         "name": "ぶどうの教室",
         "point": null,
-        "solver_count": 82
+        "solver_count": 84
       },
       "codequeen2026_e": {
         "name": "絶品のバイオリン",
         "point": null,
-        "solver_count": 65
+        "solver_count": 67
       },
       "codequeen2026_f": {
         "name": "ピアノの練習",
         "point": null,
-        "solver_count": 36
+        "solver_count": 37
       },
       "codequeen2026_g": {
         "name": "きみの愛馬は？",
         "point": null,
-        "solver_count": 23
+        "solver_count": 25
       },
       "codequeen2026_h": {
         "name": "迷子の森",
         "point": null,
-        "solver_count": 22
+        "solver_count": 24
       }
     },
     "colopl2018-final": {
@@ -50096,7 +50092,7 @@
       "ddcc2020_qual_c": {
         "name": "Strawberry Cakes",
         "point": 400.0,
-        "solver_count": 4306,
+        "solver_count": 4307,
         "is_experimental": false,
         "variance": 0.22460590086794627,
         "difficulty": 935,
@@ -50483,22 +50479,22 @@
       "dp_a": {
         "name": "Frog 1",
         "point": null,
-        "solver_count": 90800
+        "solver_count": 90805
       },
       "dp_b": {
         "name": "Frog 2",
         "point": null,
-        "solver_count": 79885
+        "solver_count": 79892
       },
       "dp_c": {
         "name": "Vacation",
         "point": null,
-        "solver_count": 70480
+        "solver_count": 70485
       },
       "dp_d": {
         "name": "Knapsack 1",
         "point": null,
-        "solver_count": 66133
+        "solver_count": 66137
       },
       "dp_e": {
         "name": "Knapsack 2",
@@ -50508,17 +50504,17 @@
       "dp_f": {
         "name": "LCS",
         "point": null,
-        "solver_count": 43118
+        "solver_count": 43123
       },
       "dp_g": {
         "name": "Longest Path",
         "point": null,
-        "solver_count": 34034
+        "solver_count": 34035
       },
       "dp_h": {
         "name": "Grid 1",
         "point": null,
-        "solver_count": 38485
+        "solver_count": 38486
       },
       "dp_i": {
         "name": "Coins",
@@ -50538,12 +50534,12 @@
       "dp_l": {
         "name": "Deque",
         "point": null,
-        "solver_count": 22614
+        "solver_count": 22616
       },
       "dp_m": {
         "name": "Candies",
         "point": null,
-        "solver_count": 18635
+        "solver_count": 18640
       },
       "dp_n": {
         "name": "Slimes",
@@ -50553,17 +50549,17 @@
       "dp_o": {
         "name": "Matching",
         "point": null,
-        "solver_count": 17697
+        "solver_count": 17700
       },
       "dp_p": {
         "name": "Independent Set",
         "point": null,
-        "solver_count": 16655
+        "solver_count": 16658
       },
       "dp_q": {
         "name": "Flowers",
         "point": null,
-        "solver_count": 11432
+        "solver_count": 11434
       },
       "dp_r": {
         "name": "Walk",
@@ -50573,12 +50569,12 @@
       "dp_s": {
         "name": "Digit Sum",
         "point": null,
-        "solver_count": 12275
+        "solver_count": 12276
       },
       "dp_t": {
         "name": "Permutation",
         "point": null,
-        "solver_count": 7093
+        "solver_count": 7094
       },
       "dp_u": {
         "name": "Grouping",
@@ -50588,7 +50584,7 @@
       "dp_v": {
         "name": "Subtree",
         "point": null,
-        "solver_count": 6245
+        "solver_count": 6246
       },
       "dp_w": {
         "name": "Intervals",
@@ -50603,7 +50599,7 @@
       "dp_y": {
         "name": "Grid 2",
         "point": null,
-        "solver_count": 4496
+        "solver_count": 4497
       },
       "dp_z": {
         "name": "Frog 3",
@@ -53508,7 +53504,7 @@
       "joi2006ho_a": {
         "name": "JOI 2006 本選 問題1",
         "point": null,
-        "solver_count": 320
+        "solver_count": 321
       },
       "joi2006ho_b": {
         "name": "JOI 2006 本選 問題2",
@@ -53648,7 +53644,7 @@
       "joi2008yo_a": {
         "name": "おつり",
         "point": null,
-        "solver_count": 4306
+        "solver_count": 4307
       },
       "joi2008yo_b": {
         "name": "JOIとIOI",
@@ -53658,7 +53654,7 @@
       "joi2008yo_c": {
         "name": "カードゲーム",
         "point": null,
-        "solver_count": 1246
+        "solver_count": 1248
       },
       "joi2008yo_d": {
         "name": "星座探し",
@@ -53707,7 +53703,7 @@
       "joi2009yo_a": {
         "name": "タイムカード",
         "point": null,
-        "solver_count": 1624
+        "solver_count": 1625
       },
       "joi2009yo_b": {
         "name": "コンテスト",
@@ -53739,7 +53735,7 @@
       "joi2010ho_a": {
         "name": "旅人",
         "point": null,
-        "solver_count": 2328
+        "solver_count": 2329
       },
       "joi2010ho_b": {
         "name": "お菓子の分割",
@@ -53975,7 +53971,7 @@
       "joi2014ho1": {
         "name": "JOI 紋章 (JOI Emblem)",
         "point": null,
-        "solver_count": 688
+        "solver_count": 689
       },
       "joi2014ho2": {
         "name": "IOI 饅頭 (IOI Manju)",
@@ -54140,7 +54136,7 @@
       "joi2016yo_e": {
         "name": "ゾンビ島 (Zombie Island)",
         "point": null,
-        "solver_count": 1939
+        "solver_count": 1940
       },
       "joi2016yo_f": {
         "name": "屋台 (Food stalls)",
@@ -54270,7 +54266,7 @@
       "joi2019_yo_a": {
         "name": "ソーシャルゲーム (Social Game)",
         "point": null,
-        "solver_count": 2264
+        "solver_count": 2272
       },
       "joi2019_yo_b": {
         "name": "すごろくと駒 (Sugoroku and Pieces)",
@@ -54610,12 +54606,12 @@
       "joi2022_yo2_b": {
         "name": "カーペット (Carpet)",
         "point": null,
-        "solver_count": 1222
+        "solver_count": 1223
       },
       "joi2022_yo2_c": {
         "name": "国土分割 (Land Division)",
         "point": null,
-        "solver_count": 495
+        "solver_count": 496
       },
       "joi2022_yo2_d": {
         "name": "飴 2 (Candies 2)",
@@ -54696,7 +54692,7 @@
       "joi2023_yo1b_d": {
         "name": "点数 (Score)",
         "point": null,
-        "solver_count": 1052
+        "solver_count": 1053
       }
     },
     "joi2023yo1c": {
@@ -54779,7 +54775,7 @@
       "joi2024_yo1a_a": {
         "name": "果物 (Fruit)",
         "point": null,
-        "solver_count": 3046
+        "solver_count": 3047
       },
       "joi2024_yo1a_b": {
         "name": "和の判定 (Sum Checker)",
@@ -54823,7 +54819,7 @@
       "joi2024_yo1c_a": {
         "name": "分 (Minutes)",
         "point": null,
-        "solver_count": 2457
+        "solver_count": 2458
       },
       "joi2024_yo1c_b": {
         "name": "桁 (Digit)",
@@ -54833,12 +54829,12 @@
       "joi2024_yo1c_c": {
         "name": "揃った文字 (Matched Letters)",
         "point": null,
-        "solver_count": 1117
+        "solver_count": 1118
       },
       "joi2024_yo1c_d": {
         "name": "差 (Difference)",
         "point": null,
-        "solver_count": 985
+        "solver_count": 987
       }
     },
     "joi2024yo2": {
@@ -54943,22 +54939,22 @@
       "joi2025_yo1c_a": {
         "name": "所持金 (Money On Me)",
         "point": null,
-        "solver_count": 1062
+        "solver_count": 1064
       },
       "joi2025_yo1c_b": {
         "name": "ブラックジャック (Blackjack)",
         "point": null,
-        "solver_count": 1046
+        "solver_count": 1048
       },
       "joi2025_yo1c_c": {
         "name": "いずれか片方 (Either, but Not Both)",
         "point": null,
-        "solver_count": 755
+        "solver_count": 757
       },
       "joi2025_yo1c_d": {
         "name": "周期文字列 (Cycle String)",
         "point": null,
-        "solver_count": 492
+        "solver_count": 493
       }
     },
     "joi2025yo2": {
@@ -55051,17 +55047,17 @@
       "joi2026_yo1a_a": {
         "name": "面積 (Area)",
         "point": null,
-        "solver_count": 958
+        "solver_count": 960
       },
       "joi2026_yo1a_b": {
         "name": "ノートパソコン (Laptop)",
         "point": null,
-        "solver_count": 679
+        "solver_count": 681
       },
       "joi2026_yo1a_c": {
         "name": "シャッフル 2 (Shuffle 2)",
         "point": null,
-        "solver_count": 608
+        "solver_count": 609
       },
       "joi2026_yo1a_d": {
         "name": "oxゲーム (Xs and Os)",
@@ -55095,22 +55091,22 @@
       "joi2026_yo1c_a": {
         "name": "テスト (Test)",
         "point": null,
-        "solver_count": 594
+        "solver_count": 596
       },
       "joi2026_yo1c_b": {
         "name": "リンゴ (Apple)",
         "point": null,
-        "solver_count": 363
+        "solver_count": 364
       },
       "joi2026_yo1c_c": {
         "name": "ビルディング 5 (Building 5)",
         "point": null,
-        "solver_count": 359
+        "solver_count": 361
       },
       "joi2026_yo1c_d": {
         "name": "走り幅跳び (Long Jump)",
         "point": null,
-        "solver_count": 306
+        "solver_count": 308
       }
     },
     "joi2026yo2": {
@@ -55922,7 +55918,7 @@
       "joisc2009_ski": {
         "name": "スキー (Ski)",
         "point": null,
-        "solver_count": 201
+        "solver_count": 202
       },
       "joisc2009_stamps": {
         "name": "判子 (はんこ) (Stamps)",
@@ -56787,7 +56783,7 @@
       "joisc2021_e": {
         "name": "道路の建設案 (Road Construction)",
         "point": null,
-        "solver_count": 145
+        "solver_count": 146
       },
       "joisc2021_g": {
         "name": "買い物 (Shopping)",
@@ -58653,7 +58649,7 @@
       "math_and_algorithm_ai": {
         "name": "How Many Guests?",
         "point": null,
-        "solver_count": 11267
+        "solver_count": 11268
       },
       "math_and_algorithm_aj": {
         "name": "Snowy Days",
@@ -58683,7 +58679,7 @@
       "math_and_algorithm_ao": {
         "name": "Bipartite Graph",
         "point": null,
-        "solver_count": 1213
+        "solver_count": 1214
       },
       "math_and_algorithm_ap": {
         "name": "Fibonacci Easy (mod 1000000007)",
@@ -58813,7 +58809,7 @@
       "math_and_algorithm_bn": {
         "name": "Interval Scheduling Problem",
         "point": null,
-        "solver_count": 2859
+        "solver_count": 2860
       },
       "math_and_algorithm_bo": {
         "name": "Two Conditions",
@@ -58923,7 +58919,7 @@
       "math_and_algorithm_m": {
         "name": "Divisor Enumeration",
         "point": null,
-        "solver_count": 3712
+        "solver_count": 3713
       },
       "math_and_algorithm_n": {
         "name": "Factorization",
@@ -59447,27 +59443,27 @@
       "ndpc2026_a": {
         "name": "Polyomino",
         "point": null,
-        "solver_count": 1482
+        "solver_count": 1483
       },
       "ndpc2026_b": {
         "name": "DAG",
         "point": null,
-        "solver_count": 1361
+        "solver_count": 1363
       },
       "ndpc2026_c": {
         "name": "String",
         "point": null,
-        "solver_count": 1040
+        "solver_count": 1041
       },
       "ndpc2026_d": {
         "name": "Banknote",
         "point": null,
-        "solver_count": 832
+        "solver_count": 833
       },
       "ndpc2026_e": {
         "name": "Summer Vacation",
         "point": null,
-        "solver_count": 670
+        "solver_count": 675
       },
       "ndpc2026_f": {
         "name": "Set",
@@ -60388,7 +60384,7 @@
       "pakencamp_2019_day3_c": {
         "name": "カラオケ",
         "point": null,
-        "solver_count": 6955
+        "solver_count": 6957
       },
       "pakencamp_2019_day3_d": {
         "name": "パ研軍旗",
@@ -61545,7 +61541,7 @@
       "panasonic2020_b": {
         "name": "Bishop",
         "point": 200.0,
-        "solver_count": 15284,
+        "solver_count": 15285,
         "is_experimental": false,
         "variance": 0.39958471860619144,
         "difficulty": 168,
@@ -62114,7 +62110,7 @@
       "past202010_m": {
         "name": "筆塗り",
         "point": null,
-        "solver_count": 528
+        "solver_count": 529
       },
       "past202010_n": {
         "name": "マス目の穴埋め",
@@ -62720,7 +62716,7 @@
       "past202209_k": {
         "name": "Checking Connectivity",
         "point": null,
-        "solver_count": 243
+        "solver_count": 244
       },
       "past202209_l": {
         "name": "Exhibition",
@@ -63363,7 +63359,7 @@
       "practice2_a": {
         "name": "Disjoint Set Union",
         "point": null,
-        "solver_count": 6944
+        "solver_count": 6945
       },
       "practice2_b": {
         "name": "Fenwick Tree",
@@ -64719,7 +64715,7 @@
       "tdpc_number": {
         "name": "数",
         "point": null,
-        "solver_count": 2887
+        "solver_count": 2888
       },
       "tdpc_semiexp": {
         "name": "準急",
@@ -65398,7 +65394,7 @@
       "tenka1_2017_d": {
         "name": "IntegerotS",
         "point": 500.0,
-        "solver_count": 2158,
+        "solver_count": 2161,
         "is_experimental": false,
         "variance": 0.37127655136689697,
         "difficulty": 1789,
@@ -65542,7 +65538,7 @@
       "tessoku_book_a": {
         "name": "The First Problem",
         "point": null,
-        "solver_count": 17189
+        "solver_count": 17190
       },
       "tessoku_book_ab": {
         "name": "Blackboard",
@@ -65562,12 +65558,12 @@
       "tessoku_book_af": {
         "name": "Game 1",
         "point": null,
-        "solver_count": 2789
+        "solver_count": 2790
       },
       "tessoku_book_ag": {
         "name": "Game 2",
         "point": null,
-        "solver_count": 2170
+        "solver_count": 2171
       },
       "tessoku_book_ah": {
         "name": "Game 3",
@@ -65587,42 +65583,42 @@
       "tessoku_book_ak": {
         "name": "Travel 2",
         "point": null,
-        "solver_count": 2786
+        "solver_count": 2787
       },
       "tessoku_book_al": {
         "name": "Black Company 1",
         "point": null,
-        "solver_count": 2664
+        "solver_count": 2665
       },
       "tessoku_book_an": {
         "name": "Triangle",
         "point": null,
-        "solver_count": 2540
+        "solver_count": 2541
       },
       "tessoku_book_ao": {
         "name": "Tile Coloring",
         "point": null,
-        "solver_count": 2287
+        "solver_count": 2288
       },
       "tessoku_book_ap": {
         "name": "Soccer",
         "point": null,
-        "solver_count": 2165
+        "solver_count": 2166
       },
       "tessoku_book_aq": {
         "name": "Travel 3",
         "point": null,
-        "solver_count": 2128
+        "solver_count": 2129
       },
       "tessoku_book_ar": {
         "name": "Change and Reverse",
         "point": null,
-        "solver_count": 2244
+        "solver_count": 2245
       },
       "tessoku_book_as": {
         "name": "Card Elimination",
         "point": null,
-        "solver_count": 1851
+        "solver_count": 1852
       },
       "tessoku_book_at": {
         "name": "Heuristic 1",
@@ -65647,7 +65643,7 @@
       "tessoku_book_b": {
         "name": "Linear Search",
         "point": null,
-        "solver_count": 14226
+        "solver_count": 14227
       },
       "tessoku_book_ba": {
         "name": "Priority Queue",
@@ -65707,7 +65703,7 @@
       "tessoku_book_bn": {
         "name": "Connect Query",
         "point": null,
-        "solver_count": 2168
+        "solver_count": 2169
       },
       "tessoku_book_bo": {
         "name": "MST (Minimum Spanning Tree)",
@@ -65767,7 +65763,7 @@
       "tessoku_book_c": {
         "name": "Two Cards",
         "point": null,
-        "solver_count": 12839
+        "solver_count": 12840
       },
       "tessoku_book_ca": {
         "name": "Divisor Check",
@@ -65787,12 +65783,12 @@
       "tessoku_book_ce": {
         "name": "Lottery",
         "point": null,
-        "solver_count": 5431
+        "solver_count": 5432
       },
       "tessoku_book_cg": {
         "name": "Counting Points",
         "point": null,
-        "solver_count": 4007
+        "solver_count": 4008
       },
       "tessoku_book_ch": {
         "name": "Papers",
@@ -65827,12 +65823,12 @@
       "tessoku_book_cq": {
         "name": "Subset Sum with Restoration",
         "point": null,
-        "solver_count": 2797
+        "solver_count": 2798
       },
       "tessoku_book_cr": {
         "name": "Knapsack 2",
         "point": null,
-        "solver_count": 2486
+        "solver_count": 2487
       },
       "tessoku_book_cs": {
         "name": "Edit Distance",
@@ -65842,7 +65838,7 @@
       "tessoku_book_ct": {
         "name": "Longest Subpalindrome",
         "point": null,
-        "solver_count": 1587
+        "solver_count": 1588
       },
       "tessoku_book_cv": {
         "name": "Traveling Salesman Problem",
@@ -66127,7 +66123,7 @@
       "tessoku_book_g": {
         "name": "Event Attendance",
         "point": null,
-        "solver_count": 9156
+        "solver_count": 9157
       },
       "tessoku_book_h": {
         "name": "Two Dimensional Sum",
@@ -66147,7 +66143,7 @@
       "tessoku_book_k": {
         "name": "Binary Search 1",
         "point": null,
-        "solver_count": 7443
+        "solver_count": 7444
       },
       "tessoku_book_l": {
         "name": "Printer",
@@ -66187,7 +66183,7 @@
       "tessoku_book_s": {
         "name": "Knapsack 1",
         "point": null,
-        "solver_count": 4725
+        "solver_count": 4726
       },
       "tessoku_book_t": {
         "name": "LCS",
@@ -66197,7 +66193,7 @@
       "tessoku_book_u": {
         "name": "Block Game",
         "point": null,
-        "solver_count": 3299
+        "solver_count": 3300
       },
       "tessoku_book_v": {
         "name": "Sugoroku",
